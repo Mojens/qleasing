@@ -1,1 +1,0 @@
-export const ARTICLE_URL = "https://qgyn2z3q.directus.app/items/articles/";
