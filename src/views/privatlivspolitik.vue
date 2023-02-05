@@ -7,9 +7,10 @@
 <script>
 export default {
   data() {
-    console.log(import.meta.env.VITE_READER_API)
+    const api = import.meta.env.VUE_APP_READER_API
+    console.log(api)
     return {
-      apiKey: import.meta.env.READER_API
+      apiKey: import.meta.env.VUE_APP_READER_API
     };
   }
 };
