@@ -3,6 +3,12 @@ import HomeView from "../views/HomeView.vue";
 import about2View from "../views/about2.vue";
 import privatlivspolitikView from "../views/privatlivspolitik.vue";
 import nemLeasingView from "../views/nemtLeasing.vue";
+import nyttigvidenView from "../views/nyttigviden.vue";
+import synView from "../views/syn.vue";
+import traekView from "../views/traek.vue";
+import proeveKoerselView from "../views/proeveKoersel.vue"
+import laaneBilView from "../views/laanebil.vue"
+import vaerkstederView from "../views/vaerksteder.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +40,36 @@ const router = createRouter({
       path: "/nem-leasing",
       name: "/nem-leasing",
       component: nemLeasingView,
+    },
+    {
+      path: "/nyttig-viden",
+      name: "/nyttig-viden",
+      component: nyttigvidenView,
+    },
+    {
+      path: "/syn",
+      name: "/syn",
+      component: synView,
+    },
+    {
+      path: "/traek",
+      name: "/traek",
+      component: traekView,
+    },
+    {
+      path: "/proevekoersel",
+      name: "/proevekoersel",
+      component: proeveKoerselView,
+    },
+    {
+      path: "/laanebil",
+      name: "/laanebil",
+      component: laaneBilView,
+    },
+    {
+      path: "/vaerksteder",
+      name: "/vaerksteder",
+      component: vaerkstederView,
     }
   ],
 });
