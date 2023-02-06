@@ -26,6 +26,7 @@ import HelloWorld from "./components/HelloWorld.vue";
         <RouterLink to="/proevekoersel">Prøve Kørsel</RouterLink>
         <RouterLink to="/laanebil">Låne Bil</RouterLink>
         <RouterLink to="/vaerksteder">Værksteder</RouterLink>
+        <RouterLink to="/forsikring-priser">Forsikrings Priser</RouterLink>
       </nav>
     </div>
   </header>
