@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import about2View from "../views/about2.vue";
 import privatlivspolitikView from "../views/privatlivspolitik.vue";
 import nemLeasingView from "../views/nemtLeasing.vue";
-import nyttigvidenView from "../views/nyttigviden.vue";
+import nyttigvidenView from "../views/nyttigViden.vue";
 import synView from "../views/syn.vue";
 import traekView from "../views/traek.vue";
 import proeveKoerselView from "../views/proeveKoersel.vue"

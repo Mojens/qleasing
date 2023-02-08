@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ct-section-inner-wrap">
     <div v-if="articleData">
       <h1>{{ articleData.title }}</h1>
       <div v-html="articleData.body"></div>

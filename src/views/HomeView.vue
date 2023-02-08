@@ -1,9 +1,11 @@
 <script setup>
 import TheWelcome from "../components/TheWelcome.vue";
+
 </script>
 
 <template>
-  <main>
+
+  <main class="ct-section-inner-wrap">
     <TheWelcome />
   </main>
 </template>
