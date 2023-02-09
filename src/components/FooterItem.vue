@@ -6,29 +6,42 @@
         src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png">
       </div>
       <div class="links-wrapper___z_X-m">
-        <div class="links___1GmQz"><RouterLink to="/om-os" class="link___Zah3i link___394Eg" target="_self"
-                                      title="Om Bilabonnement">Om Quickleasing</RouterLink><a class="link___Zah3i link___394Eg"
-                                                                                      href="/faq/" target="_self"
-                                                                                      title="FAQ">FAQ</a><a
+        <div class="links___1GmQz">
+          <RouterLink class="link___Zah3i link___394Eg" target="_self" title="Om Bilabonnement"
+                      to="/om-os">Om Quickleasing
+          </RouterLink>
+          <a class="link___Zah3i link___394Eg"
+             href="/faq/" target="_self"
+             title="FAQ">FAQ</a><a
           class="link___Zah3i link___394Eg" href="/indhold-pa-siden" target="_self" title="Indhold på siden">Indhold på
           siden</a><a class="link___Zah3i link___394Eg" href="/samarbejdspartnere" target="_self"
                       title="Samarbejdspartnere">Samarbejdspartnere</a><a class="link___Zah3i link___394Eg"
                                                                           href="/faq/" target="_self"
                                                                           title="Kontakt os">Kontakt os</a></div>
-        <div class="links___1GmQz"><a
-          class="link___Zah3i link___394Eg" href="/persondatapolitik" target="_self" title="Persondatapolitik">Persondatapolitik</a><a
-          class="link___Zah3i link___394Eg" href="/samtykke" target="_self" title="Samtykke">Samtykke</a><a
-          class="link___Zah3i link___394Eg" href="/opbevaring-af-dine-oplysninger" target="_self"
-          title="Opbevaring af dine oplysninger">Opbevaring af dine oplysninger</a>
-          <RouterLink to="/privatlivspolitik"
-                      class="link___Zah3i link___394Eg" target="_self" title="Privatlivspolitik">Privatlivspolitik
+        <div class="links___1GmQz">
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Abonnementsvilkår" to="/abonnement-vilkaar">Abonnementsvilkår
           </RouterLink>
-          <RouterLink to="/abonnement-vilkaar"
-                      class="link___Zah3i link___394Eg" target="_self" title="Abonnementsvilkår">Abonnementsvilkår
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Persondatapolitik hos Quickleasing" to="/persondatapolitik">
+            Persondatapolitik
           </RouterLink>
-          <RouterLink to="/information-om-cookies"
-                      class="link___Zah3i link___394Eg" target="_self" title="Information om cookies">Information om cookies
-          </RouterLink></div>
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Opbevaring af dine oplysninger" to="/opbevaring-af-dine-oplysninger">
+            Opbevaring af dine oplysninger
+          </RouterLink>
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Samtykke" to="/samtykke">Samtykke
+          </RouterLink>
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Privatlivspolitik" to="/privatlivspolitik">Privatlivspolitik
+          </RouterLink>
+
+          <RouterLink class="link___Zah3i link___394Eg"
+                      target="_self" title="Information om cookies" to="/information-om-cookies">Information om
+            cookies
+          </RouterLink>
+        </div>
       </div>
       <div class="social-links___3vb_q"><a class="logo-link___3nPM5 social-link___3S4ka link___394Eg"
                                            href="https://www.facebook.com/Bilabonnement/"

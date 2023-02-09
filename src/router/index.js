@@ -13,6 +13,10 @@ import forsikringsPriserView from "../views/forsikringsPriser.vue"
 import omos from "../views/omos.vue";
 import abonnementvilkaarView from "../views/abonnementvilkaar.vue";
 import quickleasingView from "../views/quickleasing.vue";
+import informationomcookies from "../views/cookiepolitik.vue";
+import opbevaringAfOplysningerView from "../views/opbevaringAfOplysninger.vue";
+import samtykkeView from "../views/samtykke.vue";
+import persondatapolitikView from "../views/persondatapolitik.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -99,6 +103,21 @@ const router = createRouter({
       path: "/quickleasing",
       name: "/quickleasing",
       component: quickleasingView,
+    },
+    {
+      path: "/opbevaring-af-dine-oplysninger",
+      name: "/opbevaring-af-dine-oplysninger",
+      component: opbevaringAfOplysningerView,
+    },
+    {
+      path: "/samtykke",
+      name: "/samtykke",
+      component: samtykkeView,
+    },
+    {
+      path: "/persondatapolitik",
+      name: "/persondatapolitik",
+      component: persondatapolitikView,
     }
   ],
 });

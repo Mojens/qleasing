@@ -4,8 +4,8 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <div class="main-menu___2JQzT">
-    <div class="content___1_CIc"><a class="main-menu-logo___1PC85" href="/" title="Bilabonnement"><img
-          alt="Bilabonnement" class="main-menu-logo-image___1Ov1X"
+    <div class="content___1_CIc"><a class="main-menu-logo___1PC85" href="/" title="Quickleasing"><img
+          alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
           src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"></a>
       <div class="navigation___2n5eH">
         <button class="burger-button___y0r_B burger-button___1pNrj"><span class="line___q3Uf4"></span><span
