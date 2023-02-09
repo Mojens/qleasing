@@ -10,7 +10,8 @@ import proeveKoerselView from "../views/proeveKoersel.vue"
 import laaneBilView from "../views/laanebil.vue"
 import vaerkstederView from "../views/vaerksteder.vue"
 import forsikringsPriserView from "../views/forsikringsPriser.vue"
-import abonnementvilkaar from "../views/abonnementvilkaar.vue";
+import abonnementvilkaarView from "../views/abonnementvilkaar.vue";
+import quickleasingView from "../views/quickleasing.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,7 +82,12 @@ const router = createRouter({
     {
       path: "/abonnement-vilkaar",
       name: "/abonnement-vilkaar",
-      component: abonnementvilkaar,
+      component: abonnementvilkaarView,
+    },
+    {
+      path: "/quickleasing",
+      name: "/quickleasing",
+      component: quickleasingView,
     }
   ],
 });
