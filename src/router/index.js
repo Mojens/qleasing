@@ -10,9 +10,9 @@ import proeveKoerselView from "../views/proeveKoersel.vue"
 import laaneBilView from "../views/laanebil.vue"
 import vaerkstederView from "../views/vaerksteder.vue"
 import forsikringsPriserView from "../views/forsikringsPriser.vue"
-import abonnementvilkaar from "../views/abonnementvilkaar.vue";
-import informationomcookies from "../views/cookiepolitik.vue";
 import omos from "../views/omos.vue";
+import abonnementvilkaarView from "../views/abonnementvilkaar.vue";
+import quickleasingView from "../views/quickleasing.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -83,7 +83,7 @@ const router = createRouter({
     {
       path: "/abonnement-vilkaar",
       name: "/abonnement-vilkaar",
-      component: abonnementvilkaar,
+      component: abonnementvilkaarView,
     },
     {
       path: "/information-om-cookies",
@@ -94,6 +94,11 @@ const router = createRouter({
       path: "/om-os",
       name: "/om-os",
       component: omos,
+    },
+    {
+      path: "/quickleasing",
+      name: "/quickleasing",
+      component: quickleasingView,
     }
   ],
 });

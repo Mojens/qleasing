@@ -5,55 +5,50 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <div class="main-menu___2JQzT">
     <div class="content___1_CIc"><a class="main-menu-logo___1PC85" href="/" title="Bilabonnement"><img
-      alt="Bilabonnement"
-      class="main-menu-logo-image___1Ov1X"
-      src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"></a>
+          alt="Bilabonnement" class="main-menu-logo-image___1Ov1X"
+          src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"></a>
       <div class="navigation___2n5eH">
         <button class="burger-button___y0r_B burger-button___1pNrj"><span class="line___q3Uf4"></span><span
-          class="line___q3Uf4"></span><span class="line___q3Uf4"></span></button>
+            class="line___q3Uf4"></span><span class="line___q3Uf4"></span></button>
         <div class="menu-items___1o-34 is-closed___Nbjfz">
           <div class="navigation-item___21XPw menu-item___2UedM"><a class="link___1tInP"
-                                                                    href="https://bilabonnement.dk/" target="_blank"
-                                                                    title="Bilabonnement">Bilabonnement</a>
+              href="https://bilabonnement.dk/" target="_blank" title="Bilabonnement">Bilabonnement</a>
           </div>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/quickleasing"><a class="link___1tInP"
-                                                                                         target="_self"
-                                                                                         title="Quickleasing">Quickleasing</a>
+              target="_self" title="Quickleasing">Quickleasing</a>
           </RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/maerker"><a class="link___1tInP"
-                                                                                         target="_self"
-                                                                                         title="mærker">Mærker</a>
+              target="_self" title="mærker">Mærker</a>
           </RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/faq"><a class="link___1tInP" target="_self"
-                                                                                     title="FAQ">FAQ</a></RouterLink>
+              title="FAQ">FAQ</a></RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/forsikring-priser"><a class="link___1tInP"
-                                                                                                   target="_self"
-                                                                                                   title="Forsikring">Forsikring</a>
+              target="_self" title="Forsikring">Forsikring</a>
           </RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/vaerksteder"><a class="link___1tInP"
-                                                                                             target="_self"
-                                                                                             title="Værksteder">Værksteder</a>
+              target="_self" title="Værksteder">Værksteder</a>
           </RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/kontakt"><a class="link___1tInP"
-                                                                                         target="_self"
-                                                                                         title="Kontakt">Kontakt</a>
+              target="_self" title="Kontakt">Kontakt</a>
           </RouterLink>
 
           <div class="navigation-item___21XPw menu-item___2UedM">
             <div class="multi-link-button___Av7sq">
               <div class="Collapsible"><span class="Collapsible__trigger is-closed"><button
-                class="mobile-button___nwox_"><div class="title___wAdVl">Øvrig Information</div></button></span>
+                    class="mobile-button___nwox_">
+                    <div class="title___wAdVl">Øvrig Information</div>
+                  </button></span>
                 <div class="Collapsible__contentOuter"
-                     style="height:0;-webkit-transition:height 300ms linear;-ms-transition:height 300ms linear;transition:height 300ms linear;overflow:hidden">
+                  style="height:0;-webkit-transition:height 300ms linear;-ms-transition:height 300ms linear;transition:height 300ms linear;overflow:hidden">
                   <div class="Collapsible__contentInner">
                     <div class="sub-links___J39c2 sub-links___3E1Vu">
-                      <RouterLink class="sub-link___TQy79" target="_self"
-                                  title="Prøvekøersel" to="/proevekoersel">Prøvekøersel
+                      <RouterLink class="sub-link___TQy79" target="_self" title="Prøvekøersel" to="/proevekoersel">
+                        Prøvekøersel
                       </RouterLink>
-                      <a
-                        class="sub-link___TQy79" href="/om-bilabonnement" target="_self" title="Om os">Om os</a><a
-                      class="sub-link___TQy79" href="https://mit.bilabonnement.dk" target="_blank"
-                      title="Mit Bilabonnement">Mit Bilabonnement</a></div>
+                      <a class="sub-link___TQy79" href="/om-bilabonnement" target="_self" title="Om os">Om os</a><a
+                        class="sub-link___TQy79" href="https://mit.bilabonnement.dk" target="_blank"
+                        title="Mit Bilabonnement">Mit Bilabonnement</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -81,8 +76,6 @@ import { RouterLink, RouterView } from "vue-router";
                   <RouterLink to="/syn"
                               class="sub-link___TQy79" target="_self" title="Syn">Syn
                   </RouterLink>
-
-
 
                 </div>
               </button>
@@ -138,7 +131,8 @@ import { RouterLink, RouterView } from "vue-router";
   flex-direction: column;
 }
 
-.multi-link-button___Av7sq .desktop-button___GoCH5, .multi-link-button___Av7sq .mobile-button___nwox_ {
+.multi-link-button___Av7sq .desktop-button___GoCH5,
+.multi-link-button___Av7sq .mobile-button___nwox_ {
   padding: 0.5rem;
   color: #101011;
 }
