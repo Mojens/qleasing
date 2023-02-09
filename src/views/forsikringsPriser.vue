@@ -1,3 +1,6 @@
+<script setup>
+import FooterItem from "../components/FooterItem.vue";
+</script>
 <template>
     <div class="ct-section-inner-wrap">
       <div v-if="articleData">
@@ -5,6 +8,7 @@
         <div v-html="articleData.body"></div>
       </div>
     </div>
+  <footer-item />
   </template>
   <script>
   export default {

@@ -1,3 +1,6 @@
+<script setup>
+import FooterItem from "../components/FooterItem.vue";
+</script>
 <template>
   <div>
     <div class="container___1BnaH"><span class="wrapper___3jnGF"><span class="mobile-layout___20MjK"><div
@@ -122,6 +125,7 @@
       </div></div>
 
   </div>
+  <footer-item />
 </template>
 <script>
 export default {

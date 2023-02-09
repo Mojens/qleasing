@@ -1,3 +1,6 @@
+<script setup>
+import FooterItem from "../components/FooterItem.vue";
+</script>
 <template>
   <div>
     <div
@@ -46,6 +49,7 @@
 
     </div>
   </div>
+  <footer-item />
 </template>
 <script>
 export default {

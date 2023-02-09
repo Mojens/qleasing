@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-
 </script>
 
 <template>
@@ -59,8 +58,11 @@ import { RouterLink, RouterView } from "vue-router";
                 </div>
               </div>
               <button class="desktop-button___GoCH5">
-                <div class="title___wAdVl">Om os</div>
+                <div class="title___wAdVl">Øvrig Info</div>
                 <div class="sub-links___J39c2 sub-links___3E1Vu">
+                  <RouterLink to="/om-os"
+                              class="sub-link___TQy79" target="_self" title="Om os">Om os
+                  </RouterLink>
                   <RouterLink class="sub-link___TQy79" to="/nem-leasing" target="_self"
                               title="Nem Leasing">Nem Leasing
                   </RouterLink>
@@ -79,12 +81,9 @@ import { RouterLink, RouterView } from "vue-router";
                   <RouterLink to="/syn"
                               class="sub-link___TQy79" target="_self" title="Syn">Syn
                   </RouterLink>
-                  <RouterLink to="/privatlivspolitik"
-                              class="sub-link___TQy79" target="_self" title="Privatlivspolitik">Privatlivspolitik
-                  </RouterLink>
-                  <RouterLink to="/abonnement-vilkaar"
-                              class="sub-link___TQy79" target="_self" title="Abonnementsvilkår">Abonnementsvilkår
-                  </RouterLink>
+
+
+
                 </div>
               </button>
             </div>

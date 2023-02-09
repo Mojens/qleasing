@@ -1,7 +1,6 @@
 <script setup>
 import FooterItem from "../components/FooterItem.vue";
 </script>
-
 <template>
   <div>
     <div
@@ -39,6 +38,7 @@ import FooterItem from "../components/FooterItem.vue";
       <!----></div><!---->
 
     <div v-if="articleData">
+
       <span
         class="new-html-block___3_7NG">
 
@@ -47,9 +47,7 @@ import FooterItem from "../components/FooterItem.vue";
          class="button-primary">Find din næste quickleasing bil</button></RouterLink>
       </span>
 
-
     </div>
-
   </div>
   <footer-item />
 </template>
@@ -66,7 +64,7 @@ export default {
   methods: {
     async fetchData() {
       const READER_API = import.meta.env.VITE_APP_READER_API;
-      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "10";
+      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "11";
       const response = await fetch(ARTICLE_URL, {
         headers: {
           Accept: "application/json",

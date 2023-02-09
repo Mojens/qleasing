@@ -1,3 +1,7 @@
+<script setup>
+import FooterItem from "../components/FooterItem.vue";
+</script>
+
 <template>
   <div>
     <div
@@ -40,12 +44,14 @@
         class="new-html-block___3_7NG">
 
   <p v-html="articleData.body"></p>
+
        <RouterLink class="buttons___3URuA" to="/quickleasing"><button
          class="button-primary">Find din næste quickleasing bil</button></RouterLink>
       </span>
 
     </div>
   </div>
+  <FooterItem />
 </template>
 <script>
 export default {

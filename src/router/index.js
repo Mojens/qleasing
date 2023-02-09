@@ -11,6 +11,8 @@ import laaneBilView from "../views/laanebil.vue"
 import vaerkstederView from "../views/vaerksteder.vue"
 import forsikringsPriserView from "../views/forsikringsPriser.vue"
 import abonnementvilkaar from "../views/abonnementvilkaar.vue";
+import informationomcookies from "../views/cookiepolitik.vue";
+import omos from "../views/omos.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +84,16 @@ const router = createRouter({
       path: "/abonnement-vilkaar",
       name: "/abonnement-vilkaar",
       component: abonnementvilkaar,
+    },
+    {
+      path: "/information-om-cookies",
+      name: "/information-om-cookies",
+      component: informationomcookies,
+    },
+    {
+      path: "/om-os",
+      name: "/om-os",
+      component: omos,
     }
   ],
 });
