@@ -82,6 +82,9 @@ import { RouterLink, RouterView } from "vue-router";
                   <RouterLink to="/privatlivspolitik"
                               class="sub-link___TQy79" target="_self" title="Privatlivspolitik">Privatlivspolitik
                   </RouterLink>
+                  <RouterLink to="/abonnement-vilkaar"
+                              class="sub-link___TQy79" target="_self" title="Abonnementsvilkår">Abonnementsvilkår
+                  </RouterLink>
                 </div>
               </button>
             </div>

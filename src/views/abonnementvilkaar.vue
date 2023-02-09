@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <div
       id="section-0-row-0"
@@ -35,7 +36,6 @@
       <!----></div><!---->
 
     <div v-if="articleData">
-
       <span
         class="new-html-block___3_7NG">
 
@@ -44,7 +44,9 @@
          class="button-primary">Find din næste quickleasing bil</button></RouterLink>
       </span>
 
+
     </div>
+
   </div>
 </template>
 <script>
@@ -60,7 +62,7 @@ export default {
   methods: {
     async fetchData() {
       const READER_API = import.meta.env.VITE_APP_READER_API;
-      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "2";
+      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "10";
       const response = await fetch(ARTICLE_URL, {
         headers: {
           Accept: "application/json",

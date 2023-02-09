@@ -1118,56 +1118,6 @@
     }
 }
 
-.new-html-block___1_7NG {
-    display: block;
-    width: 100%;
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    font-family: Montserrat, sans-serif;
-}
-
-* {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 0;
-    background-color: unset;
-    font: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    border: none;
-}
-
-p {
-    margin: 0;
-    min-height: 0.8rem;
-}
-
-p:not(:first-of-type) {
-    margin-top: 0.8rem;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:visited {
-    color: inherit;
-}
-
 /*! CSS Used from: Embedded */
 #Coi-Renew {
     display: none;
