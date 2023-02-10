@@ -18,64 +18,12 @@
             </ul>
         </div>
         <br>
-        <!-- Test -->
         <div>
             <h3>Udstyr</h3>
             <ul id="udstyrListe">
                 <li v-for="item in items" :key="item" :data-value="item.value">
                     <input type="checkbox" />
                     {{ item.label }}
-                </li>
-            </ul>
-        </div>
-        <!-- Test -->
-        <div>
-            <h3>Udstyr</h3>
-            <ul id="udstyrListe2">
-                <li value="airc">Air Condition
-                    <input type="checkbox" />
-                </li>
-                <li value="fartpilot">Fartpilot
-                    <input type="checkbox" />
-                </li>
-                <li value="bluetooth">Bluetooth
-                    <input type="checkbox" />
-                </li>
-                <li value="sædevarme">Sædevarme
-                    <input type="checkbox" />
-                </li>
-                <li value="varme i rat">Rat-varme
-                    <input type="checkbox" />
-                </li>
-                <li value="parkeringssensor (for)">Parkeringssensor (foran)
-                    <input type="checkbox" />
-                </li>
-                <li value="parkeringssensor (bag)">Parkeringssensor (bag)
-                    <input type="checkbox" />
-                </li>
-                <li value="navigation">Navigation
-                    <input type="checkbox" />
-                </li>
-                <li value="aut.gear/tiptronic">Automatgear
-                    <input type="checkbox" />
-                </li>
-                <li value="Anhængertræk">Anhængertræk
-                    <input type="checkbox" />
-                </li>
-                <li value="4x el-ruder">4 elruder
-                    <input type="checkbox" />
-                </li>
-                <li value="5 personers">5 personers
-                    <input type="checkbox" />
-                </li>
-                <li value="bakkamera">Bakkamera
-                    <input type="checkbox" />
-                </li>
-                <li value="Apple CarPlay">Apple CarPlay
-                    <input type="checkbox" />
-                </li>
-                <li value="Android Auto">Android Auto
-                    <input type="checkbox" />
                 </li>
             </ul>
         </div>
