@@ -6,7 +6,8 @@
             <div id="listeAfUdstyr">
                 <h2>Udstyr Overblik</h2>
                 <ul>
-                    <li v-for="item in items" :key="item">{{ item }}</li>
+                    <li v-for="item in items" :key="item">{{ item }}
+                        <input type="checkbox" :value="item" @click="handleCheckBoxClick(item.value)"/></li>
                 </ul>
             </div>
         </div>
@@ -29,20 +30,33 @@ export default {
         await this.fetchData();
     },
     methods: {
-        async fetchData() {
-            const READER_API = import.meta.env.VITE_APP_READER_API
-            const CARS_URL = import.meta.env.VITE_APP_CARS_URL
-            const response = await fetch(CARS_URL, {
+        async handleCheckBoxClick(value) {
+            const response = await fetch(import.meta.env.VITE_APP_CARS_URL+'?search='+value, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${READER_API}`
+                    Authorization: `Bearer ${import.meta.env.VITE_APP_READER_API}`
+                }
+            });
+            const data = await response.json();
+            this.carData = data.data[0];
+            this.items = this.carData
+            if (this.items[0] === "") {
+                this.items.shift();
+            }
+        },
+        async fetchData() {
+            const response = await fetch(import.meta.env.VITE_APP_CARS_URL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${import.meta.env.VITE_APP_READER_API}`
                 }
             });
             const data = await response.json();
             this.carData = data.data[0];
             this.items = this.carData.udstyr;
-            if(this.items[0] === ""){
+            if (this.items[0] === "") {
                 this.items.shift();
             }
         }
