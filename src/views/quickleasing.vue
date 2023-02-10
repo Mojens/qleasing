@@ -5,7 +5,7 @@
         </div>
 
         <br>
-        <div>
+        <div id="brandCheckbox">
             <h3>Mærke</h3>
             <ul>
                 <li v-for="brand in uniqueBrands" :key="brand">
@@ -13,6 +13,56 @@
                     <input type="checkbox" :value="brand.name" :checked="selectedBrands.includes(brand.name)"
                         @click="handleCheckboxClick(brand.name)" />
 
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Udstyr</h3>
+            <ul>
+                <li value="airc">Air Condition
+                    <input type="checkbox" />
+                </li>
+                <li value="fartpilot">Fartpilot
+                    <input type="checkbox" />
+                </li>
+                <li value="bluetooth">Bluetooth
+                    <input type="checkbox" />
+                </li>
+                <li value="sædevarme">Sædevarme
+                    <input type="checkbox" />
+                </li>
+                <li value="varme i rat">Rat-varme
+                    <input type="checkbox" />
+                </li>
+                <li value="parkeringssensor (for)">Parkeringssensor (foran)
+                    <input type="checkbox" />
+                </li>
+                <li value="parkeringssensor (bag)">Parkeringssensor (bag)
+                    <input type="checkbox" />
+                </li>
+                <li value="navigation">Navigation
+                    <input type="checkbox" />
+                </li>
+                <li value="aut.gear/tiptronic">Automatgear
+                    <input type="checkbox" />
+                </li>
+                <li value="Anhængertræk">Anhængertræk
+                    <input type="checkbox" />
+                </li>
+                <li value="4x el-ruder">4 elruder
+                    <input type="checkbox" />
+                </li>
+                <li value="5 personers">5 personers
+                    <input type="checkbox" />
+                </li>
+                <li value="bakkamera">Bakkamera
+                    <input type="checkbox" />
+                </li>
+                <li value="Apple CarPlay">Apple CarPlay
+                    <input type="checkbox" />
+                </li>
+                <li value="Android Auto">Android Auto
+                    <input type="checkbox" />
                 </li>
             </ul>
         </div>
@@ -62,7 +112,7 @@ export default {
             filter = { brand: { _in: this.selectedBrands } };
 
             this.currentURL = `${this.baseURL}?filter=${encodeURIComponent(JSON.stringify(filter))}`;
-            console.log("DEBUG "+this.selectedBrands.length)
+            console.log("DEBUG " + this.selectedBrands.length)
             if (this.selectedBrands.length === 0) {
                 this.currentURL = this.baseURL;
             }
