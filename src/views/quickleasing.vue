@@ -87,9 +87,6 @@ export default {
     async created() {
         await this.fetchData();
     },
-    mounted() {
-        this.handleCheckboxClickFeatures()
-    },
     methods: {
         async fetchData() {
             console.log("DEBUG 1: " + this.carData);
@@ -131,8 +128,7 @@ export default {
             });
             const data = await checkboxResponse.json();
             this.carData = data.data;
-        },
-        
+        }
     },
     computed: {
         uniqueBrands() {
