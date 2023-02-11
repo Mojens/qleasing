@@ -29,6 +29,7 @@ import serviceView from "@/views/service.vue";
 import kilometerView from "@/views/kilometer.vue";
 import opladningElbilerView from "@/views/opladningElbiler.vue";
 import skadeVejhjaelpView from "@/views/skadeVejhjaelp.vue";
+import vejhjaelpView from "@/views/vejhjaelp.vue";
 
 
 const router = createRouter({
@@ -191,6 +192,11 @@ const router = createRouter({
       path: "/faq/skade-og-vejhjaelp",
       name: "/faq/skade-og-vejhjaelp",
       component: skadeVejhjaelpView,
+    },
+    {
+      path: "/faq/vejhjaelp",
+      name: "/faq/vejhjaelp",
+      component: vejhjaelpView,
     }
 
   ],
