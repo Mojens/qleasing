@@ -3,7 +3,11 @@
         <div v-if="carData">
             <h1 v-for="car in carData" :key="car.id">{{ car.brand }} - {{ car.model }}</h1>
         </div>
-
+        <div>
+            <h1>Query Parameters</h1>
+            <p>The value of 'param1' is {{ $route.query.brand}}</p>
+            <p>The value of 'param2' is {{ $route.query.model}}</p>
+        </div>
         <br>
         <div id="filterPrice">
             <h3>pris pr.md.</h3>
@@ -35,6 +39,15 @@
                 <li v-for="item in featureItems" :key="item.value" :data-value="item.value">
                     <input type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
                     {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Dæktype</h3>
+            <ul>
+                <li v-for="tire in tireTypes" :key="tire.value" :data-value="tire.value">
+                    <input type="checkbox" />
+                    {{ tire.name }}
                 </li>
             </ul>
         </div>
@@ -72,7 +85,12 @@ export default {
                 { value: "bakkamera", name: "Bakkamera", count: 0 },
                 { value: "applecarplay", name: "Apple CarPlay", count: 0 },
                 { value: "androidauto", name: "Android Auto", count: 0 },
-            ]
+            ],
+            tireTypes: [
+                { value: "sommerdaek", name: "Monteret med sommerdæk", count: 0 },
+                { value: "vinterdaek", name: "Monteret med vinterdæk", count: 0 },
+                { value: "helaarsdaek", name: "Monteret med helårsdæk", count: 0 },
+            ],
         };
     },
     async created() {
