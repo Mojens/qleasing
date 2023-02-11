@@ -39,7 +39,7 @@
         <div class="content___FOiFD faq-page___2Nz-F">
           <div class="content___12COd">
             <h1 class="title___Tm0Tt">Opladning til el &amp; hybridbiler</h1>
-            <h3 style="font-style: italic" class="center--left pad-header--m">
+            <h3 class="center--left pad-header--m" style="font-style: italic">
               "Vælg det Clever abonnement, der passer til dig"
             </h3>
 
@@ -54,30 +54,41 @@
 
                     <h4 class="pad-header--s">Med clever Unlimited får du:</h4>
                     <ul class="owl--xs">
-                      <li >Adgang til Danmarks største ladenetværk</li>
+                      <li>Adgang til Danmarks største ladenetværk</li>
                       <li>Opladning når det passer dig –på farten, på arbejdet, på indkøbsturen eller derhjemme</li>
                       <li>Installation og lån af Clevers intelligente ladeboks</li>
-                      <li>Intelligent opladning tilpasset dig, der tager højde for både elpris, CO2-aftryk og elnettets belastning</li>
-                      <li>Automatisk tilbagebetaling når du lader hjemme på en del af dine strømomkostninger som du betaler til din elleverandør. Satsen er beregnet på baggrund af gennemsnit af strømpris i tiden kl. 23-06***</li>
+                      <li>Intelligent opladning tilpasset dig, der tager højde for både elpris, CO2-aftryk og elnettets
+                        belastning
+                      </li>
+                      <li>Automatisk tilbagebetaling når du lader hjemme på en del af dine strømomkostninger som du
+                        betaler til din elleverandør. Satsen er beregnet på baggrund af gennemsnit af strømpris i tiden
+                        kl. 23-06***
+                      </li>
                       <li>Mulighed for rabat med clever Power</li>
                       <li>24/7 kundesupport</li>
                     </ul>
-                    <h4 class="pad-header--s"> <strong>Månedlig abonnementspris fra 01.01.23.</strong> </h4>
-                    <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
-                    <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit kWh-forbrug****</p>
-                    <p>Grundabonnement til elbil: 749 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
-                    <p>Grundabonnement til plugin-hybridbil: 369 kr. frem til 31.03.23. Herefter 449 kr.*</p>
-                    <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
-                    <p>Elbil: 749 kr. + midlertidigt energitillæg: 690 kr.*****</p>
-                    <p>Plugin-hybridbil: 369 kr. + midlertidigt energitillæg: 390 kr.*****</p>
-                    <h4 class="pad-header--s"><strong>Installation af Clevers ladeboks:</strong></h4>
-                    <p>Elbil: 5.995 kr.**</p>
-                    <p>Plug-in hybridbil: 7.500 kr.**</p>
-                    <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
-                  </div>
-                  <div class="card-footer">
+                    <p></p>
 
-                    <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg + installation </p>
+                    <button class="expand-button" @click="toggleCardExpand"><strong>Åben og læs resten</strong></button>
+                    <div v-if="cardExpanded" class="card-body-text">
+                      <h4 class="pad-header--s"><strong>Månedlig abonnementspris fra 01.01.23.</strong></h4>
+                      <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
+                      <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit
+                        kWh-forbrug****</p>
+                      <p>Grundabonnement til elbil: 749 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
+                      <p>Grundabonnement til plugin-hybridbil: 369 kr. frem til 31.03.23. Herefter 449 kr.*</p>
+                      <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
+                      <p>Elbil: 749 kr. + midlertidigt energitillæg: 690 kr.*****</p>
+                      <p>Plugin-hybridbil: 369 kr. + midlertidigt energitillæg: 390 kr.*****</p>
+                      <h4 class="pad-header--s"><strong>Installation af Clevers ladeboks:</strong></h4>
+                      <p>Elbil: 5.995 kr.**</p>
+                      <p>Plug-in hybridbil: 7.500 kr.**</p>
+                      <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
+                      <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg + installation </p>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+                    </div>
                   </div>
 
                 </div>
@@ -90,44 +101,58 @@
 
                     <h4 class="pad-header--s">Med Clever Unlimited Network får du:</h4>
                     <ul class="owl--xs">
-                      <li >Adgang til Danmarks største ladenetværk</li>
-                      <li> Mulighed for at lade på job, når du handler, på giga-og lynladestationerog ved masser af offentlige ladepunkter</li>
+                      <li>Adgang til Danmarks største ladenetværk</li>
+                      <li> Mulighed for at lade på job, når du handler, på giga-og lynladestationerog ved masser af
+                        offentlige ladepunkter
+                      </li>
                       <li>Lynladestationer skabt til meningsfulde pauser, mens du lader
                       </li>
                       <li>Clevers app med overblik overladepunkter og ladeforbrug</li>
                       <li>24/7 kundesupport</li>
+
                     </ul>
-                    <h4 class="pad-header--s"> <strong>Månedlig abonnementspris fra 01.01.23.</strong> </h4>
-                    <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
-                    <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit kWh-forbrug****</p>
-                    <p>Grundabonnement til elbil: 625 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
-                    <p>Grundabonnement til plugin-hybridbil: 245 kr. frem til 31.03.23. Herefter 449 kr.*</p>
-                    <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
-                    <p>Elbil: 625 kr. + midlertidigt energitillæg: 690 kr.*****
+                    <p></p>
 
-                    </p>
-                    <p>Plugin-hybridbil: 245 kr. + midlertidigt energitillæg:390 kr.*****</p>
+                    <button class="expand-button" @click="toggleCardExpand"><strong>Åben og læs resten</strong></button>
 
-                    <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
-                  </div>
-                  <div class="card-footer">
+                    <div v-if="cardExpanded" class="card-body-text">
 
-                    <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg</p>
+                      <!-- Add the text for the card here -->
+                      <h4 class="pad-header--s"><strong>Månedlig abonnementspris fra 01.01.23.</strong></h4>
+                      <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
+                      <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit
+                        kWh-forbrug****</p>
+                      <p>Grundabonnement til elbil: 625 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
+                      <p>Grundabonnement til plugin-hybridbil: 245 kr. frem til 31.03.23. Herefter 449 kr.*</p>
+                      <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
+                      <p>Elbil: 625 kr. + midlertidigt energitillæg: 690 kr.*****
+
+                      </p>
+                      <p>Plugin-hybridbil: 245 kr. + midlertidigt energitillæg:390 kr.*****</p>
+
+                      <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
+                      <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg</p>
+                      <p></p>
+                      <p></p>
+                      <p></p>
+
+                    </div>
+
                   </div>
 
                 </div>
               </div>
 
-                <span class="new-html-block___1_7NG"
-                ><p style="text-align: center">
+              <span class="new-html-block___1_7NG"
+              ><p style="text-align: center">
                   Du har mulighed for at læse mere om Clevers
                   produkter&nbsp;<strong
-                    ><a
-                      href="https://clever.dk/produkter/"
-                      rel="noopener noreferrer nofollow"
-                      >her</a
-                    ></strong
-                  >
+              ><a
+                href="https://clever.dk/produkter/"
+                rel="noopener noreferrer nofollow"
+              >her</a
+              ></strong
+              >
                 </p>
                 <p style="text-align: center">&nbsp;</p>
                 <p style="text-align: center">
@@ -153,7 +178,7 @@
                 </p>
                 <p style="text-align: center">
                   <strong
-                    >****Variabelt og forbrugsbaseret energitillæg fra
+                  >****Variabelt og forbrugsbaseret energitillæg fra
                     01.01.23:</strong
                   >&nbsp;pålægges hvis den gns. strømpris/kWh (dvs. spotpris,
                   afgifter, tariffer og moms) er over 2,25 kr./kWh i DK den pgl.
@@ -163,7 +188,7 @@
                 </p>
                 <p style="text-align: center">
                   <strong
-                    >*****Midlertidigt energitillæg frem til 31.12.22:</strong
+                  >*****Midlertidigt energitillæg frem til 31.12.22:</strong
                   >&nbsp;pga. høje strømpriser. Se mere: clever.dk/energitillaeg
                 </p></span
               >
@@ -181,18 +206,24 @@ export default {
     return {
       isModalOpen: false,
       showModal: true,
+      cardExpanded: false
     };
   },
   mounted() {
-    // Add the class "is-open___1eAPm" to the modal when the component is mounted
-
     setTimeout(() => {
       this.isModalOpen = true;
     }, 20);
   },
+  methods: {
+    toggleCardExpand() {
+      this.cardExpanded = !this.cardExpanded;
+    }
+  }
 };
 </script>
+
 <style scoped>
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -200,15 +231,28 @@ export default {
   align-items: center;
 }
 
-
 .card {
   width: calc(49% - 20px);
-
-  overflow: auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: auto;
+  margin: 10px;
   text-align: left;
   font-family: Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.expand-button {
+  position: absolute;
+  bottom: 0;
+
+  left: 0;
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .card-header {
@@ -228,15 +272,32 @@ export default {
   padding: 20px;
   color: white;
   background: var(--primary-ultra-dark);
+  position: relative;
 }
 
-.card-footer {
-  background-color: var(--primary);
-  color: white;
-  padding: 20px;
-  text-align: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+.card-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 20px solid var(--primary-ultra-dark);
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+.card-body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: 20px solid var(--primary-ultra-dark);
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+.card-body-text{
+
+
+
 }
 
 @media (max-width: 1150px) {
