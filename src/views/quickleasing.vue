@@ -5,6 +5,19 @@
         </div>
 
         <br>
+        <div id="filterPrice">
+            <h3>pris pr.md.</h3>
+            <select v-model="selectedPrice" @change="priceChange">
+                <option value="*">Alle</option>
+                <option value="1000-2000">1.000 - 2.000</option>
+                <option value="2000-3000">2.000 - 3.000</option>
+                <option value="3000-4000">3.000 - 4.000</option>
+                <option value="4000-5000">4.000 - 5.000</option>
+                <option value="5000+">3.000 - 4.000</option>
+            </select>
+
+        </div>
+        <br>
         <div id="brandCheckbox">
             <h3>Mærke</h3>
             <ul>
@@ -38,9 +51,11 @@ export default {
             originalData: [],
             baseURL: import.meta.env.VITE_APP_CARS_URL,
             currentURL: import.meta.env.VITE_APP_CARS_URL,
+            pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
             readerAPI: import.meta.env.VITE_APP_READER_API,
             checkBoxState: {},
             selectedFeatures: [],
+            selectedPrice: '*',
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
                 { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -87,8 +102,8 @@ export default {
             filter = { brand: { _in: this.selectedBrands } };
 
             this.currentURL = `${this.baseURL}?filter=${encodeURIComponent(JSON.stringify(filter))}`;
+
             if (this.selectedBrands.length === 0) {
-                this.carData = this.originalData;
                 this.currentURL = this.baseURL;
             }
             const checkboxResponse = await fetch(this.currentURL, {
@@ -101,9 +116,9 @@ export default {
             const data = await checkboxResponse.json();
             this.carData = data.data;
         }
+
         ,
         async handleCheckboxClickFeatures(value) {
-            console.log(this.selectedFeatures)
             const response = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
@@ -126,19 +141,6 @@ export default {
                 this.carData = allData;
                 return;
             }
-            /*
-            const filteredCars = new Set();
-            for (let i = 0; i < allData.length; i++) {
-                if (allData[i].Udstyr !== null) {
-                    for (let x = 0; x < allData[i].Udstyr.length; x++) {
-                        if (this.selectedFeatures.includes(allData[i].Udstyr[x])) {
-                            filteredCars.add(allData[i]);
-                            break;
-                        }
-                    }
-                }
-            }
-            */
             const filteredCars = [];
             for (let i = 0; i < allData.length; i++) {
                 if (allData[i].Udstyr !== null) {
@@ -171,6 +173,50 @@ export default {
                     });
                 }
             });
+        },
+        async priceChange() {
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const allData = data.data;
+            if (this.selectedPrice === '*') {
+                this.carData = data.data
+                return;
+            }
+            const priceRange1000_2000 = [];
+            const priceRange2000_3000 = [];
+            const priceRange3000_4000 = [];
+            const priceRange4000_5000 = [];
+            const priceRange5000_plus = [];
+            for (let i = 0; i < allData.length; i++) {
+                if (allData[i].base_maanedspris > 999 && allData[i].base_maanedspris <= 2000) {
+                    priceRange1000_2000.push(allData[i]);
+                } else if (allData[i].base_maanedspris > 1999 && allData[i].base_maanedspris <= 3000) {
+                    priceRange2000_3000.push(allData[i]);
+                } else if (allData[i].base_maanedspris > 2999 && allData[i].base_maanedspris <= 4000) {
+                    priceRange3000_4000.push(allData[i]);
+                } else if (allData[i].base_maanedspris > 3999 && allData[i].base_maanedspris <= 5000) {
+                    priceRange4000_5000.push(allData[i]);
+                } else {
+                    priceRange5000_plus.push(allData[i]);
+                }
+            }
+            if (this.selectedPrice === '1000-2000') {
+                this.carData = priceRange1000_2000;
+            } else if (this.selectedPrice === '2000-3000') {
+                this.carData = priceRange2000_3000;
+            } else if (this.selectedPrice === '3000-4000') {
+                this.carData = priceRange3000_4000;
+            } else if (this.selectedPrice === '4000-5000') {
+                this.carData = priceRange4000_5000;
+            } else {
+                this.carData = priceRange5000_plus;
+            }
         }
 
 
