@@ -32,6 +32,8 @@ import vejhjaelpView from "@/views/faqViews/vejhjaelp.vue";
 import ovrigSporgsmalView from "@/views/faqViews/ovrigSporgsmal.vue";
 import saelgBrugtBilView from "@/views/faqViews/saelgBrugtBil.vue";
 import parkeringView from "@/views/faqViews/parkering.vue";
+import indholdPaaSidenView from "@/views/vilkaarViews/indholdPaaSiden.vue";
+import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue";
 
 
 const router = createRouter({
@@ -201,6 +203,16 @@ const router = createRouter({
       path: "/faq/parkering",
       name: "/faq/parkering",
       component: parkeringView,
+    },
+    {
+      path: "/indhold-pa-siden",
+      name: "/indhold-pa-siden",
+      component: indholdPaaSidenView,
+    },
+    {
+      path: "/samarbejdspartnere",
+      name: "/samarbejdspartnere",
+      component: samarbejdspartnereView,
     }
 
   ],
