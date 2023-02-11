@@ -30,6 +30,7 @@ import kilometerView from "@/views/kilometer.vue";
 import opladningElbilerView from "@/views/opladningElbiler.vue";
 import skadeVejhjaelpView from "@/views/skadeVejhjaelp.vue";
 import vejhjaelpView from "@/views/vejhjaelp.vue";
+import ovrigSporgsmalView from "@/views/ovrigSporgsmal.vue";
 
 
 const router = createRouter({
@@ -197,6 +198,11 @@ const router = createRouter({
       path: "/faq/vejhjaelp",
       name: "/faq/vejhjaelp",
       component: vejhjaelpView,
+    },
+    {
+      path: "/faq/ovrige-sporgsmal",
+      name: "/faq/ovrige-sporgsmal",
+      component: ovrigSporgsmalView,
     }
 
   ],
