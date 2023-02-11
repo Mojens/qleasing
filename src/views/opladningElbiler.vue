@@ -38,132 +38,135 @@
         </div>
         <div class="content___FOiFD faq-page___2Nz-F">
           <div class="content___12COd">
-            <h1 class="title___Tm0Tt">Opsigelse og tilbagelevering</h1>
-            <div class="markdown___35KUH description___16IX9"><p></p></div>
+            <h1 class="title___Tm0Tt">Opladning til el &amp; hybridbiler</h1>
+            <h3 style="font-style: italic" class="center--left pad-header--m">
+              "Vælg det Clever abonnement, der passer til dig"
+            </h3>
+
             <div class="body___cvucF">
-              <div class="markdown___35KUH html-block___G4sWQ">
-                <h4 class="pad-header--s">Kan jeg beholde bilen?</h4>
-                <p>
-                  Ja, efter bindingsperioden har du mulighed for at beholde
-                  bilen til samme månedlige ydelse indtil du opsiger dit
-                  Quickleasing.
-                </p>
-                <p>
-                  Har du et Limited Quickleasing i 150 dage er der ikke
-                  mulighed for forlængelse eller køb af bilen.
-                </p>
-                <h4 class="pad-header--s">Er der et opsigelsesvarsel?</h4>
-                <p>
-                  Ja, efter bindingsperioden er der 1 måneds opsigelsesvarsel på
-                  dit abonnement. Du vil blive opkrævet fuld betaling for den
-                  sidste kalendermåned og få refunderet denne merbetaling på din
-                  slutopgørelse.
-                </p>
-                <h4 class="pad-header--s"><strong>Hvordan opsiger jeg mit Quickleasing?</strong></h4>
-                <p>
-                  Opsigelsen af abonnementet og tilbageleveringen af din bil
-                  forløber i to faser.
-                </p>
-                <p>
-                  1. Du skal bestille tid til tilbagelevering af bilen via
-                  nedenstående mail. Inden du leverer den bil tilbage, skal du
-                  være opmærksom på følgende:
-                </p>
-                <ul>
-                  <li>
-                    Serviceeftersyn skal foretages, hvis det indikeres i bilens
-                    infodisplay
-                  </li>
-                  <li>
-                    Eventuelle forsikringsskader skal være anmeldt og takseret
-                  </li>
-                  <li>Bilen skal være rengjort udvendigt og indvendigt.</li>
-                </ul>
-                <p>
-                  Du aftaler konkret afleveringstidspunkt med os ved at skrive
-                  på
-                  <a href="mailto:support@quickleasing.dk?subject=Kontakt"
-                    >support@quickleasing.dk</a
-                  >
-                </p>
-                <p>
-                  <strong
-                    >NB: Det er ikke muligt, at aflevere bilen uden en
-                    tidsbestilling. Alle henvendelser uden tidsbestilling vil
-                    blive afvist.</strong
-                  >
-                </p>
-                <p>
-                  <strong
-                    >Vær opmærksom på at abonnementsperioden bliver automatisk
-                    forlænget indtil aflevering har fundet sted.</strong
-                  >
-                </p>
-                <p>
-                  2. Ved selve afleveringen gennemgås bilen, og der udformes en
-                  underskrevet tilstandsrapport. Rapporten omfatter en generel
-                  vurdering af bilens stand og omfang af eventuelle skader. Der
-                  tages naturligvis højde for slitage ifm. almindeligt brug.
-                </p>
-                <p>
-                  Du kan downloade vores skadeskatalog længere nede på siden.
-                </p>
-                <p></p>
-                <p>Ved afleveringen af din bil, skal du huske:</p>
-                <ul>
-                  <li>bilens registreringsattest (hvis udleveret)</li>
-                  <li>2 stk. nøgler</li>
-                  <li>servicehæfte</li>
-                  <li>instruktionsbog</li>
-                  <li>evt. ekstra hjulsæt (sommer- og/eller vinterhjul)</li>
-                </ul>
-                <h4 class="pad-header--s">Hvordan foregår tilbagelevering af bilen?</h4>
-                <ul>
-                  <li>
-                    <a
-                      href="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/v1663755772/PDF%27s/BilAbo_-_bil_retur_gu3yrn.pdf"
-                      >Tryk her</a
-                    >
-                    for at downloade beskrivelsen af afleveringen.
-                  </li>
-                  <li>
-                    <a
-                      href="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/v1580995338/PDF%27s/rengringstjekliste_opdateret_051118_puwjgd.pdf"
-                      >Tryk her </a
-                    >for at downloade tjeklisten ifm. klargøring.
-                  </li>
-                  <li>
-                    <a href="https://www.youtube.com/watch?v=YFhtOxHeFbE"
-                      >Tryk her</a
-                    >
-                    for at se en video af de ting du skal være opmærksom på.
-                  </li>
-                  <li>
-                    <a href="https://www.youtube.com/watch?v=6ar2nxcIj5Q"
-                      >Tryk her</a
-                    >
-                    for at se en video af hvordan afleveringen foregår.
-                  </li>
-                </ul>
-                <p></p>
-                <h4 class="pad-header--s">
-                  <strong
-                    >Hvad betaler man typisk for ved slutopgørelsen?</strong
-                  >
-                </h4>
-                <p>
-                  Vi har efterhånden taget 4.000 biler retur fra glade
-                  abonnementskunder, og såfremt du har passet godt på bilen, har
-                  du som kunde intet at være bekymret for. Gennemsnitligt er
-                  skadesbeløbet KUN 1.429 kr. for en tilbageleveret
-                  abonnementsbil.
-                </p>
-                <p>
-                  Hvis du vil sikre dig yderligere mod overraskelser ved
-                  afleveringen, anbefaler vi, at du læser nærmere om vores
-                  afleveringsforsikring <RouterLink to="/forsikring-priser" title="Forsikring">her.</RouterLink>
-                </p>
+              <div class="card-container  pad-header--l">
+                <div class="card">
+                  <div class="card-header">
+                    <h2>CLEVER UNLIMITED</h2>
+                    <h4 style="color: var(--secondary)">OPLADNING UDE OG HJEMME</h4>
+                  </div>
+                  <div class="card-body">
+
+                    <h4 class="pad-header--s">Med clever Unlimited får du:</h4>
+                    <ul class="owl--xs">
+                      <li >Adgang til Danmarks største ladenetværk</li>
+                      <li>Opladning når det passer dig –på farten, på arbejdet, på indkøbsturen eller derhjemme</li>
+                      <li>Installation og lån af Clevers intelligente ladeboks</li>
+                      <li>Intelligent opladning tilpasset dig, der tager højde for både elpris, CO2-aftryk og elnettets belastning</li>
+                      <li>Automatisk tilbagebetaling når du lader hjemme på en del af dine strømomkostninger som du betaler til din elleverandør. Satsen er beregnet på baggrund af gennemsnit af strømpris i tiden kl. 23-06***</li>
+                      <li>Mulighed for rabat med clever Power</li>
+                      <li>24/7 kundesupport</li>
+                    </ul>
+                    <h4 class="pad-header--s"> <strong>Månedlig abonnementspris fra 01.01.23.</strong> </h4>
+                    <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
+                    <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit kWh-forbrug****</p>
+                    <p>Grundabonnement til elbil: 749 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
+                    <p>Grundabonnement til plugin-hybridbil: 369 kr. frem til 31.03.23. Herefter 449 kr.*</p>
+                    <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
+                    <p>Elbil: 749 kr. + midlertidigt energitillæg: 690 kr.*****</p>
+                    <p>Plugin-hybridbil: 369 kr. + midlertidigt energitillæg: 390 kr.*****</p>
+                    <h4 class="pad-header--s"><strong>Installation af Clevers ladeboks:</strong></h4>
+                    <p>Elbil: 5.995 kr.**</p>
+                    <p>Plug-in hybridbil: 7.500 kr.**</p>
+                    <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
+                  </div>
+                  <div class="card-footer">
+
+                    <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg + installation </p>
+                  </div>
+
+                </div>
+                <div class="card">
+                  <div class="card-header">
+                    <h2>CLEVER UNLIMITED NETWORK</h2>
+                    <h4 style="color: var(--secondary)">OPLADNING PÅ FARTEN</h4>
+                  </div>
+                  <div class="card-body">
+
+                    <h4 class="pad-header--s">Med Clever Unlimited Network får du:</h4>
+                    <ul class="owl--xs">
+                      <li >Adgang til Danmarks største ladenetværk</li>
+                      <li> Mulighed for at lade på job, når du handler, på giga-og lynladestationerog ved masser af offentlige ladepunkter</li>
+                      <li>Lynladestationer skabt til meningsfulde pauser, mens du lader
+                      </li>
+                      <li>Clevers app med overblik overladepunkter og ladeforbrug</li>
+                      <li>24/7 kundesupport</li>
+                    </ul>
+                    <h4 class="pad-header--s"> <strong>Månedlig abonnementspris fra 01.01.23.</strong> </h4>
+                    <p>Prisen består af et grundabonnement + et variabelt og forbrugsbaseret energitillæg.</p>
+                    <p>Tillægget beregnes som den del af den gns. md. strømpris, som overstiger 2,25 kr., x dit kWh-forbrug****</p>
+                    <p>Grundabonnement til elbil: 625 kr. frem til 31.03.23. Herefter: 799 kr.*</p>
+                    <p>Grundabonnement til plugin-hybridbil: 245 kr. frem til 31.03.23. Herefter 449 kr.*</p>
+                    <h4 class="pad-header--s"><strong>Månedlig abonnementspris frem til 31.12.22.</strong></h4>
+                    <p>Elbil: 625 kr. + midlertidigt energitillæg: 690 kr.*****
+
+                    </p>
+                    <p>Plugin-hybridbil: 245 kr. + midlertidigt energitillæg:390 kr.*****</p>
+
+                    <h4 class="pad-header--s"><strong>Mindstepris i bindingsperioden (2 mdr.)</strong></h4>
+                  </div>
+                  <div class="card-footer">
+
+                    <p>Afhænger af startdato og beregnes som 2 x abonnementspris + 2 x energitillæg</p>
+                  </div>
+
+                </div>
               </div>
+
+                <span class="new-html-block___1_7NG"
+                ><p style="text-align: center">
+                  Du har mulighed for at læse mere om Clevers
+                  produkter&nbsp;<strong
+                    ><a
+                      href="https://clever.dk/produkter/"
+                      rel="noopener noreferrer nofollow"
+                      >her</a
+                    ></strong
+                  >
+                </p>
+                <p style="text-align: center">&nbsp;</p>
+                <p style="text-align: center">
+                  <strong>*Abonnement</strong>&nbsp;udbydes af Clever A/S. 14
+                  dages fortrydelsesret. Forudsætter BS-betaling. Læs mere:
+                  clever.dk/vilkaar.
+                </p>
+                <p style="text-align: center">
+                  <strong>**Installation:</strong>&nbsp;privatadresse i DK;
+                  ekstraomk. kan forekomme, fx. ved behov for grave-eller
+                  stilladsarbejde mv.&nbsp;
+                </p>
+                <p style="text-align: center">
+                  <strong>***Tilbagebetaling</strong>: hver md. tilbagebetaler
+                  Clever et beløb til dig for den mængde strøm, du har brugt på
+                  opladning via ladeboksenhjemme: Tilbagebetaling = dit
+                  kWh-forbrug X gns. strømpris/kWh (dvs. spotpris, afgifter,
+                  tariffer og moms) i DK kl. 23-06 den pgl. md. Du betaler for
+                  hele din husstands strømforbrug til din ellevarandør, inkl.
+                  forbruget på Clevers ladeboks. Dækningen af dine strømomk. til
+                  opladning afhænger af din elaftaleog tidspunktet du lader. Se:
+                  clever.dk/tilbagebetaling.&nbsp;
+                </p>
+                <p style="text-align: center">
+                  <strong
+                    >****Variabelt og forbrugsbaseret energitillæg fra
+                    01.01.23:</strong
+                  >&nbsp;pålægges hvis den gns. strømpris/kWh (dvs. spotpris,
+                  afgifter, tariffer og moms) er over 2,25 kr./kWh i DK den pgl.
+                  md. Tillæg = den del af den gns. md. strømpris/kWh, som
+                  overstiger 2,25 kr./kWh x dit md. kWh-forbrug, se:
+                  clever.dk/energitillaeg
+                </p>
+                <p style="text-align: center">
+                  <strong
+                    >*****Midlertidigt energitillæg frem til 31.12.22:</strong
+                  >&nbsp;pga. høje strømpriser. Se mere: clever.dk/energitillaeg
+                </p></span
+              >
             </div>
           </div>
         </div>
@@ -189,3 +192,63 @@ export default {
   },
 };
 </script>
+<style scoped>
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.card {
+  width: calc(49% - 20px);
+
+  overflow: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+
+.card-header {
+  background-color: var(--primary);
+  padding: 2.5rem;
+  text-align: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.card-header h3,
+.card-header h4 {
+  margin: 0;
+}
+
+.card-body {
+  padding: 20px;
+  color: white;
+  background: var(--primary-ultra-dark);
+}
+
+.card-footer {
+  background-color: var(--primary);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 1150px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 750px) {
+  .card {
+    width: 100%;
+    margin: 3rem 0;
+  }
+}
+</style>
