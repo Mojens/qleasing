@@ -21,7 +21,7 @@
             <ul>
                 <li v-for="item in featureItems" :key="item.value" :data-value="item.value">
                     <input type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
-                    {{ item.name }}
+                    {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
                 </li>
             </ul>
         </div>
@@ -42,21 +42,21 @@ export default {
             checkBoxState: {},
             selectedFeatures: [],
             featureItems: [
-                { value: "airc", name: "Air Condition" },
-                { value: "fartpilot", name: "Fartpilot" },
-                { value: "bluetooth", name: "Bluetooth" },
-                { value: "sædevarme", name: "Sædevarme" },
-                { value: "varmeirat", name: "Rat-varme" },
-                { value: "parkeringssensorfor", name: "Parkeringssensor (foran)" },
-                { value: "parkeringssensorbag", name: "Parkeringssensor (bag)" },
-                { value: "navigation", name: "Navigation" },
-                { value: "autgeartiptronic", name: "Automatgear" },
-                { value: "Anhaengertraek", name: "Anhængertræk" },
-                { value: "4xelruder", name: "4 elruder" },
-                { value: "5personers", name: "5 personers" },
-                { value: "bakkamera", name: "Bakkamera" },
-                { value: "applecarplay", name: "Apple CarPlay" },
-                { value: "androidauto", name: "Android Auto" },
+                { value: "airc", name: "Air Condition", count: 0 },
+                { value: "fartpilot", name: "Fartpilot", count: 0 },
+                { value: "bluetooth", name: "Bluetooth", count: 0 },
+                { value: "sædevarme", name: "Sædevarme", count: 0 },
+                { value: "varmeirat", name: "Rat-varme", count: 0 },
+                { value: "parkeringssensorfor", name: "Parkeringssensor (foran)", count: 0 },
+                { value: "parkeringssensorbag", name: "Parkeringssensor (bag)", count: 0 },
+                { value: "navigation", name: "Navigation", count: 0 },
+                { value: "autgeartiptronic", name: "Automatgear", count: 0 },
+                { value: "Anhaengertraek", name: "Anhængertræk", count: 0 },
+                { value: "4xelruder", name: "4 elruder", count: 0 },
+                { value: "5personers", name: "5 personers", count: 0 },
+                { value: "bakkamera", name: "Bakkamera", count: 0 },
+                { value: "applecarplay", name: "Apple CarPlay", count: 0 },
+                { value: "androidauto", name: "Android Auto", count: 0 },
             ]
         };
     },
@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         async fetchData() {
-            const response = await fetch(import.meta.env.VITE_APP_CARS_URL, {
+            const response = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
@@ -84,7 +84,6 @@ export default {
             } else {
                 this.selectedBrands.push(value);
             }
-
             filter = { brand: { _in: this.selectedBrands } };
 
             this.currentURL = `${this.baseURL}?filter=${encodeURIComponent(JSON.stringify(filter))}`;
@@ -92,7 +91,6 @@ export default {
                 this.carData = this.originalData;
                 this.currentURL = this.baseURL;
             }
-
             const checkboxResponse = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
@@ -129,18 +127,33 @@ export default {
                 return;
             }
 
-            const filteredCars = [];
+            const filteredCars = new Set();
             for (let i = 0; i < allData.length; i++) {
                 if (allData[i].Udstyr !== null) {
                     for (let x = 0; x < allData[i].Udstyr.length; x++) {
                         if (this.selectedFeatures.includes(allData[i].Udstyr[x])) {
-                            filteredCars.push(allData[i]);
+                            filteredCars.add(allData[i]);
                             break;
                         }
                     }
                 }
             }
-            this.carData = filteredCars;
+            this.carData = Array.from(filteredCars);
+        }
+        ,
+        async updateFeatureCounts(cars) {
+            cars.forEach(car => {
+                if (car.Udstyr !== null) {
+                    car.Udstyr.forEach(feature => {
+                        const foundFeature = this.featureItems.find(
+                            item => item.value === feature
+                        );
+                        if (foundFeature) {
+                            foundFeature.count++;
+                        }
+                    });
+                }
+            });
         }
 
 
