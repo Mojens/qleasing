@@ -40,6 +40,7 @@ export default {
             currentURL: import.meta.env.VITE_APP_CARS_URL,
             readerAPI: import.meta.env.VITE_APP_READER_API,
             checkBoxState: {},
+            selectedFeatures: [],
             featureItems: [
                 { value: "airc", name: "Air Condition" },
                 { value: "fartpilot", name: "Fartpilot" },
@@ -88,6 +89,7 @@ export default {
 
             this.currentURL = `${this.baseURL}?filter=${encodeURIComponent(JSON.stringify(filter))}`;
             if (this.selectedBrands.length === 0) {
+                this.carData = this.originalData;
                 this.currentURL = this.baseURL;
             }
 
@@ -100,8 +102,10 @@ export default {
             });
             const data = await checkboxResponse.json();
             this.carData = data.data;
-        },
+        }
+        ,
         async handleCheckboxClickFeatures(value) {
+            console.log(this.selectedFeatures)
             const response = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
@@ -111,31 +115,34 @@ export default {
             });
             const data = await response.json();
             const allData = data.data;
-            
+
             this.checkBoxState[value] = !this.checkBoxState[value];
-            if (!this.checkBoxState[value]) {
-                if (this.selectedBrands.length === 0) {
-                    this.carData = this.originalData;
-                }
+
+            if (this.checkBoxState[value]) {
+                this.selectedFeatures.push(value);
+            } else {
+                this.selectedFeatures = this.selectedFeatures.filter(f => f !== value);
+            }
+
+            if (this.selectedFeatures.length === 0) {
                 this.carData = allData;
                 return;
             }
-            
 
             const filteredCars = [];
             for (let i = 0; i < allData.length; i++) {
                 if (allData[i].Udstyr !== null) {
-                    console.log("udstyr")
-                    console.log(allData[i].Udstyr[0])
                     for (let x = 0; x < allData[i].Udstyr.length; x++) {
-                        if (allData[i].Udstyr[x] === value) {
+                        if (this.selectedFeatures.includes(allData[i].Udstyr[x])) {
                             filteredCars.push(allData[i]);
+                            break;
                         }
                     }
                 }
             }
             this.carData = filteredCars;
         }
+
 
     },
     computed: {
