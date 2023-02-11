@@ -1,7 +1,6 @@
 <script setup>
-import FooterItem from "../components/FooterItem.vue";
+import FooterItem from "../../components/FooterItem.vue";
 </script>
-
 <template>
   <div>
     <div
@@ -14,13 +13,13 @@ import FooterItem from "../components/FooterItem.vue";
             <div class="hero-spot"><!---->
               <picture class="hero-spot__media-container ng-star-inserted">
                 <source media="(min-width: 1024px)"
-                        srcSet="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1550&amp;heightratio=0.4285703125&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=3100&amp;heightratio=0.4285703125&amp;mode=crop 2x">
+                        srcset="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1550&amp;heightratio=0.4285703125&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=3100&amp;heightratio=0.4285703125&amp;mode=crop 2x">
                 <source media="(min-width: 768px) and (max-width: 1023px)"
-                        srcSet="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1024&amp;heightratio=0.4285703125&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=2048&amp;heightratio=0.4285703125&amp;mode=crop 2x">
+                        srcset="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1024&amp;heightratio=0.4285703125&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=2048&amp;heightratio=0.4285703125&amp;mode=crop 2x">
                 <source media="(min-width: 414px) and (max-width: 767px)"
-                        srcSet="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=767&amp;heightratio=1.2487309645&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1534&amp;heightratio=1.2487309645&amp;mode=crop 2x">
+                        srcset="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=767&amp;heightratio=1.2487309645&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1534&amp;heightratio=1.2487309645&amp;mode=crop 2x">
                 <source media="(max-width: 413px)"
-                        srcSet="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=394&amp;heightratio=1.2487309645&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=788&amp;heightratio=1.2487309645&amp;mode=crop 2x">
+                        srcset="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=394&amp;heightratio=1.2487309645&amp;mode=crop 1x, https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=788&amp;heightratio=1.2487309645&amp;mode=crop 2x">
                 <img
                   alt="Afhængertræk af bilen er en god ide "
                   class="ng-star-inserted"
@@ -39,6 +38,7 @@ import FooterItem from "../components/FooterItem.vue";
       <!----></div><!---->
 
     <div v-if="articleData">
+
       <span
         class="new-html-block___3_7NG">
 
@@ -47,9 +47,7 @@ import FooterItem from "../components/FooterItem.vue";
          class="button-primary">Find din næste quickleasing bil</button></RouterLink>
       </span>
 
-
     </div>
-
   </div>
   <footer-item />
 </template>
@@ -66,7 +64,7 @@ export default {
   methods: {
     async fetchData() {
       const READER_API = import.meta.env.VITE_APP_READER_API;
-      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "12";
+      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "5";
       const response = await fetch(ARTICLE_URL, {
         headers: {
           Accept: "application/json",
@@ -81,6 +79,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+  

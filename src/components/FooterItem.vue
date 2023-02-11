@@ -1,63 +1,129 @@
 <template>
   <div class="footer___2HeuL">
     <div class="content___1SSOd">
-      <div class="image____uKec"><img
-        alt="footer-logo"
-        src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png">
+      <div class="image____uKec">
+        <img
+          alt="footer-logo"
+          src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png"
+        />
       </div>
       <div class="links-wrapper___z_X-m">
         <div class="links___1GmQz">
-          <RouterLink class="link___Zah3i link___394Eg" target="_self" title="Om Bilabonnement"
-                      to="/om-os">Om Quickleasing
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Om Bilabonnement"
+            to="/om-os"
+            >Om Quickleasing
           </RouterLink>
-          <a class="link___Zah3i link___394Eg"
-             href="/faq/" target="_self"
-             title="FAQ">FAQ</a><a
-          class="link___Zah3i link___394Eg" href="/indhold-pa-siden" target="_self" title="Indhold på siden">Indhold på
-          siden</a><a class="link___Zah3i link___394Eg" href="/samarbejdspartnere" target="_self"
-                      title="Samarbejdspartnere">Samarbejdspartnere</a><a class="link___Zah3i link___394Eg"
-                                                                          href="/faq/" target="_self"
-                                                                          title="Kontakt os">Kontakt os</a></div>
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            to="/faq"
+            target="_self"
+            title="FAQ"
+            >FAQ</RouterLink
+          ><a
+            class="link___Zah3i link___394Eg"
+            href="/indhold-pa-siden"
+            target="_self"
+            title="Indhold på siden"
+            >Indhold på siden</a
+          ><a
+            class="link___Zah3i link___394Eg"
+            href="/samarbejdspartnere"
+            target="_self"
+            title="Samarbejdspartnere"
+            >Samarbejdspartnere</a
+          ><a
+            class="link___Zah3i link___394Eg"
+            href="/kontakt"
+            target="_self"
+            title="Kontakt os"
+            >Kontakt os</a
+          >
+        </div>
         <div class="links___1GmQz">
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Abonnementsvilkår" to="/abonnement-vilkaar">Abonnementsvilkår
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Abonnementsvilkår"
+            to="/abonnement-vilkaar"
+            >Abonnementsvilkår
           </RouterLink>
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Persondatapolitik hos Quickleasing" to="/persondatapolitik">
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Afleveringsforsikring"
+            to="/afleveringforsikring"
+            >Afleveringsforsikring
+          </RouterLink>
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Persondatapolitik hos Quickleasing"
+            to="/persondatapolitik"
+          >
             Persondatapolitik
           </RouterLink>
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Opbevaring af dine oplysninger" to="/opbevaring-af-dine-oplysninger">
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Opbevaring af dine oplysninger"
+            to="/opbevaring-af-dine-oplysninger"
+          >
             Opbevaring af dine oplysninger
           </RouterLink>
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Samtykke" to="/samtykke">Samtykke
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Samtykke"
+            to="/samtykke"
+            >Samtykke
           </RouterLink>
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Privatlivspolitik" to="/privatlivspolitik">Privatlivspolitik
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Privatlivspolitik"
+            to="/privatlivspolitik"
+            >Privatlivspolitik
           </RouterLink>
 
-          <RouterLink class="link___Zah3i link___394Eg"
-                      target="_self" title="Information om cookies" to="/information-om-cookies">Information om
-            cookies
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            target="_self"
+            title="Information om cookies"
+            to="/information-om-cookies"
+            >Information om cookies
           </RouterLink>
         </div>
       </div>
-      <div class="social-links___3vb_q"><a class="logo-link___3nPM5 social-link___3S4ka link___394Eg"
-                                           href="https://www.facebook.com/Bilabonnement/"
-                                           target="_blank"
-                                           title="Følg os på Facebook"><img class="image___29-hw"
-                                                                            src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_224/gxrhpzle99uelvnaan4x_nr6fh9.svg">
-        <div class="title___3Zj6X">Følg os på Facebook</div>
-      </a></div>
+      <div class="social-links___3vb_q">
+        <a
+          class="logo-link___3nPM5 social-link___3S4ka link___394Eg"
+          href="https://www.facebook.com/Bilabonnement/"
+          target="_blank"
+          title="Følg os på Facebook"
+          ><img
+            class="image___29-hw"
+            src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_224/gxrhpzle99uelvnaan4x_nr6fh9.svg"
+          />
+          <div class="title___3Zj6X">Følg os på Facebook</div>
+        </a>
+      </div>
     </div>
     <div class="divider___2EVUB"></div>
     <div class="address-info___yKNij">
       <div class="organization-name___2p6qI">Quickleasing A/S</div>
       <div class="details___2e0Mn">
         <div class="detail___YJBSq">Slotsherrensvej 411c</div>
-        <div class="detail___YJBSq">2610<!-- --> <!-- -->Rødovre</div>
-        <div class="detail___YJBSq">CVR-nr. <!-- -->37856827</div>
+        <div class="detail___YJBSq">
+          2610<!-- -->
+          <!-- -->Rødovre
+        </div>
+        <div class="detail___YJBSq">
+          CVR-nr.
+          <!-- -->37856827
+        </div>
       </div>
     </div>
   </div>
@@ -65,13 +131,11 @@
 
 <script>
 export default {
-  name: "FooterItem"
+  name: "FooterItem",
 };
 </script>
 
 <style scoped>
-
-
 .link___394Eg {
   color: #1892c3;
   font-size: 0.9rem;
@@ -281,11 +345,18 @@ export default {
   flex-direction: column;
 }
 
-.footer___2HeuL .content___1SSOd .links-wrapper___z_X-m .links___1GmQz .link___Zah3i {
+.footer___2HeuL
+  .content___1SSOd
+  .links-wrapper___z_X-m
+  .links___1GmQz
+  .link___Zah3i {
   padding: 0.5rem 0;
 }
 
-.footer___2HeuL .content___1SSOd .links-wrapper___z_X-m .links___1GmQz:not(:first-child) {
+.footer___2HeuL
+  .content___1SSOd
+  .links-wrapper___z_X-m
+  .links___1GmQz:not(:first-child) {
   margin-left: 2rem;
 }
 
@@ -314,7 +385,11 @@ export default {
   padding: 0.5rem 0;
 }
 
-.footer___2HeuL .content___1SSOd .social-links___3vb_q .social-link___3S4ka .title___3Zj6X {
+.footer___2HeuL
+  .content___1SSOd
+  .social-links___3vb_q
+  .social-link___3S4ka
+  .title___3Zj6X {
   margin-left: 0.5rem;
 }
 
@@ -324,6 +399,4 @@ export default {
   margin: 3rem 0;
   background-color: #f2f2f2;
 }
-
-
 </style>

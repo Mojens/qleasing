@@ -1,38 +1,37 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import about2View from "../views/about2.vue";
-import privatlivspolitikView from "../views/privatlivspolitik.vue";
-import nemLeasingView from "../views/nemtLeasing.vue";
-import nyttigvidenView from "../views/nyttigViden.vue";
-import synView from "../views/syn.vue";
-import traekView from "../views/traek.vue";
-import proeveKoerselView from "../views/proeveKoersel.vue"
-import laaneBilView from "../views/laanebil.vue"
+import privatlivspolitikView from "../views/vilkaarViews/privatlivspolitik.vue";
+import nemLeasingView from "../views/oevrigInfoViews/nemLeasing.vue";
+import nyttigvidenView from "../views/oevrigInfoViews/nyttigViden.vue";
+import synView from "../views/oevrigInfoViews/syn.vue";
+import traekView from "../views/oevrigInfoViews/traek.vue";
+import proeveKoerselView from "../views/oevrigInfoViews/proeveKoersel.vue"
+import laaneBilView from "../views/oevrigInfoViews/laanebil.vue"
 import vaerkstederView from "../views/vaerksteder.vue"
 import forsikringsPriserView from "../views/forsikringsPriser.vue"
-import omos from "../views/omos.vue";
-import abonnementvilkaarView from "../views/abonnementvilkaar.vue";
+import omos from "../views/oevrigInfoViews/omos.vue";
+import abonnementvilkaarView from "../views/vilkaarViews/abonnementvilkaar.vue";
 import quickleasingView from "../views/quickleasing.vue";
-import informationomcookies from "../views/cookiepolitik.vue";
-import opbevaringAfOplysningerView from "../views/opbevaringAfOplysninger.vue";
-import samtykkeView from "../views/samtykke.vue";
-import persondatapolitikView from "../views/persondatapolitik.vue";
-import faqView from "../views/faq.vue";
-import oprettelseAfhentningView from "../views/oprettelseAfhentning.vue";
-import hvorforQuickleasingView from "../views/hvorforQuickleasing.vue";
-import opsigelseTilbageleveringView from "../views/opsigelseTilbagelevering.vue";
-import listeOverPriserView from "../views/listeOverPriser.vue";
-import faqForsikringView from "@/views/faqForsikring.vue";
-import afleveringsforsikringView from "@/views/afleveringsforsikring.vue";
-import vinterhjulView from "@/views/vinterhjul.vue";
-import serviceView from "@/views/service.vue";
-import kilometerView from "@/views/kilometer.vue";
-import opladningElbilerView from "@/views/opladningElbiler.vue";
-import skadeVejhjaelpView from "@/views/skadeVejhjaelp.vue";
-import vejhjaelpView from "@/views/vejhjaelp.vue";
-import ovrigSporgsmalView from "@/views/ovrigSporgsmal.vue";
-import saelgBrugtBilView from "@/views/saelgBrugtBil.vue";
-import parkeringView from "@/views/parkering.vue";
+import informationomcookies from "../views/vilkaarViews/cookiepolitik.vue";
+import opbevaringAfOplysningerView from "../views/vilkaarViews/opbevaringAfOplysninger.vue";
+import samtykkeView from "../views/vilkaarViews/samtykke.vue";
+import persondatapolitikView from "../views/vilkaarViews/persondatapolitik.vue";
+import faqView from "@/views/faqViews/faq.vue";
+import oprettelseAfhentningView from "../views/faqViews/oprettelseAfhentning.vue";
+import hvorforQuickleasingView from "../views/faqViews/hvorforQuickleasing.vue";
+import opsigelseTilbageleveringView from "../views/faqViews/opsigelseTilbagelevering.vue";
+import listeOverPriserView from "../views/faqViews/listeOverPriser.vue";
+import faqForsikringView from "../views/faqViews/faqForsikring.vue";
+import afleveringsforsikringView from "@/views/vilkaarViews/afleveringsforsikring.vue";
+import vinterhjulView from "@/views/faqViews/vinterhjul.vue";
+import serviceView from "@/views/faqViews/service.vue";
+import kilometerView from "@/views/faqViews/kilometer.vue";
+import opladningElbilerView from "@/views/faqViews/opladningElbiler.vue";
+import skadeVejhjaelpView from "@/views/faqViews/skadeVejhjaelp.vue";
+import vejhjaelpView from "@/views/faqViews/vejhjaelp.vue";
+import ovrigSporgsmalView from "@/views/faqViews/ovrigSporgsmal.vue";
+import saelgBrugtBilView from "@/views/faqViews/saelgBrugtBil.vue";
+import parkeringView from "@/views/faqViews/parkering.vue";
 
 
 const router = createRouter({
@@ -42,19 +41,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
-    },
-    {
-      path: "/about2",
-      name: "about2",
-      component: about2View,
     },
     {
       path: "/privatlivspolitik",

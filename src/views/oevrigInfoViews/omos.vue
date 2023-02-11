@@ -1,5 +1,5 @@
 <script setup>
-import FooterItem from "../components/FooterItem.vue";
+import FooterItem from "../../components/FooterItem.vue";
 </script>
 <template>
   <div>
@@ -56,7 +56,7 @@ import FooterItem from "../components/FooterItem.vue";
 K.W. Bruun &amp; Co A/S│K.W. Bruun Import A/S│K.W. Bruun NxT A/S│K.W. Bruun Invest A/S│Classic Car House A/S │K.W. Bruun Automotive A/S (Peugeot, Citroën, DS)│K.W. Bruun Biler (Opel)│K.W. Bruun MMC A/S (Mitsubishi)│K.W. Bruun Scala A/S (Fiat, Fiat Pro, Alfa Romeo, Jeep)│ K.W. Bruun Autoimport AB (Peugeot, Citroën, DS)│K.W. Bruun Automotive AB (Opel)│K.W. Bruun Logistik A/S│K.W. Bruun Logistik AB│Quickleasing A/S│Quickpoint A/S│K.W. Bruun Ejendomme ApS </p>
 <p style="text-align: center;"><a href="https://www.kwbruun.com">
 www.kwbruun.com</a></p>
-</div></span><a class="cta-button-block___1Mb2W" href="/" target="_self"
+</div></span><a class="cta-button-block___1Mb2W" href="/public" target="_self"
                 title="Gå til forsiden"><button class="button___2oWcS default___31nVJ rounded-corners___2DuU9">Gå til forsiden<svg
       class="arrow___1499o" height="24" viewBox="0 0 28 24" width="28" xmlns="http://www.w3.org/2000/svg"><path
       d="M26.6335 10.9393C27.2193 11.5251 27.2193 12.4749 26.6335 13.0607L17.0875 22.6066C16.5017 23.1924 15.552 23.1924 14.9662 22.6066C14.3804 22.0208 14.3804 21.0711 14.9662 20.4853L23.4515 12L14.9662 3.51472C14.3804 2.92893 14.3804 1.97919 14.9662 1.3934C15.552 0.807611 16.5017 0.807611 17.0875 1.3934L26.6335 10.9393ZM0.382813 10.5L25.5728 10.5V13.5L0.382812 13.5L0.382813 10.5Z"></path></svg></button></a><div
@@ -123,7 +123,7 @@ www.kwbruun.com</a></p>
 K.W. Bruun &amp; Co A/S│K.W. Bruun Import A/S│K.W. Bruun NxT A/S│K.W. Bruun Invest A/S│Classic Car House A/S │K.W. Bruun Automotive A/S (Peugeot, Citroën, DS)│K.W. Bruun Biler (Opel)│K.W. Bruun MMC A/S (Mitsubishi)│K.W. Bruun Scala A/S (Fiat, Fiat Pro, Alfa Romeo, Jeep)│ K.W. Bruun Autoimport AB (Peugeot, Citroën, DS)│K.W. Bruun Automotive AB (Opel)│K.W. Bruun Logistik A/S│K.W. Bruun Logistik AB│Quickleasing A/S│Quickpoint A/S│K.W. Bruun Ejendomme ApS </p>
 <p style="text-align: center;"><a href="https://www.kwbruun.com">
 www.kwbruun.com</a></p>
-</div></span><a class="cta-button-block___1Mb2W" href="/" target="_self"
+</div></span><a class="cta-button-block___1Mb2W" href="/public" target="_self"
                 title="Gå til forsiden"><button class="button___2oWcS default___31nVJ rounded-corners___2DuU9">Gå til forsiden<svg
       class="arrow___1499o" height="24" viewBox="0 0 28 24" width="28" xmlns="http://www.w3.org/2000/svg"><path
       d="M26.6335 10.9393C27.2193 11.5251 27.2193 12.4749 26.6335 13.0607L17.0875 22.6066C16.5017 23.1924 15.552 23.1924 14.9662 22.6066C14.3804 22.0208 14.3804 21.0711 14.9662 20.4853L23.4515 12L14.9662 3.51472C14.3804 2.92893 14.3804 1.97919 14.9662 1.3934C15.552 0.807611 16.5017 0.807611 17.0875 1.3934L26.6335 10.9393ZM0.382813 10.5L25.5728 10.5V13.5L0.382812 13.5L0.382813 10.5Z"></path></svg></button></a><div

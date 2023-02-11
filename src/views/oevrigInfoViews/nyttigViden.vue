@@ -1,5 +1,5 @@
 <script setup>
-import FooterItem from "../components/FooterItem.vue";
+import FooterItem from "../../components/FooterItem.vue";
 </script>
 <template>
   <div>
@@ -64,7 +64,7 @@ export default {
   methods: {
     async fetchData() {
       const READER_API = import.meta.env.VITE_APP_READER_API;
-      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "2";
+      const ARTICLE_URL = import.meta.env.VITE_APP_ARTICLE_URL + "3";
       const response = await fetch(ARTICLE_URL, {
         headers: {
           Accept: "application/json",
@@ -79,3 +79,4 @@ export default {
 };
 </script>
 
+  
