@@ -28,6 +28,7 @@ import vinterhjulView from "@/views/vinterhjul.vue";
 import serviceView from "@/views/service.vue";
 import kilometerView from "@/views/kilometer.vue";
 import opladningElbilerView from "@/views/opladningElbiler.vue";
+import skadeVejhjaelpView from "@/views/skadeVejhjaelp.vue";
 
 
 const router = createRouter({
@@ -185,6 +186,11 @@ const router = createRouter({
       path: "/faq/opladning-til-el-hybridbiler",
       name: "/faq/opladning-til-el-hybridbiler",
       component: opladningElbilerView,
+    },
+    {
+      path: "/faq/skade-og-vejhjaelp",
+      name: "/faq/skade-og-vejhjaelp",
+      component: skadeVejhjaelpView,
     }
 
   ],

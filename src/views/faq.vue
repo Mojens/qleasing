@@ -66,7 +66,7 @@ import FooterItem from "../components/FooterItem.vue";
             >Opladning til el &amp; hybridbiler</RouterLink
             ><RouterLink
               class="question___3PILY"
-              to="/faq/1a5d619d-8624-4b26-a5d7-2eea9b477b03"
+              to="/faq/skade-og-vejhjaelp"
               title="Skade og Vejhjælp"
             >Skade og Vejhjælp</RouterLink
             ><RouterLink
