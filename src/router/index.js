@@ -31,6 +31,7 @@ import opladningElbilerView from "@/views/opladningElbiler.vue";
 import skadeVejhjaelpView from "@/views/skadeVejhjaelp.vue";
 import vejhjaelpView from "@/views/vejhjaelp.vue";
 import ovrigSporgsmalView from "@/views/ovrigSporgsmal.vue";
+import saelgBrugtBilView from "@/views/saelgBrugtBil.vue";
 
 
 const router = createRouter({
@@ -203,6 +204,11 @@ const router = createRouter({
       path: "/faq/ovrige-sporgsmal",
       name: "/faq/ovrige-sporgsmal",
       component: ovrigSporgsmalView,
+    },
+    {
+      path: "/faq/saelg-din-brugte-bil",
+      name: "/faq/saelg-din-brugte-bil",
+      component: saelgBrugtBilView,
     }
 
   ],
