@@ -43,10 +43,10 @@
             <div class="sub-title___1ierc h--3 text--bold">Prisliste</div>
             <div class="body___cvucF">
               <div class="markdown___35KUH html-block___G4sWQ"><p><code></code></p>
-                <p>Hos Bilabonnement behandler vi vores kunder godt, da vi tror på en lang relation med dig. Vi opkræver
+                <p>Hos Quickleasing behandler vi vores kunder godt, da vi tror på en lang relation med dig. Vi opkræver
                   ikke mærkelige gebyrer og tvungne medlemskaber. Dit abonnement kører helt uden gebyrer, sålænge du
                   overholder dine betalingsfrister.</p>
-                <p>Vi har samlet en liste over de opkrævninger, der kan forekomme i forbindelse med dit Bilabonnement
+                <p>Vi har samlet en liste over de opkrævninger, der kan forekomme i forbindelse med dit Quickleasing
                   udover abonnementsydelsen.</p>
                 <p><code></code></p>
                 <p><code></code></p></div>
