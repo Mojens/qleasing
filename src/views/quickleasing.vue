@@ -126,7 +126,7 @@ export default {
                 this.carData = allData;
                 return;
             }
-
+            /*
             const filteredCars = new Set();
             for (let i = 0; i < allData.length; i++) {
                 if (allData[i].Udstyr !== null) {
@@ -138,6 +138,23 @@ export default {
                     }
                 }
             }
+            */
+            const filteredCars = [];
+            for (let i = 0; i < allData.length; i++) {
+                if (allData[i].Udstyr !== null) {
+                    let match = true;
+                    for (let x = 0; x < this.selectedFeatures.length; x++) {
+                        if (!allData[i].Udstyr.includes(this.selectedFeatures[x])) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match) {
+                        filteredCars.push(allData[i]);
+                    }
+                }
+            }
+
             this.carData = Array.from(filteredCars);
         }
         ,
