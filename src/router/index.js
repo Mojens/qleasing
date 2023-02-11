@@ -17,6 +17,18 @@ import informationomcookies from "../views/cookiepolitik.vue";
 import opbevaringAfOplysningerView from "../views/opbevaringAfOplysninger.vue";
 import samtykkeView from "../views/samtykke.vue";
 import persondatapolitikView from "../views/persondatapolitik.vue";
+import faqView from "../views/faq.vue";
+import oprettelseAfhentningView from "../views/oprettelseAfhentning.vue";
+import hvorforQuickleasingView from "../views/hvorforQuickleasing.vue";
+import opsigelseTilbageleveringView from "../views/opsigelseTilbagelevering.vue";
+import listeOverPriserView from "../views/listeOverPriser.vue";
+import faqForsikringView from "@/views/faqForsikring.vue";
+import afleveringsforsikringView from "@/views/afleveringsforsikring.vue";
+import vinterhjulView from "@/views/vinterhjul.vue";
+import serviceView from "@/views/service.vue";
+import kilometerView from "@/views/kilometer.vue";
+import opladningElbilerView from "@/views/opladningElbiler.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -118,7 +130,63 @@ const router = createRouter({
       path: "/persondatapolitik",
       name: "/persondatapolitik",
       component: persondatapolitikView,
+    },
+    {
+      path: "/afleveringforsikring",
+      name: "/afleveringforsikring",
+      component: afleveringsforsikringView,
+    },
+    {
+      path: "/faq",
+      name: "/faq",
+      component: faqView,
+    },
+    {
+      path: "/faq/oprettelse-afhentning",
+      name: "/faq/oprettelse-afhentning",
+      component: oprettelseAfhentningView,
+    },
+    {
+      path: "/faq/hvorfor-quickleasing",
+      name: "/faq/hvorfor-quickleasing",
+      component: hvorforQuickleasingView,
+    },
+    {
+      path: "/faq/opsigelse-og-tilbagelevering",
+      name: "/faq/opsigelse-og-tilbagelevering",
+      component: opsigelseTilbageleveringView,
+    },
+    {
+      path: "/faq/liste-over-priser",
+      name: "/faq/liste-over-priser",
+      component: listeOverPriserView,
+    },
+    {
+      path: "/faq/forsikring",
+      name: "/faq/forsikring",
+      component: faqForsikringView,
+    },
+    {
+      path: "/faq/vinterdaek",
+      name: "/faq/vinterdaek",
+      component: vinterhjulView,
+    },
+    {
+      path: "/faq/service",
+      name: "/faq/service",
+      component: serviceView,
+    },
+    {
+      path: "/faq/kilometer",
+      name: "/faq/kilometer",
+      component: kilometerView,
+    },
+    {
+      path: "/faq/opladning-til-el-hybridbiler",
+      name: "/faq/opladning-til-el-hybridbiler",
+      component: opladningElbilerView,
     }
+
   ],
 });
 
