@@ -80,8 +80,23 @@ export default {
       this.carData = data.data;
     },
     queryCars(price, brand, model) {
-      let url = `/quickleasing?price=${price}&brand=${brand}&model=${model}`;
-      this.$router.push(url)
+      if (price.includes("+")) {
+        let price1 = price.split("+")[0];
+        let price2 = "*"
+        let url = `/quickleasing?price1=${price1}&price2=${price2}&brand=${brand}&model=${model}`;
+        this.$router.push(url)
+      }else if(price === "*"){
+        let price1 = "*"
+        let price2 = "*"
+        let url = `/quickleasing?price1=${price1}&price2=${price2}&brand=${brand}&model=${model}`;
+        this.$router.push(url)
+      }
+      else {
+        let price1 = price.split("-")[0];
+        let price2 = price.split("-")[1];
+        let url = `/quickleasing?price1=${price1}&price2=${price2}&brand=${brand}&model=${model}`;
+        this.$router.push(url)
+      }
     }
   },
   computed: {
