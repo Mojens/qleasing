@@ -22,18 +22,18 @@
             target="_self"
             title="FAQ"
             >FAQ</RouterLink
-          ><a
+          ><RouterLink
             class="link___Zah3i link___394Eg"
-            href="/indhold-pa-siden"
+            to="/indhold-pa-siden"
             target="_self"
             title="Indhold på siden"
-            >Indhold på siden</a
-          ><a
+            >Indhold på siden</RouterLink
+          ><RouterLink
             class="link___Zah3i link___394Eg"
-            href="/samarbejdspartnere"
+            to="/samarbejdspartnere"
             target="_self"
             title="Samarbejdspartnere"
-            >Samarbejdspartnere</a
+            >Samarbejdspartnere</RouterLink
           ><a
             class="link___Zah3i link___394Eg"
             href="/kontakt"
@@ -100,7 +100,7 @@
       <div class="social-links___3vb_q">
         <a
           class="logo-link___3nPM5 social-link___3S4ka link___394Eg"
-          href="https://www.facebook.com/Bilabonnement/"
+          href="https://www.facebook.com/Quickleasing/"
           target="_blank"
           title="Følg os på Facebook"
           ><img

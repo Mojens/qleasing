@@ -34,6 +34,7 @@ import saelgBrugtBilView from "@/views/faqViews/saelgBrugtBil.vue";
 import parkeringView from "@/views/faqViews/parkering.vue";
 import indholdPaaSidenView from "@/views/vilkaarViews/indholdPaaSiden.vue";
 import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue";
+import kontaktosView from "@/views/kontaktos.vue";
 
 
 const router = createRouter({
@@ -213,6 +214,11 @@ const router = createRouter({
       path: "/samarbejdspartnere",
       name: "/samarbejdspartnere",
       component: samarbejdspartnereView,
+    },
+    {
+      path: "/kontakt",
+      name: "/kontakt",
+      component: kontaktosView,
     }
 
   ],
