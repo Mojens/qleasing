@@ -80,9 +80,8 @@ export default {
       this.carData = data.data;
     },
     queryCars(price, brand, model) {
-      console.log('Price:', price);
-      console.log('Brand:', brand);
-      console.log('Model:', model);
+      let url = `/quickleasing?price=${price}&brand=${brand}&model=${model}`;
+      this.$router.push(url)
     }
   },
   computed: {
