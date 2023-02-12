@@ -83,20 +83,22 @@ export default {
   computed: {
     uniqueBrands() {
       const brandCount = {};
-      this.carData.forEach(car => {
+      const filteredData = this.carData.filter(car => {
+        return this.selectedModel === '*' || car.model === this.selectedModel;
+      });
+      filteredData.forEach(car => {
         if (!brandCount[car.brand]) {
           brandCount[car.brand] = 1;
         } else {
           brandCount[car.brand]++;
         }
       });
-
       return Object.entries(brandCount).map(([name, count]) => ({
         name,
         count
-
       }));
-    },
+    }
+    ,
     modelForBrand() {
       const brandFilteredData = this.carData.filter(car => {
         return this.selectedBrand === '*' || car.brand === this.selectedBrand;
@@ -117,18 +119,22 @@ export default {
       }));
     },
     filteredModels() {
-      if (this.selectedBrand === '*') {
+      if (this.selectedModel !== '*' && this.selectedBrand !== '*') {
+        return this.modelForBrand.filter(model => {
+          return this.carData.some(car => {
+            return car.brand === this.selectedBrand && car.model === this.selectedModel;
+          });
+        });
+      } else if (this.selectedBrand !== '*') {
+        return this.modelForBrand.filter(model => {
+          return this.carData.some(car => {
+            return car.brand === this.selectedBrand && car.model === model.name;
+          });
+        });
+      } else {
         return this.modelForBrand;
       }
-
-      return this.modelForBrand.filter(model => {
-        return this.carData.some(car => {
-          return car.brand === this.selectedBrand && car.model === model.name;
-        });
-      });
     }
-
   }
-
 };
 </script>
