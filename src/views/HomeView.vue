@@ -1,11 +1,113 @@
-<script setup>
-import TheWelcome from "../components/TheWelcome.vue";
-
-</script>
-
 <template>
+  <div class="ct-section-inner-wrap">
+    <h1>QuickLeasing</h1>
 
-  <main class="ct-section-inner-wrap">
-    <TheWelcome />
-  </main>
+    <div>
+      <h2>Find din næste bil herunder</h2>
+      <table>
+        <tr>
+          <th>Pris</th>
+          <th>Mærke</th>
+          <th>Model</th>
+        </tr>
+        <tr>
+          <td>
+            <select v-model="selectedPrice">
+              <option value="*">Alle</option>
+              <option value="1000-2000">1.000 - 2.000</option>
+              <option value="2000-3000">2.000 - 3.000</option>
+              <option value="3000-4000">3.000 - 4.000</option>
+              <option value="4000-5000">4.000 - 5.000</option>
+              <option value="5000+">3.000 - 4.000</option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option value="*">Alle</option>
+              <option v-for="brand in uniqueBrands" :key="brand.id" :value="brand.name">{{ brand.name }} ({{ brand.count }})</option>
+            </select>
+          </td>
+          <td>
+            <select>
+              <option value="*">Alle</option>
+              <option v-for="model in modelForBrand" :key="model.id" :value="model.name">{{ model.name }} ({{ model.count }})</option>
+            </select>
+          </td>
+          <td>
+            <button type="submit" id="queryCars">Vis biler</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </template>
+<script>
+export default {
+  name: "Forside",
+  data() {
+    return {
+      carData: [],
+      brandData: [],
+      modelData: [],
+      baseURL: import.meta.env.VITE_APP_CARS_URL,
+      currentURL: import.meta.env.VITE_APP_CARS_URL,
+      pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
+      readerAPI: import.meta.env.VITE_APP_READER_API,
+      selectedPrice: "*"
+    };
+  },
+  async created() {
+    await this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      this.carData = data.data;
+
+    },
+
+  },
+  computed: {
+        uniqueBrands() {
+            const brandCount = {};
+            this.carData.forEach(car => {
+                if (!brandCount[car.brand]) {
+                    brandCount[car.brand] = 1;
+                } else {
+                    brandCount[car.brand]++;
+                }
+            });
+
+            return Object.entries(brandCount).map(([name, count]) => ({
+                name,
+                count
+
+            }));
+        },
+         modelForBrand() {
+            const modelCount = {};
+            this.carData.forEach(car => {
+                if (!modelCount[car.model]) {
+                    modelCount[car.model] = 1;
+                } else {
+                    modelCount[car.model]++;
+                }
+            });
+
+            return Object.entries(modelCount).map(([name, count]) => ({
+                name,
+                count
+
+            }));
+        }
+    }
+
+};
+</script>
