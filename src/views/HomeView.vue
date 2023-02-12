@@ -18,16 +18,17 @@
               <option value="2000-3000">2.000 - 3.000</option>
               <option value="3000-4000">3.000 - 4.000</option>
               <option value="4000-5000">4.000 - 5.000</option>
-              <option value="5000+">3.000 - 4.000</option>
+              <option value="5000+">5000+</option>
             </select>
           </td>
           <td>
             <select v-model="selectedBrand">
               <option value="*">Alle</option>
-              <option v-for="brand in uniqueBrands" :key="brand.id" :value="brand.name">{{ brand.name }} ({{
+              <option v-for="brand in brandsForSelectedModel" :key="brand.id" :value="brand.name">{{ brand.name }} ({{
                 brand.count
               }})</option>
             </select>
+
           </td>
           <td>
             <select v-model="selectedModel">
@@ -38,7 +39,8 @@
             </select>
           </td>
           <td>
-            <button type="submit" id="queryCars">Vis biler</button>
+            <button type="submit" id="queryCars" @click="queryCars(selectedPrice, selectedBrand, selectedModel)">Vis
+              biler</button>
           </td>
         </tr>
       </table>
@@ -76,29 +78,64 @@ export default {
       });
       const data = await response.json();
       this.carData = data.data;
-
     },
-
+    queryCars(price, brand, model) {
+      console.log('Price:', price);
+      console.log('Brand:', brand);
+      console.log('Model:', model);
+    }
   },
   computed: {
-    uniqueBrands() {
-      const brandCount = {};
-      const filteredData = this.carData.filter(car => {
+    brandsForSelectedModel() {
+      const priceFilteredData = this.carData.filter(car => {
+        if (this.selectedPrice === "*") {
+          return true;
+        }
+        const [minPrice, maxPrice] = this.selectedPrice.split("-");
+        return car.base_maanedspris >= parseInt(minPrice) && car.base_maanedspris <= parseInt(maxPrice);
+      });
+
+      const brandFilteredData = priceFilteredData.filter(car => {
         return this.selectedModel === '*' || car.model === this.selectedModel;
       });
-      filteredData.forEach(car => {
+
+      const brandCount = {};
+      brandFilteredData.forEach(car => {
         if (!brandCount[car.brand]) {
           brandCount[car.brand] = 1;
         } else {
           brandCount[car.brand]++;
         }
       });
+
       return Object.entries(brandCount).map(([name, count]) => ({
         name,
         count
       }));
-    }
-    ,
+    },
+    uniqueBrands() {
+      const priceFilteredData = this.carData.filter(car => {
+        if (this.selectedPrice === "*") {
+          return true;
+        }
+        const [minPrice, maxPrice] = this.selectedPrice.split("-");
+        return car.base_maanedspris >= parseInt(minPrice) && car.base_maanedspris <= parseInt(maxPrice);
+      });
+
+      const brandCount = {};
+      priceFilteredData.forEach(car => {
+        if (!brandCount[car.brand]) {
+          brandCount[car.brand] = 1;
+        } else {
+          brandCount[car.brand]++;
+        }
+      });
+
+      return Object.entries(brandCount).map(([name, count]) => ({
+        name,
+        count
+      }));
+    },
     modelForBrand() {
       const brandFilteredData = this.carData.filter(car => {
         return this.selectedBrand === '*' || car.brand === this.selectedBrand;
@@ -119,21 +156,31 @@ export default {
       }));
     },
     filteredModels() {
-      if (this.selectedModel !== '*' && this.selectedBrand !== '*') {
-        return this.modelForBrand.filter(model => {
-          return this.carData.some(car => {
-            return car.brand === this.selectedBrand && car.model === this.selectedModel;
-          });
-        });
-      } else if (this.selectedBrand !== '*') {
-        return this.modelForBrand.filter(model => {
-          return this.carData.some(car => {
-            return car.brand === this.selectedBrand && car.model === model.name;
-          });
-        });
-      } else {
-        return this.modelForBrand;
-      }
+      const brandFilteredData = this.carData.filter(car => {
+        return this.selectedBrand === '*' || car.brand === this.selectedBrand;
+      });
+
+      const priceFilteredData = brandFilteredData.filter(car => {
+        if (this.selectedPrice === "*") {
+          return true;
+        }
+        const [minPrice, maxPrice] = this.selectedPrice.split("-");
+        return car.base_maanedspris >= parseInt(minPrice) && car.base_maanedspris <= parseInt(maxPrice);
+      });
+
+      const modelCount = {};
+      priceFilteredData.forEach(car => {
+        if (!modelCount[car.model]) {
+          modelCount[car.model] = 1;
+        } else {
+          modelCount[car.model]++;
+        }
+      });
+
+      return Object.entries(modelCount).map(([name, count]) => ({
+        name,
+        count
+      }));
     }
   }
 };
