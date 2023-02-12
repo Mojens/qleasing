@@ -5,8 +5,9 @@
         </div>
         <div>
             <h1>Query Parameters</h1>
-            <p>The value of 'param1' is {{ $route.query.brand}}</p>
-            <p>The value of 'param2' is {{ $route.query.model}}</p>
+            <p>The value of 'param1' is {{ $route.query.brand }}</p>
+            <p>The value of 'param2' is {{ $route.query.model }}</p>
+            <p>The value of 'param2' is {{ $route.query.price }}</p>
         </div>
         <br>
         <div id="filterPrice">
@@ -59,6 +60,9 @@ export default {
     data() {
         return {
             name: "QuickLeasing",
+            queryBrand: this.$route.query.brand,
+            queryModel: this.$route.query.model,
+            queryPrice: this.$route.query.price,
             carData: [],
             selectedBrands: [],
             originalData: [],
@@ -98,6 +102,9 @@ export default {
     },
     methods: {
         async fetchData() {
+            if (this.queryBrand !== '' && this.queryBrand !== '' && this.queryPrice !== '') {
+                console.log('brand', this.queryBrand);
+            }
             const response = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
