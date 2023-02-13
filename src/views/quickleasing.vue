@@ -392,7 +392,6 @@ export default {
                 label: `${model} (${modelCounts[model]})`,
             }));
         }
-
     }
 
 };
