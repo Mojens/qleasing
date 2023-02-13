@@ -91,9 +91,50 @@ import { RouterLink, RouterView } from "vue-router";
   <RouterView />
 </template>
 
+<style >
 
+.form-label{
+  background: white;
+  padding: var(--space-xl) var(--space-l) var(--space-xs) var(--space-l);
+}
+.vue-form {
+  padding: var(--space-s) var(--space-l);
 
-<style scoped>
+  background-color: #fff;
+}
+.custom__placeholder::-webkit-input-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder::-moz-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder:-ms-input-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder:-moz-placeholder {
+  font-size: var(--text-m);
+}
+/* Uppercase the input */
+.custom__input--uppercase{
+  text-transform: uppercase;
+}
+.custom__input--uppercase::-webkit-input-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase::-moz-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase:-ms-input-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase:-moz-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+
 .sub-links___J39c2 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -369,30 +410,5 @@ import { RouterLink, RouterView } from "vue-router";
 }
 
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
-button {
-  padding: 0;
-  background-color: unset;
-  font: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  border: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:visited {
-  color: inherit;
-}
 </style>

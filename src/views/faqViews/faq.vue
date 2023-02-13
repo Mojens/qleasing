@@ -442,30 +442,5 @@ export default {
   padding: 3rem 2rem;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
-p {
-  margin: 0;
-  min-height: 0.8rem;
-}
-
-p:not(:first-of-type) {
-  margin-top: 0.8rem;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:visited {
-  color: inherit;
-}
 </style>

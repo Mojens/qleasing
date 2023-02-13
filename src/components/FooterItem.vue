@@ -34,12 +34,12 @@
             target="_self"
             title="Samarbejdspartnere"
             >Samarbejdspartnere</RouterLink
-          ><a
+          ><RouterLink
             class="link___Zah3i link___394Eg"
-            href="/kontakt"
+            to="/kontakt"
             target="_self"
             title="Kontakt os"
-            >Kontakt os</a
+            >Kontakt os</RouterLink
           >
         </div>
         <div class="links___1GmQz">

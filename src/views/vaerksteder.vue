@@ -186,26 +186,7 @@ export default {
 
 </script>
 <style>
-@media (min-width: 1024px) {
-  .privatlivspolitik {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
 
-
-.helper-indent {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-@media screen and (max-width: 480px) {
-  .helper-indent {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-}
 
 .grid-row {
   display: block;
