@@ -18,7 +18,8 @@
     "dotenv-expand": "^10.0.0",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-select": "^3.20.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",

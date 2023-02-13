@@ -29,6 +29,11 @@
         </div>
         <br>
         <div>
+            <h3>Model</h3>
+            <v-select :options="modelOptions" v-model="selectedModel"></v-select>
+        </div>
+        <br>
+        <div>
             <h3>Udstyr</h3>
             <ul>
                 <li v-for="item in featureItems" :key="item.value" :data-value="item.value">
@@ -37,12 +42,14 @@
                 </li>
             </ul>
         </div>
+        <br>
         <div>
             <h3>Dæktype</h3>
             <ul>
-                <li v-for="tire in tireTypes" :key="tire.value" :data-value="tire.value">
-                    <input type="checkbox" />
-                    {{ tire.name }}
+                <li v-for="tire in tireTypes" :key="tire.value">
+                    <input type="checkbox" :value="tire.value" :checked="selectedTireTypes.includes(tire.value)"
+                        @click="handleCheckboxClickTireType(tire.value)" />
+                    {{ tire.name }} ({{ tire.count }})
                 </li>
             </ul>
         </div>
@@ -68,6 +75,9 @@ export default {
             checkBoxState: {},
             selectedFeatures: [],
             selectedPrice: '*',
+            models: [],
+            selectedModel: "",
+            selectedTireTypes: [],
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
                 { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -92,9 +102,14 @@ export default {
             ],
         };
     },
+    mounted() {
+        this.fetchModels();
+    },
     async created() {
         await this.fetchData();
         await this.fetchData2();
+        await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
+        this.fetchModels();
     },
     methods: {
         async fetchData() {
@@ -108,12 +123,10 @@ export default {
             const data = await response.json();
             this.carData = data.data;
             this.originalData = data.data;
-        },
+        }
+        ,
         async fetchData2() {
-            console.log("queryBrand:", this.queryBrand);
-            console.log("queryModel:", this.queryModel);
-            console.log("queryPrice1:", this.queryPrice1);
-            console.log("queryPrice2:", this.queryPrice2);
+
             if (this.queryBrand !== undefined || this.queryModel !== undefined || (this.queryPrice1 !== undefined && this.queryPrice2 !== undefined)) {
                 const priceRange = {
                     min: this.queryPrice1 !== "*" ? Number(this.queryPrice1) : Number.NEGATIVE_INFINITY,
@@ -147,6 +160,8 @@ export default {
                     // no filters, use original data
                     this.carData = this.originalData;
                 }
+            } else {
+                this.carData = this.originalData;
             }
         }
         ,
@@ -276,8 +291,77 @@ export default {
             } else {
                 this.carData = priceRange5000_plus;
             }
-        }
+        }, async handleCheckboxClickTireType(value) {
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const allData = data.data;
+            if (this.selectedTireTypes.includes(value)) {
+                this.selectedTireTypes = this.selectedTireTypes.filter(tire => tire !== value);
+                if (this.selectedTireTypes.length === 0) {
+                    this.carData = allData;
+                    return;
+                }
+            } else {
+                this.selectedTireTypes.push(value);
+            }
 
+            const filteredCars = [];
+            for (let i = 0; i < allData.length; i++) {
+                if (this.selectedTireTypes.includes(allData[i].daektype)) {
+                    filteredCars.push(allData[i]);
+                }
+            }
+            this.carData = Array.from(filteredCars);
+        }
+        ,
+
+        async updateTireTypeCounts() {
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const cars = data.data;
+            cars.forEach(car => {
+                if (car.daektype !== null) {
+                    const foundTireType = this.tireTypes.find(
+                        type => type.value === car.daektype
+                    );
+                    if (foundTireType) {
+                        foundTireType.count++;
+                    }
+                }
+            });
+        },
+        async fetchModels() {
+            try {
+                const response = await fetch(this.currentURL, {
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${this.readerAPI}`,
+                    },
+                });
+                const data = await response.json();
+                const cars = data.data;
+
+                // Use the map function to create an array of objects with 'label' keys
+                this.models = cars.map((car) => ({
+                    label: car.model,
+                }));
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
     },
     computed: {
@@ -295,6 +379,17 @@ export default {
                 name,
                 count
 
+            }));
+        },
+        modelOptions() {
+            const modelCounts = {};
+            this.originalData.forEach(car => {
+                const model = car.model;
+                modelCounts[model] = modelCounts[model] ? modelCounts[model] + 1 : 1;
+            });
+            return Object.keys(modelCounts).map(model => ({
+                value: model,
+                label: `${model} (${modelCounts[model]})`,
             }));
         }
     }
