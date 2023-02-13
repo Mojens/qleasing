@@ -30,7 +30,7 @@
         <br>
         <div>
             <h3>Model</h3>
-            <v-select :options="models" v-model="selectedModel"></v-select>
+            <v-select :options="modelOptions" v-model="selectedModel"></v-select>
         </div>
         <br>
         <div>
@@ -76,7 +76,7 @@ export default {
             selectedFeatures: [],
             selectedPrice: '*',
             models: [],
-            selectedModel: null,
+            selectedModel: "",
             selectedTireTypes: [],
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
@@ -103,12 +103,13 @@ export default {
         };
     },
     mounted() {
-    this.fetchModels();
-  },
+        this.fetchModels();
+    },
     async created() {
         await this.fetchData();
         await this.fetchData2();
         await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
+        this.fetchModels();
     },
     methods: {
         async fetchData() {
@@ -347,12 +348,16 @@ export default {
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${this.readerAPI}`
-                    }
+                        Authorization: `Bearer ${this.readerAPI}`,
+                    },
                 });
                 const data = await response.json();
                 const cars = data.data;
-                this.models = cars.map(car => car.model);
+
+                // Use the map function to create an array of objects with 'label' keys
+                this.models = cars.map((car) => ({
+                    label: car.model,
+                }));
             } catch (error) {
                 console.error(error);
             }
@@ -375,7 +380,19 @@ export default {
                 count
 
             }));
+        },
+        modelOptions() {
+            const modelCounts = {};
+            this.originalData.forEach(car => {
+                const model = car.model;
+                modelCounts[model] = modelCounts[model] ? modelCounts[model] + 1 : 1;
+            });
+            return Object.keys(modelCounts).map(model => ({
+                value: model,
+                label: `${model} (${modelCounts[model]})`,
+            }));
         }
+
     }
 
 };
