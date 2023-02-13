@@ -3,12 +3,6 @@
         <div v-if="carData">
             <h1 v-for="car in carData" :key="car.id">{{ car.brand }} - {{ car.model }}</h1>
         </div>
-        <div>
-            <h1>Query Parameters</h1>
-            <p>The value of 'param1' is {{ $route.query.brand }}</p>
-            <p>The value of 'param2' is {{ $route.query.model }}</p>
-            <p>The value of 'param2' is {{ $route.query.price }}</p>
-        </div>
         <br>
         <div id="filterPrice">
             <h3>pris pr.md.</h3>
@@ -62,7 +56,8 @@ export default {
             name: "QuickLeasing",
             queryBrand: this.$route.query.brand,
             queryModel: this.$route.query.model,
-            queryPrice: this.$route.query.price,
+            queryPrice1: this.$route.query.price1,
+            queryPrice2: this.$route.query.price2,
             carData: [],
             selectedBrands: [],
             originalData: [],
@@ -99,12 +94,10 @@ export default {
     },
     async created() {
         await this.fetchData();
+        await this.fetchData2();
     },
     methods: {
         async fetchData() {
-            if (this.queryBrand !== '' && this.queryBrand !== '' && this.queryPrice !== '') {
-                console.log('brand', this.queryBrand);
-            }
             const response = await fetch(this.currentURL, {
                 headers: {
                     Accept: "application/json",
@@ -116,6 +109,47 @@ export default {
             this.carData = data.data;
             this.originalData = data.data;
         },
+        async fetchData2() {
+            console.log("queryBrand:", this.queryBrand);
+            console.log("queryModel:", this.queryModel);
+            console.log("queryPrice1:", this.queryPrice1);
+            console.log("queryPrice2:", this.queryPrice2);
+            if (this.queryBrand !== undefined || this.queryModel !== undefined || (this.queryPrice1 !== undefined && this.queryPrice2 !== undefined)) {
+                const priceRange = {
+                    min: this.queryPrice1 !== "*" ? Number(this.queryPrice1) : Number.NEGATIVE_INFINITY,
+                    max: this.queryPrice2 !== "*" ? Number(this.queryPrice2) : Number.POSITIVE_INFINITY
+                };
+                if (this.queryBrand === "*" && this.queryModel === "*") {
+                    // filter by price range only
+                    this.carData = this.originalData.filter(car =>
+                        car.base_maanedspris >= priceRange.min && car.base_maanedspris <= priceRange.max
+                    );
+                } else if (this.queryBrand === "*" && this.queryModel !== "*") {
+                    // filter by model and price range
+                    this.carData = this.originalData.filter(car =>
+                        car.model === this.queryModel &&
+                        car.base_maanedspris >= priceRange.min && car.base_maanedspris <= priceRange.max
+                    );
+                } else if (this.queryBrand !== "*" && this.queryModel === "*") {
+                    // filter by brand and price range
+                    this.carData = this.originalData.filter(car =>
+                        car.brand === this.queryBrand &&
+                        car.base_maanedspris >= priceRange.min && car.base_maanedspris <= priceRange.max
+                    );
+                } else if (this.queryBrand !== "*" && this.queryModel !== "*") {
+                    // filter by brand, model, and price range
+                    this.carData = this.originalData.filter(car =>
+                        car.brand === this.queryBrand &&
+                        car.model === this.queryModel &&
+                        car.base_maanedspris >= priceRange.min && car.base_maanedspris <= priceRange.max
+                    );
+                } else {
+                    // no filters, use original data
+                    this.carData = this.originalData;
+                }
+            }
+        }
+        ,
         async handleCheckboxClick(value) {
             let filter = { brand: { _in: [value] } };
 
