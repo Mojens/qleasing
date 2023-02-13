@@ -29,6 +29,13 @@
         </div>
         <br>
         <div>
+            <h3>Model</h3>
+            <select>
+                
+            </select>
+        </div>
+        <br>
+        <div>
             <h3>Udstyr</h3>
             <ul>
                 <li v-for="item in featureItems" :key="item.value" :data-value="item.value">
@@ -37,6 +44,7 @@
                 </li>
             </ul>
         </div>
+        <br>
         <div>
             <h3>Dæktype</h3>
             <ul>
@@ -294,7 +302,6 @@ export default {
             const allData = data.data;
             if (this.selectedTireTypes.includes(value)) {
                 this.selectedTireTypes = this.selectedTireTypes.filter(tire => tire !== value);
-                // If no tire type is selected, use the original data
                 if (this.selectedTireTypes.length === 0) {
                     this.carData = allData;
                     return;
