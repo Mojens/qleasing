@@ -42,7 +42,7 @@
             <ul>
                 <li v-for="tire in tireTypes" :key="tire.value" :data-value="tire.value">
                     <input type="checkbox" />
-                    {{ tire.name }}
+                    {{ tire.name }} ({{ tire.count }})
                 </li>
             </ul>
         </div>
@@ -95,6 +95,7 @@ export default {
     async created() {
         await this.fetchData();
         await this.fetchData2();
+        await this.updateTireTypeCounts() ==  this.updateTireTypeCounts.bind(this);
     },
     methods: {
         async fetchData() {
@@ -108,7 +109,8 @@ export default {
             const data = await response.json();
             this.carData = data.data;
             this.originalData = data.data;
-        },
+        }
+        ,
         async fetchData2() {
             console.log("queryBrand:", this.queryBrand);
             console.log("queryModel:", this.queryModel);
@@ -147,6 +149,8 @@ export default {
                     // no filters, use original data
                     this.carData = this.originalData;
                 }
+            } else {
+                this.carData = this.originalData;
             }
         }
         ,
@@ -276,6 +280,27 @@ export default {
             } else {
                 this.carData = priceRange5000_plus;
             }
+        },
+        async updateTireTypeCounts() {
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const cars = data.data;
+            cars.forEach(car => {
+                if (car.daektype !== null) {
+                    const foundTireType = this.tireTypes.find(
+                        type => type.value === car.daektype
+                    );
+                    if (foundTireType) {
+                        foundTireType.count++;
+                    }
+                }
+            });
         }
 
 
