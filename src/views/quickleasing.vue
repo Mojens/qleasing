@@ -30,7 +30,7 @@
         <br>
         <div>
             <h3>Model</h3>
-            <v-select :options="options" v-model="selected" placeholder="Select an option" />
+            <v-select :options="models" v-model="selectedModel"></v-select>
         </div>
         <br>
         <div>
@@ -75,13 +75,9 @@ export default {
             checkBoxState: {},
             selectedFeatures: [],
             selectedPrice: '*',
+            models: [],
+            selectedModel: null,
             selectedTireTypes: [],
-            options: [
-                { label: 'Option 1', value: 'option1' },
-                { label: 'Option 2', value: 'option2' },
-                { label: 'Option 3', value: 'option3' }
-            ],
-            selected: '',
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
                 { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -106,6 +102,9 @@ export default {
             ],
         };
     },
+    mounted() {
+    this.fetchModels();
+  },
     async created() {
         await this.fetchData();
         await this.fetchData2();
@@ -126,10 +125,7 @@ export default {
         }
         ,
         async fetchData2() {
-            console.log("queryBrand:", this.queryBrand);
-            console.log("queryModel:", this.queryModel);
-            console.log("queryPrice1:", this.queryPrice1);
-            console.log("queryPrice2:", this.queryPrice2);
+
             if (this.queryBrand !== undefined || this.queryModel !== undefined || (this.queryPrice1 !== undefined && this.queryPrice2 !== undefined)) {
                 const priceRange = {
                     min: this.queryPrice1 !== "*" ? Number(this.queryPrice1) : Number.NEGATIVE_INFINITY,
@@ -323,6 +319,7 @@ export default {
             this.carData = Array.from(filteredCars);
         }
         ,
+
         async updateTireTypeCounts() {
             const response = await fetch(this.currentURL, {
                 headers: {
@@ -343,8 +340,23 @@ export default {
                     }
                 }
             });
+        },
+        async fetchModels() {
+            try {
+                const response = await fetch(this.currentURL, {
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${this.readerAPI}`
+                    }
+                });
+                const data = await response.json();
+                const cars = data.data;
+                this.models = cars.map(car => car.model);
+            } catch (error) {
+                console.error(error);
+            }
         }
-
 
     },
     computed: {
