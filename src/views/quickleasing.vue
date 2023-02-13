@@ -30,9 +30,7 @@
         <br>
         <div>
             <h3>Model</h3>
-            <select>
-                
-            </select>
+            <v-select :options="options" v-model="selected" placeholder="Select an option" />
         </div>
         <br>
         <div>
@@ -78,6 +76,12 @@ export default {
             selectedFeatures: [],
             selectedPrice: '*',
             selectedTireTypes: [],
+            options: [
+                { label: 'Option 1', value: 'option1' },
+                { label: 'Option 2', value: 'option2' },
+                { label: 'Option 3', value: 'option3' }
+            ],
+            selected: '',
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
                 { value: "fartpilot", name: "Fartpilot", count: 0 },
