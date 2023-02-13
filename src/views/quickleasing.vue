@@ -40,8 +40,9 @@
         <div>
             <h3>Dæktype</h3>
             <ul>
-                <li v-for="tire in tireTypes" :key="tire.value" :data-value="tire.value">
-                    <input type="checkbox" />
+                <li v-for="tire in tireTypes" :key="tire.value">
+                    <input type="checkbox" :value="tire.value" :checked="selectedTireTypes.includes(tire.value)"
+                        @click="handleCheckboxClickTireType(tire.value)" />
                     {{ tire.name }} ({{ tire.count }})
                 </li>
             </ul>
@@ -68,6 +69,7 @@ export default {
             checkBoxState: {},
             selectedFeatures: [],
             selectedPrice: '*',
+            selectedTireTypes: [],
             featureItems: [
                 { value: "airc", name: "Air Condition", count: 0 },
                 { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -95,7 +97,7 @@ export default {
     async created() {
         await this.fetchData();
         await this.fetchData2();
-        await this.updateTireTypeCounts() ==  this.updateTireTypeCounts.bind(this);
+        await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
     },
     methods: {
         async fetchData() {
@@ -280,7 +282,36 @@ export default {
             } else {
                 this.carData = priceRange5000_plus;
             }
-        },
+        }, async handleCheckboxClickTireType(value) {
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const allData = data.data;
+            if (this.selectedTireTypes.includes(value)) {
+                this.selectedTireTypes = this.selectedTireTypes.filter(tire => tire !== value);
+                // If no tire type is selected, use the original data
+                if (this.selectedTireTypes.length === 0) {
+                    this.carData = allData;
+                    return;
+                }
+            } else {
+                this.selectedTireTypes.push(value);
+            }
+
+            const filteredCars = [];
+            for (let i = 0; i < allData.length; i++) {
+                if (this.selectedTireTypes.includes(allData[i].daektype)) {
+                    filteredCars.push(allData[i]);
+                }
+            }
+            this.carData = Array.from(filteredCars);
+        }
+        ,
         async updateTireTypeCounts() {
             const response = await fetch(this.currentURL, {
                 headers: {
