@@ -4,6 +4,7 @@ import { plugin, defaultConfig } from '@formkit/vue'
 import { createFloatingLabelsPlugin } from '@formkit/addons'
 import '@formkit/addons/css/floatingLabels'
 
+
 import App from "./App.vue";
 import router from "./router";
 
@@ -26,6 +27,7 @@ app.use(
       })
     ]
   })
+
 );
 
 app.mount("#app");
