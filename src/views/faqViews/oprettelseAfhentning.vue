@@ -275,17 +275,12 @@ export default {
   margin: unset;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 button {
   padding: 0;
   background-color: unset;
   font: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+
   border: none;
 }
 

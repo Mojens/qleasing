@@ -1,3 +1,38 @@
+<script setup>
+const priceRanges = [
+  {
+    label: "All",
+    value: "*",
+    asset: "src/assets/price-range-all.png",
+  },
+  {
+    label: "1.000 - 2.000",
+    value: "1000-2000",
+    asset: "src/assets/price-range-all.png",
+  },
+  {
+    label: "2.000 - 3.000",
+    value: "2000-3000",
+    asset: "src/assets/price-range-all.png",
+  },
+  {
+    label: "3.000 - 4.000",
+    value: "3000-4000",
+    asset: "src/assets/price-range-all.png",
+  },
+  {
+    label: "4.000 - 5.000",
+    value: "4000-5000",
+    asset: "src/assets/price-range-all.png",
+  },
+  {
+    label: "5.000+",
+    value: "5000+",
+    asset: "src/assets/price-range-all.png",
+  },
+];
+</script>
+
 <template>
   <div>
     <div
@@ -54,81 +89,129 @@
                 ncgloadin=""
               >
                 <div class="spot-content">
-                  <header
-                    class="spot-content__header ng-star-inserted"
-                  ><h1
-                    class="spot-content__header--title ng-star-inserted"><span
-                    style="font-weight: 700;">Leasing på den nemme måde</span></h1></header>
-                </div>
-                <div class="searchFilter__container">
-                  <h2 class="pad-header--s">Find din næste bil herunder</h2>
-                  <table class="table__container">
-                    <thead>
-                    <tr class="table__tr">
-                      <th>Pris</th>
-                      <th>Mærke</th>
-                      <th>Model</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr class="table__tr">
-                      <td class="table__td">
-                        <select v-model="selectedPrice" class="searchFilter__select">
-                          <option value="*">Alle</option>
-                          <option value="1000-2000">1.000 - 2.000</option>
-                          <option value="2000-3000">2.000 - 3.000</option>
-                          <option value="3000-4000">3.000 - 4.000</option>
-                          <option value="4000-5000">4.000 - 5.000</option>
-                          <option value="5000+">5000+</option>
-                        </select>
-                      </td>
-                      <td class="table__td">
-                        <select v-model="selectedBrand" class="searchFilter__select">
-                          <option value="*">Alle</option>
-                          <option
-                            v-for="brand in brandsForSelectedModel"
-                            :key="brand.id"
-                            :value="brand.name"
-                          >
-                            {{ brand.name }} ({{ brand.count }})
-                          </option>
-                        </select>
-                      </td>
-                      <td class="table__td">
-                        <select v-model="selectedModel" class="searchFilter__select">
-                          <option value="*">Alle</option>
-                          <option
-                            v-for="model in filteredModels"
-                            :key="model.id"
-                            :value="model.name"
-                          >
-                            {{ model.name }} ({{ model.count }})
-                          </option>
-                        </select>
-                      </td>
-                      <td>
-                        <button
-                          class="btn--action"
-                          type="submit"
-                          id="queryCars"
-                          @click="queryCars(selectedPrice, selectedBrand, selectedModel)"
-                        >
-                          Vis biler
-                        </button>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <header class="spot-content__header ng-star-inserted">
+                    <h1 class="spot-content__header--title ng-star-inserted">
+                      <span style="font-weight: 700"
+                        >Leasing på den nemme måde</span
+                      >
+                    </h1>
+                  </header>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="searchFilter__container">
+        <h2 class="searchFilter__header pad-header--s">
+          Find din næste bil herunder
+        </h2>
+        <div class="search__container">
+          <div class="search__row grid--auto-2">
+            <!--
+
+
+             <select v-model="selectedPrice" class="searchFilter__select">
+               <option value="*">Alle</option>
+               <option value="1000-2000">1.000 - 2.000</option>
+               <option value="2000-3000">2.000 - 3.000</option>
+               <option value="3000-4000">3.000 - 4.000</option>
+               <option value="4000-5000">4.000 - 5.000</option>
+               <option value="5000+">5000+</option>
+             </select>
+
+
+           -->
+
+            <FormKit type="form" :actions="false" #default="{ value }">
+
+                <FormKit
+                  type="dropdown"
+                  name="selectedPrice"
+                  label="Price Range"
+                  :inner-class="{
+                    'searchFilter__select': true,
+                  }"
+                  :listbox-class="{
+                    'searchFilter__wrapper-options': true,
+                  }"
+                  :wrapper-class="{
+                    'searchFilter__wrapper': true,
+                  }"
+                  :dropdown-wrapper-class="{
+                    'searchFilter__dropdown-wrapper': true,
+                  }"
+                  placeholder="Choose a price range"
+                  :floating-label="false"
+                  v-model="selectedPrice"
+                  :options="priceRanges"
+
+                >
+                  <!-- OPTION SLOT -->
+                  <template #option="{ option }">
+                    <div class="formkit-option">
+                      <img class="no_styling" :src="option.asset" alt="optionImage" />
+                      <span class="select__options">{{ option.label }}</span>
+                    </div>
+                  </template>
+
+
+                  <!---->
+                  <!-- SELECTED OPTION SLOT -->
+                  <template #selection="{ option }">
+                    <div class="formkit-option">
+                      <img
+                        :src="option.asset"
+                        alt="optionAvatar"
+                      />
+                      <span>
+            {{ option.label }}
+          </span>
+                    </div>
+                  </template>
+                </FormKit>
+
+            </FormKit>
+
+            <div class="search__cell">
+              <select v-model="selectedBrand" class="searchFilter__select">
+                <option value="*">Alle</option>
+                <option
+                  v-for="brand in brandsForSelectedModel"
+                  :key="brand.id"
+                  :value="brand.name"
+                >
+                  {{ brand.name }} ({{ brand.count }})
+                </option>
+              </select>
+            </div>
+            <div class="search__cell">
+              <select v-model="selectedModel" class="searchFilter__select">
+                <option value="*">Alle</option>
+                <option
+                  v-for="model in filteredModels"
+                  :key="model.id"
+                  :value="model.name"
+                >
+                  {{ model.name }} ({{ model.count }})
+                </option>
+              </select>
+            </div>
+            <div class="search__cell">
+              <button
+                class="btn--action"
+                type="submit"
+                id="queryCars"
+                @click="queryCars(selectedPrice, selectedBrand, selectedModel)"
+              >
+                Vis biler
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
 </template>
 <script>
 export default {
@@ -291,22 +374,84 @@ export default {
 };
 </script>
 
-<style scoped>
-.table__container{
+<style >
+.select__options{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+.searchFilter__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+
+.searchFilter__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.searchFilter__wrapper {
+
+  margin-bottom: 200px;
+  background: rgba(255, 255, 255, 0);
+
+}
+.searchFilter__dropdown-wrapper{
+
+
+  min-width: 100%;
+  max-height: 400px!important;
+  background: white!important;
+  color: black;
+
+}
+
+.searchFilter__select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+
+}
+.searchFilter__wrapper-options {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.search__container {
 
 
 }
 
-.searchFilter__container{
+
+
+.search__cell {
+  margin-right: 20px;
 
 }
 
-.table__tr{
+
+
+
+.formkit-option {
+  display: flex;
+
+
 
 }
-
-.table__td{
+.formkit-option img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 
 }
-
 </style>
