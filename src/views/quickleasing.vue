@@ -30,7 +30,10 @@
         <br>
         <div>
             <h3>Model</h3>
-            <v-select :options="modelOptions" v-model="selectedModel"></v-select>
+            <select v-model="selectedModel">
+                <option v-for="option in modelOptions" :value="option">{{ option.label }}</option>
+            </select>
+
         </div>
         <br>
         <div>
@@ -354,7 +357,7 @@ export default {
                 const data = await response.json();
                 const cars = data.data;
 
-                // Use the map function to create an array of objects with 'label' keys
+
                 this.models = cars.map((car) => ({
                     label: car.model,
                 }));
