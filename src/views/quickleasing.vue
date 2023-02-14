@@ -30,7 +30,11 @@
         <br>
         <div>
             <h3>Model</h3>
-            <v-select :options="modelOptions" v-model="selectedModel"></v-select>
+            <select v-model="selectedModel" @change="modelChange()" >
+                <option value="*">Alle modeller</option>
+                <option v-for="option in modelOptions" :value="option">{{ option.label }}</option>
+            </select>
+
         </div>
         <br>
         <div>
@@ -354,13 +358,35 @@ export default {
                 const data = await response.json();
                 const cars = data.data;
 
-                // Use the map function to create an array of objects with 'label' keys
+
                 this.models = cars.map((car) => ({
                     label: car.model,
                 }));
             } catch (error) {
                 console.error(error);
             }
+        },
+        async modelChange(){
+            const response = await fetch(this.currentURL, {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.readerAPI}`
+                }
+            });
+            const data = await response.json();
+            const allData = data.data;
+            if (this.selectedModel === '*') {
+                this.carData = data.data
+                return;
+            }
+            const filteredCars = [];
+            for (let i = 0; i < allData.length; i++) {
+                if (this.selectedModel.value === allData[i].model) {
+                    filteredCars.push(allData[i]);
+                }
+            }
+            this.carData = Array.from(filteredCars);
         }
 
     },
