@@ -3,7 +3,7 @@ import { createPinia } from "pinia";
 import { plugin, defaultConfig } from '@formkit/vue'
 import { createFloatingLabelsPlugin } from '@formkit/addons'
 import '@formkit/addons/css/floatingLabels'
-
+import { createProPlugin, inputs } from '@formkit/pro'
 
 import App from "./App.vue";
 import router from "./router";
@@ -12,7 +12,7 @@ import "./assets/main.css";
 import { telephone,email,avatarMan,arrowDown,open } from "@formkit/icons";
 
 const app = createApp(App);
-
+const pro = createProPlugin('fk-548a6cb3d', inputs)
 app.use(createPinia());
 app.use(router);
 app.use(
@@ -21,11 +21,10 @@ app.use(
     theme: 'genesis',
     icons: { telephone, email, avatarMan,arrowDown,open,heart: '<svg...' },
     iconLoaderUrl: (iconName) => `https://...`,
-    plugins: [
+    plugins: [pro,
       createFloatingLabelsPlugin({
         useAsDefault: true,
-      })
-    ]
+      })]
   })
 
 );
