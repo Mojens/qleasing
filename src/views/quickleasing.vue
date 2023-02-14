@@ -31,6 +31,7 @@
         <div>
             <h3>Model</h3>
             <select v-model="selectedModel">
+                <option value="" disabled>Vælg en model</option>
                 <option v-for="option in modelOptions" :value="option">{{ option.label }}</option>
             </select>
 
