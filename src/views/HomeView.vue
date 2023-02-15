@@ -1,37 +1,5 @@
 <script setup>
 import SearchFilter from "@/components/SearchFilter.vue";
-const priceRanges = [
-  {
-    label: "Alle",
-    value: "*",
-    asset: "src/assets/price-range-all.png",
-  },
-  {
-    label: "1.000 - 2.000",
-    value: "1000-2000",
-    asset: "src/assets/price-range-all.png",
-  },
-  {
-    label: "2.000 - 3.000",
-    value: "2000-3000",
-    asset: "src/assets/price-range-all.png",
-  },
-  {
-    label: "3.000 - 4.000",
-    value: "3000-4000",
-    asset: "src/assets/price-range-all.png",
-  },
-  {
-    label: "4.000 - 5.000",
-    value: "4000-5000",
-    asset: "src/assets/price-range-all.png",
-  },
-  {
-    label: "5.000+",
-    value: "5000+",
-    asset: "src/assets/price-range-all.png",
-  },
-];
 
 </script>
 
@@ -60,8 +28,8 @@ const priceRanges = [
 
                   <header class="spot-content__header ng-star-inserted"><!----><h2
                     class="spot-content__header--title ng-star-inserted"><span
-                    style="opacity: 0">Find din næste leasing bil </span></h2>
-                    <h1>Find din næste leasing bil </h1>
+                    style="opacity: 0">Quickleasing - Find brugt leasingsbil</span></h2>
+                    <h1>Nemt, Enkelt og </h1> <span class="dynamic__word">{{changingWord}}</span>
                     <SearchFilter/>
                     <!----><!----><!----><!----><!----></header><!----></div>
 
@@ -79,6 +47,8 @@ export default {
   name: "Forside",
   data() {
     return {
+      words: ['billigt', 'pålidligt', 'hurtigt', 'Smart'], // list of words to rotate through
+      changingWordIndex: 0,
       carData: [],
       brandData: [],
       modelData: [],
@@ -128,6 +98,9 @@ export default {
     },
   },
   computed: {
+    changingWord() {
+      return this.words[this.changingWordIndex];
+    },
     brandsForSelectedModel() {
       const priceFilteredData = this.carData.filter((car) => {
         if (this.selectedPrice === "*") {
@@ -267,10 +240,24 @@ export default {
       return modelOptions;
     },
   },
+  mounted() {
+    setInterval(() => {
+      this.changingWordIndex = (this.changingWordIndex + 1) % this.words.length;
+    }, 2000);
+  }
 };
 </script>
 
 <style>
+.dynamic__word{
+  color: var(--secondary);
+  font-size: var(--h1);
+  font-weight: 700;
+
+  text-transform: capitalize;
+
+
+}
 @media screen and (min-width: 1024px){
   .container.is-fullwidth__searchFilter {
     padding: 0 30.5rem;
@@ -537,8 +524,7 @@ export default {
   .uk-tile {
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 70px;
-    padding-bottom: 70px;
+
   }
 }
 .uk-tile > :last-child {

@@ -35,7 +35,7 @@ const priceRanges = [
 </script>
 
 <template>
-  <div class="uk-grid-margin uk-container">
+  <div class="uk-container">
     <div
       class="frontpage-search tm-grid-expand uk-child-width-1-1 uk-grid uk-grid-stack"
 
@@ -54,15 +54,8 @@ const priceRanges = [
                 :inner-class="{
         searchFilter__select: true,
       }"
-                :listbox-class="{
-        'searchFilter__wrapper-options': true,
-      }"
-                :wrapper-class="{
-        searchFilter__wrapper: true,
-      }"
-                :dropdown-wrapper-class="{
-        'searchFilter__dropdown-wrapper': true,
-      }"
+                label-class="center--left options__label"
+
                 placeholder="Choose a price range"
                 :floating-label="false"
                 v-model="selectedPrice"
@@ -84,6 +77,7 @@ const priceRanges = [
                 :inner-class="{
         searchFilter__select: true,
       }"
+                label-class="center--left options__label"
                 placeholder="Alle"
                 :options="brandsForSelectedModel"
                 v-model="selectedBrand"
@@ -106,6 +100,7 @@ const priceRanges = [
                 :inner-class="{
         searchFilter__select: true,
       }"
+                label-class="center--left options__label"
                 placeholder="Alle"
                 :options="filteredModels"
                 v-model="selectedModel"
@@ -346,7 +341,15 @@ export default {
   object-fit: scale-down;
   /* object position */
   object-position: center;
+}
 
+.options__label{
+  color: var(--secondary);
+  margin-bottom: 0.2rem;
+  font-size: var(--h4);
+  font-weight: 900;
+  font-family: Rubik,sans-serif;
+  text-transform: uppercase;
 
 }
 
