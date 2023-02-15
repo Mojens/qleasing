@@ -3,73 +3,71 @@ const priceRanges = [
   {
     label: "Alle",
     value: "*",
-    asset: "src/assets/images/price-range-all.png",
+    asset: "src/assets/images/price-range-all.png"
   },
   {
     label: "1.000 - 2.000",
     value: "1000-2000",
-    asset: "src/assets/images/1dollarsign.png",
+    asset: "src/assets/images/1dollarsign.png"
   },
   {
     label: "2.000 - 3.000",
     value: "2000-3000",
-    asset: "src/assets/images/2dollarsign.png",
+    asset: "src/assets/images/2dollarsign.png"
   },
   {
     label: "3.000 - 4.000",
     value: "3000-4000",
-    asset: "src/assets/images/3dollarsign.png",
+    asset: "src/assets/images/3dollarsign.png"
   },
   {
     label: "4.000 - 5.000",
     value: "4000-5000",
-    asset: "src/assets/images/4dollarsign.png",
+    asset: "src/assets/images/4dollarsign.png"
   },
   {
     label: "5.000+",
     value: "5000+",
-    asset: "src/assets/images/5dollarsign.png",
-  },
+    asset: "src/assets/images/5dollarsign.png"
+  }
 ];
 </script>
 
 <template>
-  <div class="uk-container">
-    <div
-      class="frontpage-search tm-grid-expand uk-child-width-1-1 uk-grid uk-grid-stack"
-    >
-      <div class="uk-grid-item-match uk-first-column">
-        <div class="uk-tile-primary uk-tile uk-flex uk-flex-bottom">
-          <div class="uk-panel uk-width-1-1">
-            <div class="h--3 text--bold pad-header--s">
+  <div class="center--all">
+    <div class="">
+      <div class="">
+        <div class="">
+          <div class="">
+            <div class="h--3 text--bold pad-header--s" style="opacity: 0.7">
               Find din næste bil herunder:
             </div>
             <FormKit
-              type="form"
-              :actions="false"
               #default="{ value }"
+              :actions="false"
               form-class="grid--auto-3"
+              type="form"
             >
               <FormKit
-                type="dropdown"
-                name="selectedPrice"
-                label="Pris"
+                v-model="selectedPrice"
+                :floating-label="false"
                 :inner-class="{
                   searchFilter__select: true,
                 }"
-                label-class="center--left options__label"
-                placeholder="Choose a price range"
-                :floating-label="false"
-                v-model="selectedPrice"
                 :options="priceRanges"
+                label="Pris"
+                label-class="center--left options__label"
+                name="selectedPrice"
+                placeholder="Choose a price range"
+                type="dropdown"
               >
                 <!-- OPTION SLOT -->
                 <template #option="{ option }">
                   <div class="formkit-option">
                     <img
-                      class="no_styling"
                       :src="option.asset"
                       alt="optionImage"
+                      class="no_styling"
                     />
                     <span class="select__options">{{ option.label }}</span>
                   </div>
@@ -77,41 +75,41 @@ const priceRanges = [
               </FormKit>
 
               <FormKit
-                type="dropdown"
-                name="selectedBrand"
-                label="Mærke"
+                v-model="selectedBrand"
                 :inner-class="{
                   searchFilter__select: true,
                 }"
-                label-class="center--left options__label"
-                placeholder="Alle"
                 :options="brandsForSelectedModel"
-                v-model="selectedBrand"
+                label="Mærke"
+                label-class="center--left options__label"
+                name="selectedBrand"
+                placeholder="Alle"
                 prefix-icon="search"
+                type="dropdown"
               >
                 <template #option="{ option }">
                   <div class="formkit-option">
                     <img
-                      class="no_styling"
                       v-if="option.value !== '*'"
                       :src="option.logo"
                       alt="optionImage"
+                      class="no_styling"
                     />
                     <span>{{ option.label }}</span>
                   </div>
                 </template>
               </FormKit>
               <FormKit
-                type="dropdown"
-                name="selectedModel"
-                label="Model"
+                v-model="selectedModel"
                 :inner-class="{
                   searchFilter__select: true,
                 }"
-                label-class="center--left options__label"
-                placeholder="Alle"
                 :options="filteredModels"
-                v-model="selectedModel"
+                label="Model"
+                label-class="center--left options__label"
+                name="selectedModel"
+                placeholder="Alle"
+                type="dropdown"
               >
                 <template #option="{ option }">
                   <div class="formkit-option">
@@ -153,7 +151,7 @@ export default {
       readerAPI: import.meta.env.VITE_APP_READER_API,
       selectedPrice: "*",
       selectedBrand: "*",
-      selectedModel: "*",
+      selectedModel: "*"
     };
   },
 
@@ -166,8 +164,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       this.carData = data.data;
@@ -190,7 +188,7 @@ export default {
         let url = `/quickleasing?price1=${price1}&price2=${price2}&brand=${brand}&model=${model}`;
         this.$router.push(url);
       }
-    },
+    }
   },
   computed: {
     brandsForSelectedModel() {
@@ -226,8 +224,8 @@ export default {
           label: `Alle${displayCount ? ` (${totalCars})` : ""}`,
           value: "*",
           count: displayCount ? totalCars : null,
-          logo: "check",
-        },
+          logo: "check"
+        }
       ];
 
       brandOptions.push(
@@ -235,7 +233,7 @@ export default {
           label: `${name} (${count})`,
           value: name,
           logo: `https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/${name}-logo.png`.toLocaleLowerCase(),
-          count: displayCount ? count : null,
+          count: displayCount ? count : null
         }))
       );
 
@@ -264,7 +262,7 @@ export default {
 
       return Object.entries(brandCount).map(([name, count]) => ({
         name,
-        count,
+        count
       }));
     },
     modelForBrand() {
@@ -283,7 +281,7 @@ export default {
 
       return Object.entries(modelCount).map(([name, count]) => ({
         name,
-        count,
+        count
       }));
     },
     filteredModels() {
@@ -319,8 +317,8 @@ export default {
         {
           label: `Alle${displayCount ? ` (${totalCars})` : ""}`,
           value: "*",
-          count: displayCount ? totalCars : null,
-        },
+          count: displayCount ? totalCars : null
+        }
       ];
 
       modelOptions.push(
@@ -328,13 +326,13 @@ export default {
           label: `${name} (${count})`,
           value: name,
           asset: name,
-          count: displayCount ? count : null,
+          count: displayCount ? count : null
         }))
       );
 
       return modelOptions;
-    },
-  },
+    }
+  }
 };
 </script>
 
