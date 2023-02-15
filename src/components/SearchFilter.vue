@@ -1,151 +1,5 @@
 <script setup>
-const carBrands = [
-  {
-    label: "Audi",
-    value: "audi",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/audi-logo.png",
-  },
-  {
-    label: "BMW",
-    value: "bmw",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/bmw-logo.png",
-  },
-  {
-    label: "Citroen",
-    value: "citroen",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/citroen-logo.png",
-  },
-  {
-    label: "Dacia",
-    value: "dacia",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/dacia-logo.png",
-  },
-  {
-    label: "Fiat",
-    value: "fiat",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/fiat-logo.png",
-  },
-  {
-    label: "Ford",
-    value: "ford",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/ford-logo.png",
-  },
-  {
-    label: "Ferrari",
-    value: "ferrari",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/ferrari-logo.png",
-  },
-  {
-    label: "Honda",
-    value: "honda",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/honda-logo.png",
-  },
-  {
-    label: "Hyundai",
-    value: "hyundai",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/hyundai-logo.png",
-  },
-  {
-    label: "Jaguar",
-    value: "jaguar",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/jaguar-logo.png",
-  },
-  {
-    label: "Jeep",
-    value: "jeep",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/jeep-logo.png",
-  },
-  {
-    label: "Kia",
-    value: "kia",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/kia-logo.png",
-  },
-  {
-    label: "Land Rover",
-    value: "land rover",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/land-rover-logo.png",
-  },
-  {
-    label: "Mazda",
-    value: "mazda",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/mazda-logo.png",
-  },
-  {
-    label: "Mercedes",
-    value: "mercedes",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/mercedes-logo.png",
-  },
-  {
-    label: "Mini",
-    value: "mini",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/mini-logo.png",
-  },
-  {
-    label: "Mitsubishi",
-    value: "mitsubishi",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/mitsubishi-logo.png",
-  },
-  {
-    label: "Nissan",
-    value: "nissan",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/nissan-logo.png",
-  },
-  {
-    label: "Opel",
-    value: "opel",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/opel-logo.png",
-  },
-  {
-    label: "Peugeot",
-    value: "peugeot",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/peugeot-logo.png",
-  },
-  {
-    label: "Porsche",
-    value: "porsche",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/porsche-logo.png",
-  },
-  {
-    label: "Renault",
-    value: "renault",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/renault-logo.png",
-  },
-  {
-    label: "Saab",
-    value: "saab",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/saab-logo.png",
-  },
-  {
-    label: "Skoda",
-    value: "skoda",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/skoda-logo.png",
-  },
-  {
-    label: "Subaru",
-    value: "subaru",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/subaru-logo.png",
-  },
-  {
-    label: "Suzuki",
-    value: "suzuki",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/suzuki-logo.png",
-  },
-  {
-    label: "Toyota",
-    value: "toyota",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/toyota-logo.png",
-  },
-  {
-    label: "Volkswagen",
-    value: "volkswagen",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/volkswagen-logo.png",
-  },
-  {
-    label: "Volvo",
-    value: "volvo",
-    logo: "https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/volvo-logo.png",
-  },
-];
+
 const priceRanges = [
   {
     label: "Alle",
@@ -155,27 +9,27 @@ const priceRanges = [
   {
     label: "1.000 - 2.000",
     value: "1000-2000",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/1dollarsign.png",
   },
   {
     label: "2.000 - 3.000",
     value: "2000-3000",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/2dollarsign.png",
   },
   {
     label: "3.000 - 4.000",
     value: "3000-4000",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/3dollarsign.png",
   },
   {
     label: "4.000 - 5.000",
     value: "4000-5000",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/4dollarsign.png",
   },
   {
     label: "5.000+",
     value: "5000+",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/5dollarsign.png",
   },
 ];
 </script>
@@ -233,9 +87,14 @@ const priceRanges = [
                 placeholder="Alle"
                 :options="brandsForSelectedModel"
                 v-model="selectedBrand"
+                prefix-icon="search"
               >
                 <template #option="{ option }">
                   <div class="formkit-option">
+                    <img class="no_styling"
+                         v-if="option.value !== '*'"
+                      :src="option.logo"
+                         alt="optionImage" />
                     <span>{{ option.label }}</span>
                   </div>
                 </template>
@@ -368,6 +227,7 @@ export default {
           label: `Alle${displayCount ? ` (${totalCars})` : ""}`,
           value: "*",
           count: displayCount ? totalCars : null,
+          logo: 'check',
         },
       ];
 
@@ -375,6 +235,7 @@ export default {
         ...Object.entries(brandCount).map(([name, count]) => ({
           label: `${name} (${count})`,
           value: name,
+          logo: `https://s3.amazonaws.com/cdn.formk.it/example-assets/car-brands/${name}-logo.png`.toLocaleLowerCase(),
           count: displayCount ? count : null,
         }))
       );
@@ -467,6 +328,7 @@ export default {
         ...Object.entries(modelCount).map(([name, count]) => ({
           label: `${name} (${count})`,
           value: name,
+          asset: name,
           count: displayCount ? count : null,
         }))
       );
@@ -479,6 +341,13 @@ export default {
 
 <style >
 
+.no_styling{
+  /* object fit */
+  object-fit: scale-down;
+  /* object position */
+  object-position: center;
 
+
+}
 
 </style>
