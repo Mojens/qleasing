@@ -1,44 +1,58 @@
 <script setup>
 import SearchFilter from "@/components/SearchFilter.vue";
-
 </script>
 
 <template>
   <div>
     <div
       id="section-0-row-0"
-      class="grid__row grid__theme section grid__theme--dark grid__theme--middle grid__theme--is-first grid__theme--top-padding ng-star-inserted">
+      class="grid__row grid__theme section grid__theme--dark grid__theme--middle grid__theme--is-first grid__theme--top-padding ng-star-inserted"
+    >
       <div class="container">
-        <div id="spot-0000" class="ng-star-inserted" genericspot=""></div>
-        <div class="container is-full animate-load ng-star-inserted" ncgloadin="">
+        <div id="spot-0000" class="ng-star-inserted"></div>
+        <div class="container is-full animate-load ng-star-inserted">
           <div class="container is-fullwidth__searchFilter">
-            <div class="hero-spot"><!---->
-              <picture  class="hero-spot__media-container--searchFilter ng-star-inserted">
-
-                <img style="height: 100%; width: 100%; object-fit: cover; object-position: center center; opacity: 0.6;"
+            <div class="hero-spot">
+              <!---->
+              <picture
+                class="hero-spot__media-container--searchFilter ng-star-inserted"
+              >
+                <img
+                  style="
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    object-position: center center;
+                    opacity: 0.6;
+                  "
                   alt="Afhængertræk af bilen er en god ide "
                   class="ng-star-inserted"
-                  src="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1550&amp;heightratio=0.4285703125&amp;mode=crop">
-                <!----><!----></picture>
+                  src="https://admin.hyundai.dk/media/n50fxf4r/provekor.jpg?width=1550&amp;heightratio=0.4285703125&amp;mode=crop"
+                />
+                <!----><!----></picture
+              >
 
               <!----><!----><!---->
-              <div class="hero-spot__content  ng-star-inserted" ncgloadin="">
-
+              <div class="hero-spot__content ng-star-inserted">
                 <div class="spot-content">
-
-                  <header class="spot-content__header ng-star-inserted"><!----><h2
-                    class="spot-content__header--title ng-star-inserted"><span
-                    style="opacity: 0">Quickleasing - Find brugt leasingsbil</span></h2>
-                    <h1>Nemt, Enkelt og </h1> <span class="dynamic__word">{{changingWord}}</span>
-                    <SearchFilter/>
-                    <!----><!----><!----><!----><!----></header><!----></div>
-
-                <!----></div>       <!----><!---->  </div>
+                  <header class="spot-content__header ng-star-inserted">
+                    <!---->
+                    <h2 class="spot-content__header--title ng-star-inserted">
+                      <span style="opacity: 0"
+                        >Quickleasing - Find brugt leasingsbil</span
+                      >
+                    </h2>
+                    <h1>Nemt, Enkelt og</h1>
+                    <span class="dynamic__word">{{ changingWord }}</span>
+                    <SearchFilter />
+                  </header>
+                </div>
+              </div>
+            </div>
           </div>
-        </div><!----><!----><!----><!----></div>
-      <!----></div><!---->
-
-
+        </div>
+      </div>
+    </div>
   </div>
   <footer-item />
 </template>
@@ -47,7 +61,7 @@ export default {
   name: "Forside",
   data() {
     return {
-      words: ['billigt', 'pålidligt', 'hurtigt', 'Smart'], // list of words to rotate through
+      words: ["billigt", "pålidligt", "hurtigt", "Smart"], // list of words to rotate through
       changingWordIndex: 0,
       carData: [],
       brandData: [],
@@ -244,26 +258,24 @@ export default {
     setInterval(() => {
       this.changingWordIndex = (this.changingWordIndex + 1) % this.words.length;
     }, 2000);
-  }
+  },
 };
 </script>
 
 <style>
-.dynamic__word{
+.dynamic__word {
   color: var(--secondary);
   font-size: var(--h1);
   font-weight: 700;
 
   text-transform: capitalize;
-
-
 }
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
   .container.is-fullwidth__searchFilter {
     padding: 0 30.5rem;
   }
 }
-.hero-spot__media-container--searchFilter{
+.hero-spot__media-container--searchFilter {
   position: relative;
   grid-row-start: 1;
   grid-row-end: 3;
@@ -343,7 +355,7 @@ export default {
     background-size: cover !important;
   }
   .frontpage-search .uk-tile-primary {
-    background-color: rgb(4 0 0 / 0%)
+    background-color: rgb(4 0 0 / 0%);
   }
   form#search-filter-form-183 ul {
     padding-left: 0px;
@@ -524,7 +536,6 @@ export default {
   .uk-tile {
     padding-left: 40px;
     padding-right: 40px;
-
   }
 }
 .uk-tile > :last-child {

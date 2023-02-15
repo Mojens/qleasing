@@ -1,5 +1,4 @@
 <script setup>
-
 const priceRanges = [
   {
     label: "Alle",
@@ -38,7 +37,6 @@ const priceRanges = [
   <div class="uk-container">
     <div
       class="frontpage-search tm-grid-expand uk-child-width-1-1 uk-grid uk-grid-stack"
-
     >
       <div class="uk-grid-item-match uk-first-column">
         <div class="uk-tile-primary uk-tile uk-flex uk-flex-bottom">
@@ -46,16 +44,20 @@ const priceRanges = [
             <div class="h--3 text--bold pad-header--s">
               Find din næste bil herunder:
             </div>
-            <FormKit type="form" :actions="false" #default="{ value }" form-class="grid--auto-3">
+            <FormKit
+              type="form"
+              :actions="false"
+              #default="{ value }"
+              form-class="grid--auto-3"
+            >
               <FormKit
                 type="dropdown"
                 name="selectedPrice"
                 label="Pris"
                 :inner-class="{
-        searchFilter__select: true,
-      }"
+                  searchFilter__select: true,
+                }"
                 label-class="center--left options__label"
-
                 placeholder="Choose a price range"
                 :floating-label="false"
                 v-model="selectedPrice"
@@ -64,7 +66,11 @@ const priceRanges = [
                 <!-- OPTION SLOT -->
                 <template #option="{ option }">
                   <div class="formkit-option">
-                    <img class="no_styling" :src="option.asset" alt="optionImage" />
+                    <img
+                      class="no_styling"
+                      :src="option.asset"
+                      alt="optionImage"
+                    />
                     <span class="select__options">{{ option.label }}</span>
                   </div>
                 </template>
@@ -75,8 +81,8 @@ const priceRanges = [
                 name="selectedBrand"
                 label="Mærke"
                 :inner-class="{
-        searchFilter__select: true,
-      }"
+                  searchFilter__select: true,
+                }"
                 label-class="center--left options__label"
                 placeholder="Alle"
                 :options="brandsForSelectedModel"
@@ -85,10 +91,12 @@ const priceRanges = [
               >
                 <template #option="{ option }">
                   <div class="formkit-option">
-                    <img class="no_styling"
-                         v-if="option.value !== '*'"
+                    <img
+                      class="no_styling"
+                      v-if="option.value !== '*'"
                       :src="option.logo"
-                         alt="optionImage" />
+                      alt="optionImage"
+                    />
                     <span>{{ option.label }}</span>
                   </div>
                 </template>
@@ -98,8 +106,8 @@ const priceRanges = [
                 name="selectedModel"
                 label="Model"
                 :inner-class="{
-        searchFilter__select: true,
-      }"
+                  searchFilter__select: true,
+                }"
                 label-class="center--left options__label"
                 placeholder="Alle"
                 :options="filteredModels"
@@ -118,12 +126,8 @@ const priceRanges = [
                   class="button-primary"
                   type="submit"
                   @click="
-                            queryCars(
-                              selectedPrice,
-                              selectedBrand,
-                              selectedModel
-                            )
-                          "
+                    queryCars(selectedPrice, selectedBrand, selectedModel)
+                  "
                 >
                   Vis biler
                 </button>
@@ -222,7 +226,7 @@ export default {
           label: `Alle${displayCount ? ` (${totalCars})` : ""}`,
           value: "*",
           count: displayCount ? totalCars : null,
-          logo: 'check',
+          logo: "check",
         },
       ];
 
@@ -334,23 +338,20 @@ export default {
 };
 </script>
 
-<style >
-
-.no_styling{
+<style>
+.no_styling {
   /* object fit */
   object-fit: scale-down;
   /* object position */
   object-position: center;
 }
 
-.options__label{
+.options__label {
   color: var(--secondary);
   margin-bottom: 0.2rem;
   font-size: var(--h4);
   font-weight: 900;
-  font-family: Rubik,sans-serif;
+  font-family: Rubik, sans-serif;
   text-transform: uppercase;
-
 }
-
 </style>
