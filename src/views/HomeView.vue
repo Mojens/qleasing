@@ -1,5 +1,6 @@
 <script setup>
 import SearchFilter from "@/components/SearchFilter.vue";
+import newestAddedCars from "@/components/newestAddedCars.vue";
 import FooterItem from "@/components/FooterItem.vue";
 </script>
 

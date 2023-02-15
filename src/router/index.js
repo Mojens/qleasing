@@ -35,7 +35,7 @@ import parkeringView from "@/views/faqViews/parkering.vue";
 import indholdPaaSidenView from "@/views/vilkaarViews/indholdPaaSiden.vue";
 import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue";
 import kontaktosView from "@/views/kontaktos.vue";
-import autocompleteTest from "@/views/autocompleteTest.vue";
+//import autocompleteTest from "@/views/autocompleteTest.vue";
 
 
 const router = createRouter({
@@ -221,12 +221,13 @@ const router = createRouter({
       name: "/kontakt",
       component: kontaktosView,
     },
+    /*
     {
       path: "/autocomplete",
       name: "/autocomplete",
       component: autocompleteTest,
     }
-
+*/
   ],
 });
 
