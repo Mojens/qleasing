@@ -3,32 +3,32 @@ const priceRanges = [
   {
     label: "Alle",
     value: "*",
-    asset: "src/assets/price-range-all.png",
+    asset: "src/assets/images/price-range-all.png",
   },
   {
     label: "1.000 - 2.000",
     value: "1000-2000",
-    asset: "src/assets/1dollarsign.png",
+    asset: "src/assets/images/1dollarsign.png",
   },
   {
     label: "2.000 - 3.000",
     value: "2000-3000",
-    asset: "src/assets/2dollarsign.png",
+    asset: "src/assets/images/2dollarsign.png",
   },
   {
     label: "3.000 - 4.000",
     value: "3000-4000",
-    asset: "src/assets/3dollarsign.png",
+    asset: "src/assets/images/3dollarsign.png",
   },
   {
     label: "4.000 - 5.000",
     value: "4000-5000",
-    asset: "src/assets/4dollarsign.png",
+    asset: "src/assets/images/4dollarsign.png",
   },
   {
     label: "5.000+",
     value: "5000+",
-    asset: "src/assets/5dollarsign.png",
+    asset: "src/assets/images/5dollarsign.png",
   },
 ];
 </script>

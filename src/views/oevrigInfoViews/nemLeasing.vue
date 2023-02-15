@@ -964,15 +964,6 @@ export default {
   padding: 0 1.5rem;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-p {
-  margin: 0;
-  min-height: 0.8rem;
-}
 
 p:not(:first-of-type) {
   margin-top: 0.8rem;
