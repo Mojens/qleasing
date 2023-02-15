@@ -1,5 +1,6 @@
 <script setup>
 import SearchFilter from "@/components/SearchFilter.vue";
+import newestAddedCars from "@/components/newestAddedCars.vue";
 </script>
 
 <template>
@@ -53,6 +54,7 @@ import SearchFilter from "@/components/SearchFilter.vue";
         </div>
       </div>
     </div>
+    <newestAddedCars/>
   </div>
   <footer-item />
 </template>
