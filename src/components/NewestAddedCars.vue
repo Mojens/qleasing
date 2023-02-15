@@ -14,7 +14,7 @@
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
                 <img class="image___3UcXF"
-                     :src="'https://qgyn2z3q.directus.app/assets/' +`${car.car_images[0]}`"
+                     :src="imageURL"
                      :alt="`${car.brand} - ${car.model}`"
                      :title="`${car.brand} - ${car.model}`" />
               </div>
@@ -242,7 +242,10 @@ export default {
   data() {
     return {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
-      readerAPI: import.meta.env.VITE_APP_READER_API,
+      pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
+      fileURL:    import.meta.env.VITE_APP_FILE_ID_URL,
+      readerAPI:  import.meta.env.VITE_APP_READER_API,
+      imageURL:   "",
       carData: [],
     };
   },
@@ -259,6 +262,18 @@ export default {
     this.carData.sort(
       (a, b) => new Date(b.oprettet_dato) - new Date(a.oprettet_dato)
     );
+    this.carData.forEach(async (car) => {
+      let imageURLTOADD =`?filter[cars_id][_eq]=${car.id}`
+      const response = await fetch(this.fileURL+imageURLTOADD, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.readerAPI}`,
+      },
+    });
+    const data = await response.json();
+    this.imageURL = this.pictureURL + data.data[0].directus_files_id
+    });
   },
   computed: {
     displayedCars() {
