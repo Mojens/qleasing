@@ -16,6 +16,7 @@
     "@formkit/pro": "^1.0.0-alpha.65",
     "@formkit/themes": "^1.0.0-beta.16-be1c30f",
     "@formkit/vue": "^1.0.0-beta.15",
+    "@vueform/slider": "2.1.6",
     "dotenv": "^16.0.3",
     "dotenv-expand": "^10.0.0",
     "pinia": "^2.0.28",

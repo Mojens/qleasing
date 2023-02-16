@@ -52,6 +52,9 @@ select {
   border: 0;
 }
 :root {
+  --slider-connect-bg: var(--action);
+  --slider-tooltip-bg: var(--action);
+  --slider-handle-ring-color: var(--action);
   --action: #1892c3;
   --action-hover: #1ca9e0;
   --action-ultra-light: #e8f7fc;
