@@ -13,7 +13,7 @@
                 </div>
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF" :src.sync="carImageURL(car)" :alt="`${car.brand} - ${car.model}`"
+                <img class="image___3UcXF" :src="carImages[car.id]" :alt="`${car.brand} - ${car.model}`"
                   :title="`${car.brand} - ${car.model}`" />
               </div>
 
@@ -137,6 +137,7 @@ export default {
       readerAPI: import.meta.env.VITE_APP_READER_API,
       imageUrl: null,
       carData: [],
+      carImages: {},
       featureItems: [
         { value: "airc", name: "Air Condition", count: 0 },
         { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -188,6 +189,8 @@ export default {
       if (data.data.length === 0) {
         return "https://via.placeholder.com/300x200";
       } else {
+        console.log(this.pictureURL + data.data[0].directus_files_id)
+        this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
         return this.pictureURL + data.data[0].directus_files_id;
       }
     },
@@ -217,18 +220,6 @@ export default {
       // Kun for at vise 8 biler
       return this.carData.slice(0, 8);
     },
-    carImageURL() {
-      return async (car) => {
-        try {
-          const url = await this.imageURL(car);
-          console.log("URL: ", url);
-          return url;
-        } catch (error) {
-          console.error(error);
-          return "https://via.placeholder.com/300x200";
-        }
-      }
-    }
   },
 };
 </script>
