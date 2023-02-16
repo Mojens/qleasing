@@ -190,8 +190,8 @@ export default {
       const data = await response.json();
       if (data.data.length === 0) {
         // Hvis der ikke er et billede, så sæt et placeholder billede
-        this.carImages[car.id] = "https://via.placeholder.com/300x200";
-        return "https://via.placeholder.com/300x200";
+        return this.carImages[car.id] = "https://www.willow-car-sales.co.uk/wp-content/uploads/2019/11/placeholder-image-1.jpg";
+
       } else {
         this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
         return this.pictureURL + data.data[0].directus_files_id;
