@@ -102,7 +102,7 @@
                   </div>
                 </div>
                 <div class="highlighted-features___34JSO">
-                  Kommer bl.a. med <span class="highlighted-feature___2Z8Zj">{{ car.udstyr }}</span>
+                  <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
                 <button
                   class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
@@ -126,6 +126,8 @@
 </template>
 
 <script>
+
+
 export default {
   data() {
     return {
@@ -135,6 +137,24 @@ export default {
       readerAPI: import.meta.env.VITE_APP_READER_API,
       imageUrl: null,
       carData: [],
+      featureItems: [
+        { value: "airc", name: "Air Condition", count: 0 },
+        { value: "fartpilot", name: "Fartpilot", count: 0 },
+        { value: "bluetooth", name: "Bluetooth", count: 0 },
+        { value: "sædevarme", name: "Sædevarme", count: 0 },
+        { value: "varmeirat", name: "Rat-varme", count: 0 },
+        { value: "parkeringssensorfor", name: "Parkeringssensor (foran)", count: 0 },
+        { value: "parkeringssensorbag", name: "Parkeringssensor (bag)", count: 0 },
+        { value: "navigation", name: "Navigation", count: 0 },
+        { value: "autgeartiptronic", name: "Automatgear", count: 0 },
+        { value: "Anhaengertraek", name: "Anhængertræk", count: 0 },
+        { value: "4xelruder", name: "4 elruder", count: 0 },
+        { value: "5personers", name: "5 personers", count: 0 },
+        { value: "bakkamera", name: "Bakkamera", count: 0 },
+        { value: "applecarplay", name: "Apple CarPlay", count: 0 },
+        { value: "androidauto", name: "Android Auto", count: 0 },
+      ],
+      udstyr: []
     };
   },
   async mounted() {
@@ -150,7 +170,10 @@ export default {
     this.carData.sort(
       (a, b) => new Date(b.oprettet_dato) - new Date(a.oprettet_dato)
     );
+
   },
+
+
   methods: {
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
@@ -167,11 +190,29 @@ export default {
       } else {
         return this.pictureURL + data.data[0].directus_files_id;
       }
-    }
+    },
+    getFeatures(car) {
+      if (!car.Udstyr) {
+        return "Ingen udstyr";
+      }
 
+      const featureNames = car.Udstyr.map((feature) => {
+        const matchingFeature = this.featureItems.find((item) => item.value === feature);
+        return matchingFeature ? matchingFeature.name : null;
+      }).filter(Boolean);
+
+      const featuresToShow = featureNames.slice(0, 3);
+
+      if (featuresToShow.length > 0) {
+        return "Kommer bl.a. med " + featuresToShow.join(", ");
+      } else {
+        return "Ingen udstyr";
+      }
+    }
 
   },
   computed: {
+
     displayedCars() {
       // Kun for at vise 8 biler
       return this.carData.slice(0, 8);
