@@ -55,7 +55,7 @@ import FooterItem from "@/components/FooterItem.vue";
         </div>
       </div>
     </div>
-    <div class="ct-section-inner-wrap">
+    <div class="">
       <NewestAddedCars />
     </div>
     <div class="container___1BnaH">

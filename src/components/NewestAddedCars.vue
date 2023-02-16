@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Se de biler, der lige er ankommet til Quickleasing</h1>
+    <h1 class="pad-header--m center--all">Se de biler, der lige er ankommet til Quickleasing</h1>
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3">
         <div class="list___1c2KX">
@@ -115,13 +115,6 @@
       </div>
     </div>
 
-    <!-- START DYNAMIC CARS -->
-    <ul>
-      <li v-for="car in displayedCars" :key="car.id">
-        {{ car.brand }} - {{ car.model }}
-      </li>
-    </ul>
-    <!-- END DYNAMIC CARS -->
 </div>
 </template>
 
