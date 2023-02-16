@@ -102,7 +102,7 @@
                   </div>
                 </div>
                 <div class="highlighted-features___34JSO">
-                  Kommer bl.a. med <span class="highlighted-feature___2Z8Zj">{{ car.udstyr }}</span>
+                  <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
                 <button
                   class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
@@ -227,6 +227,7 @@ export default {
       checkBoxState: {},
       selectedFeatures: [],
       selectedPrice: '*',
+      udstyr: [],
       models: [],
       selectedModel: "",
       selectedTireTypes: [],
@@ -280,6 +281,24 @@ export default {
       this.carData.forEach((car) => {
       this.carImages[car.id] = this.imageURL(car);
     });
+    },
+    getFeatures(car) {
+      if (!car.Udstyr) {
+        return "Ingen udstyr";
+      }
+
+      const featureNames = car.Udstyr.map((feature) => {
+        const matchingFeature = this.featureItems.find((item) => item.value === feature);
+        return matchingFeature ? matchingFeature.name : null;
+      }).filter(Boolean);
+
+      const featuresToShow = featureNames.slice(0, 3);
+
+      if (featuresToShow.length > 0) {
+        return "Kommer bl.a. med " + featuresToShow.join(", ");
+      } else {
+        return "Ingen udstyr";
+      }
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
