@@ -127,7 +127,6 @@ export default {
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
       readerAPI: import.meta.env.VITE_APP_READER_API,
-      imageUrl: null,
       carData: [],
       carImages: {},
       featureItems: [

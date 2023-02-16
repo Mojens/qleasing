@@ -1,108 +1,63 @@
 
 <template>
-
   <div class="filtered__cars-container">
 
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
-        <div class="list___1c2KX" >
-          <div class="product___3vmta"  v-for="car in carData" :key="car.id">
+        <div class="list___1c2KX">
+          <div class="product___3vmta" v-for="car in carData" :key="car.id">
             <div class="product-card___2naPO has-cta___1N-4L">
               <div class="label-wrap___2_2TG">
 
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
-                  fra {{car.base_udbetaling}} kr i udbetaling
+                  fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF"
-                     :src="imageURL"
-                     :alt="`${car.brand} - ${car.model}`"
-                     :title="`${car.brand} - ${car.model}`" />
+                <img class="image___3UcXF" :src="carImages[car.id]" :alt="`${car.brand} - ${car.model}`"
+                  :title="`${car.brand} - ${car.model}`" />
               </div>
               <div class="content___2i8ss">
                 <div class="title___3jeSd">
                   <div class="name___3OMhd">{{ car.brand }} - {{ car.model }}</div>
                   <div class="price___1hgWK">
-                    Abonnement fra<span class="value___3qMAh">{{car.base_maanedspris}}</span
-                  >kr./md.
+                    Abonnement fra<span class="value___3qMAh">{{ car.base_maanedspris }}</span>kr./md.
                   </div>
 
                 </div>
-                <div
-                  class="technical-details___2buqo technical-details___2vodE"
-                >
+                <div class="technical-details___2buqo technical-details___2vodE">
                   <div class="details-group___19Kyu">
-                    <div
-                      class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0"
-                    >
-                      <svg
-                        class="icon___2OPTw"
-                        width="40px"
-                        height="40px"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                      >
-                        <g
-                          transform="translate(4.000000, 4.000000)"
-                          stroke="#444444"
-                          stroke-width="2"
-                          fill="none"
-                        >
-                          <circle
-                            id="Oval"
-                            cx="16.5"
-                            cy="16.5"
-                            r="16.5"
-                          ></circle>
+                    <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(4.000000, 4.000000)" stroke="#444444" stroke-width="2" fill="none">
+                          <circle id="Oval" cx="16.5" cy="16.5" r="16.5"></circle>
                           <line x1="10" y1="8.5" x2="10" y2="24.5"></line>
                           <line x1="17" y1="8.5" x2="17" y2="24.5"></line>
                           <line x1="24" y1="8.5" x2="24" y2="16.5"></line>
                           <line x1="10.5" y1="17" x2="23.5" y2="17"></line>
                         </g>
                       </svg>
-                      <div class="title___3rl0o">{{car.gear_type}}</div>
+                      <div class="title___3rl0o">{{ car.gear_type }}</div>
                     </div>
-                    <div
-                      class="detail___22pEp detail___3AT8g small-size___1i0G0"
-                    >
-                      <svg
-                        class="icon___2OPTw"
-                        width="40px"
-                        height="40px"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                      >
-                        <g
-                          transform="translate(6.000000, 6.000000)"
-                          stroke="#444444"
-                          stroke-width="2"
-                          fill="none"
-                        >
+                    <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(6.000000, 6.000000)" stroke="#444444" stroke-width="2" fill="none">
                           <path
-                            d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z"
-                          ></path>
+                            d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z">
+                          </path>
                           <line x1="15" y1="13" x2="0" y2="28"></line>
                         </g>
                       </svg>
                       <div class="title___3rl0o">
                         <div class="emissions___3B8H6">
-                          <span>CO<sub>2</sub></span
-                          >&nbsp;{{car.co2}} g/km
-                          <div
-                            class="energy-class___BHiLA energy-class___3KEQh"
-                          >
-                            <span style="background-color: rgb(190, 214, 47)"
-                            >A<sup>+</sup></span
-                            ><span
-                            class="arrow-right___1p9wE"
-                            style="border-left-color: rgb(190, 214, 47)"
-                          ></span>
+                          <span>CO<sub>2</sub></span>&nbsp;{{ car.co2 }} g/km
+                          <div class="energy-class___BHiLA energy-class___3KEQh">
+                            <span style="background-color: rgb(190, 214, 47)">A<sup>+</sup></span><span
+                              class="arrow-right___1p9wE" style="border-left-color: rgb(190, 214, 47)"></span>
                             <div class="shadow___2ZdD4">
-                              <span></span
-                              ><span class="arrow-right___1p9wE"></span>
+                              <span></span><span class="arrow-right___1p9wE"></span>
                             </div>
                           </div>
                         </div>
@@ -110,103 +65,36 @@
                     </div>
                   </div>
                   <div class="details-group___19Kyu">
-                    <div
-                      class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0"
-                    >
-                      <svg
-                        class="icon___2OPTw"
-                        width="40px"
-                        height="40px"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                      >
-                        <g
-                          fill="none"
-                          transform="translate(6.000000, 3.000000)"
-                        >
+                    <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g fill="none" transform="translate(6.000000, 3.000000)">
                           <path
                             d="M22,34 L0,34 L0,3.43077895 C0,1.53841053 1.53894737,0.000357894737 3.43042105,0.000357894737 L18.5686842,0.0695789474 C20.4601579,0.0695789474 22,1.60763158 22,3.5 L22,34 Z"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></path>
-                          <polygon
-                            stroke="#444444"
-                            stroke-width="2"
-                            points="4 18 18 18 18 5 4 5"
-                          ></polygon>
+                            stroke="#444444" stroke-width="2"></path>
+                          <polygon stroke="#444444" stroke-width="2" points="4 18 18 18 18 5 4 5"></polygon>
                           <path
                             d="M25,3 L29,9 L29,29 C29,30.1045695 28.1045695,31 27,31 C25.8954305,31 25,30.1045695 25,29 L25,22 C25,20.8954305 24.1045695,20 23,20 L22,20 L22,20"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></path>
+                            stroke="#444444" stroke-width="2"></path>
                           <path
                             d="M29.5,11 L25.5938579,3.62583158 L25.7211053,8.722 C25.7211053,9.98 26.742,11 28,11 L29.5,11 Z"
-                            fill="#444444"
-                          ></path>
+                            fill="#444444"></path>
                         </g>
                       </svg>
-                      <div class="title___3rl0o">{{car.braendstof}}</div>
+                      <div class="title___3rl0o">{{ car.braendstof }}</div>
                     </div>
-                    <div
-                      class="detail___22pEp detail___3AT8g small-size___1i0G0"
-                    >
-                      <svg
-                        class="icon___2OPTw"
-                        width="40px"
-                        height="40px"
-                        viewBox="0 0 40 40"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                      >
-                        <g
-                          transform="translate(1.000000, 6.000000)"
-                          fill="none"
-                        >
-                          <line
-                            x1="6"
-                            y1="28"
-                            x2="15"
-                            y2="0"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></line>
-                          <line
-                            x1="27"
-                            y1="0"
-                            x2="36"
-                            y2="28"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></line>
-                          <line
-                            x1="21"
-                            y1="3"
-                            x2="21"
-                            y2="6"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></line>
-                          <line
-                            x1="21"
-                            y1="11"
-                            x2="21"
-                            y2="15"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></line>
-                          <line
-                            x1="21"
-                            y1="20"
-                            x2="21"
-                            y2="25"
-                            stroke="#444444"
-                            stroke-width="2"
-                          ></line>
+                    <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(1.000000, 6.000000)" fill="none">
+                          <line x1="6" y1="28" x2="15" y2="0" stroke="#444444" stroke-width="2"></line>
+                          <line x1="27" y1="0" x2="36" y2="28" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="3" x2="21" y2="6" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="11" x2="21" y2="15" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="20" x2="21" y2="25" stroke="#444444" stroke-width="2"></line>
                           <path
                             d="M4,10.1992 C5.8125,10.1992 7.75,8.9169 7.75,6.70209 C7.75,4.66209 4,0.87354 4,0.87354 C4,0.87354 0.25,4.66209 0.25,6.70209 C0.25,8.9169 2.1875,10.1992 4,10.1992 Z"
-                            fill="#444444"
-                          ></path>
+                            fill="#444444"></path>
                         </g>
                       </svg>
                       <div class="title___3rl0o">{{ car.kilometerprliter }}</div>
@@ -214,12 +102,10 @@
                   </div>
                 </div>
                 <div class="highlighted-features___34JSO">
-                  Kommer bl.a. med <span class="highlighted-feature___2Z8Zj"
-                >{{car.udstyr}}</span>
+                  Kommer bl.a. med <span class="highlighted-feature___2Z8Zj">{{ car.udstyr }}</span>
                 </div>
                 <button
-                  class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q"
-                >
+                  class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
                   Vælg bil
                 </button>
               </div>
@@ -231,46 +117,38 @@
 
 
 
-<!-- START NEW FILTER -->
+    <!-- START NEW FILTER -->
 
     <div class="filter__container">
       <div class="filter__inner-wrapper">
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
-          <Slider
-            v-model="priceRange.value"
-            :min="1000"
-            :max="5000"
-            :step="100"
-            :tooltips="true"
-            :range="true"
-            :format="value => `${value} kr.`"
-            @change="priceChange"
-          ></Slider>
+          <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
+            :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
         <!--
-            <div id="filterPrice">
-              <h3>pris pr.md.</h3>
-              <select v-model="selectedPrice" @change="priceChange">
-                <option value="*">Alle</option>
-                <option value="1000-2000">1.000 - 2.000</option>
-                <option value="2000-3000">2.000 - 3.000</option>
-                <option value="3000-4000">3.000 - 4.000</option>
-                <option value="4000-5000">4.000 - 5.000</option>
-                <option value="5000+">3.000 - 4.000</option>
-              </select>
+              <div id="filterPrice">
+                <h3>pris pr.md.</h3>
+                <select v-model="selectedPrice" @change="priceChange">
+                  <option value="*">Alle</option>
+                  <option value="1000-2000">1.000 - 2.000</option>
+                  <option value="2000-3000">2.000 - 3.000</option>
+                  <option value="3000-4000">3.000 - 4.000</option>
+                  <option value="4000-5000">4.000 - 5.000</option>
+                  <option value="5000+">3.000 - 4.000</option>
+                </select>
 
-            </div>
-        -->
+              </div>
+          -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul list--none" style="list-style: none">
             <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
               <label class="container">
-                <input class="filter__checkbox checkbox" type="checkbox" :value="brand.name" :checked="selectedBrands.includes(brand.name)"
-                       @click="handleCheckboxClick(brand.name)" />
+                <input class="filter__checkbox checkbox" type="checkbox" :value="brand.name"
+                  :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
                 {{ brand.name }} ({{ brand.count }})
                 <span class="checkmark"></span>
               </label>
@@ -281,7 +159,7 @@
 
         <div class="filter__model">
           <h3 class="filter__header pad-header--m">Model</h3>
-          <select class="filter__select" v-model="selectedModel" @change="modelChange()" >
+          <select class="filter__select" v-model="selectedModel" @change="modelChange()">
             <option class="filter__option-all" value="*">Alle modeller</option>
             <option class="filter__option" v-for="option in modelOptions" :value="option">{{ option.label }}</option>
           </select>
@@ -294,10 +172,10 @@
 
             <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
               <label class="container">
-              <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
-              {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
-              <span class="checkmark"></span>
-            </label>
+                <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
+                {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
+                <span class="checkmark"></span>
+              </label>
             </li>
           </ul>
         </div>
@@ -307,17 +185,17 @@
           <ul class="filter__ul">
             <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
               <label class="container">
-              <input class="filter__checkbox" type="checkbox" :value="tire.value" :checked="selectedTireTypes.includes(tire.value)"
-                     @click="handleCheckboxClickTireType(tire.value)" />
-              {{ tire.name }} ({{ tire.count }})
-              <span class="checkmark"></span>
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
+                {{ tire.name }} ({{ tire.count }})
+                <span class="checkmark"></span>
               </label>
             </li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script >
@@ -327,7 +205,7 @@ export default {
   components: {
     Slider,
   },
-  data()  {
+  data() {
     return {
       name: "QuickLeasing",
       priceRange: {
@@ -337,12 +215,14 @@ export default {
       queryModel: this.$route.query.model,
       queryPrice1: this.$route.query.price1,
       queryPrice2: this.$route.query.price2,
+      carImages: {},
       carData: [],
       selectedBrands: [],
       originalData: [],
       baseURL: import.meta.env.VITE_APP_CARS_URL,
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
+      fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
       readerAPI: import.meta.env.VITE_APP_READER_API,
       checkBoxState: {},
       selectedFeatures: [],
@@ -397,8 +277,29 @@ export default {
       const data = await response.json();
       this.carData = data.data;
       this.originalData = data.data;
-    }
-    ,
+      this.carData.forEach((car) => {
+      this.carImages[car.id] = this.imageURL(car);
+    });
+    },
+    async imageURL(car) {
+      let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
+      const response = await fetch(this.fileURL + imageURLTOADD, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`,
+        },
+      });
+      const data = await response.json();
+      if (data.data.length === 0) {
+        // Hvis der ikke er et billede, så sæt et placeholder billede
+        return this.carImages[car.id] = "https://qgyn2z3q.directus.app/assets/7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80";
+
+      } else {
+        this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
+        return this.pictureURL + data.data[0].directus_files_id;
+      }
+    },
     async fetchData2() {
 
       if (this.queryBrand !== undefined || this.queryModel !== undefined || (this.queryPrice1 !== undefined && this.queryPrice2 !== undefined)) {
@@ -612,7 +513,7 @@ export default {
         console.error(error);
       }
     },
-    async modelChange(){
+    async modelChange() {
       const response = await fetch(this.currentURL, {
         headers: {
           Accept: "application/json",
@@ -670,16 +571,11 @@ export default {
 };
 </script>
 
-<style src="@vueform/slider/themes/default.css">
-
-</style>
+<style src="@vueform/slider/themes/default.css"></style>
 <style>
+.products___1WcE3 {}
 
-.products___1WcE3{
-
-}
-
-.filtered__cars-container{
+.filtered__cars-container {
   display: flex;
   flex-direction: row-reverse;
   margin-top: var(--section-space-s);
@@ -696,10 +592,12 @@ export default {
   margin-left: var(--section-space-xl);
   background-color: #F1F1F1;
 }
+
 .main-flow___Sjg41 {
   flex: 1;
 
 }
+
 .filter__inner-wrapper {
   display: flex;
   flex-direction: column;
@@ -723,9 +621,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.filter__price {
-
-}
+.filter__price {}
 
 .filter__brand,
 .filter__model,
@@ -804,12 +700,12 @@ export default {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container:hover input~.checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container input:checked~.checkmark {
   background-color: var(--action);
 }
 
@@ -821,7 +717,7 @@ export default {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container input:checked~.checkmark:after {
   display: block;
 }
 
