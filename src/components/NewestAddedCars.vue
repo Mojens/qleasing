@@ -181,7 +181,7 @@ export default {
       const data = await response.json();
       if (data.data.length === 0) {
         // Hvis der ikke er et billede, så sæt et placeholder billede
-        return this.carImages[car.id] = "https://qgyn2z3q.directus.app/assets/7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80";
+        return this.carImages[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
 
       } else {
         this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
