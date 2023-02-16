@@ -171,7 +171,9 @@ export default {
     this.carData.sort(
       (a, b) => new Date(b.oprettet_dato) - new Date(a.oprettet_dato)
     );
-
+    this.carData.forEach((car) => {
+      this.carImages[car.id] = this.imageURL(car);
+    });
   },
 
 
@@ -189,7 +191,6 @@ export default {
       if (data.data.length === 0) {
         return "https://via.placeholder.com/300x200";
       } else {
-        console.log(this.pictureURL + data.data[0].directus_files_id)
         this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
         return this.pictureURL + data.data[0].directus_files_id;
       }
