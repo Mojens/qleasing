@@ -104,10 +104,12 @@
                 <div class="highlighted-features___34JSO">
                   <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
+                <RouterLink :to="`/quickleasing/${car.id}`">
                 <button
                   class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
                   Vælg bil
                 </button>
+                </RouterLink>
               </div>
             </div>
           </div>

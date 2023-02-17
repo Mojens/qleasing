@@ -14,7 +14,7 @@ import { RouterLink, RouterView } from "vue-router";
           <div class="navigation-item___21XPw menu-item___2UedM"><a class="link___1tInP"
               href="https://bilabonnement.dk/" target="_blank" title="Bilabonnement">Bilabonnement</a>
           </div>
-          <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/quickleasing" 
+          <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/quickleasing"
           :to="{ name: 'quickleasing', query: { brand: '' } },{ name: 'quickleasing', query: { model: '' } },{ name: 'quickleasing', query: { pris1: '' } },{ name: 'quickleasing', query: { pris2: '' } }">
           <a class="link___1tInP"
               target="_self" title="Quickleasing">Quickleasing</a>

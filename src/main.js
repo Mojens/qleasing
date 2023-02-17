@@ -2,11 +2,11 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { plugin, defaultConfig } from '@formkit/vue'
 import { createProPlugin, inputs } from '@formkit/pro'
-import { createFloatingLabelsPlugin } from '@formkit/addons'
+import { createFloatingLabelsPlugin,createMultiStepPlugin } from '@formkit/addons'
 import '@formkit/addons/css/floatingLabels'
 import '@formkit/pro/genesis'
 import '@formkit/themes/genesis'
-
+import '@formkit/addons/css/multistep'
 
 import App from "./App.vue";
 import router from "./router";
@@ -27,7 +27,7 @@ app.use(
 
     icons: { telephone, email, avatarMan,arrowDown,open,heart: '<svg...' },
     iconLoaderUrl: (iconName) => `https://...`,
-    plugins: [pro,
+    plugins: [pro,createMultiStepPlugin(),
       createFloatingLabelsPlugin({
         useAsDefault: true,
       })]

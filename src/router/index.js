@@ -35,6 +35,8 @@ import parkeringView from "@/views/faqViews/parkering.vue";
 import indholdPaaSidenView from "@/views/vilkaarViews/indholdPaaSiden.vue";
 import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue";
 import kontaktosView from "@/views/kontaktos.vue";
+import SpecificCar from "@/views/SpecificCar.vue";
+
 
 
 
@@ -46,6 +48,7 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
+
     {
       path: "/privatlivspolitik",
       name: "privatlivspolitik",
@@ -221,13 +224,14 @@ const router = createRouter({
       name: "/kontakt",
       component: kontaktosView,
     },
-    /*
     {
-      path: "/autocomplete",
-      name: "/autocomplete",
-      component: autocompleteTest,
-    }
-*/
+      path: "/quickleasing/:id",
+      name: "SpecificCar",
+      component: () => import("../views/SpecificCar.vue"),
+      props: true,
+
+    },
+
   ],
 });
 
