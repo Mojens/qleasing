@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <h3 class="pad-header--xs">Tilvag</h3>
+    <h3 class="pad-header--xs">Tilvalg</h3>
   </div>
   <FormKit
     type="checkbox"
