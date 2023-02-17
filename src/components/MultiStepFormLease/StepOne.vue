@@ -8,6 +8,7 @@
     label="Afleveringsforsikring"
     name="afleveringsforsikring"
     label-class="add__price-forsikring add__price"
+    wrapper-class="form__wrapper-input"
     help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
   >
     <template #label="{ id, label, help, classes }">
@@ -32,6 +33,7 @@
     name="lavSelvrisiko"
     help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
     label-class="add__price-selv add__price"
+    wrapper-class="form__wrapper-input"
   >
     <template #label="{ id, label, help, classes }">
       <label :class="classes.label" :for="id"
@@ -53,6 +55,7 @@
     label="Viking Vejhjælp "
     name="vikingVejhjaelp"
     help="Ved køb af Viking Vejhjælp, er du dækket for skader på bilen ved aflevering."
+    wrapper-class="form__wrapper-input"
     label-class="add__price-vej add__price"
   >
     <template #label="{ id, label, help, classes }">
@@ -74,6 +77,7 @@
     type="checkbox"
     label="Komplet sæt vinterhjul"
     label-class="add__price-hjul add__price"
+    wrapper-class="form__wrapper-input"
     name="kompletSaetVinterhjul"
     help="Ved køb af Komplet sæt vinterhjul, er du dækket for skader på bilen ved aflevering."
   >
@@ -98,6 +102,14 @@
 
 <script></script>
 <style>
+[data-checked]  {
+  background-color: #f8f6f6;
+  color: black;
+}
+.form__wrapper-input{
+  padding: 0 10px;
+}
+
 .formkit-tooltip-inner {
   display: none;
   position: absolute;
