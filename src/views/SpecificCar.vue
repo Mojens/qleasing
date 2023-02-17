@@ -762,7 +762,7 @@ onMounted(() => {
                     </p>
                   </div>
                 </div>
-                <div class="content___2Jovb" v-else>
+                <div class="form__wrapper" v-else>
                   <!-- content 2 -->
 
                   <!-- START MULTI FORM  -->

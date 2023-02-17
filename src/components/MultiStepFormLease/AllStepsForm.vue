@@ -17,7 +17,8 @@ export default defineComponent({
       'multiform__wrapper': true,
     }">
 
-      <FormKit type="step" label="1. Valg af Forsikring" >
+      <FormKit type="step" label="1. Valg af Forsikring" help="222">
+
 
         <StepOne />
 
@@ -43,7 +44,9 @@ export default defineComponent({
 
 <style>
 
-
+.form__wrapper{
+  padding: var(--space-l) var(--space-xxl) var(--space-xl) var(--space-xxl);
+}
 .multiform{
   border: none!important;
   box-shadow: none!important;
@@ -55,6 +58,7 @@ export default defineComponent({
   border: none!important;
   box-shadow: none!important;
   border-radius: 0!important;
+  max-width: 100%!important;
 }
 
 
@@ -63,53 +67,60 @@ export default defineComponent({
   border: none!important;
   box-shadow: none!important;
   border-radius: 0!important;
-}
-
-.add__price-forsikring:after {
-  font-size: 1.2rem;
-  font-weight: 500;
-  content: "+119 kr./.md " !important;
-  padding: 0 2.5rem!important;
-
+  width: 100%!important;
 
 }
-.add__price-selv:after {
-  font-size: 1.2rem;
-  font-weight: 500;
-  content: "+64 kr./.md " !important;
-  padding: 0 2.5rem!important;
 
 
-}
-.add__price-vej:after {
-  font-size: 1.2rem;
-  font-weight: 500;
-  content: "+49 kr./.md " !important;
-  padding: 0 2.5rem!important;
-
-
-}
-.add__price-hjul{
-
-
-}
-.add__price-hjul:after {
-  font-size: 1.2rem;
-  font-weight: 500;
-  content: "+119 kr./.md " !important;
-
-  padding: 0 2.5rem!important;
-
-
-}
-.add__price {
+.add__price-forsikring,.add__price-selv, .add__price-vej, .add__price-hjul {
   font-size: 1rem!important;
-  font-weight: 500;
+  font-weight: 600!important;
   font-family: Rubik, sans-serif;
-  padding: 0.7rem 0!important;
+  padding: 0.9rem 0!important;
   display: flex;
   justify-content: space-between;
   width: 100%!important;
+  position: relative!important;
+}
+
+.add__price-forsikring .formkit-tooltip,
+.add__price-selv .formkit-tooltip,
+.add__price-vej .formkit-tooltip,
+.add__price-hjul .formkit-tooltip {
+  margin-right: auto;
+}
+.add__price-forsikring:after,
+.add__price-vej:after,
+.add__price-hjul:after,
+.add__price-selv:after {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.add__price-forsikring:after {
+  content: "+119 kr./.md " !important;
+}
+
+.add__price-vej:after {
+  content: "+49 kr./.md " !important;
+}
+
+.add__price-hjul:after {
+  content: "+119 kr./.md" !important;
+}
+.add__price-selv:after {
+
+  content: "+64 kr./.md " !important;
+}
+.add__price {
+  font-size: 1rem!important;
+  font-weight: 600!important;
+  font-family: Rubik, sans-serif;
+  padding: 0.9rem 0!important;
+  display: flex;
+  justify-content: space-between;
+  width: 100%!important;
+  position: relative!important;
 
 }
 </style>
