@@ -399,7 +399,7 @@ import FooterItem from "@/components/FooterItem.vue";
             <div class="home__card-header">
               <div class="home__card-image-container">
                 <img
-                  src="src/assets/images/if_forsikring_quickleasing.png"
+                  src="../assets/images/if_forsikring_quickleasing.png"
                   alt=""
                   class="home__card-image"
                 />
