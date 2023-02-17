@@ -97,7 +97,7 @@
                             fill="#444444"></path>
                         </g>
                       </svg>
-                      <div class="title___3rl0o">{{ car.kilometerprliter }}</div>
+                      <div class="title___3rl0o">{{ car.kilometerprliter }} km/l</div>
                     </div>
                   </div>
                 </div>
