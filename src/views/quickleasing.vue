@@ -5,7 +5,10 @@
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
         <div class="list___1c2KX">
+
+
           <div class="product___3vmta" v-for="car in carData" :key="car.id">
+
             <div class="product-card___2naPO has-cta___1N-4L">
               <div class="label-wrap___2_2TG">
 
@@ -104,13 +107,16 @@
                 <div class="highlighted-features___34JSO">
                   <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
+                <RouterLink :to="`/quickleasing/${car.id}`">
                 <button
                   class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
                   Vælg bil
                 </button>
+                </RouterLink>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
