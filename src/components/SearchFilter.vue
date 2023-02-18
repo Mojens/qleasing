@@ -72,6 +72,9 @@ const priceRanges = [
                     <span class="select__options">{{ option.label }}</span>
                   </div>
                 </template>
+
+
+
               </FormKit>
 
               <FormKit
@@ -347,9 +350,8 @@ export default {
 .options__label {
   color: var(--secondary);
   margin-bottom: 0.2rem;
-  font-size: var(--h4);
-  font-weight: 900;
-  font-family: Rubik, sans-serif;
-  text-transform: uppercase;
+  font-size: var(--h4)!important;
+  font-weight: 900!important;
+  text-transform: uppercase!important;
 }
 </style>

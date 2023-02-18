@@ -126,14 +126,7 @@ export default defineComponent({
 .step__content{
   width: 100%;
 }
-.custom-formkit__label{
-  font-size: calc(var(--text-m) - 1.6px);
-  font-family: Rubik, sans-serif;
-  font-weight: 400;
-  text-transform: capitalize;
-  letter-spacing: 0.3px;
 
-}
 
 .multiform {
   border: none !important;

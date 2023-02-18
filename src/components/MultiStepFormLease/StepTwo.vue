@@ -23,19 +23,19 @@ const lobetider = [
 ];
 const extra_kilometer_aar = [
   {
-    label: "0",
+    label: "0 km",
     value: "0",
   },
   {
-    label: "5.000",
+    label: "5.000 km",
     value: "5000",
   },
   {
-    label: "10.000",
+    label: "10.000 km",
     value: "10000",
   },
   {
-    label: "15.000",
+    label: "15.000 km",
     value: "15000",
   },
 ];
@@ -78,7 +78,7 @@ const age_driver = [
 <template>
   <FormKit
     type="dropdown"
-    label="Ønsket Løbetid"
+    label="Ønsket Løbetid*"
     name="oensketLobetid"
     :options="lobetider"
     :floating-label="false"
@@ -87,6 +87,12 @@ const age_driver = [
     }"
     placeholder="Længde i måneder"
     help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+    validation="required"
+    :validation-messages="{
+      required: 'Løbetid er påkrævet',
+    }"
+    validation-visibility="dirty"
+    value="36"
   >
     <template #option="{ option }">
       <div class="formkit-option">
@@ -97,11 +103,18 @@ const age_driver = [
 
   <FormKit
     type="dropdown"
-    label="Ekstra kilometer pr. år"
+    label="Ekstra kilometer pr. år*"
     name="oensketKilometer"
     :options="extra_kilometer_aar"
     help="Ekstra km udover km 15.000 årligt - "
     placeholder="Ekstra kilometer pr. år"
+    validation="required"
+    :validation-messages="{
+      required: 'Ekstra kilometer er påkrævet',
+    }"
+    validation-visibility="dirty"
+    value="0"
+
   >
 
     <template #option="{ option }">
@@ -116,7 +129,7 @@ const age_driver = [
 
   <FormKit
     type="dropdown"
-    label="Premium helårsdæk"
+    label="Premium helårsdæk*"
     name="ombytningTilPremiumHelårsdæk"
     :options="premiumDaek"
     :floating-label="false"
@@ -125,17 +138,23 @@ const age_driver = [
     }"
     placeholder="Primium helårsdæk"
     help="Ombytning til Primium helårsdæk"
+    validation="required"
+    :validation-messages="{
+      required: 'Ombytning til Primium helårsdæk er påkrævet',
+    }"
+    validation-visibility="dirty"
+
   >
     <template #option="{ option }">
       <div class="formkit-option">
-        <span>{{ option.label }}</span>
+        <span >{{ option.label }}</span>
       </div>
     </template>
   </FormKit>
 
   <FormKit
     type="dropdown"
-    label="Alder"
+    label="Alder*"
     name="alder"
     :options="age_driver"
     :floating-label="false"
@@ -144,6 +163,12 @@ const age_driver = [
     }"
     placeholder="Alder på fører"
     help="Alder på fører"
+    validation="required"
+    :validation-messages="{
+      required: 'Alder på fører er påkrævet',
+    }"
+    validation-visibility="dirty"
+
   >
     <template #option="{ option }">
       <div class="formkit-option">

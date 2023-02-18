@@ -659,7 +659,10 @@ export default {
 .formkit-option {
   display: flex;
   color: black;
+
 }
+
+
 .formkit-option img {
   width: 20px;
   height: 20px;

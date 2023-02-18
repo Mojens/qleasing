@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { plugin, defaultConfig } from '@formkit/vue'
-import { createProPlugin, inputs } from '@formkit/pro'
+import { $if, createProPlugin, inputs } from "@formkit/pro";
 import { createFloatingLabelsPlugin,createMultiStepPlugin } from '@formkit/addons'
 import { generateClasses } from '@formkit/themes'
 import '@formkit/addons/css/floatingLabels'
@@ -13,6 +13,8 @@ import App from "./App.vue";
 import router from "./router";
 
 import "./assets/main.css";
+import "./assets/formkit_custom.css";
+
 import { telephone,email,avatarMan,arrowDown,open } from "@formkit/icons";
 
 const app = createApp(App);
@@ -29,7 +31,9 @@ app.use(
     classes: generateClasses({
       global: {
         label: 'custom-formkit__label',
-      }
+      },
+
+
     }),
     },
     icons: { telephone, email, avatarMan,arrowDown,open,heart: '<svg...' },
