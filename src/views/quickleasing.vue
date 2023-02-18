@@ -17,7 +17,7 @@
                 </div>
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF" :src="carImages[car.id]" :alt="`${car.brand} - ${car.model}`"
+                <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
                   :title="`${car.brand} - ${car.model}`" />
               </div>
               <div class="content___2i8ss">
@@ -108,10 +108,10 @@
                   <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
                 <RouterLink :to="`/quickleasing/${car.id}`">
-                <button
-                  class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
-                  Vælg bil
-                </button>
+                  <button
+                    class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
+                    Vælg bil
+                  </button>
                 </RouterLink>
               </div>
             </div>
@@ -127,26 +127,34 @@
 
     <div class="filter__container">
       <div class="filter__inner-wrapper">
+
+
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
           <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
-        <!--
-              <div id="filterPrice">
-                <h3>pris pr.md.</h3>
-                <select v-model="selectedPrice" @change="priceChange">
-                  <option value="*">Alle</option>
-                  <option value="1000-2000">1.000 - 2.000</option>
-                  <option value="2000-3000">2.000 - 3.000</option>
-                  <option value="3000-4000">3.000 - 4.000</option>
-                  <option value="4000-5000">4.000 - 5.000</option>
-                  <option value="5000+">3.000 - 4.000</option>
-                </select>
+        <div class="filter__price" id="filterPrice" style="width: 100%">
+          <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
+          <Slider v-model="oneTimePriceRange.value" :min="0" :max="10000" :step="500" :tooltips="true" :range="true"
+            :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
+        </div>
 
-              </div>
-          -->
+        <!--
+                                    <div id="filterPrice">
+                                      <h3>pris pr.md.</h3>
+                                      <select v-model="selectedPrice" @change="priceChange">
+                                        <option value="*">Alle</option>
+                                        <option value="1000-2000">1.000 - 2.000</option>
+                                        <option value="2000-3000">2.000 - 3.000</option>
+                                        <option value="3000-4000">3.000 - 4.000</option>
+                                        <option value="4000-5000">4.000 - 5.000</option>
+                                        <option value="5000+">3.000 - 4.000</option>
+                                      </select>
+
+                                    </div>
+                                -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -169,15 +177,14 @@
             <option class="filter__option-all" value="*">Alle modeller</option>
             <option class="filter__option" v-for="option in modelOptions" :value="option">{{ option.label }}</option>
           </select>
-
         </div>
 
         <div class="filter__features">
           <h3 class="filter__header pad-header--m">Udstyr</h3>
           <ul class="filter__ul">
-
             <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
-              <label class="container">
+              <label class="container"
+                v-if="carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length > 0">
                 <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
                 {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
                 <span class="checkmark"></span>
@@ -185,6 +192,7 @@
             </li>
           </ul>
         </div>
+
 
         <div class="filter__tire">
           <h3 class="filter__header">Dæktype</h3>
@@ -194,6 +202,46 @@
                 <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
                 {{ tire.name }} ({{ tire.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Bil type</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedCarTypes.includes(carType.value)"
+                  @click="handleCheckboxClickCarType(carType.value)" />
+                {{ carType.name }} ({{ carType.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Gear Type</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="gear.value"
+                  :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
+                {{ gear.name }} ({{ gear.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Brændstof</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="fuel.value"
+                  :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
+                {{ fuel.name }} ({{ fuel.count }})
                 <span class="checkmark"></span>
               </label>
             </li>
@@ -217,11 +265,15 @@ export default {
       priceRange: {
         value: [1000, 5000]
       },
+      oneTimePriceRange: {
+        value: [0, 10000]
+      },
       queryBrand: this.$route.query.brand,
       queryModel: this.$route.query.model,
       queryPrice1: this.$route.query.price1,
       queryPrice2: this.$route.query.price2,
       carImages: {},
+      thumbnail: {},
       carData: [],
       selectedBrands: [],
       originalData: [],
@@ -235,8 +287,21 @@ export default {
       selectedPrice: '*',
       udstyr: [],
       models: [],
+      carTypes: [],
+      gearTypes: [
+        { value: "automatgear", name: "Automatgear", count: 0 },
+        { value: "manuelgear", name: "Manuelgear", count: 0 },
+      ],
+      fuelTypes: [
+        { value: "benzin", name: "Benzin", count: 0 },
+        { value: "diesel", name: "Diesel", count: 0 },
+        { value: "pluginhybrid", name: "Plug-in Hybrid", count: 0 },
+      ],
       selectedModel: "",
       selectedTireTypes: [],
+      selectedCarTypes: [],
+      selectedGearTypes: [],
+      selectedFuelTypes: [],
       featureItems: [
         { value: "airc", name: "Air Condition", count: 0 },
         { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -270,6 +335,8 @@ export default {
     await this.fetchData();
     await this.fetchData2();
     await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
+    await this.updateGearTypeCounts() == this.updateGearTypeCounts.bind(this);
+    await this.updateFuelTypeCounts() == this.updateFuelTypeCounts.bind(this);
     this.fetchModels();
   },
   methods: {
@@ -285,8 +352,11 @@ export default {
       this.carData = data.data;
       this.originalData = data.data;
       this.carData.forEach((car) => {
-      this.carImages[car.id] = this.imageURL(car);
-    });
+        this.carImages[car.id] = this.imageURL(car);
+      });
+      this.carData.forEach((car) => {
+        this.thumbnail[car.id] = this.thumbNailURL(car);
+      });
     },
     getFeatures(car) {
       if (!car.Udstyr) {
@@ -305,6 +375,22 @@ export default {
       } else {
         return "Ingen udstyr";
       }
+    },
+    async thumbNailURL(car) {
+      const response = await fetch(this.currentURL + car.id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data.data)
+      if (data.data.thumbnail !== null) {
+        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+        return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+      } else
+        return this.thumbnail[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
@@ -467,7 +553,91 @@ export default {
       const priceRange = allData.filter(car => car.base_maanedspris >= this.priceRange.value[0] && car.base_maanedspris <= this.priceRange.value[1]);
 
       this.carData = priceRange;
-    }, async handleCheckboxClickTireType(value) {
+    },
+    async oneTimePriceChange() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+
+      if (this.oneTimePriceRange.value[0] === 0 && this.oneTimePriceRange.value[1] === 10000) {
+        this.carData = allData;
+        return;
+      }
+      const filteredData = allData.reduce((accumulator, car) => {
+        const baseUdbetaling = car.base_udbetaling || 0;
+        if (baseUdbetaling >= this.oneTimePriceRange.value[0] && baseUdbetaling <= this.oneTimePriceRange.value[1]) {
+          accumulator.push(car);
+        }
+        return accumulator;
+      }, []);
+
+      // Use filteredData for further processing
+      this.carData = filteredData;
+    },
+    async handleCheckboxClickFuelType(value) {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+      if (this.selectedFuelTypes.includes(value)) {
+        this.selectedFuelTypes = this.selectedFuelTypes.filter(fuel => fuel !== value);
+        if (this.selectedFuelTypes.length === 0) {
+          this.carData = allData;
+          return;
+        }
+      } else {
+        this.selectedFuelTypes.push(value);
+      }
+
+      const filteredCars = [];
+      for (let i = 0; i < allData.length; i++) {
+        if (this.selectedFuelTypes.includes(allData[i].braendstof)) {
+          filteredCars.push(allData[i]);
+        }
+      }
+      this.carData = Array.from(filteredCars);
+    },
+    async handleCheckboxClickGearType(value) {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+      if (this.selectedGearTypes.includes(value)) {
+        this.selectedGearTypes = this.selectedGearTypes.filter(gear => gear !== value);
+        if (this.selectedGearTypes.length === 0) {
+          this.carData = allData;
+          return;
+        }
+      } else {
+        this.selectedGearTypes.push(value);
+      }
+
+      const filteredCars = [];
+      for (let i = 0; i < allData.length; i++) {
+        if (this.selectedGearTypes.includes(allData[i].gear_type)) {
+          filteredCars.push(allData[i]);
+        }
+      }
+      this.carData = Array.from(filteredCars);
+    }
+    ,
+    async handleCheckboxClickTireType(value) {
       const response = await fetch(this.currentURL, {
         headers: {
           Accept: "application/json",
@@ -514,6 +684,48 @@ export default {
           );
           if (foundTireType) {
             foundTireType.count++;
+          }
+        }
+      });
+    },
+    async updateGearTypeCounts() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const cars = data.data;
+      cars.forEach(car => {
+        if (car.gear_type !== null) {
+          const foundGearType = this.gearTypes.find(
+            gear => gear.value === car.gear_type
+          );
+          if (foundGearType) {
+            foundGearType.count++;
+          }
+        }
+      });
+    },
+    async updateFuelTypeCounts() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const cars = data.data;
+      cars.forEach(car => {
+        if (car.braendstof !== null) {
+          const foundFuelType = this.fuelTypes.find(
+            fuel => fuel.value === car.braendstof
+          );
+          if (foundFuelType) {
+            foundFuelType.count++;
           }
         }
       });
@@ -581,7 +793,7 @@ export default {
     },
     modelOptions() {
       const modelCounts = {};
-      this.originalData.forEach(car => {
+      this.carData.forEach(car => {
         const model = car.model;
         modelCounts[model] = modelCounts[model] ? modelCounts[model] + 1 : 1;
       });
@@ -598,7 +810,7 @@ export default {
 
 <style src="@vueform/slider/themes/default.css"></style>
 <style>
-.products___1WcE3 {}
+/*.products___1WcE3 {}*/
 
 .filtered__cars-container {
   display: flex;
@@ -646,7 +858,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.filter__price {}
+/*.filter__price {}*/
 
 .filter__brand,
 .filter__model,

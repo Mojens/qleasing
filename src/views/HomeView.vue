@@ -533,14 +533,14 @@ export default {
 }
 
 
-.home__text-header{
+/*.home__text-header{
 
 }
 
 .home__text-content{
 
 }
-
+*/
 
 .home__cards-container {
   background: #f2f2f2;
@@ -549,8 +549,8 @@ export default {
   margin-right: auto;
   height: 100%;
 }
-.home__cards {
-}
+/*.home__cards {
+}*/
 
 .home__card {
   margin-bottom: 2rem;
