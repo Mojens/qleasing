@@ -13,7 +13,7 @@
                 </div>
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF" :src="carImages[car.id]" :alt="`${car.brand} - ${car.model}`"
+                <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
                   :title="`${car.brand} - ${car.model}`" />
               </div>
 
@@ -105,10 +105,10 @@
                   <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
                 <RouterLink :to="`/quickleasing/${car.id}`">
-                <button
-                  class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
-                  Vælg bil
-                </button>
+                  <button
+                    class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
+                    Vælg bil
+                  </button>
                 </RouterLink>
               </div>
             </div>
@@ -131,6 +131,7 @@ export default {
       readerAPI: import.meta.env.VITE_APP_READER_API,
       carData: [],
       carImages: {},
+      thumbnail: {},
       featureItems: [
         { value: "airc", name: "Air Condition", count: 0 },
         { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -165,12 +166,31 @@ export default {
       (a, b) => new Date(b.oprettet_dato) - new Date(a.oprettet_dato)
     );
     this.carData.forEach((car) => {
-      this.carImages[car.id] = this.imageURL(car);
+       this.carImages[car.id] = this.imageURL(car);
+     });
+    this.carData.forEach((car) => {
+      this.thumbnail[car.id] = this.thumbNailURL(car);
     });
   },
 
 
   methods: {
+    async thumbNailURL(car) {
+      const response = await fetch(this.currentURL + car.id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data.data)
+      if (data.data.thumbnail !== null) {
+        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+        return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+      } else
+        return this.thumbnail[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
+    },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
       const response = await fetch(this.fileURL + imageURLTOADD, {

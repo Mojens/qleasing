@@ -17,7 +17,7 @@
                 </div>
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF" :src="carImages[car.id]" :alt="`${car.brand} - ${car.model}`"
+                <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
                   :title="`${car.brand} - ${car.model}`" />
               </div>
               <div class="content___2i8ss">
@@ -108,10 +108,10 @@
                   <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
                 </div>
                 <RouterLink :to="`/quickleasing/${car.id}`">
-                <button
-                  class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
-                  Vælg bil
-                </button>
+                  <button
+                    class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
+                    Vælg bil
+                  </button>
                 </RouterLink>
               </div>
             </div>
@@ -134,19 +134,19 @@
         </div>
 
         <!--
-              <div id="filterPrice">
-                <h3>pris pr.md.</h3>
-                <select v-model="selectedPrice" @change="priceChange">
-                  <option value="*">Alle</option>
-                  <option value="1000-2000">1.000 - 2.000</option>
-                  <option value="2000-3000">2.000 - 3.000</option>
-                  <option value="3000-4000">3.000 - 4.000</option>
-                  <option value="4000-5000">4.000 - 5.000</option>
-                  <option value="5000+">3.000 - 4.000</option>
-                </select>
+                  <div id="filterPrice">
+                    <h3>pris pr.md.</h3>
+                    <select v-model="selectedPrice" @change="priceChange">
+                      <option value="*">Alle</option>
+                      <option value="1000-2000">1.000 - 2.000</option>
+                      <option value="2000-3000">2.000 - 3.000</option>
+                      <option value="3000-4000">3.000 - 4.000</option>
+                      <option value="4000-5000">4.000 - 5.000</option>
+                      <option value="5000+">3.000 - 4.000</option>
+                    </select>
 
-              </div>
-          -->
+                  </div>
+              -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -222,6 +222,7 @@ export default {
       queryPrice1: this.$route.query.price1,
       queryPrice2: this.$route.query.price2,
       carImages: {},
+      thumbnail: {},
       carData: [],
       selectedBrands: [],
       originalData: [],
@@ -285,8 +286,11 @@ export default {
       this.carData = data.data;
       this.originalData = data.data;
       this.carData.forEach((car) => {
-      this.carImages[car.id] = this.imageURL(car);
-    });
+        this.carImages[car.id] = this.imageURL(car);
+      });
+      this.carData.forEach((car) => {
+        this.thumbnail[car.id] = this.thumbNailURL(car);
+      });
     },
     getFeatures(car) {
       if (!car.Udstyr) {
@@ -305,6 +309,22 @@ export default {
       } else {
         return "Ingen udstyr";
       }
+    },
+    async thumbNailURL(car) {
+      const response = await fetch(this.currentURL + car.id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`,
+        },
+      });
+      const data = await response.json();
+      console.log(data.data)
+      if (data.data.thumbnail !== null) {
+        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+        return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+      } else
+        return this.thumbnail[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
