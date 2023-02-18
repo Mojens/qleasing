@@ -142,19 +142,19 @@
         </div>
 
         <!--
-                                <div id="filterPrice">
-                                  <h3>pris pr.md.</h3>
-                                  <select v-model="selectedPrice" @change="priceChange">
-                                    <option value="*">Alle</option>
-                                    <option value="1000-2000">1.000 - 2.000</option>
-                                    <option value="2000-3000">2.000 - 3.000</option>
-                                    <option value="3000-4000">3.000 - 4.000</option>
-                                    <option value="4000-5000">4.000 - 5.000</option>
-                                    <option value="5000+">3.000 - 4.000</option>
-                                  </select>
+                                  <div id="filterPrice">
+                                    <h3>pris pr.md.</h3>
+                                    <select v-model="selectedPrice" @change="priceChange">
+                                      <option value="*">Alle</option>
+                                      <option value="1000-2000">1.000 - 2.000</option>
+                                      <option value="2000-3000">2.000 - 3.000</option>
+                                      <option value="3000-4000">3.000 - 4.000</option>
+                                      <option value="4000-5000">4.000 - 5.000</option>
+                                      <option value="5000+">3.000 - 4.000</option>
+                                    </select>
 
-                                </div>
-                            -->
+                                  </div>
+                              -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -292,7 +292,11 @@ export default {
         { value: "automatgear", name: "Automatgear", count: 0 },
         { value: "manuelgear", name: "Manuelgear", count: 0 },
       ],
-      fuelTypes: [],
+      fuelTypes: [
+        { value: "benzin", name: "Benzin", count: 0 },
+        { value: "diesel", name: "Diesel", count: 0 },
+        { value: "pluginhybrid", name: "Plug-in Hybrid", count: 0 },
+      ],
       selectedModel: "",
       selectedTireTypes: [],
       selectedCarTypes: [],
