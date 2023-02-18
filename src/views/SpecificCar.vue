@@ -16,7 +16,7 @@ onMounted(() => {
     <!-- START DISPLAYING CAR -->
 
     <div id="portal">
-      <div class="modal___25xvj is-open___1eAPm" style="height: 948px">
+      <div class="modal___25xvj is-open___1eAPm" style="height: 100vh">
         <div class="close-button-wrapper___1dYxl">
           <button
             class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
@@ -124,7 +124,7 @@ onMounted(() => {
               </div>
             </div>
             <div class="steps___2tBXW steps___paC4-">
-              <div class="interaction-block___1Zg73 info___JN_si">
+              <div class="prices_overview info___JN_si">
                 <div class="content___2Jovb">
                   <h3 class="title___O42Tx">
                     {{ displayCar.brand }} {{ displayCar.model }}
@@ -373,7 +373,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="modal___25xvj is-open___1eAPm" style="height: 948px">
+      <div class="modal___25xvj is-open___1eAPm" style="height: 100vh" >
         <div class="close-button-wrapper___1dYxl">
           <button
             class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
@@ -527,7 +527,7 @@ onMounted(() => {
               </div>
             </div>
             <div class="steps___2tBXW steps___paC4-">
-              <div class="interaction-block___1Zg73 info___JN_si">
+              <div class="prices_overview info___JN_si">
                 <div class="content___2Jovb" v-if="showContent1">
                   <h3 class="title___O42Tx">
                     {{ displayCar.brand }} {{ displayCar.model }}
@@ -1287,7 +1287,7 @@ export default {
 .back-link___1LJpm:visited {
   color: #1892c3;
 }
-.interaction-block___1Zg73 {
+.prices_overview {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1299,38 +1299,38 @@ export default {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding: 0 0.25rem;
+  padding: 0 0.5rem;
 }
 @media screen and (min-width: 46.75rem) {
-  .interaction-block___1Zg73 {
-    overflow-y: auto;
+  .prices_overview {
+    overflow-y: hidden;
   }
 }
 @media screen and (min-width: 64rem) {
-  .interaction-block___1Zg73 {
+  .prices_overview {
     height: 100%;
   }
 }
-.interaction-block___1Zg73 .content___2Jovb {
+.prices_overview .content___2Jovb {
   width: 100%;
   max-width: 34rem;
   margin: 0 auto;
   padding: 1rem 0.5rem 3rem;
 }
 @media screen and (min-width: 64rem) {
-  .interaction-block___1Zg73 .content___2Jovb {
+  .prices_overview .content___2Jovb {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     padding: 1rem 1rem 3rem;
   }
 }
-.interaction-block___1Zg73 .content___2Jovb .title___O42Tx {
+.prices_overview .content___2Jovb .title___O42Tx {
   margin: 0;
   font-size: 1.4rem;
 }
-.interaction-block___1Zg73 .buttons-wrapper___3WoLU {
-  width: 100%;
+.prices_overview .buttons-wrapper___3WoLU {
+  width: 98.2%;
   margin-top: auto;
   padding: 0.75rem 0;
   background-color: rgba(255, 255, 255, 0.5);
@@ -1338,7 +1338,7 @@ export default {
   backdrop-filter: blur(2px);
 }
 @media screen and (min-width: 46.75rem) {
-  .interaction-block___1Zg73 .buttons-wrapper___3WoLU {
+  .prices_overview .buttons-wrapper___3WoLU {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
@@ -1347,16 +1347,16 @@ export default {
   }
 }
 @media screen and (min-width: 64rem) {
-  .interaction-block___1Zg73 .buttons-wrapper___3WoLU {
+  .prices_overview .buttons-wrapper___3WoLU {
     padding: 0.75rem 0 1.4rem;
   }
 }
-.interaction-block___1Zg73 .buttons-wrapper___3WoLU .proceed-button___2ZgPy {
+.prices_overview .buttons-wrapper___3WoLU .proceed-button___2ZgPy {
   max-width: 20rem;
   height: auto;
   margin: auto;
 }
-.interaction-block___1Zg73 .buttons-wrapper___3WoLU .back-link-wrapper___o4YqX {
+.prices_overview .buttons-wrapper___3WoLU .back-link-wrapper___o4YqX {
   margin: 0.95rem auto 0;
   font-size: 0.9rem;
   text-align: center;

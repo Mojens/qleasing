@@ -1,30 +1,158 @@
+<script setup>
+const lobetider = [
+  {
+    label: "6 mdr.",
+    value: "6",
+  },
+  {
+    label: "12 mdr.",
+    value: "12",
+  },
+  {
+    label: "24 mdr.",
+    value: "24",
+  },
+  {
+    label: "36 mdr.",
+    value: "36",
+  },
+  {
+    label: "48 mdr.",
+    value: "48",
+  },
+];
+const extra_kilometer_aar = [
+  {
+    label: "0",
+    value: "0",
+  },
+  {
+    label: "5.000",
+    value: "5000",
+  },
+  {
+    label: "10.000",
+    value: "10000",
+  },
+  {
+    label: "15.000",
+    value: "15000",
+  },
+];
+
+const premiumDaek = [
+  {
+    label: "Nej tak",
+    value: "nej",
+  },
+  {
+    label: "Kontant",
+    value: "kontant",
+  },
+  {
+    label: "Finansiert",
+    value: "finansiert",
+  },
+];
+
+const age_driver = [
+  {
+    label: "23-24 År",
+    value: "18-24",
+  },
+  {
+    label: "25-29 År",
+    value: "25-34",
+  },
+  {
+    label: "30-39 År",
+    value: "35-44",
+  },
+  {
+    label: "40+ År",
+    value: "40_plus",
+  },
+];
+</script>
+
 <template>
-  <FormKit type="number" label="Ønsket løbetid" name="oensketLobetid" />
   <FormKit
-    type="radio"
-    label="Service- og vedligeholdelse"
-    name="serviceOgVedligeholdelse"
-    :options="['Inkl.', 'Ikke inkl.']"
-  />
-  <FormKit type="number" label="Depositum" name="depositum" />
+    type="dropdown"
+    label="Ønsket Løbetid"
+    name="oensketLobetid"
+    :options="lobetider"
+    :floating-label="false"
+    :inner-class="{
+      searchFilter__select: true,
+    }"
+    placeholder="Længde i måneder"
+    help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+  >
+    <template #option="{ option }">
+      <div class="formkit-option">
+        <span>{{ option.label }}</span>
+      </div>
+    </template>
+  </FormKit>
+
   <FormKit
-    type="radio"
-    label="Serviceaftale"
-    name="serviceaftale"
-    :options="['Inkl.', 'Ikke inkl.']"
-  />
-  <FormKit type="text" label="Afleveringsrapport" name="afleveringsrapport" />
-  <FormKit type="select" label="Ombytning til Premium helårsdæk"
-  name="ombytningTilPremiumHelaarsdaek" :options="['17', '18']" />
+    type="dropdown"
+    label="Ekstra kilometer pr. år"
+    name="oensketKilometer"
+    :options="extra_kilometer_aar"
+    help="Ekstra km udover km 15.000 årligt - "
+    placeholder="Ekstra kilometer pr. år"
+  >
+
+    <template #option="{ option }">
+      <div class="formkit-option">
+        <span>{{ option.label }}</span>
+      </div>
+    </template>
+
+
+
+  </FormKit>
+
   <FormKit
-    type="text"
-    label="Ekstra km udover km 15.000 årligt"
-    name="ekstraKm"
-  />
+    type="dropdown"
+    label="Premium helårsdæk"
+    name="ombytningTilPremiumHelårsdæk"
+    :options="premiumDaek"
+    :floating-label="false"
+    :inner-class="{
+      searchFilter__select: true,
+    }"
+    placeholder="Primium helårsdæk"
+    help="Ombytning til Primium helårsdæk"
+  >
+    <template #option="{ option }">
+      <div class="formkit-option">
+        <span>{{ option.label }}</span>
+      </div>
+    </template>
+  </FormKit>
+
   <FormKit
-    type="radio"
+    type="dropdown"
     label="Alder"
     name="alder"
-    :options="['18-24', '25-29', '30-34']"
-  />
+    :options="age_driver"
+    :floating-label="false"
+    :inner-class="{
+      searchFilter__select: true,
+    }"
+    placeholder="Alder på fører"
+    help="Alder på fører"
+  >
+    <template #option="{ option }">
+      <div class="formkit-option">
+        <span>{{ option.label }}</span>
+      </div>
+    </template>
+
+  </FormKit>
 </template>
+<style>
+
+</style>
