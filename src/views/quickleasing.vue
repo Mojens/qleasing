@@ -15,6 +15,11 @@
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
                   fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
+
+                <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
+                  {{ car.billedeLabel }}
+                </div>
+
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
                 <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
@@ -142,19 +147,19 @@
         </div>
 
         <!--
-                                    <div id="filterPrice">
-                                      <h3>pris pr.md.</h3>
-                                      <select v-model="selectedPrice" @change="priceChange">
-                                        <option value="*">Alle</option>
-                                        <option value="1000-2000">1.000 - 2.000</option>
-                                        <option value="2000-3000">2.000 - 3.000</option>
-                                        <option value="3000-4000">3.000 - 4.000</option>
-                                        <option value="4000-5000">4.000 - 5.000</option>
-                                        <option value="5000+">3.000 - 4.000</option>
-                                      </select>
+                                        <div id="filterPrice">
+                                          <h3>pris pr.md.</h3>
+                                          <select v-model="selectedPrice" @change="priceChange">
+                                            <option value="*">Alle</option>
+                                            <option value="1000-2000">1.000 - 2.000</option>
+                                            <option value="2000-3000">2.000 - 3.000</option>
+                                            <option value="3000-4000">3.000 - 4.000</option>
+                                            <option value="4000-5000">4.000 - 5.000</option>
+                                            <option value="5000+">3.000 - 4.000</option>
+                                          </select>
 
-                                    </div>
-                                -->
+                                        </div>
+                                    -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -249,7 +254,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script >
