@@ -137,30 +137,30 @@
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
-          <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
-            :format="value => `${value} kr.`" @change="priceChange"></Slider>
+          <Slider v-model="priceRange.value" :min="priceRange.value[0]" :max="priceRange.value[1]" :step="100"
+            :tooltips="true" :range="true" :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
-          <Slider v-model="oneTimePriceRange.value" :min="0" :max="10000" :step="500" :tooltips="true" :range="true"
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.value[0]" :max="oneTimePriceRange.value[1]" :step="100" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
         </div>
 
         <!--
-                                        <div id="filterPrice">
-                                          <h3>pris pr.md.</h3>
-                                          <select v-model="selectedPrice" @change="priceChange">
-                                            <option value="*">Alle</option>
-                                            <option value="1000-2000">1.000 - 2.000</option>
-                                            <option value="2000-3000">2.000 - 3.000</option>
-                                            <option value="3000-4000">3.000 - 4.000</option>
-                                            <option value="4000-5000">4.000 - 5.000</option>
-                                            <option value="5000+">3.000 - 4.000</option>
-                                          </select>
+                                                    <div id="filterPrice">
+                                                      <h3>pris pr.md.</h3>
+                                                      <select v-model="selectedPrice" @change="priceChange">
+                                                        <option value="*">Alle</option>
+                                                        <option value="1000-2000">1.000 - 2.000</option>
+                                                        <option value="2000-3000">2.000 - 3.000</option>
+                                                        <option value="3000-4000">3.000 - 4.000</option>
+                                                        <option value="4000-5000">4.000 - 5.000</option>
+                                                        <option value="5000+">3.000 - 4.000</option>
+                                                      </select>
 
-                                        </div>
-                                    -->
+                                                    </div>
+                                                -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -269,10 +269,10 @@ export default {
     return {
       name: "QuickLeasing",
       priceRange: {
-        value: [1000, 5000]
+        value: []
       },
       oneTimePriceRange: {
-        value: [0, 10000]
+        value: []
       },
       queryBrand: this.$route.query.brand,
       queryModel: this.$route.query.model,
@@ -332,8 +332,6 @@ export default {
       ],
     };
   },
-
-
   mounted() {
     this.fetchModels();
   },
@@ -363,6 +361,65 @@ export default {
       this.carData.forEach((car) => {
         this.thumbnail[car.id] = this.thumbNailURL(car);
       });
+
+
+
+      // måned pris
+
+      // Laveste pris
+      const lowestPriceRange = data.data.reduce((lowest, car) => {
+        const baseMaaenedspris = car.base_maanedspris ?? 0;
+        if (baseMaaenedspris < lowest) {
+          return baseMaaenedspris;
+        } else {
+          return lowest;
+        }
+      }, data.data[0].base_maanedspris);
+      console.log(lowestPriceRange);
+
+      const highestPriceRange = data.data.reduce((highest, car) => {
+        const baseMaaenedspris = car.base_maanedspris ?? 0;
+        if (baseMaaenedspris > highest) {
+          return baseMaaenedspris;
+        } else {
+          return highest;
+        }
+      }, data.data[0].base_maanedspris);
+      console.log(highestPriceRange);
+
+      this.priceRange.value = [lowestPriceRange, highestPriceRange];
+
+
+
+      // førstegangsydelse
+      const lowestOneTimePriceRange = data.data.reduce((lowest, car) => {
+        const baseUdbetaling = car.base_udbetaling ?? 0;
+        if (baseUdbetaling < lowest) {
+          return baseUdbetaling;
+        } else {
+          return lowest;
+        }
+      }, data.data[0].base_udbetaling);
+      console.log(lowestOneTimePriceRange);
+
+      const highestOneTimePriceRange = data.data.reduce((highest, car) => {
+        const baseUdbetaling = car.base_udbetaling ?? 0;
+        if (baseUdbetaling > highest) {
+          return baseUdbetaling;
+        } else {
+          return highest;
+        }
+      }, data.data[0].base_udbetaling);
+      console.log(highestOneTimePriceRange);
+
+      this.oneTimePriceRange.value = [lowestOneTimePriceRange, highestOneTimePriceRange];
+
+
+
+
+
+
+
     },
     getFeatures(car) {
       if (!car.Udstyr) {
@@ -391,9 +448,9 @@ export default {
         },
       });
       const data = await response.json();
-      console.log(data.data)
+
       if (data.data.thumbnail !== null) {
-        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail +'?fit=cover&width=300&height=200&quality=80';
+        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail + '?fit=cover&width=300&height=200&quality=80';
         return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail + '?fit=cover&width=300&height=200&quality=80';
       } else
         return this.thumbnail[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
@@ -414,7 +471,7 @@ export default {
 
       } else {
         this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id + '?fit=cover&width=300&height=200&quality=80';;
-        return this.pictureURL + data.data[0].directus_files_id +'?fit=cover&width=300&height=200&quality=80';
+        return this.pictureURL + data.data[0].directus_files_id + '?fit=cover&width=300&height=200&quality=80';
       }
     },
     async fetchData2() {
