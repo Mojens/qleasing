@@ -127,6 +127,8 @@
 
     <div class="filter__container">
       <div class="filter__inner-wrapper">
+
+
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
           <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
@@ -141,19 +143,19 @@
         </div>
 
         <!--
-                        <div id="filterPrice">
-                          <h3>pris pr.md.</h3>
-                          <select v-model="selectedPrice" @change="priceChange">
-                            <option value="*">Alle</option>
-                            <option value="1000-2000">1.000 - 2.000</option>
-                            <option value="2000-3000">2.000 - 3.000</option>
-                            <option value="3000-4000">3.000 - 4.000</option>
-                            <option value="4000-5000">4.000 - 5.000</option>
-                            <option value="5000+">3.000 - 4.000</option>
-                          </select>
+                          <div id="filterPrice">
+                            <h3>pris pr.md.</h3>
+                            <select v-model="selectedPrice" @change="priceChange">
+                              <option value="*">Alle</option>
+                              <option value="1000-2000">1.000 - 2.000</option>
+                              <option value="2000-3000">2.000 - 3.000</option>
+                              <option value="3000-4000">3.000 - 4.000</option>
+                              <option value="4000-5000">4.000 - 5.000</option>
+                              <option value="5000+">3.000 - 4.000</option>
+                            </select>
 
-                        </div>
-                    -->
+                          </div>
+                      -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -182,9 +184,9 @@
         <div class="filter__features">
           <h3 class="filter__header pad-header--m">Udstyr</h3>
           <ul class="filter__ul">
-
             <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
-              <label class="container">
+              <label class="container"
+                v-if="carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length > 0">
                 <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
                 {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
                 <span class="checkmark"></span>
@@ -192,6 +194,7 @@
             </li>
           </ul>
         </div>
+
 
         <div class="filter__tire">
           <h3 class="filter__header">Dæktype</h3>

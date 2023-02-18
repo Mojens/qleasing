@@ -184,7 +184,6 @@ export default {
         },
       });
       const data = await response.json();
-      console.log(data.data)
       if (data.data.thumbnail !== null) {
         this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
         return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
