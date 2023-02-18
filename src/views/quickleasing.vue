@@ -15,7 +15,7 @@
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
                   fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
-                
+
                 <!-- Label som kommer fra bil, hvis der er nogle -->
                 <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
                   {{ car.billedeLabel }}
@@ -393,8 +393,8 @@ export default {
       const data = await response.json();
       console.log(data.data)
       if (data.data.thumbnail !== null) {
-        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
-        return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail
+        this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail +'?fit=cover&width=300&height=200&quality=80';
+        return this.thumbnail[car.id] = this.pictureURL + data.data.thumbnail + '?fit=cover&width=300&height=200&quality=80';
       } else
         return this.thumbnail[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
     },
@@ -413,8 +413,8 @@ export default {
         return this.carImages[car.id] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`;
 
       } else {
-        this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id;
-        return this.pictureURL + data.data[0].directus_files_id;
+        this.carImages[car.id] = this.pictureURL + data.data[0].directus_files_id + '?fit=cover&width=300&height=200&quality=80';;
+        return this.pictureURL + data.data[0].directus_files_id +'?fit=cover&width=300&height=200&quality=80';
       }
     },
     async fetchData2() {
