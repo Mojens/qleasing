@@ -11,6 +11,12 @@
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
                   fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
+
+                 <!-- Label som kommer fra bil, hvis der er nogle -->
+                 <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
+                  {{ car.billedeLabel }}
+                </div>
+                
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
                 <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"

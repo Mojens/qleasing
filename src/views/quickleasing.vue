@@ -15,7 +15,8 @@
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
                   fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
-
+                
+                <!-- Label som kommer fra bil, hvis der er nogle -->
                 <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
                   {{ car.billedeLabel }}
                 </div>
