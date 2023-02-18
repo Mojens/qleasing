@@ -178,7 +178,6 @@
             <option class="filter__option-all" value="*">Alle modeller</option>
             <option class="filter__option" v-for="option in modelOptions" :value="option">{{ option.label }}</option>
           </select>
-
         </div>
 
         <div class="filter__features">
@@ -641,7 +640,7 @@ export default {
     },
     modelOptions() {
       const modelCounts = {};
-      this.originalData.forEach(car => {
+      this.carData.forEach(car => {
         const model = car.model;
         modelCounts[model] = modelCounts[model] ? modelCounts[model] + 1 : 1;
       });
