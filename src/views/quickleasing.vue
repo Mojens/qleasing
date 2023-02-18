@@ -269,10 +269,12 @@ export default {
     return {
       name: "QuickLeasing",
       priceRange: {
-        value: []
+        value: [],
+        savedValue: []
       },
       oneTimePriceRange: {
-        value: []
+        value: [],
+        savedValue: []
       },
       queryBrand: this.$route.query.brand,
       queryModel: this.$route.query.model,
@@ -375,7 +377,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_maanedspris);
-      console.log(lowestPriceRange);
+     
 
       const highestPriceRange = data.data.reduce((highest, car) => {
         const baseMaaenedspris = car.base_maanedspris ?? 0;
@@ -385,11 +387,12 @@ export default {
           return highest;
         }
       }, data.data[0].base_maanedspris);
-      console.log(highestPriceRange);
+     
 
       this.priceRange.value = [lowestPriceRange, highestPriceRange];
-
-
+      this.priceRange.savedValue = [lowestPriceRange, highestPriceRange];
+      console.log("called 1")
+      console.log(data)
 
       // førstegangsydelse
       const lowestOneTimePriceRange = data.data.reduce((lowest, car) => {
@@ -400,7 +403,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_udbetaling);
-      console.log(lowestOneTimePriceRange);
+   
 
       const highestOneTimePriceRange = data.data.reduce((highest, car) => {
         const baseUdbetaling = car.base_udbetaling ?? 0;
@@ -410,10 +413,11 @@ export default {
           return highest;
         }
       }, data.data[0].base_udbetaling);
-      console.log(highestOneTimePriceRange);
+     
 
       this.oneTimePriceRange.value = [lowestOneTimePriceRange, highestOneTimePriceRange];
-
+      this.oneTimePriceRange.savedValue = [lowestOneTimePriceRange, highestOneTimePriceRange];
+      console.log("called 2")
 
 
 
@@ -608,7 +612,7 @@ export default {
       const data = await response.json();
       const allData = data.data;
 
-      if (this.priceRange.value[0] === 1000 && this.priceRange.value[1] === 5000) {
+      if (this.priceRange.value[0] === this.priceRange.savedValue[0] && this.priceRange.value[1] === this.priceRange.savedValue[1]) {
         this.carData = allData;
         return;
       }
@@ -628,7 +632,7 @@ export default {
       const data = await response.json();
       const allData = data.data;
 
-      if (this.oneTimePriceRange.value[0] === 0 && this.oneTimePriceRange.value[1] === 10000) {
+      if (this.oneTimePriceRange.value[0] === this.oneTimePriceRange.savedValue[0] && this.oneTimePriceRange.value[1] === this.oneTimePriceRange.savedValue[1]) {
         this.carData = allData;
         return;
       }
