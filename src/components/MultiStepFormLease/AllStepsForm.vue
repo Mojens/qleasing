@@ -9,11 +9,13 @@ export default defineComponent({
 });
 </script>
 <template>
-  <FormKit type="form" :actions="true" form-class="multiform">
+  <FormKit type="form" :actions="true" form-class="multiform" >
     <FormKit
       type="multi-step"
-      tab-style="tab"
+      tab-style="progress"
       steps-class="multiform__steps"
+      span-class="custom__tab-span"
+      tab-label-class="custom__tab-span"
       :wrapper-class="{
         multiform__wrapper: true,
       }"

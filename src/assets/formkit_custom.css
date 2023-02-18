@@ -9,8 +9,8 @@
     letter-spacing: 0.3px;
 
 }
-.custom-formkit__select{
-    font-size: calc(var(--text-m) - 1.6px);
-    font-family: Rubik, sans-serif;
-    background: var(--action);
+.custom__tab-span{
+    font-size: calc(var(--text-m) - 0.8px)!important;
+    opacity: 0.8;
+
 }
