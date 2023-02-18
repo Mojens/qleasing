@@ -142,19 +142,19 @@
         </div>
 
         <!--
-                                  <div id="filterPrice">
-                                    <h3>pris pr.md.</h3>
-                                    <select v-model="selectedPrice" @change="priceChange">
-                                      <option value="*">Alle</option>
-                                      <option value="1000-2000">1.000 - 2.000</option>
-                                      <option value="2000-3000">2.000 - 3.000</option>
-                                      <option value="3000-4000">3.000 - 4.000</option>
-                                      <option value="4000-5000">4.000 - 5.000</option>
-                                      <option value="5000+">3.000 - 4.000</option>
-                                    </select>
+                                    <div id="filterPrice">
+                                      <h3>pris pr.md.</h3>
+                                      <select v-model="selectedPrice" @change="priceChange">
+                                        <option value="*">Alle</option>
+                                        <option value="1000-2000">1.000 - 2.000</option>
+                                        <option value="2000-3000">2.000 - 3.000</option>
+                                        <option value="3000-4000">3.000 - 4.000</option>
+                                        <option value="4000-5000">4.000 - 5.000</option>
+                                        <option value="5000+">3.000 - 4.000</option>
+                                      </select>
 
-                                  </div>
-                              -->
+                                    </div>
+                                -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -237,11 +237,11 @@
         <div class="filter__tire">
           <h3 class="filter__header">Brændstof</h3>
           <ul class="filter__ul">
-            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
+            <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
               <label class="container">
-                <input class="filter__checkbox" type="checkbox" :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
-                {{ tire.name }} ({{ tire.count }})
+                <input class="filter__checkbox" type="checkbox" :value="fuel.value"
+                  :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
+                {{ fuel.name }} ({{ fuel.count }})
                 <span class="checkmark"></span>
               </label>
             </li>
@@ -336,6 +336,7 @@ export default {
     await this.fetchData2();
     await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
     await this.updateGearTypeCounts() == this.updateGearTypeCounts.bind(this);
+    await this.updateFuelTypeCounts() == this.updateFuelTypeCounts.bind(this);
     this.fetchModels();
   },
   methods: {
@@ -579,6 +580,34 @@ export default {
       // Use filteredData for further processing
       this.carData = filteredData;
     },
+    async handleCheckboxClickFuelType(value) {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+      if (this.selectedFuelTypes.includes(value)) {
+        this.selectedFuelTypes = this.selectedFuelTypes.filter(fuel => fuel !== value);
+        if (this.selectedFuelTypes.length === 0) {
+          this.carData = allData;
+          return;
+        }
+      } else {
+        this.selectedFuelTypes.push(value);
+      }
+
+      const filteredCars = [];
+      for (let i = 0; i < allData.length; i++) {
+        if (this.selectedFuelTypes.includes(allData[i].braendstof)) {
+          filteredCars.push(allData[i]);
+        }
+      }
+      this.carData = Array.from(filteredCars);
+    },
     async handleCheckboxClickGearType(value) {
       const response = await fetch(this.currentURL, {
         headers: {
@@ -676,6 +705,27 @@ export default {
           );
           if (foundGearType) {
             foundGearType.count++;
+          }
+        }
+      });
+    },
+    async updateFuelTypeCounts() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const cars = data.data;
+      cars.forEach(car => {
+        if (car.braendstof !== null) {
+          const foundFuelType = this.fuelTypes.find(
+            fuel => fuel.value === car.braendstof
+          );
+          if (foundFuelType) {
+            foundFuelType.count++;
           }
         }
       });
