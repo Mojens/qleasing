@@ -173,13 +173,15 @@ export default defineComponent({
 .add__price-forsikring .formkit-tooltip,
 .add__price-selv .formkit-tooltip,
 .add__price-vej .formkit-tooltip,
-.add__price-hjul .formkit-tooltip {
+.add__price-hjul .formkit-tooltip,
+.label-for-cpr{
   margin-right: auto;
 }
 .add__price-forsikring:after,
 .add__price-vej:after,
 .add__price-hjul:after,
-.add__price-selv:after {
+.add__price-selv:after,
+.label-for-cpr:after {
   font-size: 1rem;
   font-weight: 500;
 }

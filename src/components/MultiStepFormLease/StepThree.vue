@@ -52,7 +52,6 @@
     label="Postnummer"
     name="postnummer"
     mask="####"
-
     unmask-value="true"
     :floating-label="false"
     input-class="custom__placeholder"
@@ -71,7 +70,6 @@
     name="By"
     validation="required|length:2,50"
     :validation-messages="{
-
       length: 'Længden af byen skal være mellem 2 og 50 tegn',
       required: 'By er påkrævet',
     }"
@@ -116,7 +114,6 @@
     :floating-label="false"
   />
 
-
   <FormKit
     type="mask"
     mask="######-####"
@@ -133,28 +130,118 @@
     show-mask="true"
     unmask-value="true"
     label="CPR nummer*"
-    input-class="custom__placeholder"
-    wrapper-class="form__wrapper-input"
+    label-class="label-for-cpr"
     :floating-label="false"
-    help="Dit CPR nummer er på 10 tal og består af 6 tal og 4 tal. F.eks. 123456-7890"
-
+    help="Vi skal bruge dit CPR-nummer for at identificere dig som indehaveren af den konto, som pengene skal trækkes fra. Vi passer godt på din data og overholder selvfølgelig persondataloven"
   >
     <template #label="{ id, label, help, classes }">
-      <label :class="classes.label" :for="id"
-      >{{ label }}
+      <label :class="classes.label" :for="id">
+        {{ label }}
         <span v-if="help" :class="classes.tooltip">
-
-          ?<span :class="classes.tooltipInner">{{ help }}</span>
+          ?
+          <span :class="classes.tooltipInner">{{ help }}</span>
         </span>
       </label>
     </template>
 
-
-
+    <template #help>
+      <p class="form__extra-help"></p>
+    </template>
   </FormKit>
 
+  <div class="label-for-cpr">
+    <h4>Betalingsoplysninger</h4>
+    <label class="label-for-cpr">
+      <span class="formkit-tooltip">
+        ?
+        <span class="formkit-tooltip-inner"
+          >For at vi kan oprette aftalen med dig, skal vi bruge dit konto- og
+          registreringsnummer, som løbende bliver faktureret for din
+          leasingaftale hos Quickleasing. Vi opbevarer naturligvis dine data
+          sikkert og i overensstemmelse med persondataloven. Vi trækker
+          selvfølgelig ikke penge fra din konto, før du har underskrevet den
+          endelige kontrakt.
+        </span></span
+      ></label
+    >
+  </div>
+
+  <div></div>
+
+  <FormKit
+    type="mask"
+    mask="####"
+    name="Registreringsnummer"
+    id="registreringsnummer"
+    mode="replace"
+    validation="required"
+    :validation-messages="{
+      required: 'Registreringsnummer er påkrævet',
+    }"
+    validation-visibility="dirty"
+    allow-incomplete="false"
+    show-mask="true"
+    unmask-value="true"
+    label="Registreringsnummer*"
+    input-class="custom__placeholder"
+    :floating-label="false"
+  />
+
+  <FormKit
+    type="mask"
+    mask="(000)#######"
+    name="Kontonummer"
+    id="kontonummer"
+    mode="replace"
+    validation="required"
+    :validation-messages="{
+      required: 'Kontonummer er påkrævet',
+    }"
+    validation-visibility="dirty"
+    allow-incomplete="false"
+    show-mask="true"
+    help="De første 3 nuller er medtaget automatisk"
+    unmask-value="true"
+    label="Kontonummer*"
+    input-class="custom__placeholder"
+    :floating-label="false"
+  />
+  <div style="margin-bottom: 9rem">
+    <FormKit
+      type="checkbox"
+      label="Persondatapolitik"
+      validation="accepted"
+      help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
+    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+      :validation-messages="{
+    accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+  }"
+    >
+      <template #help="{ help }">
+        <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
+      </template>
+    </FormKit>
+
+
+
+  </div>
+  <p style="font-size: 12px">Ved at klikke "forsæt", vil du herefter blive kontaktet hurtigst mulig med henblik på leasingaftale med Quickleasing A/S</p>
 </template>
 <style>
+.label-for-cpr {
+  display: flex;
+  margin: 0;
+  padding-top: 1.2px;
+}
+.custom__inner {
+  font-family: var(--fk-font-family-label);
+  font-size: var(--fk-font-size-label);
+  font-weight: var(--fk-font-weight-label);
+  line-height: var(--fk-line-height-label);
+
+  margin: var(--fk-margin-label);
+  padding: var(--fk-padding-label);
+}
 .formkit-tooltip-inner {
   display: none;
   position: absolute;
@@ -167,6 +254,9 @@
   min-width: 200px;
 }
 .formkit-tooltip {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -176,11 +266,10 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  margin-left: 0.5rem;
+  width: 15px;
+  height: 15px;
   color: #1892c3;
-  font-size: 0.85rem;
+
   font-weight: normal;
   border: 1px solid #1892c3;
   border-radius: 50%;
@@ -207,7 +296,7 @@
   background-color: #1892c3;
   color: #fff;
 }
-.form__extra-help{
+.form__extra-help {
   font-size: 0.9rem;
   color: #373737;
   margin: 0.5rem 0;
