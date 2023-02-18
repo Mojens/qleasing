@@ -132,21 +132,28 @@
           <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
+        <br>
+
+        <div class="filter__price" id="filterPrice" style="width: 100%">
+          <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
+          <Slider v-model="oneTimePriceRange.value" :min="0" :max="10000" :step="500" :tooltips="true" :range="true"
+            :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
+        </div>
 
         <!--
-                  <div id="filterPrice">
-                    <h3>pris pr.md.</h3>
-                    <select v-model="selectedPrice" @change="priceChange">
-                      <option value="*">Alle</option>
-                      <option value="1000-2000">1.000 - 2.000</option>
-                      <option value="2000-3000">2.000 - 3.000</option>
-                      <option value="3000-4000">3.000 - 4.000</option>
-                      <option value="4000-5000">4.000 - 5.000</option>
-                      <option value="5000+">3.000 - 4.000</option>
-                    </select>
+                      <div id="filterPrice">
+                        <h3>pris pr.md.</h3>
+                        <select v-model="selectedPrice" @change="priceChange">
+                          <option value="*">Alle</option>
+                          <option value="1000-2000">1.000 - 2.000</option>
+                          <option value="2000-3000">2.000 - 3.000</option>
+                          <option value="3000-4000">3.000 - 4.000</option>
+                          <option value="4000-5000">4.000 - 5.000</option>
+                          <option value="5000+">3.000 - 4.000</option>
+                        </select>
 
-                  </div>
-              -->
+                      </div>
+                  -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -216,6 +223,9 @@ export default {
       name: "QuickLeasing",
       priceRange: {
         value: [1000, 5000]
+      },
+      oneTimePriceRange: {
+        value: [0, 10000]
       },
       queryBrand: this.$route.query.brand,
       queryModel: this.$route.query.model,
@@ -487,7 +497,34 @@ export default {
       const priceRange = allData.filter(car => car.base_maanedspris >= this.priceRange.value[0] && car.base_maanedspris <= this.priceRange.value[1]);
 
       this.carData = priceRange;
-    }, async handleCheckboxClickTireType(value) {
+    },
+    async oneTimePriceChange() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+
+      if (this.priceRange.value[0] === 0 && this.priceRange.value[1] === 10000) {
+        this.carData = allData;
+        return;
+      }
+      data.data.forEach(car => {
+        if (car.base_udbetaling === null) {
+          this.carData = allData;
+          return;
+        }
+      });
+
+      const priceRange = allData.filter(car => car.base_udbetaling >= this.priceRange.value[0] && car.base_udbetaling <= this.priceRange.value[1]);
+
+      this.carData = priceRange;
+    },
+    async handleCheckboxClickTireType(value) {
       const response = await fetch(this.currentURL, {
         headers: {
           Accept: "application/json",
