@@ -134,7 +134,6 @@
           <Slider v-model="priceRange.value" :min="1000" :max="5000" :step="100" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
-        <br>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
@@ -143,19 +142,19 @@
         </div>
 
         <!--
-                          <div id="filterPrice">
-                            <h3>pris pr.md.</h3>
-                            <select v-model="selectedPrice" @change="priceChange">
-                              <option value="*">Alle</option>
-                              <option value="1000-2000">1.000 - 2.000</option>
-                              <option value="2000-3000">2.000 - 3.000</option>
-                              <option value="3000-4000">3.000 - 4.000</option>
-                              <option value="4000-5000">4.000 - 5.000</option>
-                              <option value="5000+">3.000 - 4.000</option>
-                            </select>
+                                <div id="filterPrice">
+                                  <h3>pris pr.md.</h3>
+                                  <select v-model="selectedPrice" @change="priceChange">
+                                    <option value="*">Alle</option>
+                                    <option value="1000-2000">1.000 - 2.000</option>
+                                    <option value="2000-3000">2.000 - 3.000</option>
+                                    <option value="3000-4000">3.000 - 4.000</option>
+                                    <option value="4000-5000">4.000 - 5.000</option>
+                                    <option value="5000+">3.000 - 4.000</option>
+                                  </select>
 
-                          </div>
-                      -->
+                                </div>
+                            -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -208,6 +207,46 @@
             </li>
           </ul>
         </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Bil type</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedCarTypes.includes(carType.value)"
+                  @click="handleCheckboxClickCarType(carType.value)" />
+                {{ carType.name }} ({{ carType.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Gear Type</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="gear.value"
+                  :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
+                {{ gear.name }} ({{ gear.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header">Brændstof</h3>
+          <ul class="filter__ul">
+            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
+              <label class="container">
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
+                {{ tire.name }} ({{ tire.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 </div>
@@ -248,8 +287,17 @@ export default {
       selectedPrice: '*',
       udstyr: [],
       models: [],
+      carTypes: [],
+      gearTypes: [
+        { value: "automatgear", name: "Automatgear", count: 0 },
+        { value: "manuelgear", name: "Manuelgear", count: 0 },
+      ],
+      fuelTypes: [],
       selectedModel: "",
       selectedTireTypes: [],
+      selectedCarTypes: [],
+      selectedGearTypes: [],
+      selectedFuelTypes: [],
       featureItems: [
         { value: "airc", name: "Air Condition", count: 0 },
         { value: "fartpilot", name: "Fartpilot", count: 0 },
@@ -283,6 +331,7 @@ export default {
     await this.fetchData();
     await this.fetchData2();
     await this.updateTireTypeCounts() == this.updateTireTypeCounts.bind(this);
+    await this.updateGearTypeCounts() == this.updateGearTypeCounts.bind(this);
     this.fetchModels();
   },
   methods: {
@@ -526,6 +575,35 @@ export default {
       // Use filteredData for further processing
       this.carData = filteredData;
     },
+    async handleCheckboxClickGearType(value) {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const allData = data.data;
+      if (this.selectedGearTypes.includes(value)) {
+        this.selectedGearTypes = this.selectedGearTypes.filter(gear => gear !== value);
+        if (this.selectedGearTypes.length === 0) {
+          this.carData = allData;
+          return;
+        }
+      } else {
+        this.selectedGearTypes.push(value);
+      }
+
+      const filteredCars = [];
+      for (let i = 0; i < allData.length; i++) {
+        if (this.selectedGearTypes.includes(allData[i].gear_type)) {
+          filteredCars.push(allData[i]);
+        }
+      }
+      this.carData = Array.from(filteredCars);
+    }
+    ,
     async handleCheckboxClickTireType(value) {
       const response = await fetch(this.currentURL, {
         headers: {
@@ -573,6 +651,27 @@ export default {
           );
           if (foundTireType) {
             foundTireType.count++;
+          }
+        }
+      });
+    },
+    async updateGearTypeCounts() {
+      const response = await fetch(this.currentURL, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.readerAPI}`
+        }
+      });
+      const data = await response.json();
+      const cars = data.data;
+      cars.forEach(car => {
+        if (car.gear_type !== null) {
+          const foundGearType = this.gearTypes.find(
+            gear => gear.value === car.gear_type
+          );
+          if (foundGearType) {
+            foundGearType.count++;
           }
         }
       });
