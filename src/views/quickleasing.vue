@@ -810,7 +810,7 @@ export default {
 
 <style src="@vueform/slider/themes/default.css"></style>
 <style>
-.products___1WcE3 {}
+/*.products___1WcE3 {}*/
 
 .filtered__cars-container {
   display: flex;
@@ -858,7 +858,7 @@ export default {
   padding-bottom: 20px;
 }
 
-.filter__price {}
+/*.filter__price {}*/
 
 .filter__brand,
 .filter__model,
