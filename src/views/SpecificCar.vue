@@ -771,7 +771,7 @@ onMounted(() => {
 
                   <!-- END MULTI FORM  -->
                 </div>
-                <div class="buttons-wrapper___3WoLU">
+                <div class="buttons-wrapper___3WoLU" v-if="showContent1">
                   <button
                     id="proceed-button"
                     @click="showContent1 = false"
@@ -781,7 +781,7 @@ onMounted(() => {
                   </button>
 
                   <div class="back-link-wrapper___o4YqX">
-                    <a class="back-link___1LJpm" href="#/">Tilbage</a>
+                    <RouterLink class="back-link___1LJpm" to="/quickleasing">Tilbage</RouterLink>
                   </div>
                 </div>
               </div>
@@ -796,8 +796,6 @@ onMounted(() => {
 </template>
 
 <script>
-import { useRouter } from "vue-router";
-const router = useRouter();
 export default {
   name: "SpecificCar",
 
@@ -844,10 +842,6 @@ export default {
     this.fetchCarData();
   },
   methods: {
-    goToLeaseForm(id) {
-      router.push({ name: "SpecificCarFormSteps", params: { id } });
-    },
-
     async fetchCarData() {
       const id = this.$route.params.id;
       const apiUrl = `${this.currentURL}${id}`;

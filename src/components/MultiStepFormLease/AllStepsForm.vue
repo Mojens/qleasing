@@ -6,103 +6,160 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   components: { StepThree, StepTwo, StepOne },
+  data() {
+    return {
+      showContent1: false,
+    };
+  },
+
 });
 </script>
 <template>
-  <FormKit type="form" :actions="true" form-class="multiform" >
+  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false"  >
     <FormKit
       type="multi-step"
       tab-style="progress"
       steps-class="multiform__steps"
-      span-class="custom__tab-span"
       tab-label-class="custom__tab-span"
       :wrapper-class="{
         multiform__wrapper: true,
       }"
+      slot-scope="{ handlers, node }"
+      :allowIncomplete="true"
+
     >
-      <FormKit type="step" label="1. Valg af Forsikring" help="222">
+
+      <FormKit type="step" label="1. Tilvalg" help="222">
         <div class="step__content-single">
-        <StepOne />
+          <StepOne />
         </div>
+        <template #stepNext="{ handlers,node }">
+          <div class="buttons-wrapper___3WoLU">
+            <button
+              id="proceed-button"
+              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+              @click="handlers.incrementStep(1, node.context)()"
+              type="button"
+              data-next="true"
+            >
+              Fortsæt
+            </button>
+
+            <div class="back-link-wrapper___o4YqX">
+              <a href="" >Tilbage til oversigt</a>
+            </div>
+          </div>
+
+        </template>
       </FormKit>
 
-      <FormKit type="step" name="step2" label="2. Valg af leasing" >
+      <FormKit type="step" name="step2" label="2. Valg af leasing">
         <div class="step__content">
-        <div class="step__content-single_header">
-          <h3 class=" ">Prisoverslag</h3>
-        </div>
-        <div class="prices_overview">
-        <div class=" grid--auto-4 pad-header--s gap--xs">
-          <StepTwo />
-        </div>
+          <div class="step__content-single_header">
+            <h3 class=" ">Prisoverslag</h3>
+          </div>
+          <div class="prices_overview">
+            <div class="grid--auto-4 pad-header--s gap--xs">
 
-        <div class="prices--interactiveBlock">
-          <div class="prices__info prices__info--primary bold">
-            <div class="prices__title">Citroën C3 Rivera 83 HK ML</div>
-            <div class="prices__separator"></div>
-            <div>2.799 kr./md.</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
-            <div class="prices__separator"></div>
-            <div>Inkluderet</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Grøn ejerafgift</div>
-            <div class="prices__separator"></div>
-            <div>Inkluderet</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Service- og garantiaftale</div>
-            <div class="prices__separator"></div>
-            <div>Inkluderet</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Depositum</div>
-            <div class="prices__separator"></div>
-            <div>0 kr.</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Udbetaling</div>
-            <div class="prices__separator"></div>
-            <div>0 kr.</div>
-          </div>
-          <div class="prices__info prices__info--secondary">
-            <div class="prices__title">Tilbageleveringsgebyr</div>
-            <div class="prices__separator"></div>
-            <div>0 kr.</div>
-          </div>
-          <div class="prices__extra">
-            <div class="prices__info">
-              <div class="prices__title">2.000 km.</div>
-              <div class="prices__separator"></div>
-              <div>Inkluderet</div>
+              <StepTwo />
+
             </div>
-            <div class="prices__info">
-              <div class="prices__title">Vi vælger farven for dig</div>
-              <div class="prices__separator"></div>
-              <div>Inkluderet</div>
-            </div>
-            <div class="prices__info">
-              <div class="prices__title prices__title--tooltip">
-                Viking – Vejhjælp
-                <div><div class="prices__tooltip">?</div></div>
+
+            <div class="prices--interactiveBlock">
+              <div class="prices__info prices__info--primary bold">
+                <div class="prices__title">Citroën C3 Rivera 83 HK ML</div>
+                <div class="prices__separator"></div>
+                <div>2.799 kr./md.</div>
               </div>
-              <div class="prices__separator"></div>
-              <div>49 kr./md.</div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
+                <div class="prices__separator"></div>
+                <div>Inkluderet</div>
+              </div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Grøn ejerafgift</div>
+                <div class="prices__separator"></div>
+                <div>Inkluderet</div>
+              </div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Service- og garantiaftale</div>
+                <div class="prices__separator"></div>
+                <div>Inkluderet</div>
+              </div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Depositum</div>
+                <div class="prices__separator"></div>
+                <div>0 kr.</div>
+              </div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Udbetaling</div>
+                <div class="prices__separator"></div>
+                <div>0 kr.</div>
+              </div>
+              <div class="prices__info prices__info--secondary">
+                <div class="prices__title">Tilbageleveringsgebyr</div>
+                <div class="prices__separator"></div>
+                <div>0 kr.</div>
+              </div>
+              <div class="prices__extra">
+                <div class="prices__info">
+                  <div class="prices__title">2.000 km.</div>
+                  <div class="prices__separator"></div>
+                  <div>Inkluderet</div>
+                </div>
+                <div class="prices__info">
+                  <div class="prices__title">Vi vælger farven for dig</div>
+                  <div class="prices__separator"></div>
+                  <div>Inkluderet</div>
+                </div>
+                <div class="prices__info">
+                  <div class="prices__title prices__title--tooltip">
+                    Viking – Vejhjælp
+                    <div><div class="prices__tooltip">?</div></div>
+                  </div>
+                  <div class="prices__separator"></div>
+                  <div>49 kr./md.</div>
+                </div>
+              </div>
+              <div class="prices__info prices__info--highlighted bold">
+                <div class="prices__title">Totalpris</div>
+                <div class="prices__separator"></div>
+                <div>2.848 kr./md.</div>
+              </div>
+              <p class="prices__text">
+                Første betaling betales 7 dage før bilen udleveres
+              </p>
             </div>
           </div>
-          <div class="prices__info prices__info--highlighted bold">
-            <div class="prices__title">Totalpris</div>
-            <div class="prices__separator"></div>
-            <div>2.848 kr./md.</div>
+
+        </div>
+        <template #stepNext="{ handlers,node }">
+          <div class="buttons-wrapper___3WoLU">
+            <button
+              id="proceed-button-two"
+              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+              @click="handlers.incrementStep(1, node.context)()"
+              data-next="true"
+              type="button"
+
+            >
+              Fortsæt
+            </button>
+
+            <div class="back-link-wrapper___o4YqX">
+              <a class="back-link___1LJpm" style="cursor: pointer"
+              @click="handlers.incrementStep(-1, node.context)()"
+                 data-next="true"
+              >Tilbage til tilvalg</a>
+            </div>
           </div>
-          <p class="prices__text">
-            Første betaling betales 7 dage før bilen udleveres
-          </p>
-        </div>
-        </div>
-        </div>
+
+        </template>
+
+        <template #stepPrevious="{ handlers,node }">
+        </template>
+
+
       </FormKit>
 
       <FormKit type="step" name="step3" label="3. Kontaktinformation">
@@ -112,23 +169,113 @@ export default defineComponent({
           </div>
           <div class="prices_overview">
             <div class="grid--auto-4 pad-header--s gap--xs">
-        <StepThree />
+              <StepThree />
+            </div>
+
+          </div>
+
         </div>
-        </div>
-        </div>
+        <template #stepNext="{ handlers,node }">
+          <div class="buttons-wrapper___3WoLU">
+            <button
+              id="proceed-button-two"
+              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+            >
+              Bestil nu
+            </button>
+
+            <div class="back-link-wrapper___o4YqX">
+              <a class="back-link___1LJpm" style="cursor: pointer"
+                 @click="handlers.incrementStep(-1, node.context)()"
+                 data-next="true"
+              >Tilbage til valg af leasing</a>
+            </div>
+          </div>
+
+        </template>
+        <template #stepPrevious="{ handlers,node }">
+
+
+        </template>
       </FormKit>
     </FormKit>
+    <template #stepNext>
+      <FormKit type="submit" />
+    </template>
+
   </FormKit>
+
 </template>
 
 <style>
-.form__wrapper {
-  padding: var(--space-l) 0 var(--space-xl) 0;
+.back-link___1LJpm{
+  user-select: none;
 }
-.step__content{
-  width: 100%;
+.buttons-wrapper___3WoLU .back-link-wrapper___o4YqX {
+  margin: 0.95rem auto 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.buttons-wrapper___3WoLU .proceed-button___2ZgPy {
+  max-width: 20rem;
+  height: auto;
+  margin: auto;
+}
+@media screen and (min-width: 64rem) {
+  .buttons-wrapper___3WoLU {
+    padding: 0.75rem 0 1.4rem;
+  }
+}
+@media screen and (min-width: 46.75rem) {
+ .buttons-wrapper___3WoLU {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+}
+.buttons-wrapper___3WoLU {
+  width: 98.2%;
+  position: absolute;
+  margin-top: auto;
+  padding: 2.1rem 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
+.button___2oWcS {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.3rem;
+  background-color: var(--button-color);
+  color: var(--second-button-color);
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: 2px solid var(--button-color);
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  outline: none;
+}
+.form__wrapper {
+  padding: var(--space-xs) 0 var(--space-xl) 0;
+}
+.step__content {
+  width: 100%;
+}
 
 .multiform {
   border: none !important;
@@ -143,18 +290,17 @@ export default defineComponent({
 }
 
 .multiform__steps {
-
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
   width: 100% !important;
-  padding: 2em 0!important;
+  padding: 2em 0 !important;
 }
-.step__content-single{
+.step__content-single {
   width: 100%;
   padding: 0 var(--space-xl);
 }
-.step__content-single_header{
+.step__content-single_header {
   width: 100%;
   padding: var(--space-s) var(--space-xl);
 }
@@ -177,7 +323,7 @@ export default defineComponent({
 .add__price-selv .formkit-tooltip,
 .add__price-vej .formkit-tooltip,
 .add__price-hjul .formkit-tooltip,
-.label-for-cpr{
+.label-for-cpr {
   margin-right: auto;
 }
 .add__price-forsikring:after,
@@ -213,7 +359,6 @@ export default defineComponent({
   width: 100% !important;
   position: relative !important;
 }
-
 
 /* Step 2 list of prisoverslag about the choosen carr */
 .prices_overview {

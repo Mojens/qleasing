@@ -58,15 +58,15 @@ const premiumDaek = [
 const age_driver = [
   {
     label: "23-24 År",
-    value: "18-24",
+    value: "23-24",
   },
   {
     label: "25-29 År",
-    value: "25-34",
+    value: "25-29",
   },
   {
     label: "30-39 År",
-    value: "35-44",
+    value: "30-39",
   },
   {
     label: "40+ År",
@@ -92,6 +92,7 @@ const age_driver = [
       required: 'Løbetid er påkrævet',
     }"
     validation-visibility="dirty"
+
     value="36"
   >
     <template #option="{ option }">
@@ -112,7 +113,7 @@ const age_driver = [
     :validation-messages="{
       required: 'Ekstra kilometer er påkrævet',
     }"
-    validation-visibility="dirty"
+    validation-visibility="live"
     value="0"
 
   >
@@ -142,7 +143,9 @@ const age_driver = [
     :validation-messages="{
       required: 'Ombytning til Primium helårsdæk er påkrævet',
     }"
-    validation-visibility="dirty"
+     validation-visibility="live"
+
+
 
   >
     <template #option="{ option }">
@@ -167,7 +170,7 @@ const age_driver = [
     :validation-messages="{
       required: 'Alder på fører er påkrævet',
     }"
-    validation-visibility="dirty"
+    validation-visibility="live"
 
   >
     <template #option="{ option }">

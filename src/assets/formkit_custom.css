@@ -1,16 +1,27 @@
-@import './base.css';
+@import "./base.css";
 
-
-.custom-formkit__label{
-    font-size: calc(var(--text-m) - 1.6px);
-    font-family: Rubik, sans-serif;
-    font-weight: 400;
-    text-transform: capitalize;
-    letter-spacing: 0.3px;
-
+.custom-formkit__label {
+  font-size: calc(var(--text-m) - 1.6px);
+  font-family: Rubik, sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
 }
-.custom__tab-span{
-    font-size: calc(var(--text-m) - 0.8px)!important;
-    opacity: 0.8;
-
+.custom__tab-span {
+  font-size: calc(var(--text-m) - 0.8px) !important;
+  opacity: 0.8;
+}
+.custom-formkit__decorator-icon {
+  color: var(--action) !important;
+}
+.custom-formkit__decorator {
+  width: 100%;
+}
+.custom-formkit__selected-icon {
+  color: var(--action) !important;
+  background-color: var(--action) !important;
+}
+.custom-formkit__selected-icon:hover {
+  color: var(--action) !important;
+  background-color: var(--action) !important;
 }

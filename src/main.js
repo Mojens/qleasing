@@ -31,7 +31,11 @@ app.use(
     classes: generateClasses({
       global: {
         label: 'custom-formkit__label',
+        decoratorIcon: 'custom-formkit__decorator-icon',
+        decorator: 'custom-formkit__decorator',
+
       },
+
 
 
     }),
