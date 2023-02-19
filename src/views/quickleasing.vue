@@ -137,13 +137,13 @@
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
-          <Slider v-model="priceRange.value" :min="priceRange.value[0]" :max="priceRange.value[1]" :step="100"
+          <Slider v-model="priceRange.value" :min="priceRange.savedValue[0]" :max="priceRange.savedValue[1]" :step="500"
             :tooltips="true" :range="true" :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
-          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.value[0]" :max="oneTimePriceRange.value[1]" :step="100" :tooltips="true" :range="true"
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]" :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
         </div>
 
