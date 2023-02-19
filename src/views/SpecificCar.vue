@@ -798,7 +798,6 @@ onMounted(() => {
 <script>
 export default {
   name: "SpecificCar",
-
   data() {
     return {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
