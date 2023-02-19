@@ -17,9 +17,11 @@
                 </div>
 
                 <!-- Label som kommer fra bil, hvis der er nogle -->
-                <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
+                <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk"
+                  :style="{ backgroundColor: car.label_farve, color: car.label_text_farve }">
                   {{ car.billedeLabel }}
                 </div>
+
 
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
@@ -143,24 +145,25 @@
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
           <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
-          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]" :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]"
+            :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
             :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
         </div>
 
         <!--
-                                                    <div id="filterPrice">
-                                                      <h3>pris pr.md.</h3>
-                                                      <select v-model="selectedPrice" @change="priceChange">
-                                                        <option value="*">Alle</option>
-                                                        <option value="1000-2000">1.000 - 2.000</option>
-                                                        <option value="2000-3000">2.000 - 3.000</option>
-                                                        <option value="3000-4000">3.000 - 4.000</option>
-                                                        <option value="4000-5000">4.000 - 5.000</option>
-                                                        <option value="5000+">3.000 - 4.000</option>
-                                                      </select>
+                                                      <div id="filterPrice">
+                                                        <h3>pris pr.md.</h3>
+                                                        <select v-model="selectedPrice" @change="priceChange">
+                                                          <option value="*">Alle</option>
+                                                          <option value="1000-2000">1.000 - 2.000</option>
+                                                          <option value="2000-3000">2.000 - 3.000</option>
+                                                          <option value="3000-4000">3.000 - 4.000</option>
+                                                          <option value="4000-5000">4.000 - 5.000</option>
+                                                          <option value="5000+">3.000 - 4.000</option>
+                                                        </select>
 
-                                                    </div>
-                                                -->
+                                                      </div>
+                                                  -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
@@ -377,7 +380,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_maanedspris);
-     
+
 
       const highestPriceRange = data.data.reduce((highest, car) => {
         const baseMaaenedspris = car.base_maanedspris ?? 0;
@@ -387,7 +390,7 @@ export default {
           return highest;
         }
       }, data.data[0].base_maanedspris);
-     
+
 
       this.priceRange.value = [lowestPriceRange, highestPriceRange];
       this.priceRange.savedValue = [lowestPriceRange, highestPriceRange];
@@ -403,7 +406,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_udbetaling);
-   
+
 
       const highestOneTimePriceRange = data.data.reduce((highest, car) => {
         const baseUdbetaling = car.base_udbetaling ?? 0;
@@ -413,7 +416,7 @@ export default {
           return highest;
         }
       }, data.data[0].base_udbetaling);
-     
+
 
       this.oneTimePriceRange.value = [lowestOneTimePriceRange, highestOneTimePriceRange];
       this.oneTimePriceRange.savedValue = [lowestOneTimePriceRange, highestOneTimePriceRange];
