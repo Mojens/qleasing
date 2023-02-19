@@ -681,7 +681,7 @@ export default {
 @media screen and (min-width: 64rem) {
   .products___1WcE3 .list___1c2KX {
     --products-per-row: 3;
-    --product-margin: 1.4rem;
+    --product-margin: 0.5rem;
   }
 }
 

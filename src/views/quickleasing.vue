@@ -1,17 +1,27 @@
+<script setup>
+import FooterItem from "@/components/FooterItem.vue";
+import autoAnimate from "@formkit/auto-animate";
+import { ref, onMounted } from "vue";
+
+// function to use autoAnimate the library, when submit(function already exists called createForm) is clicked if there are errors
+const example = ref()
+const example2 = ref()
+onMounted(() => {
+  example.value.querySelectorAll(".list___1c2KX").forEach(autoAnimate)
+  example2.value.querySelectorAll(".filter__li").forEach(autoAnimate)
+})
+
+</script>
 
 <template>
-  <div class="filtered__cars-container">
-
+  <div class="filtered__cars-container" ref="example" >
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
-        <div class="list___1c2KX">
-
-
+        <div class="list___1c2KX" >
           <div class="product___3vmta" v-for="car in carData" :key="car.id">
-
-            <div class="product-card___2naPO has-cta___1N-4L">
+            <RouterLink :to="`/quickleasing/${car.id}`" style="color: inherit">
+            <div class="product-card___2naPO has-cta___1N-4L" >
               <div class="label-wrap___2_2TG">
-
                 <div class="label___xUzK4 label___IKlVk black___2xtI_">
                   fra {{ car.base_udbetaling }} kr i udbetaling
                 </div>
@@ -25,14 +35,23 @@
 
               </div>
               <div class="image-wrapper___2BJkg main-image___2PNg2">
-                <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
-                  :title="`${car.brand} - ${car.model}`" />
+                <img
+                  class="image___3UcXF"
+                  :src="thumbnail[car.id]"
+                  :alt="`${car.brand} - ${car.model}`"
+                  :title="`${car.brand} - ${car.model}`"
+                />
               </div>
               <div class="content___2i8ss">
                 <div class="title___3jeSd">
-                  <div class="name___3OMhd">{{ car.brand }} - {{ car.model }}</div>
+                  <div class="name___3OMhd">
+                    {{ car.brand }} - {{ car.model }}
+                  </div>
                   <div class="price___1hgWK">
-                    Abonnement fra<span class="value___3qMAh">{{ car.base_maanedspris }}</span>kr./md.
+                    Abonnement fra<span class="value___3qMAh">{{
+                      car.base_maanedspris
+                    }}</span
+                    >kr./md.
                   </div>
 
                 </div>
@@ -123,8 +142,8 @@
                 </RouterLink>
               </div>
             </div>
+            </RouterLink>
           </div>
-
         </div>
       </div>
     </div>
@@ -133,45 +152,40 @@
 
     <!-- START NEW FILTER -->
 
-    <div class="filter__container">
+
+    <div class="filter__container" ref="example2">
       <div class="filter__inner-wrapper">
 
 
-        <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3 class="filter__header" style="padding-bottom: 3.5rem">Pris pr.md.</h3>
-          <Slider v-model="priceRange.value" :min="priceRange.savedValue[0]" :max="priceRange.savedValue[1]" :step="500"
-            :tooltips="true" :range="true" :format="value => `${value} kr.`" @change="priceChange"></Slider>
-        </div>
 
-        <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3 class="filter__header" style="padding-bottom: 3.5rem">Førstegangsydelse</h3>
-          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]"
-            :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
-            :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
-        </div>
 
         <!--
-                                                      <div id="filterPrice">
-                                                        <h3>pris pr.md.</h3>
-                                                        <select v-model="selectedPrice" @change="priceChange">
-                                                          <option value="*">Alle</option>
-                                                          <option value="1000-2000">1.000 - 2.000</option>
-                                                          <option value="2000-3000">2.000 - 3.000</option>
-                                                          <option value="3000-4000">3.000 - 4.000</option>
-                                                          <option value="4000-5000">4.000 - 5.000</option>
-                                                          <option value="5000+">3.000 - 4.000</option>
-                                                        </select>
+                                                    <div id="filterPrice">
+                                                      <h3>pris pr.md.</h3>
+                                                      <select v-model="selectedPrice" @change="priceChange">
+                                                        <option value="*">Alle</option>
+                                                        <option value="1000-2000">1.000 - 2.000</option>
+                                                        <option value="2000-3000">2.000 - 3.000</option>
+                                                        <option value="3000-4000">3.000 - 4.000</option>
+                                                        <option value="4000-5000">4.000 - 5.000</option>
+                                                        <option value="5000+">3.000 - 4.000</option>
+                                                      </select>
 
-                                                      </div>
-                                                  -->
+                                                    </div>
+                                                -->
 
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
-          <ul class="filter__ul list--none" style="list-style: none">
-            <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
+          <ul  class="filter__ul-horizontal list--none" style="list-style: none" >
+            <li class="filter__li" v-for="brand in uniqueBrands" :key="brand" >
               <label class="container">
-                <input class="filter__checkbox checkbox" type="checkbox" :value="brand.name"
-                  :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
+                <input
+                  class="filter__checkbox checkbox"
+                  type="checkbox"
+                  :value="brand.name"
+                  :checked="selectedBrands.includes(brand.name)"
+                  @click="handleCheckboxClick(brand.name)"
+                />
                 {{ brand.name }} ({{ brand.count }})
                 <span class="checkmark"></span>
               </label>
@@ -181,62 +195,52 @@
         </div>
 
         <div class="filter__model">
-          <h3 class="filter__header pad-header--m">Model</h3>
-          <select class="filter__select" v-model="selectedModel" @change="modelChange()">
+          <h3 class="filter__header pad-header--xs" style="padding-top: 1rem">
+            Model
+          </h3>
+          <select
+            class="filter__select"
+            v-model="selectedModel"
+            @change="modelChange()"
+          >
             <option class="filter__option-all" value="*">Alle modeller</option>
-            <option class="filter__option" v-for="option in modelOptions" :value="option">{{ option.label }}</option>
+            <option
+              class="filter__option"
+              v-for="option in modelOptions"
+              :value="option"
+            >
+              {{ option.label }}
+            </option>
           </select>
         </div>
 
-        <div class="filter__features">
-          <h3 class="filter__header pad-header--m">Udstyr</h3>
-          <ul class="filter__ul">
-            <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
-              <label class="container"
-                v-if="carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length > 0">
-                <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
-                {{ item.name }} ({{ carData.filter(car => car.Udstyr && car.Udstyr.includes(item.value)).length }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
+        <div class="filter__price" id="filterPrice" style="width: 100%">
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">Pris pr.md.</h3>
+          <Slider v-model="priceRange.value" :min="priceRange.savedValue[0]" :max="priceRange.savedValue[1]" :step="500"
+                  :tooltips="true" :range="true" :format="value => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
+        <div class="filter__price" id="filterPrice" style="width: 100%">
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">Førstegangsydelse</h3>
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]"
+                  :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
+                  :format="value => `${value} kr.`" @change="oneTimePriceChange"></Slider>
+        </div>
 
         <div class="filter__tire">
-          <h3 class="filter__header">Dæktype</h3>
-          <ul class="filter__ul">
-            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
+          <h3 class="filter__header pad-header--xs" style="padding-top: 2rem">
+            Gear Type
+          </h3>
+          <ul  class="filter__ul-horizontal">
+            <li  class="filter__li" v-for="gear in gearTypes" :key="gear.value">
               <label class="container">
-                <input class="filter__checkbox" type="checkbox" :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
-                {{ tire.name }} ({{ tire.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div class="filter__tire">
-          <h3 class="filter__header">Bil type</h3>
-          <ul class="filter__ul">
-            <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
-              <label class="container">
-                <input class="filter__checkbox" type="checkbox" :value="tire.value"
-                  :checked="selectedCarTypes.includes(carType.value)"
-                  @click="handleCheckboxClickCarType(carType.value)" />
-                {{ carType.name }} ({{ carType.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div class="filter__tire">
-          <h3 class="filter__header">Gear Type</h3>
-          <ul class="filter__ul">
-            <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
-              <label class="container">
-                <input class="filter__checkbox" type="checkbox" :value="gear.value"
-                  :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  :value="gear.value"
+                  :checked="selectedGearTypes.includes(gear.value)"
+                  @click="handleCheckboxClickGearType(gear.value)"
+                />
                 {{ gear.name }} ({{ gear.count }})
                 <span class="checkmark"></span>
               </label>
@@ -244,13 +248,93 @@
           </ul>
         </div>
         <div class="filter__tire">
-          <h3 class="filter__header">Brændstof</h3>
-          <ul class="filter__ul">
-            <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
+          <h3 class="filter__header pad-header--xs">Brændstof</h3>
+          <ul  class="filter__ul-horizontal">
+            <li  class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
               <label class="container">
-                <input class="filter__checkbox" type="checkbox" :value="fuel.value"
-                  :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  :value="fuel.value"
+                  :checked="selectedFuelTypes.includes(fuel.value)"
+                  @click="handleCheckboxClickFuelType(fuel.value)"
+                />
                 {{ fuel.name }} ({{ fuel.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="filter__features">
+          <h3 class="filter__header pad-header--xs">Udstyr</h3>
+          <ul  class="filter__ul-horizontal">
+            <li
+              class="filter__li"
+              v-for="item in featureItems"
+              :key="item.value"
+              :data-value="item.value"
+            >
+              <label
+                class="container"
+                v-if="
+                  carData.filter(
+                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                  ).length > 0
+                "
+              >
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickFeatures(item.value)"
+                />
+                {{ item.name }} ({{
+                  carData.filter(
+                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                  ).length
+                }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs">Dæktype</h3>
+          <ul  class="filter__ul-horizontal" >
+            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
+              <label class="container">
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  :value="tire.value"
+                  :checked="selectedTireTypes.includes(tire.value)"
+                  @click="handleCheckboxClickTireType(tire.value)"
+                />
+                {{ tire.name }} ({{ tire.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs">Bil type</h3>
+          <ul  class="filter__ul-horizontal">
+            <li
+              class="filter__li"
+              v-for="carType in carTypes"
+              :key="carType.value"
+            >
+              <label class="container">
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  :value="tire.value"
+                  :checked="selectedCarTypes.includes(carType.value)"
+                  @click="handleCheckboxClickCarType(carType.value)"
+                />
+                {{ carType.name }} ({{ carType.count }})
                 <span class="checkmark"></span>
               </label>
             </li>
@@ -259,10 +343,11 @@
       </div>
     </div>
   </div>
+  <FooterItem />
 </template>
 
-<script >
-import Slider from '@vueform/slider'
+<script>
+import Slider from "@vueform/slider";
 
 export default {
   components: {
@@ -331,9 +416,9 @@ export default {
         { value: "androidauto", name: "Android Auto", count: 0 },
       ],
       tireTypes: [
-        { value: "sommerdaek", name: "Monteret med sommerdæk", count: 0 },
-        { value: "vinterdaek", name: "Monteret med vinterdæk", count: 0 },
-        { value: "helaarsdaek", name: "Monteret med helårsdæk", count: 0 },
+        { value: "sommerdaek", name: "Sommerdæk", count: 0 },
+        { value: "vinterdaek", name: "Vinterdæk", count: 0 },
+        { value: "helaarsdaek", name: "Helårsdæk", count: 0 },
       ],
     };
   },
@@ -380,7 +465,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_maanedspris);
-
+     
 
       const highestPriceRange = data.data.reduce((highest, car) => {
         const baseMaaenedspris = car.base_maanedspris ?? 0;
@@ -390,7 +475,7 @@ export default {
           return highest;
         }
       }, data.data[0].base_maanedspris);
-
+     
 
       this.priceRange.value = [lowestPriceRange, highestPriceRange];
       this.priceRange.savedValue = [lowestPriceRange, highestPriceRange];
@@ -406,7 +491,7 @@ export default {
           return lowest;
         }
       }, data.data[0].base_udbetaling);
-
+   
 
       const highestOneTimePriceRange = data.data.reduce((highest, car) => {
         const baseUdbetaling = car.base_udbetaling ?? 0;
@@ -416,7 +501,7 @@ export default {
           return highest;
         }
       }, data.data[0].base_udbetaling);
-
+     
 
       this.oneTimePriceRange.value = [lowestOneTimePriceRange, highestOneTimePriceRange];
       this.oneTimePriceRange.savedValue = [lowestOneTimePriceRange, highestOneTimePriceRange];
@@ -879,8 +964,19 @@ export default {
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
-<style>
-/*.products___1WcE3 {}*/
+<style scoped>
+.products___1WcE3 {
+  display: -webkit-box;
+
+    --side-padding: 1rem;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+width: 100%;
+margin: 0;
+padding: 2rem var(--side-padding);
+}
 
 .filtered__cars-container {
   display: flex;
@@ -895,9 +991,9 @@ export default {
   left: 0;
   height: 100%;
   overflow: visible;
-  width: 350px;
-  margin-left: var(--section-space-xl);
-  background-color: #F1F1F1;
+  width: 420px;
+  margin-left: var(--section-space-l);
+  background-color: #f1f1f1;
 }
 
 .main-flow___Sjg41 {
@@ -908,13 +1004,12 @@ export default {
 .filter__inner-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-top: 10px;
+  margin-top: 2px;
   padding: var(--space-s) var(--space-m);
 }
 
 .filter__header {
-  font-size: 18px;
+  font-size: calc(var(--text-s) + 3px);
   font-weight: bold;
 }
 
@@ -939,6 +1034,15 @@ export default {
 }
 
 .filter__ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.filter__ul-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -971,16 +1075,17 @@ export default {
 }
 
 .filter__tire {
-  margin-bottom: 20px;
+  margin-bottom: 4px;
 }
 
 .container {
-  display: block;
+  display: flex;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 10px;
+  padding-left: 26px;
+  margin-bottom: 1px;
   cursor: pointer;
-  font-size: var(--text-m);
+  font-size: calc(var(--text-m) - 2.2px);
+  font-weight: 400;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1001,18 +1106,20 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
+
   background-color: var(--white);
+  border: 1.5px solid var(--action);
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark {
+.container input:checked ~ .checkmark {
   background-color: var(--action);
 }
 
@@ -1024,14 +1131,14 @@ export default {
 }
 
 /* Show the checkmark when checked */
-.container input:checked~.checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 9px;
-  top: 5px;
+  left: 7px;
+  top: 3px;
   width: 5px;
   height: 10px;
   border: solid white;
