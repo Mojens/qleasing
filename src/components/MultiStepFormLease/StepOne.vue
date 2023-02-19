@@ -100,7 +100,35 @@
 
 </template>
 
-<script></script>
+<script>
+export default {
+  name: "SpecificCar",
+
+  data() {
+    return {
+      pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
+      fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
+      currentURL: import.meta.env.VITE_APP_CARS_URL,
+      carData: {},
+      carImages: {},
+      lavSelvrisiko: false,
+      afleveringsforsikring: false,
+      vikingVejhjaelp: false,
+      kompletSaetVinterhjul: false,
+      carId: this.$route.params.id,
+      readerAPI: import.meta.env.VITE_APP_READER_API,
+    };
+  },
+  created() {
+
+  
+  },
+  methods: {
+  },
+  computed: {
+  },
+};
+</script>
 <style>
 [data-checked]  {
   background-color: #f8f6f6;
