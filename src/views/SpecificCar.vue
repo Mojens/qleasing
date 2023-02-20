@@ -1064,7 +1064,7 @@ const age_driver = [
                             label-class="add__price-forsikring add__price"
                             wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
-                            @change="maanedligeYdelse += afleveringsforsikring ? 119 : -119"
+                            @change="toogleAfleveringsforsikring(displayCar)"
                           >
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id"
@@ -1089,7 +1089,7 @@ const age_driver = [
                             help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
                             label-class="add__price-selv add__price"
                             wrapper-class="form__wrapper-input"
-                            @change="maanedligeYdelse += lavSelvrisiko ? 200 : -200"
+                            @change="toogleLavSelvRisiko(displayCar)"
                           >
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id"
@@ -1113,7 +1113,7 @@ const age_driver = [
                             help="Ved køb af Viking Vejhjælp, er du dækket for skader på bilen ved aflevering."
                             wrapper-class="form__wrapper-input"
                             label-class="add__price-vej add__price"
-                            @change="maanedligeYdelse += vikingVejhjaelp ? 49 : -49"
+                            @change="toogleVikingVejhjaelp(displayCar)"
                           >
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id"
@@ -1137,7 +1137,7 @@ const age_driver = [
                             wrapper-class="form__wrapper-input"
                             name="kompletSaetVinterhjul"
                             help="Ved køb af Komplet sæt vinterhjul, er du dækket for skader på bilen ved aflevering."
-                            @change="maanedligeYdelse += kompletSaetVinterhjul ? 500 : -500"
+                            @change="toogleKompletSaetVinterhjul(displayCar)"
                           >
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id"
@@ -1829,6 +1829,42 @@ export default {
         return featureNames.join(", ");
       } else {
         return "Ingen udstyr";
+      }
+    },
+    toogleAfleveringsforsikring(car){
+      if(this.afleveringsforsikring){
+        this.afleveringsforsikring = false;
+        car.base_maanedspris = car.base_maanedspris - 119;
+      }else{
+        this.afleveringsforsikring = true;
+        car.base_maanedspris = car.base_maanedspris + 119;
+      }
+    },
+    toogleLavSelvRisiko(car){
+    if(this.lavSelvrisiko){
+      this.lavSelvrisiko = false;
+      car.base_maanedspris = car.base_maanedspris - 64;  
+    }else{
+      this.lavSelvrisiko = true;
+      car.base_maanedspris = car.base_maanedspris + 64;
+    }
+    },
+    toogleVikingVejhjaelp(car){
+      if(this.vikingVejhjaelp){
+        this.vikingVejhjaelp = false;
+        car.base_maanedspris = car.base_maanedspris - 49;
+      }else{
+        this.vikingVejhjaelp = true;
+        car.base_maanedspris = car.base_maanedspris + 49;
+      }
+    },
+    toogleKompletSaetVinterhjul(car){
+      if(this.kompletSaetVinterhjul){
+        this.kompletSaetVinterhjul = false;
+        car.base_maanedspris = car.base_maanedspris - 119;
+      }else{
+        this.kompletSaetVinterhjul = true;
+        car.base_maanedspris = car.base_maanedspris + 119;
       }
     },
   },
