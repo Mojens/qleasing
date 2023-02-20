@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import AllStepsForm from "@/components/MultiStepFormLease/AllStepsForm.vue";
 import autoAnimate from "@formkit/auto-animate";
 
 const dropdown = ref(); // we need a DOM node
@@ -186,6 +185,78 @@ const allUdstyr = [
   { name: "Svingbart træk (elektrisk)", value: "svingbarttraekelektrisk", count: 0 },
   { name: "Dieselpartikelfilter", value: "dieselpartikelfilter", count: 0 },
   { name: "Tidligere undervognsbehandlet", value: "tidligereundervognsbehandlet", count: 0 }
+];
+const lobetider = [
+  {
+    label: "6 mdr.",
+    value: "6",
+  },
+  {
+    label: "12 mdr.",
+    value: "12",
+  },
+  {
+    label: "24 mdr.",
+    value: "24",
+  },
+  {
+    label: "36 mdr.",
+    value: "36",
+  },
+  {
+    label: "48 mdr.",
+    value: "48",
+  },
+];
+const extra_kilometer_aar = [
+  {
+    label: "0 km",
+    value: "0",
+  },
+  {
+    label: "5.000 km",
+    value: "5000",
+  },
+  {
+    label: "10.000 km",
+    value: "10000",
+  },
+  {
+    label: "15.000 km",
+    value: "15000",
+  },
+];
+const premiumDaek = [
+  {
+    label: "Nej tak",
+    value: "nej",
+  },
+  {
+    label: "Kontant",
+    value: "kontant",
+  },
+  {
+    label: "Finansiert",
+    value: "finansiert",
+  },
+];
+const age_driver = [
+  {
+    label: "23-24 År",
+    value: "23-24",
+  },
+  {
+    label: "25-29 År",
+    value: "25-29",
+  },
+  {
+    label: "30-39 År",
+    value: "30-39",
+  },
+  {
+    label: "40+ År",
+    value: "40_plus",
+  },
 ];
 </script>
 
@@ -966,7 +1037,634 @@ const allUdstyr = [
 
                   <!-- START MULTI FORM  -->
 
-                  <AllStepsForm />
+                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false"  >
+                    <FormKit
+                      type="multi-step"
+                      tab-style="progress"
+                      steps-class="multiform__steps"
+                      tab-label-class="custom__tab-span"
+                      :wrapper-class="{
+        multiform__wrapper: true,
+      }"
+                      slot-scope="{ handlers, node }"
+                      :allowIncomplete="true"
+
+                    >
+       <!-- START STEP 1 -->
+                      <FormKit type="step" label="1. Tilvalg" help="222">
+                        <div class="step__content-single">
+
+                          <div>
+                            <h3 class="pad-header--xs">Tilvalg</h3>
+                          </div>
+                          <FormKit
+                            type="checkbox"
+                            label="Afleveringsforsikring"
+                            name="afleveringsforsikring"
+                            label-class="add__price-forsikring add__price"
+                            wrapper-class="form__wrapper-input"
+                            help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
+                            @change="maanedligeYdelse += afleveringsforsikring ? 119 : -119"
+                          >
+                            <template #label="{ id, label, help, classes }">
+                              <label :class="classes.label" :for="id"
+                              >{{ label }}
+                                <span v-if="help" :class="classes.tooltip">
+
+          ?<span :class="classes.tooltipInner">{{ help }}</span>
+        </span>
+                              </label>
+                            </template>
+
+                            <!-- comment this out if you also want the help to be shown -->
+                            <template #help>
+                              <p class="form__extra-help">Tilvalg af afleveringsforsikring er betinget af en aftale på minimum 12 måneder </p>
+                            </template>
+
+                          </FormKit>
+                          <FormKit
+                            type="checkbox"
+                            label="Lav selvrisiko"
+                            name="lavSelvrisiko"
+                            help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
+                            label-class="add__price-selv add__price"
+                            wrapper-class="form__wrapper-input"
+                            @change="maanedligeYdelse += lavSelvrisiko ? 200 : -200"
+                          >
+                            <template #label="{ id, label, help, classes }">
+                              <label :class="classes.label" :for="id"
+                              >{{ label }}
+
+                                <span v-if="help" :class="classes.tooltip">
+          ?<span :class="classes.tooltipInner">{{ help }}</span>
+        </span>
+                              </label>
+                            </template>
+
+                            <template #help>
+                              <p class="form__extra-help">Tilvalg af lav selvrisiko er betinget af at du minimum er fyldt 30 år.</p>
+                            </template>
+
+                          </FormKit>
+                          <FormKit
+                            type="checkbox"
+                            label="Viking Vejhjælp "
+                            name="vikingVejhjaelp"
+                            help="Ved køb af Viking Vejhjælp, er du dækket for skader på bilen ved aflevering."
+                            wrapper-class="form__wrapper-input"
+                            label-class="add__price-vej add__price"
+                            @change="maanedligeYdelse += vikingVejhjaelp ? 49 : -49"
+                          >
+                            <template #label="{ id, label, help, classes }">
+                              <label :class="classes.label" :for="id"
+                              >{{ label }}
+
+                                <span v-if="help" :class="classes.tooltip">
+          ?<span :class="classes.tooltipInner">{{ help }}</span>
+        </span>
+                              </label>
+                            </template>
+
+                            <template #help>
+                              <p class="form__extra-help">I samarbejde med Viking tilbyder vi vejhjælp til kun 49 kr.</p>
+                            </template>
+
+                          </FormKit>
+                          <FormKit
+                            type="checkbox"
+                            label="Komplet sæt vinterhjul"
+                            label-class="add__price-hjul add__price"
+                            wrapper-class="form__wrapper-input"
+                            name="kompletSaetVinterhjul"
+                            help="Ved køb af Komplet sæt vinterhjul, er du dækket for skader på bilen ved aflevering."
+                            @change="maanedligeYdelse += kompletSaetVinterhjul ? 500 : -500"
+                          >
+                            <template #label="{ id, label, help, classes }">
+                              <label :class="classes.label" :for="id"
+                              >{{ label }}
+
+                                <span v-if="help" :class="classes.tooltip">
+          ?<span :class="classes.tooltipInner">{{ help }}</span>
+        </span>
+                              </label>
+                            </template>
+
+                            <template #help>
+                              <p class="form__extra-help">I samarbejde med Viking tilbyder vi vejhjælp til kun 49 kr.</p>
+                            </template>
+
+
+                          </FormKit>
+
+                        </div>
+                        <template #stepNext="{ handlers,node }">
+                          <div class="buttons-wrapper___3WoLU">
+                            <button
+                              id="proceed-button"
+                              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+                              @click="handlers.incrementStep(1, node.context)()"
+                              type="button"
+                              data-next="true"
+                            >
+                              Fortsæt
+                            </button>
+
+                            <div class="back-link-wrapper___o4YqX">
+                              <a href="" >Tilbage til oversigt</a>
+                            </div>
+                          </div>
+
+                        </template>
+                      </FormKit>
+        <!-- END STEP 1 -->
+        <!-- START STEP 2 -->
+
+                      <FormKit type="step" name="step2" label="2. Valg af leasing">
+                        <div class="step__content">
+                          <div class="step__content-single_header">
+                            <h3 class=" ">Prisoverslag</h3>
+                          </div>
+                          <div class="prices_overview">
+                            <div class="grid--auto-4 pad-header--s gap--xs">
+
+                              <FormKit
+                                type="dropdown"
+                                label="Ønsket Løbetid*"
+                                name="oensketLobetid"
+                                :options="lobetider"
+                                :floating-label="false"
+                                :inner-class="{
+      searchFilter__select: true,
+    }"
+                                placeholder="Længde i måneder"
+                                help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+                                validation="required"
+                                :validation-messages="{
+      required: 'Løbetid er påkrævet',
+    }"
+                                validation-visibility="dirty"
+
+                                value="36"
+                              >
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span>{{ option.label }}</span>
+                                  </div>
+                                </template>
+                              </FormKit>
+
+                              <FormKit
+                                type="dropdown"
+                                label="Ekstra kilometer pr. år*"
+                                name="oensketKilometer"
+                                :options="extra_kilometer_aar"
+                                help="Ekstra km udover km 15.000 årligt - "
+                                placeholder="Ekstra kilometer pr. år"
+                                validation="required"
+                                :validation-messages="{
+      required: 'Ekstra kilometer er påkrævet',
+    }"
+                                validation-visibility="live"
+                                value="0"
+
+                              >
+
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span>{{ option.label }}</span>
+                                  </div>
+                                </template>
+
+
+
+                              </FormKit>
+
+                              <FormKit
+                                type="dropdown"
+                                label="Premium helårsdæk*"
+                                name="ombytningTilPremiumHelårsdæk"
+                                :options="premiumDaek"
+                                :floating-label="false"
+                                :inner-class="{
+      searchFilter__select: true,
+    }"
+                                placeholder="Primium helårsdæk"
+                                help="Ombytning til Primium helårsdæk"
+                                validation="required"
+                                :validation-messages="{
+      required: 'Ombytning til Primium helårsdæk er påkrævet',
+    }"
+                                validation-visibility="live"
+
+
+
+                              >
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span >{{ option.label }}</span>
+                                  </div>
+                                </template>
+                              </FormKit>
+
+                              <FormKit
+                                type="dropdown"
+                                label="Alder*"
+                                name="alder"
+                                :options="age_driver"
+                                :floating-label="false"
+                                :inner-class="{
+      searchFilter__select: true,
+    }"
+                                placeholder="Alder på fører"
+                                help="Alder på fører"
+                                validation="required"
+                                :validation-messages="{
+      required: 'Alder på fører er påkrævet',
+    }"
+                                validation-visibility="live"
+
+                              >
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span>{{ option.label }}</span>
+                                  </div>
+                                </template>
+
+                              </FormKit>
+
+                            </div>
+
+                            <div class="prices--interactiveBlock">
+                              <div class="prices__info prices__info--primary bold">
+                                <div class="prices__title">Citroën C3 Rivera 83 HK ML</div>
+                                <div class="prices__separator"></div>
+                                <div>2.799 kr./md.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
+                                <div class="prices__separator"></div>
+                                <div>Inkluderet</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Grøn ejerafgift</div>
+                                <div class="prices__separator"></div>
+                                <div>Inkluderet</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Service- og garantiaftale</div>
+                                <div class="prices__separator"></div>
+                                <div>Inkluderet</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Depositum</div>
+                                <div class="prices__separator"></div>
+                                <div>0 kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Udbetaling</div>
+                                <div class="prices__separator"></div>
+                                <div>0 kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Tilbageleveringsgebyr</div>
+                                <div class="prices__separator"></div>
+                                <div>0 kr.</div>
+                              </div>
+                              <div class="prices__extra">
+                                <div class="prices__info">
+                                  <div class="prices__title">2.000 km.</div>
+                                  <div class="prices__separator"></div>
+                                  <div>Inkluderet</div>
+                                </div>
+                                <div class="prices__info">
+                                  <div class="prices__title">Vi vælger farven for dig</div>
+                                  <div class="prices__separator"></div>
+                                  <div>Inkluderet</div>
+                                </div>
+                                <div class="prices__info">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Viking – Vejhjælp
+                                    <div><div class="prices__tooltip">?</div></div>
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>49 kr./md.</div>
+                                </div>
+                              </div>
+                              <div class="prices__info prices__info--highlighted bold">
+                                <div class="prices__title">Totalpris</div>
+                                <div class="prices__separator"></div>
+                                <div>2.848 kr./md.</div>
+                              </div>
+                              <p class="prices__text">
+                                Første betaling betales 7 dage før bilen udleveres
+                              </p>
+                            </div>
+                          </div>
+
+                        </div>
+                        <template #stepNext="{ handlers,node }">
+                          <div class="buttons-wrapper___3WoLU">
+                            <button
+                              id="proceed-button-two"
+                              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+                              @click="handlers.incrementStep(1, node.context)()"
+                              data-next="true"
+                              type="button"
+
+                            >
+                              Fortsæt
+                            </button>
+
+                            <div class="back-link-wrapper___o4YqX">
+                              <a class="back-link___1LJpm" style="cursor: pointer"
+                                 @click="handlers.incrementStep(-1, node.context)()"
+                                 data-next="true"
+                              >Tilbage til tilvalg</a>
+                            </div>
+                          </div>
+
+                        </template>
+
+                        <template #stepPrevious="{ handlers,node }">
+                        </template>
+
+
+                      </FormKit>
+
+    <!-- END STEP 2 -->
+    <!-- START STEP 3 -->
+
+                      <FormKit type="step" name="step3" label="3. Kontaktinformation">
+                        <div class="step__content">
+                          <div class="step__content-single_header">
+                            <h3 class=" ">Kundeinformation</h3>
+                          </div>
+                          <div class="prices_overview">
+                            <div class="grid--auto-4 pad-header--s gap--xs">
+                              <FormKit
+                                type="text"
+                                name="Fornavn"
+                                id="first_name"
+                                validation="required|alpha_spaces|length:2,30"
+                                :validation-messages="{
+      alpha_spaces: 'Venligst skriv et gyldigt navn',
+      length: 'Længden af navnet skal være mellem 2 og 30 tegn',
+      required: 'Navn er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                label="Fornavn*"
+                                input-class="custom__placeholder"
+                                placeholder="Hanne"
+                                :floating-label="false"
+                              />
+                              <FormKit
+                                type="text"
+                                name="Efternavn"
+                                id="last_name"
+                                label="Efternavn*"
+                                validation="required|alpha_spaces|length:2,50"
+                                :validation-messages="{
+      alpha_spaces: 'Venligst skriv et gyldigt navn',
+      length: 'Længden af navnet skal være mellem 2 og 50 tegn',
+      required: 'Navn er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                input-class="custom__placeholder"
+                                placeholder="Holm Olsen"
+                                :floating-label="false"
+                              />
+                              <FormKit
+                                type="text"
+                                name="Adresse"
+                                id="address"
+                                label="Adresse*"
+                                validation="required|length:2,50"
+                                :validation-messages="{
+      length: 'Længden af adressen skal være mellem 2 og 50 tegn',
+      required: 'Adresse er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                input-class="custom__placeholder"
+                                placeholder="Karl Th Torpvej 3, 3. tv"
+                                :floating-label="false"
+                              />
+
+                              <FormKit
+                                type="mask"
+                                label="Postnummer"
+                                name="postnummer"
+                                mask="####"
+                                unmask-value="true"
+                                :floating-label="false"
+                                input-class="custom__placeholder"
+                                validation="required|number|length:4,4"
+                                :validation-messages="{
+      alpha: 'Venligst skriv et gyldigt postnummer',
+      length: 'Længden af postnummeret skal være 4 tal',
+      required: 'Postnummer er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                              />
+                              <FormKit
+                                type="text"
+                                id="city"
+                                label="By*"
+                                name="By"
+                                validation="required|length:2,50"
+                                :validation-messages="{
+      length: 'Længden af byen skal være mellem 2 og 50 tegn',
+      required: 'By er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                input-class="custom__placeholder"
+                                placeholder="Valby"
+                                :floating-label="false"
+                              />
+
+                              <FormKit
+                                type="email"
+                                name="Email"
+                                id="email"
+                                label="Email*"
+                                input-class="custom__placeholder"
+                                placeholder="hannep@outlook.com"
+                                validation="required|email"
+                                :validation-messages="{
+      required: 'Email er påkrævet',
+      email: 'Venligst skriv en gyldig email',
+    }"
+                                validation-visibility="dirty"
+                                :floating-label="false"
+                              />
+                              <FormKit
+                                type="mask"
+                                mask="## ## ## ##"
+                                name="phone"
+                                id="phone"
+                                mode="replace"
+                                validation="required|length:8,8"
+                                :validation-messages="{
+      required: 'Telefon er påkrævet',
+      length: 'Længden af telefonnummeret skal være 8 tal',
+    }"
+                                validation-visibility="dirty"
+                                allow-incomplete="false"
+                                show-mask="true"
+                                unmask-value="true"
+                                label="Telefon*"
+                                input-class="custom__placeholder"
+                                :floating-label="false"
+                              />
+
+                              <FormKit
+                                type="mask"
+                                mask="######-####"
+                                name="CPR"
+                                id="cpr"
+                                mode="replace"
+                                validation="required|length:10,10"
+                                :validation-messages="{
+      required: 'CPR er påkrævet',
+      length: 'Længden af CPR nummeret skal være 10 tal',
+    }"
+                                validation-visibility="dirty"
+                                allow-incomplete="false"
+                                show-mask="true"
+                                unmask-value="true"
+                                label="CPR nummer*"
+                                label-class="label-for-cpr"
+                                :floating-label="false"
+                                help="Vi skal bruge dit CPR-nummer for at identificere dig som indehaveren af den konto, som pengene skal trækkes fra. Vi passer godt på din data og overholder selvfølgelig persondataloven"
+                              >
+                                <template #label="{ id, label, help, classes }">
+                                  <label :class="classes.label" :for="id">
+                                    {{ label }}
+                                    <span v-if="help" :class="classes.tooltip">
+          ?
+          <span :class="classes.tooltipInner">{{ help }}</span>
+        </span>
+                                  </label>
+                                </template>
+
+                                <template #help>
+                                  <p class="form__extra-help"></p>
+                                </template>
+                              </FormKit>
+
+                              <div class="label-for-cpr">
+                                <h4>Betalingsoplysninger</h4>
+                                <label class="label-for-cpr">
+      <span class="formkit-tooltip">
+        ?
+        <span class="formkit-tooltip-inner"
+        >For at vi kan oprette aftalen med dig, skal vi bruge dit konto- og
+          registreringsnummer, som løbende bliver faktureret for din
+          leasingaftale hos Quickleasing. Vi opbevarer naturligvis dine data
+          sikkert og i overensstemmelse med persondataloven. Vi trækker
+          selvfølgelig ikke penge fra din konto, før du har underskrevet den
+          endelige kontrakt.
+        </span></span
+      ></label
+                                >
+                              </div>
+
+                              <div></div>
+
+                              <FormKit
+                                type="mask"
+                                mask="####"
+                                name="Registreringsnummer"
+                                id="registreringsnummer"
+                                mode="replace"
+                                validation="required"
+                                :validation-messages="{
+      required: 'Registreringsnummer er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                allow-incomplete="false"
+                                show-mask="true"
+                                unmask-value="true"
+                                label="Registreringsnummer*"
+                                input-class="custom__placeholder"
+                                :floating-label="false"
+                              />
+
+                              <FormKit
+                                type="mask"
+                                mask="(000)#######"
+                                name="Kontonummer"
+                                id="kontonummer"
+                                mode="replace"
+                                validation="required"
+                                :validation-messages="{
+      required: 'Kontonummer er påkrævet',
+    }"
+                                validation-visibility="dirty"
+                                allow-incomplete="false"
+                                show-mask="true"
+                                help="De første 3 nuller er medtaget automatisk"
+                                unmask-value="true"
+                                label="Kontonummer*"
+                                input-class="custom__placeholder"
+                                :floating-label="false"
+                              />
+                              <div style="margin-bottom: 9rem">
+                                <FormKit
+                                  type="checkbox"
+                                  label="Persondatapolitik"
+                                  validation="accepted"
+                                  help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
+    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+                                  :validation-messages="{
+    accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+  }"
+                                >
+                                  <template #help="{ help }">
+                                    <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
+                                  </template>
+                                </FormKit>
+
+
+
+                              </div>
+                              <p style="font-size: 12px">Ved at klikke "forsæt", vil du herefter blive kontaktet hurtigst mulig med henblik på leasingaftale med Quickleasing A/S</p>
+                            </div>
+
+                          </div>
+
+                        </div>
+                        <template #stepNext="{ handlers,node }">
+                          <div class="buttons-wrapper___3WoLU">
+                            <button
+                              id="proceed-button-two"
+                              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+                            >
+                              Bestil nu
+                            </button>
+
+                            <div class="back-link-wrapper___o4YqX">
+                              <a class="back-link___1LJpm" style="cursor: pointer"
+                                 @click="handlers.incrementStep(-1, node.context)()"
+                                 data-next="true"
+                              >Tilbage til valg af leasing</a>
+                            </div>
+                          </div>
+
+                        </template>
+                        <template #stepPrevious="{ handlers,node }">
+
+
+                        </template>
+                      </FormKit>
+
+                    <!-- END STEP 2  -->
+                    </FormKit>
+                    <template #stepNext>
+                      <FormKit type="submit" />
+                    </template>
+
+                  </FormKit>
+
 
                   <!-- END MULTI FORM  -->
                 </div>
@@ -1038,6 +1736,13 @@ export default {
       showContent1: true,
       isModalOpen: false,
       showModal: true,
+      lavSelvrisiko: false,
+      afleveringsforsikring: false,
+      vikingVejhjaelp: false,
+      kompletSaetVinterhjul: false,
+      maanedligeYdelse: 0,
+      udbetaling: 0,
+      carId: this.$route.params.id,
     };
   },
   created() {
@@ -1063,6 +1768,8 @@ export default {
       });
       const data = await response.json();
       this.carData = data.data;
+      this.maanedeligeYdelse = this.carData.base_maanedspris;
+      this.udbetaling = this.carData.base_udbetaling;
       this.carData.forEach((car) => {
         this.carImages[car.id] = this.imageURL(car);
       });
@@ -1137,7 +1844,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .green_energy {
   background: #6ccb6c;
   color: white;
@@ -1542,8 +2249,6 @@ export default {
 }
 @media screen and (min-width: 46.75rem) {
   .prices_overview .buttons-wrapper___3WoLU {
-    position: -webkit-sticky;
-    position: sticky;
     bottom: 0;
     left: 0;
     z-index: 100;
@@ -1846,4 +2551,486 @@ export default {
     display: none;
   }
 }
+.back-link___1LJpm{
+  user-select: none;
+}
+.buttons-wrapper___3WoLU .back-link-wrapper___o4YqX {
+  margin: 0.95rem auto 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.buttons-wrapper___3WoLU .proceed-button___2ZgPy {
+  max-width: 20rem;
+  height: auto;
+  margin: auto;
+}
+@media screen and (min-width: 64rem) {
+  .buttons-wrapper___3WoLU {
+    padding: 0.75rem 0 1.4rem;
+  }
+}
+@media screen and (min-width: 46.75rem) {
+  .buttons-wrapper___3WoLU {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+}
+.buttons-wrapper___3WoLU {
+  width: 98.2%;
+  position: absolute;
+  margin-top: auto;
+  padding: 2.1rem 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.button___2oWcS {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.3rem;
+  background-color: var(--button-color);
+  color: var(--second-button-color);
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: 2px solid var(--button-color);
+  cursor: pointer;
+  -webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  outline: none;
+}
+.form__wrapper {
+  padding: var(--space-xs) 0 var(--space-xl) 0;
+}
+.step__content {
+  width: 100%;
+}
+
+.multiform {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.multiform__wrapper {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+}
+
+.multiform__steps {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  padding: 2em 0 !important;
+}
+.step__content-single {
+  width: 100%;
+  padding: 0 var(--space-xl);
+}
+.step__content-single_header {
+  width: 100%;
+  padding: var(--space-s) var(--space-xl);
+}
+
+.add__price-forsikring,
+.add__price-selv,
+.add__price-vej,
+.add__price-hjul {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  font-family: Rubik, sans-serif;
+  padding: 0.9rem 0 !important;
+  display: flex;
+  justify-content: space-between;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.add__price-forsikring .formkit-tooltip,
+.add__price-selv .formkit-tooltip,
+.add__price-vej .formkit-tooltip,
+.add__price-hjul .formkit-tooltip,
+.label-for-cpr {
+  margin-right: auto;
+}
+.add__price-forsikring:after,
+.add__price-vej:after,
+.add__price-hjul:after,
+.add__price-selv:after,
+.label-for-cpr:after {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.add__price-forsikring:after {
+  content: "+119 kr./.md " !important;
+}
+
+.add__price-vej:after {
+  content: "+49 kr./.md " !important;
+}
+
+.add__price-hjul:after {
+  content: "+119 kr./.md" !important;
+}
+.add__price-selv:after {
+  content: "+64 kr./.md " !important;
+}
+.add__price {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  font-family: Rubik, sans-serif;
+  padding: 0.9rem 0 !important;
+  display: flex;
+  justify-content: space-between;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* Step 2 list of prisoverslag about the choosen carr */
+.prices_overview {
+  height: 70dvh;
+  overflow-y: auto;
+  padding: 0 var(--space-xl);
+}
+
+.prices--interactiveBlock {
+  margin-top: 2.4rem;
+  margin-bottom: 9rem;
+}
+
+.prices__info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.prices__info--primary {
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.prices__title {
+  display: flex;
+  min-height: 1.25rem;
+}
+
+.prices__separator {
+  flex: 1;
+  height: 1px;
+  background-color: transparent;
+  align-self: flex-end;
+  margin: 0 0.375rem 0.375rem;
+}
+
+.prices__info--secondary {
+  padding-left: 1rem;
+}
+
+.prices__extra {
+  margin-top: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.prices__title--tooltip {
+  display: flex;
+  align-items: center;
+  min-height: 1.25rem;
+}
+
+.prices__tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.75rem;
+  color: #1892c3;
+  font-size: 0.85rem;
+  font-weight: normal;
+  border: 1px solid #1892c3;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.prices__info--highlighted {
+  color: #1892c3;
+  font-size: 1.2rem;
+}
+
+.prices__text {
+  text-align: center;
+}
+
+.tooltip___2lnLH {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  color: #1892c3;
+  font-size: 0.85rem;
+  font-weight: normal;
+  border: 1px solid #1892c3;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.tooltip___2lnLH:hover {
+  color: #fff;
+  background-color: #1892c3;
+}
+.interaction-block-section___3w27p {
+  margin-top: 2.4rem;
+}
+.price-info-line___3KX0d {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}
+.price-info-line___3KX0d.additional___3qr4e {
+  padding-left: 1rem;
+}
+.price-info-line___3KX0d.bold___2YVaf {
+  font-weight: bold;
+}
+.price-info-line___3KX0d.highlighted___2nN9d {
+  color: #1892c3;
+}
+.price-info-line___3KX0d .separator___3qRTT {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 1px;
+  background-color: transparent;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  margin: 0 0.375rem 0.375rem;
+}
+.price-info-line___3KX0d .title___1kHB1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 1.25rem;
+}
+.price-info-line___3KX0d .tooltip___3kHUM {
+  margin-left: 0.75rem;
+}
+@media screen and (min-width: 64rem) {
+  .price-info-line___3KX0d {
+    font-size: 1rem;
+  }
+  .price-info-line___3KX0d.highlighted___2nN9d {
+    font-size: 1.2rem;
+  }
+  .price-info-line___3KX0d .separator___3qRTT {
+    background-color: rgba(16, 16, 17, 0.1);
+  }
+}
+.prices___3R4r3 > *:not(:first-child) {
+  margin-top: 0.35rem;
+}
+.prices___3R4r3 > *:last-child {
+  margin-top: 2.2rem;
+}
+.prices___3R4r3 .extra-prices___3LhKS {
+  margin-top: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+.prices___3R4r3 .text___1edAB {
+  text-align: center;
+}
+.prices___18yIE {
+  margin-top: 3rem;
+}
+@media screen and (min-width: 64rem) {
+  .prices___18yIE {
+    margin-top: 6rem;
+  }
+}
+
+/*! CSS Used from: Embedded */
+@media all and (min-width: 320px) and (max-width: 667px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+[data-checked]  {
+  background-color: #f8f6f6;
+  color: black;
+}
+.form__wrapper-input{
+  padding: 0 10px;
+}
+
+.formkit-tooltip-inner {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  background: white;
+  padding: 7px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 200px;
+}
+.formkit-tooltip {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  color: #1892c3;
+  font-size: 0.85rem;
+  font-weight: normal;
+  border: 1px solid #1892c3;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.formkit-tooltip:hover .formkit-tooltip-inner {
+  display: block;
+  padding: 8px 10px;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  background-color: #373737;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  min-height: 34px;
+}
+
+.formkit-tooltip:hover {
+  background-color: #1892c3;
+  color: #fff;
+}
+.form__extra-help{
+  font-size: 0.9rem;
+  color: #373737;
+  margin: 0.5rem 0;
+}
+
+.label-for-cpr {
+  display: flex;
+  margin: 0;
+  padding-top: 1.2px;
+}
+.custom__inner {
+  font-family: var(--fk-font-family-label);
+  font-size: var(--fk-font-size-label);
+  font-weight: var(--fk-font-weight-label);
+  line-height: var(--fk-line-height-label);
+
+  margin: var(--fk-margin-label);
+  padding: var(--fk-padding-label);
+}
+.formkit-tooltip-inner {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  background: white;
+  padding: 7px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 200px;
+}
+.formkit-tooltip {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  color: #1892c3;
+
+  font-weight: normal;
+  border: 1px solid #1892c3;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.formkit-tooltip:hover .formkit-tooltip-inner {
+  display: block;
+  padding: 8px 10px;
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  background-color: #373737;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  min-height: 34px;
+}
+
+.formkit-tooltip:hover {
+  background-color: #1892c3;
+  color: #fff;
+}
+.form__extra-help {
+  font-size: 0.9rem;
+  color: #373737;
+  margin: 0.5rem 0;
+}
+
 </style>
