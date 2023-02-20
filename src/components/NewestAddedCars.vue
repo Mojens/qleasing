@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="pad-header--m center--all">Se de biler, der lige er ankommet til Quickleasing</h1>
+    <h1 class="pad-header--m center--all" style="padding-left: 0.7rem; padding-right: 0.7rem">Se de biler, der lige er ankommet til Quickleasing</h1>
     <div class="main-flow___Sjg41" data-qa="main-flow" >
 
       <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
@@ -9,7 +9,7 @@
       <div class="products___1WcE3" >
         <div class="list___1c2KX">
 
-          <div class="product___3vmta " v-for="car in displayedCars" :key="car.id"
+          <div id="product__card" class="product___3vmta " v-for="car in displayedCars" :key="car.id"
                >
             <div class="product-card___2naPO has-cta___1N-4L">
               <div class="label-wrap___2_2TG">
@@ -288,8 +288,8 @@ export default {
 };
 </script>
 
-<style>
-.product___3vmta {
+<style >
+#product__card.product___3vmta {
   animation: scale 0.5s ease-in-out;
 
 }
