@@ -852,8 +852,7 @@ const age_driver = [
                                 :options="extra_kilometer_aar" help="Ekstra km udover km 15.000 årligt - "
                                 placeholder="Ekstra kilometer pr. år" validation="required" :validation-messages="{
                                   required: 'Ekstra kilometer er påkrævet',
-                                }" validation-visibility="live" value="0"
-                                >
+                                }" validation-visibility="live" value="0">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -867,8 +866,8 @@ const age_driver = [
                               <FormKit type="dropdown" label="Premium helårsdæk*" name="ombytningTilPremiumHelårsdæk"
                                 :options="premiumDaek" :floating-label="false" :inner-class="{
                                   searchFilter__select: true,
-                                }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk" validation="required"
-                                :validation-messages="{
+                                }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
+                                validation="required" :validation-messages="{
                                   required: 'Ombytning til Primium helårsdæk er påkrævet',
                                 }" validation-visibility="live">
                                 <template #option="{ option }">
@@ -881,9 +880,10 @@ const age_driver = [
                               <FormKit type="dropdown" label="Alder*" name="alder" :options="age_driver"
                                 :floating-label="false" :inner-class="{
                                   searchFilter__select: true,
-                                }" placeholder="Alder på fører" help="Alder på fører" validation="required" :validation-messages="{
-  required: 'Alder på fører er påkrævet',
-}" validation-visibility="live">
+                                }" placeholder="Alder på fører" help="Alder på fører" validation="required"
+                                :validation-messages="{
+                                  required: 'Alder på fører er påkrævet',
+                                }" validation-visibility="live">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -1033,21 +1033,21 @@ const age_driver = [
                                   alpha_spaces: 'Venligst skriv et gyldigt navn',
                                   length: 'Længden af navnet skal være mellem 2 og 30 tegn',
                                   required: 'Navn er påkrævet',
-                                }" validation-visibility="dirty" label="Fornavn*" input-class="custom__placeholder" placeholder="Hanne"
-                                :floating-label="false" />
+                                }" validation-visibility="dirty" label="Fornavn*" input-class="custom__placeholder"
+                                placeholder="Hanne" :floating-label="false" />
                               <FormKit type="text" name="Efternavn" id="last_name" label="Efternavn*"
                                 validation="required|alpha_spaces|length:2,50" :validation-messages="{
                                   alpha_spaces: 'Venligst skriv et gyldigt navn',
                                   length: 'Længden af navnet skal være mellem 2 og 50 tegn',
                                   required: 'Navn er påkrævet',
-                                }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Holm Olsen"
-                                :floating-label="false" />
+                                }" validation-visibility="dirty" input-class="custom__placeholder"
+                                placeholder="Holm Olsen" :floating-label="false" />
                               <FormKit type="text" name="Adresse" id="address" label="Adresse*"
                                 validation="required|length:2,50" :validation-messages="{
                                   length: 'Længden af adressen skal være mellem 2 og 50 tegn',
                                   required: 'Adresse er påkrævet',
-                                }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Karl Th Torpvej 3, 3. tv"
-                                :floating-label="false" />
+                                }" validation-visibility="dirty" input-class="custom__placeholder"
+                                placeholder="Karl Th Torpvej 3, 3. tv" :floating-label="false" />
 
                               <FormKit type="mask" label="Postnummer" name="postnummer" mask="####" unmask-value="true"
                                 :floating-label="false" input-class="custom__placeholder"
@@ -1060,7 +1060,8 @@ const age_driver = [
                                 :validation-messages="{
                                   length: 'Længden af byen skal være mellem 2 og 50 tegn',
                                   required: 'By er påkrævet',
-                                }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Valby" :floating-label="false" />
+                                }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Valby"
+                                :floating-label="false" />
 
                               <FormKit type="email" name="Email" id="email" label="Email*"
                                 input-class="custom__placeholder" placeholder="hannep@outlook.com"
@@ -1072,15 +1073,17 @@ const age_driver = [
                                 validation="required|length:8,8" :validation-messages="{
                                   required: 'Telefon er påkrævet',
                                   length: 'Længden af telefonnummeret skal være 8 tal',
-                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true" unmask-value="true" label="Telefon*"
-                                input-class="custom__placeholder" :floating-label="false" />
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="Telefon*" input-class="custom__placeholder"
+                                :floating-label="false" />
 
                               <FormKit type="mask" mask="######-####" name="CPR" id="cpr" mode="replace"
                                 validation="required|length:10,10" :validation-messages="{
                                   required: 'CPR er påkrævet',
                                   length: 'Længden af CPR nummeret skal være 10 tal',
-                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true" unmask-value="true" label="CPR nummer*"
-                                label-class="label-for-cpr" :floating-label="false"
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="CPR nummer*" label-class="label-for-cpr"
+                                :floating-label="false"
                                 help="Vi skal bruge dit CPR-nummer for at identificere dig som indehaveren af den konto, som pengene skal trækkes fra. Vi passer godt på din data og overholder selvfølgelig persondataloven">
                                 <template #label="{ id, label, help, classes }">
                                   <label :class="classes.label" :for="id">
@@ -1117,8 +1120,9 @@ const age_driver = [
                               <FormKit type="mask" mask="####" name="Registreringsnummer" id="registreringsnummer"
                                 mode="replace" validation="required" :validation-messages="{
                                   required: 'Registreringsnummer er påkrævet',
-                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true" unmask-value="true"
-                                label="Registreringsnummer*" input-class="custom__placeholder" :floating-label="false" />
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="Registreringsnummer*" input-class="custom__placeholder"
+                                :floating-label="false" />
 
                               <FormKit type="mask" mask="(000)#######" name="Kontonummer" id="kontonummer" mode="replace"
                                 validation="required" :validation-messages="{
@@ -1128,7 +1132,7 @@ const age_driver = [
                                 input-class="custom__placeholder" :floating-label="false" />
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted" help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-      behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+        behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
                                   :validation-messages="{
                                     accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
                                   }">
@@ -1257,7 +1261,7 @@ export default {
   },
   mounted() {
     // Add the class "is-open___1eAPm" to the modal when the component is mounted
-console.log("TEST")
+    console.log("TEST")
     setTimeout(() => {
       this.isModalOpen = true;
     }, 20);
@@ -2710,5 +2714,4 @@ console.log("TEST")
   font-size: 0.9rem;
   color: #373737;
   margin: 0.5rem 0;
-}
-</style>
+}</style>
