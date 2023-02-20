@@ -980,18 +980,7 @@ export default {
   }
 }
 
-.modal___25xvj .content___FOiFD {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
+
 
 .faq-page___2Nz-F {
   width: 100%;

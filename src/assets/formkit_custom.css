@@ -25,3 +25,44 @@
   color: var(--action) !important;
   background-color: var(--action) !important;
 }
+.form-label{
+  background: white;
+  padding: var(--space-xl) var(--space-l) var(--space-xs) var(--space-l);
+}
+.vue-form {
+  padding: var(--space-s) var(--space-l);
+
+  background-color: #fff;
+}
+.custom__placeholder::-webkit-input-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder::-moz-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder:-ms-input-placeholder {
+  font-size: var(--text-m);
+}
+.custom__placeholder:-moz-placeholder {
+  font-size: var(--text-m);
+}
+/* Uppercase the input */
+.custom__input--uppercase{
+  text-transform: uppercase;
+}
+.custom__input--uppercase::-webkit-input-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase::-moz-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase:-ms-input-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}
+.custom__input--uppercase:-moz-placeholder {
+  font-size: var(--text-m);
+  text-transform: uppercase;
+}

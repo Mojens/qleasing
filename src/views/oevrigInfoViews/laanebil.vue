@@ -1,8 +1,10 @@
 <script setup>
 import FooterItem from "../../components/FooterItem.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 
 <template>
+  <NavigationBar />
   <div>
     <div
       id="section-0-row-0"

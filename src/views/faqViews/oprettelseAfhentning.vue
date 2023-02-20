@@ -81,7 +81,7 @@ export default {
 
 }
 </script>
-<style >
+<style>
 .markdown___35KUH a {
   color: #1892c3;
   font-size: 0.9rem;
@@ -153,7 +153,19 @@ export default {
   -o-transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out;
   transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out;
 }
-
+.modal___25xvj .content___FOiFD {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--secondary-light);
+}
 .modal___25xvj {
   position: fixed;
   top: 100vh;
@@ -173,19 +185,7 @@ export default {
   top: 0;
 }
 
-.modal___25xvj .content___FOiFD {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  background: var(--secondary-light);
-}
+
 
 .modal___25xvj .close-button-wrapper___1dYxl {
   position: fixed;

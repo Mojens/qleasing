@@ -1,7 +1,9 @@
 <script setup>
 import FooterItem from "../../components/FooterItem.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 <template>
+  <NavigationBar />
   <div class="ct-section-inner-wrap">
     <div v-if="articleData">
       <span class="new-html-block___3_7NG">
@@ -16,7 +18,7 @@ import FooterItem from "../../components/FooterItem.vue";
       </span>
     </div>
   </div>
-  <footer-item />
+  <FooterItem />
 </template>
 <script>
 export default {

@@ -1,7 +1,9 @@
 <script setup>
 import FooterItem from "../components/FooterItem.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 <template>
+  <NavigationBar />
   <div>
     <div class="container___1BnaH"><span class="wrapper___3jnGF"><span class="mobile-layout___20MjK"><div
       class="banner___2W4p- small___tJeWB white-blue___2fY5Q"

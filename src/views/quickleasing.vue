@@ -2,6 +2,7 @@
 import FooterItem from "@/components/FooterItem.vue";
 import autoAnimate from "@formkit/auto-animate";
 import { ref, onMounted } from "vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 
 // function to use autoAnimate the library, when submit(function already exists called createForm) is clicked if there are errors
 const example = ref()
@@ -14,6 +15,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <NavigationBar />
   <div class="filtered__cars-container" ref="example" >
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">

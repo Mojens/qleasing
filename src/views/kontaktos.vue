@@ -1,8 +1,10 @@
 <script setup>
 import FooterItem from "@/components/FooterItem.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 
 </script>
 <template >
+  <NavigationBar />
   <div class="ct-section-inner-wrap-background">
     <div class="multi__section grid--auto-2">
     <ContactForm />

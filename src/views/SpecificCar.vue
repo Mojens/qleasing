@@ -300,7 +300,7 @@ const age_driver = [
             </button>
           </RouterLink>
         </div>
-        <div class="content___FOiFD">
+        <div class="content___FOiFD" style="background: white">
           <div class="product___MbOUd">
             <div class="product-overview___h1U1n overview___1ZyZV">
               <RouterLink class="logoWrapper___3_qg1" to="/quickleasing"
@@ -663,7 +663,7 @@ const age_driver = [
             </button>
           </RouterLink>
         </div>
-        <div class="content___FOiFD">
+        <div class="content___FOiFD" style="background: white">
           <div class="product___MbOUd">
             <div class="product-overview___h1U1n overview___1ZyZV">
               <RouterLink class="logoWrapper___3_qg1" to="/"
@@ -2008,7 +2008,7 @@ export default {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background: white;
+
 }
 .modal___25xvj .close-button-wrapper___1dYxl {
   position: fixed;

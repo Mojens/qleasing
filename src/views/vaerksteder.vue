@@ -1,7 +1,9 @@
 <script setup>
 import FooterItem from "../components/FooterItem.vue";
+import NavigationBar from "@/components/NavigationBar.vue";
 </script>
 <template>
+  <NavigationBar />
   <div class="grid-outer-container">
 
     <div class="grid-row grid-gap3-below">
