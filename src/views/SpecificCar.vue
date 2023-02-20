@@ -211,19 +211,19 @@ const lobetider = [
 const extra_kilometer_aar = [
   {
     label: "0 km",
-    value: "0",
+    value: 0,
   },
   {
     label: "5.000 km",
-    value: "5000",
+    value: 5000,
   },
   {
     label: "10.000 km",
-    value: "10000",
+    value: 10000,
   },
   {
     label: "15.000 km",
-    value: "15000",
+    value: 15000,
   },
 ];
 const premiumDaek = [
@@ -732,7 +732,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Afleveringsforsikring" name="afleveringsforsikring"
                             label-class="add__price-forsikring add__price" wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
-                            @change="toogleAfleveringsforsikring(displayCar)">
+                            @change="toogleAfleveringsforsikring">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
                                 <span v-if="help" :class="classes.tooltip">
@@ -752,7 +752,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Lav selvrisiko" name="lavSelvrisiko"
                             help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
                             label-class="add__price-selv add__price" wrapper-class="form__wrapper-input"
-                            @change="toogleLavSelvRisiko(displayCar)">
+                            @change="toogleLavSelvRisiko">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
 
@@ -771,7 +771,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Viking Vejhjælp " name="vikingVejhjaelp"
                             help="Ved køb af Viking Vejhjælp, er du dækket for skader på bilen ved aflevering."
                             wrapper-class="form__wrapper-input" label-class="add__price-vej add__price"
-                            @change="toogleVikingVejhjaelp(displayCar)">
+                            @change="toogleVikingVejhjaelp">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
 
@@ -789,7 +789,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Komplet sæt vinterhjul" label-class="add__price-hjul add__price"
                             wrapper-class="form__wrapper-input" name="kompletSaetVinterhjul"
                             help="Ved køb af Komplet sæt vinterhjul, er du dækket for skader på bilen ved aflevering."
-                            @change="toogleKompletSaetVinterhjul(displayCar)">
+                            @change="toogleKompletSaetVinterhjul">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
 
@@ -852,7 +852,7 @@ const age_driver = [
                                 :options="extra_kilometer_aar" help="Ekstra km udover km 15.000 årligt - "
                                 placeholder="Ekstra kilometer pr. år" validation="required" :validation-messages="{
                                   required: 'Ekstra kilometer er påkrævet',
-                                }" validation-visibility="live" value="0">
+                                }" validation-visibility="live" value="0" @input="oensketKilometerChange">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -1132,7 +1132,7 @@ const age_driver = [
                                 input-class="custom__placeholder" :floating-label="false" />
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted" help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-        behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+          behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
                                   :validation-messages="{
                                     accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
                                   }">
@@ -1257,6 +1257,7 @@ export default {
     };
   },
   created() {
+    this.lastSelectedOptionValue = 0;
     this.fetchCarData();
   },
   mounted() {
@@ -1345,45 +1346,65 @@ export default {
     toogleAfleveringsforsikring(car) {
       if (this.afleveringsforsikring) {
         this.afleveringsforsikring = false;
-        car.base_maanedspris = car.base_maanedspris - 119;
+        this.carData.base_maanedspris = this.carData.base_maanedspris - 119;
       } else {
         this.afleveringsforsikring = true;
-        car.base_maanedspris = car.base_maanedspris + 119;
+        this.carData.base_maanedspris = this.carData.base_maanedspris + 119;
       }
     },
     toogleLavSelvRisiko(car) {
       if (this.lavSelvrisiko) {
         this.lavSelvrisiko = false;
-        car.base_maanedspris = car.base_maanedspris - 64;
+        this.carData.base_maanedspris = this.carData.base_maanedspris - 64;
       } else {
         this.lavSelvrisiko = true;
-        car.base_maanedspris = car.base_maanedspris + 64;
+        this.carData.base_maanedspris = this.carData.base_maanedspris + 64;
       }
     },
     toogleVikingVejhjaelp(car) {
       if (this.vikingVejhjaelp) {
         this.vikingVejhjaelp = false;
-        car.base_maanedspris = car.base_maanedspris - 49;
+        this.carData.base_maanedspris = this.carData.base_maanedspris - 49;
       } else {
         this.vikingVejhjaelp = true;
-        car.base_maanedspris = car.base_maanedspris + 49;
+        this.carData.base_maanedspris = this.carData.base_maanedspris + 49;
       }
     },
     toogleKompletSaetVinterhjul(car) {
       if (this.kompletSaetVinterhjul) {
         this.kompletSaetVinterhjul = false;
-        car.base_maanedspris = car.base_maanedspris - 119;
+        this.carData.base_maanedspris = this.carData.base_maanedspris - 119;
       } else {
         this.kompletSaetVinterhjul = true;
-        car.base_maanedspris = car.base_maanedspris + 119;
+        this.carData.base_maanedspris = this.carData.base_maanedspris + 119;
       }
     },
-    updateKilometer(car, kilometer) {
+    oensketKilometerChange(value) {
+  const selectedOptionValue = value
+  
+  // Map the selected value to the corresponding amount to be added to the base_maanedspris
+  const amountToAdd = {
+    0: 0,
+    5000: 200,
+    10000: 500,
+    15000: 750
+  }[selectedOptionValue];
+  
+  // Subtract the amount corresponding to the last selected option from the base_maanedspris
+  const lastSelectedOptionAmount = {
+    0: 0,
+    5000: 200,
+    10000: 500,
+    15000: 750
+  }[this.lastSelectedOptionValue];
+  
+  this.carData.base_maanedspris = this.carData.base_maanedspris - lastSelectedOptionAmount + amountToAdd;
+  
+  // Update the lastSelectedOptionValue variable to the current selected option value
+  this.lastSelectedOptionValue = selectedOptionValue;
+}
 
-    },
-    loggingData() {
-      console.log("DATA");
-    },
+
   },
   computed: {
     displayCar() {
@@ -2714,4 +2735,5 @@ export default {
   font-size: 0.9rem;
   color: #373737;
   margin: 0.5rem 0;
-}</style>
+}
+</style>
