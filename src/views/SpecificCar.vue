@@ -9,6 +9,184 @@ const show = ref(false);
 onMounted(() => {
   autoAnimate(dropdown.value); // thats it!
 });
+
+const allUdstyr = [
+  { name: "Automatgear Tiptronic", value: "autgeartiptronic", count: 0 },
+  { name: "Ratgearskifte", value: "ratgearskifte", count: 0 },
+  { name: "Alufælge 15 tommer", value: "15Alufaelge", count: 0 },
+  { name: "Alufælge 16 tommer", value: "16alufaelge", count: 0 },
+  { name: "Alufælge 17 tommer", value: "17alufaelge", count: 0 },
+  { name: "Alufælge 18 tommer", value: "18alufaelge", count: 0 },
+  { name: "Alufælge 19 tommer", value: "19alufaelge", count: 0 },
+  { name: "Alufælge 20 tommer", value: "20alufaelge", count: 0 },
+  { name: "Alufælge 21 tommer", value: "21alufaelge", count: 0 },
+  { name: "Alufælge 22 tommer", value: "22alufaelge", count: 0 },
+  { name: "Vinterhjul", value: "vinterhjul", count: 0 },
+  { name: "Varme i rat", value: "varmeirat", count: 0 },
+  { name: "Aircondition", value: "airc", count: 0 },
+  { name: "Fuldautomatisk klimaanlæg", value: "fuldautklima", count: 0 },
+  { name: "2-zone klimaanlæg", value: "2zoneklima", count: 0 },
+  { name: "3-zone klimaanlæg", value: "3zoneklima", count: 0 },
+  { name: "4-zone klimaanlæg", value: "4zoneklima", count: 0 },
+  { name: "Køl i handskerum", value: "koelihandskerum", count: 0 },
+  { name: "Elektrisk kabinevarmer", value: "elektriskkabinevarmer", count: 0 },
+  { name: "Motorkabinevarmer", value: "motorkabinevarmer", count: 0 },
+  { name: "Alarm", value: "alarm", count: 0 },
+  { name: "Centrallås", value: "claas", count: 0 },
+  { name: "Fjernbetjent centrallås", value: "fjernbclaas", count: 0 },
+  { name: "Nøglefri betjening", value: "noeglefribetjening", count: 0 },
+  { name: "Fartpilot", value: "fartpilot", count: 0 },
+  { name: "Kørecomputer", value: "koerecomputer", count: 0 },
+  { name: "Infocenter", value: "infocenter", count: 0 },
+  { name: "Startspærre", value: "startspaerre", count: 0 },
+  { name: "Varme i forrude", value: "varmeiforrude", count: 0 },
+  {
+    name: "Automatisk nedblændeligt bakspejl",
+    value: "autonedblbakspejl",
+    count: 0,
+  },
+  { name: "Udvendig temperaturmåler", value: "udvtempmaaler", count: 0 },
+  { name: "Regnsensor", value: "regnsensor", count: 0 },
+  { name: "Sædevarme", value: "saedevarme", count: 0 },
+  { name: "Højdejusterbare forsæder", value: "hoejdejustforsaeder", count: 0 },
+  {
+    name: "Højdejusterbart førersæde",
+    value: "hoejdejustfoerersaede",
+    count: 0,
+  },
+  {
+    name: "Elektrisk indstillelige forsæder",
+    value: "elindstforsaeder",
+    count: 0,
+  },
+  {
+    name: "Elektrisk indstilleligt førersæde",
+    value: "elindstfoerersaede",
+    count: 0,
+  },
+  {
+    name: "Elektrisk indstilleligt førersæde med memory",
+    value: "elindstfoerersaedemmemory",
+    count: 0,
+  },
+  { name: "Soltag", value: "soltag", count: 0 },
+  { name: "Elektrisk soltag", value: "elsoltag", count: 0 },
+  { name: "Glastag", value: "glastag", count: 0 },
+  { name: "4x el-ruder", value: "4xelruder", count: 0 },
+  { name: "El-spejle", value: "elspejle", count: 0 },
+  { name: "El-ruder", value: "elruder", count: 0 },
+  { name: "El-klapbare sidespejle", value: "elklapbaresidespejle", count: 0 },
+  {
+    name: "El-klapbare sidespejle med varme",
+    value: "elklapbaresidespejlemvarme",
+    count: 0,
+  },
+  { name: "El-spejle med varme", value: "elspejlemvarme", count: 0 },
+  {
+    name: "Automatisk parkeringssystem",
+    value: "automatiskparkeringssystem",
+    count: 0,
+  },
+  { name: "360 graders kamera", value: "360kamera", count: 0 },
+  { name: "Bakkamera", value: "bakkamera", count: 0 },
+  { name: "Parkeringssensor for", value: "parkeringssensorfor", count: 0 },
+  { name: "Adaptiv fartpilot", value: "adaptivfartpilot", count: 0 },
+  { name: "Parkeringssensor bag", value: "parkeringssensorbag", count: 0 },
+  { name: "Automatisk start/stop", value: "automatiskstartstop", count: 0 },
+  { name: "El-betjent bagklap", value: "elbetjentbagklap", count: 0 },
+  { name: "Dæktryksmåler", value: "daektryksmaaler", count: 0 },
+  { name: "Adaptiv undervogn", value: "adaptivundervogn", count: 0 },
+  {
+    name: "Elektrisk parkeringsbremse",
+    value: "elektriskparkeringsbremse",
+    count: 0,
+  },
+  { name: "Træthedsregistrering", value: "traethedsregistrering", count: 0 },
+  { name: "Skiltegenkendelse", value: "skiltegenkendelse", count: 0 },
+  { name: "CD-afspiller", value: "cd", count: 0 },
+  { name: "CD-radio", value: "cdradio", count: 0 },
+  { name: "Radio med CD-boks", value: "radiomedcdboks", count: 0 },
+  { name: "DAB-radio", value: "dabradio", count: 0 },
+  { name: "DAB+ radio", value: "dabplusradio", count: 0 },
+  { name: "Navigation", value: "navigation", count: 0 },
+  { name: "Multifunktionsrat", value: "multifunktionsrat", count: 0 },
+  { name: "Håndfrit til mobil", value: "haandfrittilmobil", count: 0 },
+  { name: "Bluetooth", value: "bluetooth", count: 0 },
+  {
+    name: "Musikstreaming via Bluetooth",
+    value: "musikstreamingviabluetooth",
+    count: 0,
+  },
+  { name: "Nightvision", value: "nightvision", count: 0 },
+  { name: "Digitalt cockpit", value: "digitaltcockpit", count: 0 },
+  { name: "Head-up display", value: "headupdisplay", count: 0 },
+  { name: "Android Auto", value: "androidauto", count: 0 },
+  { name: "Apple CarPlay", value: "applecarplay", count: 0 },
+  { name: "Internet", value: "Internet", count: 0 },
+  {
+    name: "Trådløs mobilopladning",
+    value: "traadloesmobilopladning",
+    count: 0,
+  },
+  { name: "SD-kortlæser", value: "sdkortlæser", count: 0 },
+  { name: "USB-tilslutning", value: "usbtilslutning", count: 0 },
+  { name: "AUX-tilslutning", value: "auxtilslutning", count: 0 },
+  { name: "Armlæn", value: "armlaen", count: 0 },
+  { name: "Isofix", value: "isofix", count: 0 },
+  { name: "Bagagerumsdækken", value: "bagagerumsdaekken", count: 0 },
+  { name: "Kopholder", value: "kopholder", count: 0 },
+  { name: "Stofindtræk", value: "stofindtraek", count: 0 },
+  { name: "Dellæder", value: "dellaeder", count: 0 },
+  { name: "Læderindtræk", value: "laederindtraek", count: 0 },
+  { name: "Kunstlæder", value: "kunstlaeder", count: 0 },
+  { name: "Splitbagsæde", value: "splitbagsaede", count: 0 },
+  { name: "Læderrat", value: "laederrat", count: 0 },
+  { name: "Sportsæder", value: "sportssaeder", count: 0 },
+  { name: "El-komfortsæder", value: "elkomfortsaeder", count: 0 },
+  { name: "Integrerede børnesæder", value: "integrerede boernesaeder", count: 0 },
+  { name: "3 individuelle sæder i bag", value: "3 individuelle saeder i bag", count: 0 },
+  { name: "Lygtevasker", value: "lygtevasker", count: 0 },
+  { name: "Tågelygter", value: "taagelygter", count: 0 },
+  { name: "Bi-xenon", value: "bixenon", count: 0 },
+  { name: "Xenonlygter", value: "xenonlys", count: 0 },
+  { name: "Automatisk lys", value: "automatisklys", count: 0 },
+  { name: "Fjernlysassistent", value: "fjernlysassistent", count: 0 },
+  { name: "Kurvelys", value: "kurvelys", count: 0 },
+  { name: "LED kørelys", value: "ledkoerelys", count: 0 },
+  { name: "Fuld LED-forlygter", value: "fuldledforlygter", count: 0 },
+  { name: "Airbag", value: "airbag", count: 0 },
+  { name: "Dobbelt airbag", value: "dbairbags", count: 0 },
+  { name: "4 airbags", value: "4airbags", count: 0 },
+  { name: "6 airbags", value: "6airbags", count: 0 },
+  { name: "7 airbags", value: "7airbags", count: 0 },
+  { name: "8 airbags", value: "8airbags", count: 0 },
+  { name: "9 airbags", value: "9airbags", count: 0 },
+  { name: "10 airbags", value: "10airbags", count: 0 },
+  { name: "ABS", value: "abs", count: 0 },
+  { name: "Antispin", value: "antispin", count: 0 },
+  { name: "ESP", value: "esp", count: 0 },
+  { name: "Servo", value: "servo", count: 0 },
+  { name: "Vognbaneassistent", value: "vognbaneassistent", count: 0 },
+  { name: "Blindvinkelsassistent", value: "blindvinkelsassistent", count: 0 },
+  { name: "Automatisk nødbremsesystem", value: "automatisknoedbremsesystem", count: 0 },
+  { name: "Sænket", value: "saenket", count: 0 },
+  { name: "Tagræling", value: "tagraeling", count: 0 },
+  { name: "Tonede ruder", value: "tonederuder", count: 0 },
+  { name: "Mørktonede ruder i bag", value: "moerktonederuderibag", count: 0 },
+  { name: "Afhentning", value: "afhentning", count: 0 },
+  { name: "1 ejer", value: "1ejer", count: 0 },
+  { name: "Ikke ryger", value: "ikkeryger", count: 0 },
+  { name: "Nysynet", value: "nysynet", count: 0 },
+  { name: "Lev. nysynet", value: "levnysynet", count: 0 },
+  { name: "Service ok", value: "serviceok", count: 0 },
+  { name: "Brugtbilsattest", value: "brugtbilsattest", count: 0 },
+  { name: "Træk", value: "traek", count: 0 },
+  { name: "Svingbart træk (manuel)", value: "svingbarttraekmanuel", count: 0 },
+  { name: "Aftageligt træk", value: "aftagtraek", count: 0 },
+  { name: "Svingbart træk (elektrisk)", value: "svingbarttraekelektrisk", count: 0 },
+  { name: "Dieselpartikelfilter", value: "dieselpartikelfilter", count: 0 },
+  { name: "Tidligere undervognsbehandlet", value: "tidligereundervognsbehandlet", count: 0 }
+];
 </script>
 
 <template>
@@ -16,39 +194,45 @@ onMounted(() => {
     <!-- START DISPLAYING CAR -->
 
     <div id="portal">
-      <div class="modal___25xvj is-open___1eAPm" style="height: 100vh">
+      <div
+        class="modal___25xvj"
+        style="height: 100vh"
+        :class="{ 'is-open___1eAPm': isModalOpen }"
+      >
         <div class="close-button-wrapper___1dYxl">
-          <button
-            class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
-          >
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="white"
-              class="icon___3oVL5"
+          <RouterLink to="/quickleasing" title="Quickleasing">
+            <button
+              class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
             >
-              <path
-                d="M19.5 5L5.5 19"
-                stroke-width="2"
-                stroke-miterlimit="10"
-                stroke-linecap="square"
-              ></path>
-              <path
-                d="M19.5 19L5.5 5"
-                stroke-width="2"
-                stroke-miterlimit="10"
-                stroke-linecap="square"
-              ></path>
-            </svg>
-          </button>
+              <svg
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="white"
+                class="icon___3oVL5"
+              >
+                <path
+                  d="M19.5 5L5.5 19"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                ></path>
+                <path
+                  d="M19.5 19L5.5 5"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                ></path>
+              </svg>
+            </button>
+          </RouterLink>
         </div>
         <div class="content___FOiFD">
           <div class="product___MbOUd">
             <div class="product-overview___h1U1n overview___1ZyZV">
-              <a class="logoWrapper___3_qg1" href="/"
+              <RouterLink class="logoWrapper___3_qg1" to="/quickleasing"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -78,7 +262,7 @@ onMounted(() => {
                         d="M31.861 21.923c0-3.898-1.559-7.405-4.092-9.939-2.63-2.533-6.139-4.19-10.036-4.19-3.897 0-7.405 1.56-9.938 4.093-2.534 2.533-4.092 6.04-4.092 9.938 0 3.898 1.558 7.405 4.092 9.939 2.533 2.533 6.04 4.092 9.938 4.092 3.897 0 7.405-1.559 9.938-4.092 2.631-2.339 4.19-5.944 4.19-9.841zM37.123 6.43c.682.682.682 1.851 0 2.533-.682.682-1.852.682-2.534 0l-.682-.682-2.533 2.436c2.533 3.02 3.995 6.918 3.995 11.205 0 9.743-7.892 17.733-17.733 17.733C7.892 39.656 0 31.764 0 21.923 0 12.763 7.015 5.26 15.882 4.287V1.851c0-.974.78-1.851 1.851-1.851.974 0 1.851.78 1.851 1.851v2.534c3.508.39 6.723 1.753 9.354 3.897l2.533-2.436-.682-.682c-.682-.682-.682-1.851 0-2.533.682-.682 1.852-.682 2.534 0l1.948 1.948 1.852 1.852z"
                       ></path>
                     </g>
-                  </g></svg></a
+                  </g></svg></RouterLink
               ><img
                 class="image___1KbwI"
                 src="https://res.cloudinary.com/digital-interdan/image/upload/c_fit,e_trim:0,q_80,w_1280/v1/cars/Fiat_500_Cult_876.png"
@@ -373,39 +557,45 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="modal___25xvj is-open___1eAPm" style="height: 100vh" >
+      <div
+        class="modal___25xvj"
+        style="height: 100vh"
+        :class="{ 'is-open___1eAPm': isModalOpen }"
+      >
         <div class="close-button-wrapper___1dYxl">
-          <button
-            class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
-          >
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              stroke="white"
-              class="icon___3oVL5"
+          <RouterLink to="/quickleasing">
+            <button
+              class="button___2oWcS dark___2wNZC button___3129j rounded-corners___2DuU9"
             >
-              <path
-                d="M19.5 5L5.5 19"
-                stroke-width="2"
-                stroke-miterlimit="10"
-                stroke-linecap="square"
-              ></path>
-              <path
-                d="M19.5 19L5.5 5"
-                stroke-width="2"
-                stroke-miterlimit="10"
-                stroke-linecap="square"
-              ></path>
-            </svg>
-          </button>
+              <svg
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                stroke="white"
+                class="icon___3oVL5"
+              >
+                <path
+                  d="M19.5 5L5.5 19"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                ></path>
+                <path
+                  d="M19.5 19L5.5 5"
+                  stroke-width="2"
+                  stroke-miterlimit="10"
+                  stroke-linecap="square"
+                ></path>
+              </svg>
+            </button>
+          </RouterLink>
         </div>
         <div class="content___FOiFD">
           <div class="product___MbOUd">
             <div class="product-overview___h1U1n overview___1ZyZV">
-              <a class="logoWrapper___3_qg1" href="/"
+              <RouterLink class="logoWrapper___3_qg1" to="/"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -435,7 +625,7 @@ onMounted(() => {
                         d="M31.861 21.923c0-3.898-1.559-7.405-4.092-9.939-2.63-2.533-6.139-4.19-10.036-4.19-3.897 0-7.405 1.56-9.938 4.093-2.534 2.533-4.092 6.04-4.092 9.938 0 3.898 1.558 7.405 4.092 9.939 2.533 2.533 6.04 4.092 9.938 4.092 3.897 0 7.405-1.559 9.938-4.092 2.631-2.339 4.19-5.944 4.19-9.841zM37.123 6.43c.682.682.682 1.851 0 2.533-.682.682-1.852.682-2.534 0l-.682-.682-2.533 2.436c2.533 3.02 3.995 6.918 3.995 11.205 0 9.743-7.892 17.733-17.733 17.733C7.892 39.656 0 31.764 0 21.923 0 12.763 7.015 5.26 15.882 4.287V1.851c0-.974.78-1.851 1.851-1.851.974 0 1.851.78 1.851 1.851v2.534c3.508.39 6.723 1.753 9.354 3.897l2.533-2.436-.682-.682c-.682-.682-.682-1.851 0-2.533.682-.682 1.852-.682 2.534 0l1.948 1.948 1.852 1.852z"
                       ></path>
                     </g>
-                  </g></svg></a
+                  </g></svg></RouterLink
               ><img
                 class="image___1KbwI"
                 src="https://res.cloudinary.com/digital-interdan/image/upload/c_fit,e_trim:0,q_80,w_1280/v1/cars/Fiat_500_Cult_876.png"
@@ -449,20 +639,19 @@ onMounted(() => {
                 <div class="info-block___IMqr3">
                   <div class="price___lyAnI">
                     <span class="prefix___8I2P1"
-                    >Månedlig leasingsydelse inkl.moms </span
+                      >Månedlig leasingsydelse inkl.moms </span
                     ><span class="value___1Ew-v">{{
                       displayCar.base_maanedspris
                     }}</span
-                  >kr./md.
+                    >kr./md.
                     <br />
 
-
                     <span class="prefix___8I2P1"
-                    >Samlet udbetaling inkl.moms </span
+                      >Samlet udbetaling inkl.moms </span
                     ><span class="value___1Ew-v">{{
                       displayCar.base_udbetaling
                     }}</span
-                  >kr.
+                    >kr.
                   </div>
                   <div class="additional-price___2tuCL">
                     inkl. forsikring og grøn ejerafgift
@@ -488,7 +677,6 @@ onMounted(() => {
                     }}</span
                     >kr./md.
                     <br />
-
 
                     <span class="prefix___8I2P1"
                       >Samlet udbetaling inkl.moms </span
@@ -757,9 +945,20 @@ onMounted(() => {
                     <strong class="dropdown-label" @click="show = !show">
                       Se Fuld Udstyrsliste
                     </strong>
-                    <p class="dropdown-content" v-if="show">
-                      {{ getAllFeatures(displayCar) }}
-                    </p>
+
+                    <ul
+                      class="dropdown-content list--none"
+                      v-if="show"
+                      v-auto-animate
+                    >
+                      <li class="list--none" v-for="udstyr in carData.Udstyr">
+                        {{
+                          allUdstyr.find(item => item.value === udstyr)
+                            ? allUdstyr.find(item => item.value === udstyr).name
+                            : udstyr
+                        }}
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div class="form__wrapper" v-else>
@@ -767,7 +966,7 @@ onMounted(() => {
 
                   <!-- START MULTI FORM  -->
 
-                    <AllStepsForm />
+                  <AllStepsForm />
 
                   <!-- END MULTI FORM  -->
                 </div>
@@ -781,7 +980,9 @@ onMounted(() => {
                   </button>
 
                   <div class="back-link-wrapper___o4YqX">
-                    <RouterLink class="back-link___1LJpm" to="/quickleasing">Tilbage</RouterLink>
+                    <RouterLink class="back-link___1LJpm" to="/quickleasing"
+                      >Tilbage</RouterLink
+                    >
                   </div>
                 </div>
               </div>
@@ -836,10 +1037,19 @@ export default {
       udstyr: [],
       displayAllFeatures: false,
       showContent1: true,
+      isModalOpen: false,
+      showModal: true,
     };
   },
   created() {
     this.fetchCarData();
+  },
+  mounted() {
+    // Add the class "is-open___1eAPm" to the modal when the component is mounted
+
+    setTimeout(() => {
+      this.isModalOpen = true;
+    }, 20);
   },
   methods: {
     async fetchCarData() {
