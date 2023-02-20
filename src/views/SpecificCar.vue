@@ -1296,9 +1296,9 @@ const age_driver = [
 
                             <div class="prices--interactiveBlock">
                               <div class="prices__info prices__info--primary bold">
-                                <div class="prices__title">Citroën C3 Rivera 83 HK ML</div>
+                                <div class="prices__title">{{displayCar.brand}} {{ displayCar.model }} {{ displayCar.heste_kraefter }} HK {{ displayCar.braendstof }}</div>
                                 <div class="prices__separator"></div>
-                                <div>2.799 kr./md.</div>
+                                <div>{{ displayCar.base_maanedspris }} kr./md.</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
@@ -1323,7 +1323,7 @@ const age_driver = [
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Udbetaling</div>
                                 <div class="prices__separator"></div>
-                                <div>0 kr.</div>
+                                <div>{{ displayCar.base_udbetaling }} kr.</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Tilbageleveringsgebyr</div>
@@ -1341,13 +1341,37 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>Inkluderet</div>
                                 </div>
-                                <div class="prices__info">
+                                <div class="prices__info" v-if="afleveringsforsikring == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Afleveringsforsikring
+                                    <div><div class="prices__tooltip">?</div></div>
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>119 kr./md.</div>
+                                </div>
+                                <div class="prices__info" v-if="lavSelvrisiko == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Lav selvrisiko
+                                    <div><div class="prices__tooltip">?</div></div>
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>64 kr./md.</div>
+                                </div>
+                                <div class="prices__info" v-if="vikingVejhjaelp == true">
                                   <div class="prices__title prices__title--tooltip">
                                     Viking – Vejhjælp
                                     <div><div class="prices__tooltip">?</div></div>
                                   </div>
                                   <div class="prices__separator"></div>
                                   <div>49 kr./md.</div>
+                                </div>
+                                <div class="prices__info" v-if="kompletSaetVinterhjul == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Komplet sæt vinterhjul
+                                    <div><div class="prices__tooltip">?</div></div>
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>119 kr./md.</div>
                                 </div>
                               </div>
                               <div class="prices__info prices__info--highlighted bold">
