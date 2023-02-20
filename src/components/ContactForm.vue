@@ -8,8 +8,6 @@ onMounted(() => {
   example.value.querySelectorAll(".formkit-outer").forEach(autoAnimate)
 })
 
-
-
 </script>
 <template>
   <div class="example formkit-example" ref="example" >
