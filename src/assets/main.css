@@ -244,18 +244,7 @@
     }
 }
 
-.navigation___2n5eH .overlay___6CkAr {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -2;
-    -webkit-transition: background-color 0.5s ease-in-out;
-    -o-transition: background-color 0.5s ease-in-out;
-    transition: background-color 0.5s ease-in-out;
-    pointer-events: none;
-}
+
 
 @media screen and (min-width: 64rem) {
     .navigation___2n5eH .overlay___6CkAr {
