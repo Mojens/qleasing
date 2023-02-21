@@ -1629,11 +1629,12 @@ export default {
         this.lavSelvrisiko = false;
         this.carData.base_maanedspris = this.carData.base_maanedspris - 64;
         this.original_base_maanedspris = this.carData.base_maanedspris;
+        this.forsikringAnsvarOgKasko[1] = this.forsikringAnsvarOgKasko[1] * 2;
       } else {
         this.lavSelvrisiko = true;
         this.carData.base_maanedspris = this.carData.base_maanedspris + 64;
         this.original_base_maanedspris = this.carData.base_maanedspris;
-        this.forsikringAnsvarOgKasko = this.forsikringAnsvarOgKasko[1] / 2;
+        this.forsikringAnsvarOgKasko[1] = this.forsikringAnsvarOgKasko[1] / 2;
       }
     },
     toogleVikingVejhjaelp() {
