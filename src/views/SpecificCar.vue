@@ -990,6 +990,7 @@ const age_driver = [
                                   <div>119 kr./md.</div>
                                 </div>
 
+                                <!-- Valg af dæk -->
 
                                 <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'kontant'">
                                   <div class="prices__title prices__title--tooltip">
@@ -1010,7 +1011,7 @@ const age_driver = [
                                   </div>
                                 </div>
 
-
+                                 <!-- Valg af dæk -->
 
                               </div>
                               <div class="prices__info prices__info--highlighted bold">
