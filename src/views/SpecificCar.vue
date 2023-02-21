@@ -1401,87 +1401,157 @@ export default {
       }
       if (this.maanedligeYdelse >= 1000 && this.maanedligeYdelse <= 1499) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+        this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
           this.forsikringAnsvarOgKasko[0] = 475;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
+          this.forsikringAnsvarOgKasko[0] = 325;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
+          this.forsikringAnsvarOgKasko[0] = 295;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 275;
+          this.forsikringAnsvarOgKasko[0] = 275;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 1500 && this.maanedligeYdelse <= 1999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 795;
           this.forsikringAnsvarOgKasko[0] = 795;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
+          this.forsikringAnsvarOgKasko[0] = 375;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
+          this.forsikringAnsvarOgKasko[0] = 325;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 285;
+          this.forsikringAnsvarOgKasko[0] = 285;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 2000 && this.maanedligeYdelse <= 2499) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 895;
           this.forsikringAnsvarOgKasko[0] = 895;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
+          this.forsikringAnsvarOgKasko[0] = 425;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 345;
+          this.forsikringAnsvarOgKasko[0] = 345;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
+          this.forsikringAnsvarOgKasko[0] = 295;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 2500 && this.maanedligeYdelse <= 2999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 995;
           this.forsikringAnsvarOgKasko[0] = 995;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
+          this.forsikringAnsvarOgKasko[0] = 475;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
+          this.forsikringAnsvarOgKasko[0] = 375;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 315;
+          this.forsikringAnsvarOgKasko[0] = 315;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 3000 && this.maanedligeYdelse <= 3999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1095;
           this.forsikringAnsvarOgKasko[0] = 1095;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 525;
+          this.forsikringAnsvarOgKasko[0] = 525;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 445;
+          this.forsikringAnsvarOgKasko[0] = 445;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 395;
+          this.forsikringAnsvarOgKasko[0] = 395;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 4000 && this.maanedligeYdelse <= 4999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1295;
           this.forsikringAnsvarOgKasko[0] = 1295;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 725;
+          this.forsikringAnsvarOgKasko[0] = 725;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
+          this.forsikringAnsvarOgKasko[0] = 475;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
+          this.forsikringAnsvarOgKasko[0] = 425;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       } else if (this.maanedligeYdelse >= 5000) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1395;
           this.forsikringAnsvarOgKasko[0] = 1395;
           this.forsikringAnsvarOgKasko[1] = 7500;
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 825;
+          this.forsikringAnsvarOgKasko[0] = 825;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 625;
+          this.forsikringAnsvarOgKasko[0] = 625;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.original_base_maanedspris;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 495;
+          this.forsikringAnsvarOgKasko[0] = 495;
+          this.forsikringAnsvarOgKasko[1] = 5000;
         }
       }
 
