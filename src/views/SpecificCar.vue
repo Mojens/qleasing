@@ -989,6 +989,29 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>119 kr./md.</div>
                                 </div>
+
+
+                                <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'kontant'">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Premium Helårsdæk
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>{{ chosenPremHelaarsDaek[1] }} kr.</div>
+                                </div>
+
+                                <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'finansieret'">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Premium Helårsdæk
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div style="display: flex; flex-direction: column;">
+                                    <div>{{ chosenPremHelaarsDaek[1] }} kr.</div>
+                                    <div>{{ chosenPremHelaarsDaek[2] }} kr./md</div>
+                                  </div>
+                                </div>
+
+
+
                               </div>
                               <div class="prices__info prices__info--highlighted bold">
                                 <div class="prices__title">Totalpris</div>
@@ -1140,9 +1163,9 @@ const age_driver = [
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
                                   help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                        behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
-                                          accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                        }">
+                                          behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
+                                            accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                                          }">
                                   <template #help="{ help }">
                                     <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
@@ -1219,6 +1242,7 @@ export default {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       original_base_maanedspris: 0, // Declare and set original_base_maanedspris to the initial value
       original_base_udbetaling: 0, // Declare and set original_base_udbetaling to the initial value
+      chosenPremHelaarsDaek: [],
       helarsdaek: [
         {
           size: '14"',
@@ -1465,52 +1489,71 @@ export default {
       this.original_base_maanedspris = this.carData.base_maanedspris;
     },
     premHelaarsDaek(value) {
-      const chosenPremHelaarsDaek = value;
-      if (chosenPremHelaarsDaek === undefined) {
+      const chosenValue = value;
+      this.chosenPremHelaarsDaek[0] = value
+      if (chosenValue === undefined) {
         this.carData.base_udbetaling = this.original_base_udbetaling;
         this.carData.base_maanedspris = this.original_base_maanedspris;
       }
-      else if (chosenPremHelaarsDaek === 'nej') {
+      else if (chosenValue === 'nej') {
         this.carData.base_udbetaling = this.original_base_udbetaling;
         this.carData.base_maanedspris = this.original_base_maanedspris;
-      } else if (chosenPremHelaarsDaek === 'kontant') {
+      } else if (chosenValue === 'kontant') {
         this.carData.base_udbetaling = this.original_base_udbetaling;
         this.carData.base_maanedspris = this.original_base_maanedspris;
         if (this.carData.daek_stoerrelse === '14"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 2999;
+          this.chosenPremHelaarsDaek[1] = '2999';
         } else if (this.carData.daek_stoerrelse === '15"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 3799;
+          this.chosenPremHelaarsDaek[1] = '3799';
         } else if (this.carData.daek_stoerrelse === '16"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 3999;
+          this.chosenPremHelaarsDaek[1] = '3999';
         } else if (this.carData.daek_stoerrelse === '17"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 4299;
+          this.chosenPremHelaarsDaek[1] = '4299';
         } else if (this.carData.daek_stoerrelse === '18"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 4599;
+          this.chosenPremHelaarsDaek[1] = '4599';
         } else if (this.carData.daek_stoerrelse === '19"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 5799;
+          this.chosenPremHelaarsDaek[1] = '5799';
         }
       }
-      else if (chosenPremHelaarsDaek === "finansieret") {
+      else if (chosenValue === "finansieret") {
         this.carData.base_udbetaling = this.original_base_udbetaling;
         this.carData.base_maanedspris = this.original_base_maanedspris;
         if (this.carData.daek_stoerrelse === '14"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 1200;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 150;
+          this.chosenPremHelaarsDaek[1] = '1200';
+          this.chosenPremHelaarsDaek[2] = '150';
         } else if (this.carData.daek_stoerrelse === '15"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 1500;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 192;
+          this.chosenPremHelaarsDaek[1] = '1500';
+          this.chosenPremHelaarsDaek[2] = '192';
         } else if (this.carData.daek_stoerrelse === '16"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 1600;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 200;
+          this.chosenPremHelaarsDaek[1] = '1600';
+          this.chosenPremHelaarsDaek[2] = '200';
         } else if (this.carData.daek_stoerrelse === '17"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 1700;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 217;
+          this.chosenPremHelaarsDaek[1] = '1700';
+          this.chosenPremHelaarsDaek[2] = '217';
         } else if (this.carData.daek_stoerrelse === '18"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 1800;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 233;
+          this.chosenPremHelaarsDaek[1] = '1800';
+          this.chosenPremHelaarsDaek[2] = '233';
         } else if (this.carData.daek_stoerrelse === '19"') {
           this.carData.base_udbetaling = this.carData.base_udbetaling + 2300;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 292;
+          this.chosenPremHelaarsDaek[1] = '2300';
+          this.chosenPremHelaarsDaek[2] = '292';
         }
       }
     }
