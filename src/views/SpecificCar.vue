@@ -724,8 +724,38 @@ const age_driver = [
                       }" slot-scope="{ handlers, node }" :allowIncomplete="true">
                       <!-- START STEP 1 -->
                       <FormKit type="step" label="1. Tilvalg" help="222">
-                        <div class="step__content-single">
 
+
+                        <div class="step__content-single">
+                          <FormKit type="dropdown" label="Ønsket Løbetid*" name="oensketLobetid" :options="lobetider"
+                                   :floating-label="false" :inner-class="{
+                                  searchFilter__select: true,
+                                }" placeholder="Længde i måneder"
+                                   help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+                                   validation="required" :validation-messages="{
+                                  required: 'Løbetid er påkrævet',
+                                }" validation-visibility="dirty" value="36">
+                            <template #option="{ option }">
+                              <div class="formkit-option">
+                                <span>{{ option.label }}</span>
+                              </div>
+                            </template>
+                          </FormKit>
+
+                          <FormKit type="dropdown" label="Alder*" name="alder" :options="age_driver"
+                                   :floating-label="false" :inner-class="{
+                                  searchFilter__select: true,
+                                }" placeholder="Alder på fører" help="Alder på fører" validation="required"
+                                   :validation-messages="{
+                                  required: 'Alder på fører er påkrævet',
+                                }" validation-visibility="live">
+                            <template #option="{ option }">
+                              <div class="formkit-option">
+                                <span>{{ option.label }}</span>
+                              </div>
+                            </template>
+
+                          </FormKit>
                           <div>
                             <h3 class="pad-header--xs">Tilvalg</h3>
                           </div>
@@ -833,20 +863,7 @@ const age_driver = [
                           <div class="prices_overview">
                             <div class="grid--auto-4 pad-header--s gap--xs">
 
-                              <FormKit type="dropdown" label="Ønsket Løbetid*" name="oensketLobetid" :options="lobetider"
-                                :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Længde i måneder"
-                                help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
-                                validation="required" :validation-messages="{
-                                  required: 'Løbetid er påkrævet',
-                                }" validation-visibility="dirty" value="36">
-                                <template #option="{ option }">
-                                  <div class="formkit-option">
-                                    <span>{{ option.label }}</span>
-                                  </div>
-                                </template>
-                              </FormKit>
+
 
                               <FormKit type="dropdown" label="Ekstra kilometer pr. år*" name="oensketKilometer"
                                 :options="extra_kilometer_aar" help="Ekstra km udover km 15.000 årligt - "
@@ -877,20 +894,7 @@ const age_driver = [
                                 </template>
                               </FormKit>
 
-                              <FormKit type="dropdown" label="Alder*" name="alder" :options="age_driver"
-                                :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Alder på fører" help="Alder på fører" validation="required"
-                                :validation-messages="{
-                                  required: 'Alder på fører er påkrævet',
-                                }" validation-visibility="live">
-                                <template #option="{ option }">
-                                  <div class="formkit-option">
-                                    <span>{{ option.label }}</span>
-                                  </div>
-                                </template>
 
-                              </FormKit>
 
                             </div>
 
