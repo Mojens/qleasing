@@ -626,7 +626,7 @@ export default {
 
   text-transform: capitalize;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1424px) {
   .container.is-fullwidth__searchFilter {
     padding: 0 30.5rem;
   }

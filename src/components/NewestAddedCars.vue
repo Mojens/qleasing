@@ -1,10 +1,16 @@
 <template>
   <div>
-    <h1 class="pad-header--m center--all">Se de biler, der lige er ankommet til Quickleasing</h1>
-    <div class="main-flow___Sjg41" data-qa="main-flow">
-      <div class="products___1WcE3">
+    <h1 class="pad-header--m center--all" style="padding-left: 0.7rem; padding-right: 0.7rem">Se de biler, der lige er ankommet til Quickleasing</h1>
+    <div class="main-flow___Sjg41" data-qa="main-flow" >
+
+      <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
+        <img src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
+      </button>
+      <div class="products___1WcE3" >
         <div class="list___1c2KX">
-          <div class="product___3vmta" v-for="car in displayedCars" :key="car.id">
+
+          <div id="product__card" class="product___3vmta " v-for="car in displayedCars" :key="car.id"
+               >
             <div class="product-card___2naPO has-cta___1N-4L">
               <div class="label-wrap___2_2TG">
 
@@ -121,6 +127,11 @@
           </div>
         </div>
       </div>
+
+        <button class="control-btn next-btn" @click="nextCar" :disabled="currentIndex >= carData.length - 3">
+          <img src='https://img.icons8.com/ios/50/000000/chevron-right.png'  alt="Pil til højre, for at se flere biler"/>
+        </button>
+
     </div>
 
 </div>
@@ -155,10 +166,20 @@ export default {
         { value: "applecarplay", name: "Apple CarPlay", count: 0 },
         { value: "androidauto", name: "Android Auto", count: 0 },
       ],
-      udstyr: []
+      udstyr: [],
+      currentIndex: 0,
+      displayedCars: [],
     };
   },
+
   async mounted() {
+    const carCards = document.querySelectorAll('.product___3vmta');
+    carCards.forEach((carCard) => {
+      carCard.addEventListener('transitionend', () => {
+        carCard.classList.remove('animate-slide');
+        carCard.classList.add('done');
+      });
+    });
     const response = await fetch(this.currentURL, {
       headers: {
         Accept: "application/json",
@@ -232,20 +253,128 @@ export default {
       } else {
         return "Ingen udstyr";
       }
-    }
+    },
+    nextCar() {
+      if (this.currentIndex < this.carData.length - 3) {
+        this.currentIndex++;
+        this.displayedCars = this.carData.slice(
+          this.currentIndex,
+          this.currentIndex + 3
+        );
+        const newCarIndex = this.currentIndex + 2; // the index of the new car/card
+        const newCarCards = document.querySelectorAll('.product___3vmta'); // get all the car/card elements
+        for (let i = newCarIndex; i < newCarIndex + 3; i++) {
+          newCarCards[i].classList.add('animate-slide'); // add the animate-slide class to each card
+        }
+      }
+    },
+    previousCar() {
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+        this.displayedCars = this.carData.slice(
+          this.currentIndex,
+          this.currentIndex + 3
+        );
+      }
+    },
 
   },
   computed: {
-
     displayedCars() {
       // Kun for at vise 8 biler
-      return this.carData.slice(0, 8);
+      return this.carData.slice(this.currentIndex, this.currentIndex + 3);
     },
   },
 };
 </script>
 
-<style>
+<style >
+#product__card.product___3vmta {
+  animation: scale 0.5s ease-in-out;
+
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes scale {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  0% {
+    opacity: 0.3;
+    transform: translateX(-100%);
+    scale: 0.9;
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+  100% {
+
+   scale: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.control-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-btn {
+
+  width: 100px;
+  background-color: white;
+  color: black;
+
+  margin-right: auto;
+}
+.pre-btn{
+
+  width: 100px;
+  background-color: white;
+  color: black;
+  margin-left: auto;
+}
+
+.control-btn:hover {
+
+}
+
 .button___2oWcS {
   position: relative;
   display: -webkit-box;
