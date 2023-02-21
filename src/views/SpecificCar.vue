@@ -189,23 +189,23 @@ const allUdstyr = [
 const lobetider = [
   {
     label: "6 mdr.",
-    value: "6",
+    value: 6,
   },
   {
     label: "12 mdr.",
-    value: "12",
+    value: 12,
   },
   {
     label: "24 mdr.",
-    value: "24",
+    value: 24,
   },
   {
     label: "36 mdr.",
-    value: "36",
+    value: 36,
   },
   {
     label: "48 mdr.",
-    value: "48",
+    value: 48,
   },
 ];
 const extra_kilometer_aar = [
@@ -728,13 +728,13 @@ const age_driver = [
 
                         <div class="step__content-single">
                           <FormKit type="dropdown" label="Ønsket Løbetid*" name="oensketLobetid" :options="lobetider"
-                                   :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Længde i måneder"
-                                   help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
-                                   validation="required" :validation-messages="{
-                                  required: 'Løbetid er påkrævet',
-                                }" validation-visibility="dirty" value="36">
+                            :floating-label="false" :inner-class="{
+                              searchFilter__select: true,
+                            }" placeholder="Længde i måneder"
+                            help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+                            validation="required" :validation-messages="{
+                              required: 'Løbetid er påkrævet',
+                            }" validation-visibility="dirty" value="36" @input="updateLoebeTider">
                             <template #option="{ option }">
                               <div class="formkit-option">
                                 <span>{{ option.label }}</span>
@@ -743,12 +743,12 @@ const age_driver = [
                           </FormKit>
 
                           <FormKit type="dropdown" label="Alder*" name="alder" :options="age_driver"
-                                   :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Alder på fører" help="Alder på fører" validation="required"
-                                   :validation-messages="{
-                                  required: 'Alder på fører er påkrævet',
-                                }" validation-visibility="live">
+                            :floating-label="false" :inner-class="{
+                              searchFilter__select: true,
+                            }" placeholder="Alder på fører" help="Alder på fører" validation="required"
+                            :validation-messages="{
+                              required: 'Alder på fører er påkrævet',
+                            }" validation-visibility="live" @input="chosenAgeDriver">
                             <template #option="{ option }">
                               <div class="formkit-option">
                                 <span>{{ option.label }}</span>
@@ -762,7 +762,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Afleveringsforsikring" name="afleveringsforsikring"
                             label-class="add__price-forsikring add__price" wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
-                            @change="toogleAfleveringsforsikring">
+                            @change="toogleAfleveringsforsikring" v-if="chosenLeasePeriod >= 12">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
                                 <span v-if="help" :class="classes.tooltip">
@@ -782,7 +782,8 @@ const age_driver = [
                           <FormKit type="checkbox" label="Lav selvrisiko" name="lavSelvrisiko"
                             help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
                             label-class="add__price-selv add__price" wrapper-class="form__wrapper-input"
-                            @change="toogleLavSelvRisiko">
+                            @change="toogleLavSelvRisiko"
+                            v-if="chosenAge[0] >= 30">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
 
@@ -1015,7 +1016,7 @@ const age_driver = [
                                   </div>
                                 </div>
 
-                                 <!-- Valg af dæk -->
+                                <!-- Valg af dæk -->
 
                               </div>
                               <div class="prices__info prices__info--highlighted bold">
@@ -1168,9 +1169,9 @@ const age_driver = [
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
                                   help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                          behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
-                                            accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                          }">
+                                              behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
+                                                accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                                              }">
                                   <template #help="{ help }">
                                     <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
@@ -1245,6 +1246,8 @@ export default {
   data() {
     return {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
+      chosenAge: [],
+      chosenLeasePeriod: 0,
       original_base_maanedspris: 0, // Declare and set original_base_maanedspris to the initial value
       original_base_udbetaling: 0, // Declare and set original_base_udbetaling to the initial value
       chosenPremHelaarsDaek: [],
@@ -1364,6 +1367,23 @@ export default {
       this.udbetaling = this.carData.base_udbetaling;
       this.original_base_udbetaling = this.carData.base_udbetaling;
       this.original_base_maanedspris = this.carData.base_maanedspris;
+    },
+    updateLoebeTider(value) {
+      this.chosenLeasePeriod = value
+      console.log(this.chosenLeasePeriod)
+    },
+    chosenAgeDriver(value) {
+      if (value !== undefined) {
+        if (value === '40_plus') {
+          const newValue = value.split("_")
+          this.chosenAge[0] = parseInt(newValue[0])
+          this.chosenAge[1] = 110
+        } else {
+          const newValue = value.split("-")
+          this.chosenAge[0] = parseInt(newValue[0])
+          this.chosenAge[1] = parseInt(newValue[1])
+        }
+      }
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
