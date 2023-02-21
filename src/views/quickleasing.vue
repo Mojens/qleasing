@@ -269,9 +269,10 @@ onMounted(() => {
 
     <!-- START NEW FILTER -->
     <div class="filter__toggle-button" v-if="isMobile" @click="toggleFilter()">
-      <button  class="button-primary--filter " style="display: flex; align-items: center;width: 100vw;justify-content: center">
+      <button  class="button-primary--filter" :class="{'button-primary--filter-apply': showFilter}" style="display: flex; align-items: center;width: 100vw;justify-content: center">
         <img src="../assets/images/filter_filters_funnel_list_navigation_sort_sorting_icon_123212.svg"  style="width: 30px; margin-right: 10px;" alt="">
-        <span>Filter</span>
+        <span v-if="showFilter" >Færdig</span>
+        <span v-else>Filter</span>
       </button>
     </div>
     <div v-if="showFilter" class="filter__container-mobile"  :class="{show: isMobile && showFilter}" >
@@ -297,6 +298,7 @@ onMounted(() => {
             </g>
           </svg>
         </button>
+
         <div class="filter__brand" id="brandCheckbox" style="padding-top: 1rem">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
@@ -1381,6 +1383,25 @@ export default {
   transform: scale(1.02);
 }
 
+.button-primary--filter-apply {
+  background-color: var(--action)!important;
+  border: none;
+  color: white!important;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin: var(--space-m) 0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+.button-primary--filter-apply:hover {
+  background-color: var(--secondary)!important;
+  color: black!important;
+  transform: scale(1.02);
+}
+
 
 @media only screen and (max-width: 600px) {
   .button-primary--filter {
@@ -1416,6 +1437,10 @@ export default {
 
 /* show the toggle button on smaller screens */
 @media only screen and (max-width: 768px) {
+  .product-card___2naPO{
+    width: 100%!important;
+    max-width: 100%!important;
+  }
   .filter__container-mobile {
     position: sticky;
     z-index: 10;
@@ -1464,6 +1489,17 @@ export default {
     height: 15px!important;
     width: 15px!important;
     background-color: #eee;
+  }
+  .container .checkmark:after {
+    left: 4px!important;
+    top: 1px!important;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 
 
