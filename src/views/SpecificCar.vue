@@ -762,79 +762,70 @@ const age_driver = [
                           <FormKit type="checkbox" label="Afleveringsforsikring" name="afleveringsforsikring"
                             label-class="add__price-forsikring add__price" wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
-                            @change="toogleAfleveringsforsikring" v-if="chosenLeasePeriod >= 12">
+                            @change="toogleAfleveringsforsikring" v-if="chosenLeasePeriod >= 12"
+                            v-model="afleveringsforsikring">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
                                 <span v-if="help" :class="classes.tooltip">
-
                                   ?<span :class="classes.tooltipInner">{{ help }}</span>
                                 </span>
                               </label>
                             </template>
-
-                            <!-- comment this out if you also want the help to be shown -->
                             <template #help>
                               <p class="form__extra-help">Tilvalg af afleveringsforsikring er betinget af en aftale på
                                 minimum 12 måneder </p>
                             </template>
-
                           </FormKit>
+
                           <FormKit type="checkbox" label="Lav selvrisiko" name="lavSelvrisiko"
                             help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
                             label-class="add__price-selv add__price" wrapper-class="form__wrapper-input"
-                            @change="toogleLavSelvRisiko" v-if="chosenAge[0] >= 30">
+                            @change="toogleLavSelvRisiko" v-if="chosenAge[0] >= 30" v-model="lavSelvrisiko">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
-
                                 <span v-if="help" :class="classes.tooltip">
                                   ?<span :class="classes.tooltipInner">{{ help }}</span>
                                 </span>
                               </label>
                             </template>
-
                             <template #help>
                               <p class="form__extra-help">Tilvalg af lav selvrisiko er betinget af at du minimum er fyldt
                                 30 år.</p>
                             </template>
-
                           </FormKit>
+
                           <FormKit type="checkbox" label="Viking Vejhjælp " name="vikingVejhjaelp"
                             help="Ved køb af Viking Vejhjælp, er du dækket for skader på bilen ved aflevering."
                             wrapper-class="form__wrapper-input" label-class="add__price-vej add__price"
-                            @change="toogleVikingVejhjaelp">
+                            @change="toogleVikingVejhjaelp" v-model="vikingVejhjaelp">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
-
                                 <span v-if="help" :class="classes.tooltip">
                                   ?<span :class="classes.tooltipInner">{{ help }}</span>
                                 </span>
                               </label>
                             </template>
-
                             <template #help>
                               <p class="form__extra-help">I samarbejde med Viking tilbyder vi vejhjælp til kun 49 kr.</p>
                             </template>
-
                           </FormKit>
+
                           <FormKit type="checkbox" label="Komplet sæt vinterhjul" label-class="add__price-hjul add__price"
                             wrapper-class="form__wrapper-input" name="kompletSaetVinterhjul"
                             help="Ved køb af Komplet sæt vinterhjul, er du dækket for skader på bilen ved aflevering."
-                            @change="toogleKompletSaetVinterhjul">
+                            @change="toogleKompletSaetVinterhjul" v-model="kompletSaetVinterhjul">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
-
                                 <span v-if="help" :class="classes.tooltip">
                                   ?<span :class="classes.tooltipInner">{{ help }}</span>
                                 </span>
                               </label>
                             </template>
-
                             <template #help>
                               <p class="form__extra-help">I samarbejde med Viking tilbyder vi vejhjælp til kun 49 kr.</p>
                             </template>
-
-
                           </FormKit>
+
 
                         </div>
                         <template #stepNext="{ handlers, node }">
@@ -1173,9 +1164,10 @@ const age_driver = [
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
                                   help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                                    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
-                                                      accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                                    }">
+                                                                behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+                                  :validation-messages="{
+                                    accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                                  }">
                                   <template #help="{ help }">
                                     <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
@@ -1399,159 +1391,275 @@ export default {
           this.chosenAge[1] = parseInt(newValue[1])
         }
       }
+      console.log("ALDER", this.chosenAge)
+      console.log("maanedeligeYdelser", this.maanedligeYdelse)
+      console.log("maanedspris", this.carData.base_maanedspris)
+
       if (this.maanedligeYdelse >= 1000 && this.maanedligeYdelse <= 1499) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-        this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
           this.forsikringAnsvarOgKasko[0] = 475;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
           this.forsikringAnsvarOgKasko[0] = 325;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
           this.forsikringAnsvarOgKasko[0] = 295;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 275;
           this.forsikringAnsvarOgKasko[0] = 275;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 1500 && this.maanedligeYdelse <= 1999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 795;
           this.forsikringAnsvarOgKasko[0] = 795;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
           this.forsikringAnsvarOgKasko[0] = 375;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
           this.forsikringAnsvarOgKasko[0] = 325;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 285;
           this.forsikringAnsvarOgKasko[0] = 285;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 2000 && this.maanedligeYdelse <= 2499) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 895;
           this.forsikringAnsvarOgKasko[0] = 895;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
           this.forsikringAnsvarOgKasko[0] = 425;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 345;
           this.forsikringAnsvarOgKasko[0] = 345;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
           this.forsikringAnsvarOgKasko[0] = 295;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 2500 && this.maanedligeYdelse <= 2999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 995;
           this.forsikringAnsvarOgKasko[0] = 995;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
           this.forsikringAnsvarOgKasko[0] = 475;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
           this.forsikringAnsvarOgKasko[0] = 375;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 315;
           this.forsikringAnsvarOgKasko[0] = 315;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 3000 && this.maanedligeYdelse <= 3999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1095;
           this.forsikringAnsvarOgKasko[0] = 1095;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 525;
           this.forsikringAnsvarOgKasko[0] = 525;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 445;
           this.forsikringAnsvarOgKasko[0] = 445;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 395;
           this.forsikringAnsvarOgKasko[0] = 395;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 4000 && this.maanedligeYdelse <= 4999) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1295;
           this.forsikringAnsvarOgKasko[0] = 1295;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 725;
           this.forsikringAnsvarOgKasko[0] = 725;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
           this.forsikringAnsvarOgKasko[0] = 475;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
           this.forsikringAnsvarOgKasko[0] = 425;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       } else if (this.maanedligeYdelse >= 5000) {
         if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 1395;
           this.forsikringAnsvarOgKasko[0] = 1395;
           this.forsikringAnsvarOgKasko[1] = 7500;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 825;
           this.forsikringAnsvarOgKasko[0] = 825;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 625;
           this.forsikringAnsvarOgKasko[0] = 625;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
-          this.carData.base_maanedspris = this.original_base_maanedspris;
+          this.carData.base_maanedspris = this.maanedligeYdelse;
           this.carData.base_maanedspris = this.carData.base_maanedspris + 495;
           this.forsikringAnsvarOgKasko[0] = 495;
           this.forsikringAnsvarOgKasko[1] = 5000;
+          this.lavSelvrisiko = false
+          this.afleveringsforsikring = false
+          this.vikingVejhjaelp = false
+          this.kompletSaetVinterhjul = false
         }
       }
 
