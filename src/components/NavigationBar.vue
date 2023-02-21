@@ -2,7 +2,7 @@
   <div class="main-menu___2JQzT" >
     <div class="content___1_CIc"><RouterLink class="main-menu-logo___1PC85" to="/" title="Quickleasing"><img
       alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
-      src="../assets/images/Quickleasing_header-logo.png"></RouterLink>
+      src="../assets/images/Quickleasing-logo.png"></RouterLink>
       <div class="navigation___2n5eH">
       <button class="burger-button___y0r_B burger-button___1pNrj is-closed___Nbjfz" @click="toggleMenu" ><span class="line___q3Uf4"></span><span
           class="line___q3Uf4"></span><span class="line___q3Uf4"></span></button>
