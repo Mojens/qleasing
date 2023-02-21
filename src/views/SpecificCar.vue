@@ -717,7 +717,7 @@ const age_driver = [
 
                   <!-- START MULTI FORM  -->
 
-                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false">
+                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false" @submit="createForm">
                     <FormKit type="multi-step" tab-style="progress" steps-class="multiform__steps"
                       tab-label-class="custom__tab-span" :wrapper-class="{
                         multiform__wrapper: true,
@@ -1366,6 +1366,11 @@ export default {
     }, 20);
   },
   methods: {
+    createForm: async function (fields){
+      const READER_API = import.meta.env.VITE_APP_READER_API;
+      const POST_URL = import.meta.env.VITE_APP_AFTALE_FORM_URL;
+
+    },
     async fetchCarData() {
       const id = this.$route.params.id;
       const apiUrl = `${this.currentURL}${id}`;
