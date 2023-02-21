@@ -142,10 +142,10 @@
 export default {
   data() {
     return {
-      currentURL: import.meta.env.VITE_APP_CARS_URL,
-      pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
-      fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
-      readerAPI: import.meta.env.VITE_APP_READER_API,
+      currentURL: process.env.VITE_APP_CARS_URL,
+      pictureURL: process.env.VITE_APP_PICTURE_URL,
+      fileURL: process.env.VITE_APP_FILE_ID_URL,
+      readerAPI: process.env.VITE_APP_READER_API,
       carData: [],
       carImages: {},
       thumbnail: {},
