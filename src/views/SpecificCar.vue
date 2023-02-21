@@ -189,23 +189,23 @@ const allUdstyr = [
 const lobetider = [
   {
     label: "6 mdr.",
-    value: "6",
+    value: 6,
   },
   {
     label: "12 mdr.",
-    value: "12",
+    value: 12,
   },
   {
     label: "24 mdr.",
-    value: "24",
+    value: 24,
   },
   {
     label: "36 mdr.",
-    value: "36",
+    value: 36,
   },
   {
     label: "48 mdr.",
-    value: "48",
+    value: 48,
   },
 ];
 const extra_kilometer_aar = [
@@ -728,13 +728,13 @@ const age_driver = [
 
                         <div class="step__content-single">
                           <FormKit type="dropdown" label="Ønsket Løbetid*" name="oensketLobetid" :options="lobetider"
-                                   :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Længde i måneder"
-                                   help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
-                                   validation="required" :validation-messages="{
-                                  required: 'Løbetid er påkrævet',
-                                }" validation-visibility="dirty" value="36">
+                            :floating-label="false" :inner-class="{
+                              searchFilter__select: true,
+                            }" placeholder="Længde i måneder"
+                            help="Længden på din leasingaftale i måneder - Prisen er billigere jo længere du binder dig."
+                            validation="required" :validation-messages="{
+                              required: 'Løbetid er påkrævet',
+                            }" validation-visibility="dirty" value="36" @input="updateLoebeTider">
                             <template #option="{ option }">
                               <div class="formkit-option">
                                 <span>{{ option.label }}</span>
@@ -743,12 +743,12 @@ const age_driver = [
                           </FormKit>
 
                           <FormKit type="dropdown" label="Alder*" name="alder" :options="age_driver"
-                                   :floating-label="false" :inner-class="{
-                                  searchFilter__select: true,
-                                }" placeholder="Alder på fører" help="Alder på fører" validation="required"
-                                   :validation-messages="{
-                                  required: 'Alder på fører er påkrævet',
-                                }" validation-visibility="live">
+                            :floating-label="false" :inner-class="{
+                              searchFilter__select: true,
+                            }" placeholder="Alder på fører" help="Alder på fører" validation="required"
+                            :validation-messages="{
+                              required: 'Alder på fører er påkrævet',
+                            }" validation-visibility="live" @input="chosenAgeDriver">
                             <template #option="{ option }">
                               <div class="formkit-option">
                                 <span>{{ option.label }}</span>
@@ -762,7 +762,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Afleveringsforsikring" name="afleveringsforsikring"
                             label-class="add__price-forsikring add__price" wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
-                            @change="toogleAfleveringsforsikring">
+                            @change="toogleAfleveringsforsikring" v-if="chosenLeasePeriod >= 12">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
                                 <span v-if="help" :class="classes.tooltip">
@@ -782,7 +782,7 @@ const age_driver = [
                           <FormKit type="checkbox" label="Lav selvrisiko" name="lavSelvrisiko"
                             help="Ved køb af lav selvrisiko, er du dækket for skader på bilen ved aflevering."
                             label-class="add__price-selv add__price" wrapper-class="form__wrapper-input"
-                            @change="toogleLavSelvRisiko">
+                            @change="toogleLavSelvRisiko" v-if="chosenAge[0] >= 30">
                             <template #label="{ id, label, help, classes }">
                               <label :class="classes.label" :for="id">{{ label }}
 
@@ -886,7 +886,7 @@ const age_driver = [
                                 }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
                                 validation="required" :validation-messages="{
                                   required: 'Ombytning til Primium helårsdæk er påkrævet',
-                                }" validation-visibility="live" @input="premHelaarsDaek">
+                                }" validation-visibility="live" @input="premHelaarsDaek" v-if="!kompletSaetVinterhjul">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -908,12 +908,17 @@ const age_driver = [
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
                                 <div class="prices__separator"></div>
-                                <div>Inkluderet</div>
+                                <div>{{ forsikringAnsvarOgKasko[0] }} kr./md</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Selvrisiko</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ forsikringAnsvarOgKasko[1] }} kr.</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Grøn ejerafgift</div>
                                 <div class="prices__separator"></div>
-                                <div>Inkluderet</div>
+                                <div>{{ displayCar.groen_ejer_afgift / 6 }} kr./md</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Service- og garantiaftale</div>
@@ -924,6 +929,11 @@ const age_driver = [
                                 <div class="prices__title">Depositum</div>
                                 <div class="prices__separator"></div>
                                 <div>0 kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Dok. gebyr ved oprettelse</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.dokument_gebyr_ved_oprettelse }} kr.</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Udbetaling</div>
@@ -938,11 +948,6 @@ const age_driver = [
                               <div class="prices__extra">
                                 <div class="prices__info">
                                   <div class="prices__title">2.000 km.</div>
-                                  <div class="prices__separator"></div>
-                                  <div>Inkluderet</div>
-                                </div>
-                                <div class="prices__info">
-                                  <div class="prices__title">Vi vælger farven for dig</div>
                                   <div class="prices__separator"></div>
                                   <div>Inkluderet</div>
                                 </div>
@@ -1015,7 +1020,7 @@ const age_driver = [
                                   </div>
                                 </div>
 
-                                 <!-- Valg af dæk -->
+                                <!-- Valg af dæk -->
 
                               </div>
                               <div class="prices__info prices__info--highlighted bold">
@@ -1168,9 +1173,9 @@ const age_driver = [
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
                                   help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                          behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
-                                            accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                          }">
+                                                    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
+                                                      accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                                                    }">
                                   <template #help="{ help }">
                                     <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
@@ -1245,6 +1250,9 @@ export default {
   data() {
     return {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
+      forsikringAnsvarOgKasko: [],
+      chosenAge: [],
+      chosenLeasePeriod: 0,
       original_base_maanedspris: 0, // Declare and set original_base_maanedspris to the initial value
       original_base_udbetaling: 0, // Declare and set original_base_udbetaling to the initial value
       chosenPremHelaarsDaek: [],
@@ -1339,8 +1347,6 @@ export default {
     this.fetchCarData();
   },
   mounted() {
-    this.carData.original_base_maanedspris = this.carData.base_maanedspris;
-    this.carData.original_base_udbetaling = this.carData.base_udbetaling;
     // Add the class "is-open___1eAPm" to the modal when the component is mounted
     console.log("TEST")
     setTimeout(() => {
@@ -1364,6 +1370,121 @@ export default {
       this.udbetaling = this.carData.base_udbetaling;
       this.original_base_udbetaling = this.carData.base_udbetaling;
       this.original_base_maanedspris = this.carData.base_maanedspris;
+      this.udbetaling = this.carData.base_udbetaling;
+      this.maanedligeYdelse = this.carData.base_maanedspris;
+    },
+    updateLoebeTider(value) {
+      this.chosenLeasePeriod = value
+      if (this.chosenLeasePeriod <= 6) {
+        console.log(this.chosenLeasePeriod)
+        console.log(this.carData.base_udbetaling)
+        console.log(this.carData.base_udbetaling_6maaneder)
+        this.carData.base_udbetaling = this.carData.base_udbetaling_6maaneder;
+        this.original_base_udbetaling = this.carData.base_udbetaling_6maaneder;
+        console.log(this.carData.base_udbetaling)
+      } else {
+        this.carData.base_udbetaling = this.udbetaling
+        this.original_base_udbetaling = this.udbetaling
+      }
+    },
+    chosenAgeDriver(value) {
+      if (value !== undefined) {
+        if (value === '40_plus') {
+          const newValue = value.split("_")
+          this.chosenAge[0] = parseInt(newValue[0])
+          this.chosenAge[1] = 110
+        } else {
+          const newValue = value.split("-")
+          this.chosenAge[0] = parseInt(newValue[0])
+          this.chosenAge[1] = parseInt(newValue[1])
+        }
+      }
+      if (this.maanedligeYdelse >= 1000 && this.maanedligeYdelse <= 1499) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
+          this.forsikringAnsvarOgKasko[0] = 475;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 275;
+        }
+      } else if (this.maanedligeYdelse >= 1500 && this.maanedligeYdelse <= 1999) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 795;
+          this.forsikringAnsvarOgKasko[0] = 795;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 325;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 285;
+        }
+      } else if (this.maanedligeYdelse >= 2000 && this.maanedligeYdelse <= 2499) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 895;
+          this.forsikringAnsvarOgKasko[0] = 895;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 345;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 295;
+        }
+      } else if (this.maanedligeYdelse >= 2500 && this.maanedligeYdelse <= 2999) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 995;
+          this.forsikringAnsvarOgKasko[0] = 995;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 375;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 315;
+        }
+      } else if (this.maanedligeYdelse >= 3000 && this.maanedligeYdelse <= 3999) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 1095;
+          this.forsikringAnsvarOgKasko[0] = 1095;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 525;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 445;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 395;
+        }
+      } else if (this.maanedligeYdelse >= 4000 && this.maanedligeYdelse <= 4999) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 1295;
+          this.forsikringAnsvarOgKasko[0] = 1295;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 725;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 475;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 425;
+        }
+      } else if (this.maanedligeYdelse >= 5000) {
+        if (this.chosenAge[0] >= 23 && this.chosenAge[1] <= 24) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 1395;
+          this.forsikringAnsvarOgKasko[0] = 1395;
+          this.forsikringAnsvarOgKasko[1] = 7500;
+        } else if (this.chosenAge[0] >= 25 && this.chosenAge[1] <= 29) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 825;
+        } else if (this.chosenAge[0] >= 30 && this.chosenAge[1] <= 39) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 625;
+        } else if (this.chosenAge[0] >= 40 && this.chosenAge[1] <= 110) {
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 495;
+        }
+      }
+
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
@@ -1442,6 +1563,7 @@ export default {
         this.lavSelvrisiko = true;
         this.carData.base_maanedspris = this.carData.base_maanedspris + 64;
         this.original_base_maanedspris = this.carData.base_maanedspris;
+        this.forsikringAnsvarOgKasko = this.forsikringAnsvarOgKasko[1] / 2;
       }
     },
     toogleVikingVejhjaelp() {
