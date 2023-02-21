@@ -236,8 +236,8 @@ const premiumDaek = [
     value: "kontant",
   },
   {
-    label: "Finansiert",
-    value: "finansiert",
+    label: "Finansieret",
+    value: "finansieret",
   },
 ];
 const age_driver = [
@@ -869,7 +869,7 @@ const age_driver = [
                                 }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
                                 validation="required" :validation-messages="{
                                   required: 'Ombytning til Primium helårsdæk er påkrævet',
-                                }" validation-visibility="live">
+                                }" validation-visibility="live" @input="premHelaarsDaek">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -941,6 +941,13 @@ const age_driver = [
                                   <div class="prices__title">Vi vælger farven for dig</div>
                                   <div class="prices__separator"></div>
                                   <div>Inkluderet</div>
+                                </div>
+                                <div class="prices__info" v-if="chosenExtraKm[1] !== 0">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Extra&nbsp;<b>{{ chosenExtraKm[0] }}</b>&nbsp;kilometer
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>{{ chosenExtraKm[1] }} kr./md.</div>
                                 </div>
                                 <div class="prices__info" v-if="afleveringsforsikring == true">
                                   <div class="prices__title prices__title--tooltip">
@@ -1131,11 +1138,11 @@ const age_driver = [
                                 help="De første 3 nuller er medtaget automatisk" unmask-value="true" label="Kontonummer*"
                                 input-class="custom__placeholder" :floating-label="false" />
                               <div style="margin-bottom: 9rem">
-                                <FormKit type="checkbox" label="Persondatapolitik" validation="accepted" help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-          behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
-                                  :validation-messages="{
-                                    accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                  }">
+                                <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
+                                  help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
+                              behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>." :validation-messages="{
+                                accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                              }">
                                   <template #help="{ help }">
                                     <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
@@ -1210,6 +1217,48 @@ export default {
   data() {
     return {
       currentURL: import.meta.env.VITE_APP_CARS_URL,
+      originalBaseUdbetaling: 0,
+      originalBaseMaanedspris: 0,
+      helarsdaek: [
+        {
+          size: '14"',
+          kontantBetaling: 2999,
+          finansieretUdbetaling: 1200,
+          finansieretBetaling: 150
+        },
+        {
+          size: '15"',
+          kontantBetaling: 3799,
+          finansieretUdbetaling: 1500,
+          finansieretBetaling: 192
+        },
+        {
+          size: '16"',
+          kontantBetaling: 3999,
+          finansieretUdbetaling: 1600,
+          finansieretBetaling: 200
+        },
+        {
+          size: '17"',
+          kontantBetaling: 4299,
+          finansieretUdbetaling: 1700,
+          finansieretBetaling: 217
+        },
+        {
+          size: '18"',
+          kontantBetaling: 4599,
+          finansieretUdbetaling: 1800,
+          finansieretBetaling: 233
+        },
+        {
+          size: '19"',
+          kontantBetaling: 5799,
+          finansieretUdbetaling: 2300,
+          finansieretBetaling: 292
+        }
+      ],
+
+
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
       readerAPI: import.meta.env.VITE_APP_READER_API,
@@ -1242,7 +1291,7 @@ export default {
         { value: "androidauto", name: "Android Auto", count: 0 },
       ],
       udstyr: [],
-      chosenExtraKm: 0,
+      chosenExtraKm: [],
       displayAllFeatures: false,
       showContent1: true,
       isModalOpen: false,
@@ -1343,7 +1392,7 @@ export default {
         return "Ingen udstyr";
       }
     },
-    toogleAfleveringsforsikring(car) {
+    toogleAfleveringsforsikring() {
       if (this.afleveringsforsikring) {
         this.afleveringsforsikring = false;
         this.carData.base_maanedspris = this.carData.base_maanedspris - 119;
@@ -1352,7 +1401,7 @@ export default {
         this.carData.base_maanedspris = this.carData.base_maanedspris + 119;
       }
     },
-    toogleLavSelvRisiko(car) {
+    toogleLavSelvRisiko() {
       if (this.lavSelvrisiko) {
         this.lavSelvrisiko = false;
         this.carData.base_maanedspris = this.carData.base_maanedspris - 64;
@@ -1361,7 +1410,7 @@ export default {
         this.carData.base_maanedspris = this.carData.base_maanedspris + 64;
       }
     },
-    toogleVikingVejhjaelp(car) {
+    toogleVikingVejhjaelp() {
       if (this.vikingVejhjaelp) {
         this.vikingVejhjaelp = false;
         this.carData.base_maanedspris = this.carData.base_maanedspris - 49;
@@ -1370,7 +1419,7 @@ export default {
         this.carData.base_maanedspris = this.carData.base_maanedspris + 49;
       }
     },
-    toogleKompletSaetVinterhjul(car) {
+    toogleKompletSaetVinterhjul() {
       if (this.kompletSaetVinterhjul) {
         this.kompletSaetVinterhjul = false;
         this.carData.base_maanedspris = this.carData.base_maanedspris - 119;
@@ -1380,31 +1429,75 @@ export default {
       }
     },
     oensketKilometerChange(value) {
-  const selectedOptionValue = value
-  
-  // Map the selected value to the corresponding amount to be added to the base_maanedspris
-  const amountToAdd = {
-    0: 0,
-    5000: 200,
-    10000: 500,
-    15000: 750
-  }[selectedOptionValue];
-  
-  // Subtract the amount corresponding to the last selected option from the base_maanedspris
-  const lastSelectedOptionAmount = {
-    0: 0,
-    5000: 200,
-    10000: 500,
-    15000: 750
-  }[this.lastSelectedOptionValue];
-  
-  this.carData.base_maanedspris = this.carData.base_maanedspris - lastSelectedOptionAmount + amountToAdd;
-  
-  // Update the lastSelectedOptionValue variable to the current selected option value
-  this.lastSelectedOptionValue = selectedOptionValue;
-}
+      this.chosenExtraKm[0] = value
 
+      // Map the selected value to the corresponding amount to be added to the base_maanedspris
+      const amountToAdd = {
+        0: 0,
+        5000: 200,
+        10000: 500,
+        15000: 750
+      }[this.chosenExtraKm[0]];
 
+      this.chosenExtraKm[1] = amountToAdd;
+
+      // Subtract the amount corresponding to the last selected option from the base_maanedspris
+      const lastSelectedOptionAmount = {
+        0: 0,
+        5000: 200,
+        10000: 500,
+        15000: 750
+      }[this.lastSelectedOptionValue];
+
+      this.carData.base_maanedspris = this.carData.base_maanedspris - lastSelectedOptionAmount + amountToAdd;
+
+      // Update the lastSelectedOptionValue variable to the current selected option value
+      this.lastSelectedOptionValue = this.chosenExtraKm[0];
+    },
+    premHelaarsDaek(value) {
+      const chosenPremHelaarsDaek = value;
+      if (chosenPremHelaarsDaek === undefined) {
+        //Origenal base_maanedspris and base_udbetaling
+      }
+      else if (chosenPremHelaarsDaek === 'nej') {
+        //Origenal base_maanedspris and base_udbetaling
+      } else if (chosenPremHelaarsDaek === 'kontant') {
+        if (this.carData.daek_stoerrelse === '14"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 2999;
+        } else if (this.carData.daek_stoerrelse === '15"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 3799;
+        } else if (this.carData.daek_stoerrelse === '16"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 3999;
+        } else if (this.carData.daek_stoerrelse === '17"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 4299;
+        } else if (this.carData.daek_stoerrelse === '18"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 4599;
+        } else if (this.carData.daek_stoerrelse === '19"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 5799;
+        }
+      }
+      else if (chosenPremHelaarsDaek === "finansieret") {
+        if (this.carData.daek_stoerrelse === '14"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 1200;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 150;
+        } else if (this.carData.daek_stoerrelse === '15"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 1500;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 192;
+        } else if (this.carData.daek_stoerrelse === '16"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 1600;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 200;
+        } else if (this.carData.daek_stoerrelse === '17"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 1700;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 217;
+        } else if (this.carData.daek_stoerrelse === '18"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 1800;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 233;
+        } else if (this.carData.daek_stoerrelse === '19"') {
+          this.carData.base_udbetaling = this.carData.base_udbetaling + 2300;
+          this.carData.base_maanedspris = this.carData.base_maanedspris + 292;
+        }
+      }
+    }
   },
   computed: {
     displayCar() {
