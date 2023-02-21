@@ -2,18 +2,20 @@
   <div class="main-menu___2JQzT" >
     <div class="content___1_CIc"><RouterLink class="main-menu-logo___1PC85" to="/" title="Quickleasing"><img
       alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
-      src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_128/v1/Logos/logo_brands_0922_ltj2wu.svg"></RouterLink>
+      src="../assets/images/Quickleasing_header-logo.png"></RouterLink>
       <div class="navigation___2n5eH">
       <button class="burger-button___y0r_B burger-button___1pNrj is-closed___Nbjfz" @click="toggleMenu" ><span class="line___q3Uf4"></span><span
           class="line___q3Uf4"></span><span class="line___q3Uf4"></span></button>
         <div class="menu-items___1o-34 " :class="{ 'is-open___2f-lN': isMenuOpen, 'is-closed___Nbjfz is-closed': !isMenuOpen }">
-          <div class="navigation-item___21XPw menu-item___2UedM"><a class="link___1tInP"
-                                                                    href="https://bilabonnement.dk/" target="_blank" title="Bilabonnement">Bilabonnement</a>
+          <div class="navigation-item___21XPw menu-item___2UedM">
+            <a class="main-menu-logo___1PC85" href="https://bilabonnement.dk" title="Bilabonnement"><img
+              alt="Quickleasing" class="main-menu-logo-image___1Ov1X" style="object-fit: scale-down; width: 30%; align-content: end; display: flex; justify-content: end; margin-left: auto"
+              src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png"></a>
           </div>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/quickleasing"
                       :to="{ name: 'quickleasing', query: { brand: '' } },{ name: 'quickleasing', query: { model: '' } },{ name: 'quickleasing', query: { pris1: '' } },{ name: 'quickleasing', query: { pris2: '' } }">
             <a class="link___1tInP"
-               target="_self" title="Quickleasing">Quickleasing</a>
+               target="_self" title="Quickleasing">Privatleasing</a>
           </RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/maerker"><a class="link___1tInP"
                                                                                          target="_self" title="mærker">Mærker</a>

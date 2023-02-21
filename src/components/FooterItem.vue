@@ -4,7 +4,7 @@
       <div class="image____uKec">
         <img
           alt="footer-logo"
-          src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png"
+          src="../assets/images/Quickleasing_footer-logo.png"
         />
       </div>
       <div class="links-wrapper___z_X-m">
