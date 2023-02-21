@@ -913,7 +913,7 @@ const age_driver = [
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Grøn ejerafgift</div>
                                 <div class="prices__separator"></div>
-                                <div>Inkluderet</div>
+                                <div>{{ displayCar.groen_ejer_afgift / 6 }} kr./md</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Service- og garantiaftale</div>
@@ -924,6 +924,11 @@ const age_driver = [
                                 <div class="prices__title">Depositum</div>
                                 <div class="prices__separator"></div>
                                 <div>0 kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Dok. gebyr ved oprettelse</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.dokument_gebyr_ved_oprettelse }} kr.</div>
                               </div>
                               <div class="prices__info prices__info--secondary">
                                 <div class="prices__title">Udbetaling</div>
@@ -938,11 +943,6 @@ const age_driver = [
                               <div class="prices__extra">
                                 <div class="prices__info">
                                   <div class="prices__title">2.000 km.</div>
-                                  <div class="prices__separator"></div>
-                                  <div>Inkluderet</div>
-                                </div>
-                                <div class="prices__info">
-                                  <div class="prices__title">Vi vælger farven for dig</div>
                                   <div class="prices__separator"></div>
                                   <div>Inkluderet</div>
                                 </div>
