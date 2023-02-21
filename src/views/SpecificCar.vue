@@ -887,7 +887,8 @@ const age_driver = [
                                 }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
                                 validation="required" :validation-messages="{
                                   required: 'Ombytning til Primium helårsdæk er påkrævet',
-                                }" validation-visibility="live" @input="premHelaarsDaek">
+                                }" validation-visibility="live" @input="premHelaarsDaek"
+                                v-if="!kompletSaetVinterhjul">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
