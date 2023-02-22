@@ -1432,7 +1432,9 @@ export default {
         telefon: this.form_telefonnummer,
         cpr_nummer: this.form_cpr_nummer,
         Registreringsnummer: this.form_registreringsnummer,
-        Kontonummer: this.form_kontonummer
+        Kontonummer: this.form_kontonummer,
+        maanedeligeYdelse: this.form_maanedeligeYdelse,
+        udbetaling: this.form_udbetaling
       }
       console.log(formData);
 
