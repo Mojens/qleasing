@@ -38,10 +38,105 @@ onMounted(() => {
                 <br> <br>
                 Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis du er på udkig efter en brugt BMW. Privatleasing er nemlig slet ikke så kompliceret, som mange måske tror. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele leasing-processen. Du kan udforske vores forskellige BMW-modeller nedenfor.
               </p>
+              <p v-else-if="$route.params.brand === 'audi'">
+                Hos Quickleasing A/S tilbyder vi et stort udvalg af Audi-modeller til yderst konkurrencedygtige priser. Audi er kendt for sin høje kvalitet og gode køreegenskaber, og med privatleasing af en Audi kan du få glæde af disse egenskaber uden at skulle investere en stor sum penge i køb af en ny bil.
+                <br> <br>
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Audi-biler er kvalitetssikret.
+              </p>
               <p v-else-if="$route.params.brand === 'citroen'">
                 Som en af de store og anerkendte spillere på det globale bilmarked har Citroën mere end 100 års erfaring bag sig, siden André Citroën grundlagde bilfabrikken i Frankrig tilbage i 1919. Hos QuickLeasing A/S kan vi tilbyde de bedste priser og vilkår for privatleasing af Citroën. Som eksperter i privatleasing af brugte biler har vi et omfattende udvalg af forskellige Citroën-modeller til attraktive priser.
                 <br> <br>
                 Vi går dog ikke på kompromis med kvaliteten af vores biler, da vi nøje udvælger hver enkelt leasingbil. Vores Citroën-modeller, ligesom vores øvrige udvalg af leasingbiler, er enten fabriksnye modeller, der netop er returneret efter endt leasing, eller indkøbt fra udenlandske leasingselskaber. Kort sagt, selvom du kan opnå store besparelser ved at privatlease en brugt Citroën, så går vi ikke på kompromis med kvaliteten eller køreglæden.
+              </p>
+              <p v-else-if="$route.params.brand === 'fiat'">
+                Fiat privatleasing i Danmark - Få den populære Fiat 500 og andre smarte modeller hos Quickleasing A/S
+                Fiat er en af de førende producenter af flotte og praktiske bybiler, selvom det italienske bilmærke har mere end 110 år på bagen. Især den populære Fiat 500 har gjort sig bemærket i Danmark og ses i dag overalt på vejene
+                <br> <br>
+                Hos Quickleasing A/S kan du opfylde din drøm om at lease en Fiat 500 eller en af de andre smarte modeller fra Fiat. Vi er førende i Danmark, når det kommer til priser på privatleasing af Fiat, og vores fordelagtige leasingaftale gør det nemt og overskueligt for dig at komme i gang med at lease din næste bil.
+              </p>
+              <p v-else-if="$route.params.brand === 'ford'">
+                Få mere værdi for pengene med privatleasing af Ford
+                Vi er de førende i Danmark med priser på privatleasing af Ford, og vi tilbyder de absolut bedste priser og vilkår på Ford-leasing. Tag et kig på vores attraktive priser og vilkår, så er du ikke i tvivl om, hvor du skal privatlease din Ford! Vælg den ønskede model og kontakt os allerede i dag angående Ford-leasing, og vi svarer samme dag.
+                <br> <br>
+                Med en leased Ford får du mere "value for money", da du ofte vil få en bil, der er markant billigere pr. måned end en tilsvarende ny bil. Vores biler stammer enten fra fabriksnye modeller, der går retur til os efter endt leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget nøje udvælger de allerbedste biler.
+              </p>
+              <p v-else-if="$route.params.brand === 'hyundai'">
+                Få mere værdi for pengene med privatleasing af en Hyundai
+                Hos Quickleasing A/S er vi specialiserede i privatleasing af biler, herunder Hyundai-biler. Ved at vælge privatleasing af en Hyundai opnår du flere fordele. Du vil typisk opleve at få mere "value for money", da din månedlige leasingydelse vil være markant lavere end den månedlige udgift ved køb af en tilsvarende bil.
+                <br> <br>
+                Vores Hyundai-biler stammer enten fra fabriksnye modeller, der går retur til os efter endt leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget nøje udvælger de bedste modeller. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Hyundai-biler er kvalitetssikret.
+                <br><br>
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Med vores omfattende service og reparation i leasingaftalen behøver du ikke bekymre dig om store, uventede regninger i løbet af leasingperioden. Kontakt os i dag for at høre mere om vores tilbud på privatleasing af Hyundai-biler.
+              </p>
+              <p v-else-if="$route.params.brand === 'opel'">
+                Drømmer du om at køre i en pålidelig bil uden at tømme pengepungen? Tag et kig på vores store udvalg af Opel-modeller til leasing hos Quickleasing A/S. Vi er stolte af at kunne tilbyde nogle af de mest attraktive priser og vilkår på markedet for Opel leasing i Danmark.
+                <br> <br>
+                Ved Quickleasing A/S har vi specialiseret os i ReLeasing, hvilket betyder, at alle de Opel-modeller, du finder hos os, er brugte biler, der tidligere har været leaset ud.
+                <br><br>
+                Dette giver dig mulighed for at køre i en pålidelig Opel til en brøkdel af prisen på en helt ny bil. Og bare rolig, selvom bilerne er brugte, går vi aldrig på kompromis med sikkerheden eller kvaliteten af vores biler.
+              </p>
+              <p v-else-if="$route.params.brand === 'peugeot'">
+                Et bredt udvalg af Peugeot-modeller til privatleasing
+                Peugeot har længe været et af de mest foretrukne bilmærker i Danmark, og har også modtaget mange priser og anerkendelser i resten af Europa. Den høje kvalitet og standard er noget, man kan forvente af Peugeot, uanset hvilken model man vælger.
+                <br> <br>
+                Hos Quickleasing A/S finder du nøje udvalgte brugte Peugeot-modeller af høj kvalitet, og mange af disse er faktisk fabriksnye modeller, der er blevet returneret efter endt leasingperiode.
+                <br><br>
+                Vores brugte Peugeot-modeller tilbydes til en yderst fordelagtig pris, da vi hos Quickleasing A/S specialiserer os i privatleasing af brugte biler. Derfor kan du privatlease en Peugeot uden at skulle gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af Peugeot-modeller nedenfor, og lær mere om de fordelagtige vilkår og fordele ved privatleasing.
+              </p>
+              <p v-else-if="$route.params.brand === 'skoda'">
+                Find din næste Skoda gennem privatleasing hos Quickleasing A/S
+                Hvis du overvejer at skifte til en Skoda, kan det være en fordel at overveje privatleasing frem for køb. Det kan nemlig resultere i besparelser, specielt hvis du vælger at privatlease en brugt Skoda. Hos Quickleasing A/S er vi eksperter i privatleasing af brugte biler, og vi kan præsentere et stort udvalg af Skoda-modeller til attraktive priser.
+                <br> <br>
+                Selvom det ikke er en spritny bil, kan du være sikker på, at mange af modellerne i vores sortiment stadig er i en super god stand, da vi nøje udvælger alle biler.
+                <br><br>
+                Vores Skoda-modeller har alle de gode egenskaber, som Skoda traditionelt byder på, og du kan opleve en høj kvalitet og køreglæde, selvom du sparer penge. Gennemse vores udvalg af Skoda-modeller nedenfor og se, om der er en bil, der passer til dig.
+
+              </p>
+              <p v-else-if="$route.params.brand === 'ds'">
+                Find din næste DS gennem privatleasing hos Quickleasing A/S
+                Hos os finder du et bredt udvalg af DS-modeller til privatleasing til en attraktiv pris. DS er kendt for deres luksuriøse biler med flot design, høj komfort og avanceret teknologi
+                <br><br>
+                Ved at vælge en DS til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
+
+              </p>
+              <p v-else-if="$route.params.brand === 'volvo'">
+                Find din næste Volvo gennem privatleasing hos Quickleasing A/S
+                Med en Volvo er du sikret en bil i topkvalitet, der er både sikker, rummelig og komfortabel.
+                <br><br>
+                Hos os finder du et udvalg af Volvo-modeller til privatleasing til fordelagtige priser, så du kan komme godt ud at køre i en af de mest populære bilmærker i Danmark.
+
+              </p>
+              <p v-else-if="$route.params.brand === 'renault'">
+                Find din næste Renault gennem privatleasing hos Quickleasing A/S
+                <br><br>
+                Hos os finder du et bredt udvalg af Renault-modeller til privatleasing til en attraktiv pris. Renault er kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
+                <br><br>
+                Ved at vælge en Renault til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
+
+
+              </p>
+              <p v-else-if="$route.params.brand === 'mitsubishi'">
+                Find din næste Mitsubishi gennem privatleasing hos Quickleasing A/S
+                <br><br>
+                Hos os finder du et bredt udvalg af Mitsubishi-modeller til privatleasing til en attraktiv pris. Mitsubishi er kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
+                <br><br>
+                Ved at vælge en Mitsubishi til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
+
+              </p>
+              <p v-else-if="$route.params.brand === 'jeep'">
+               <strong >Find din næste Jeep gennem privatleasing hos Quickleasing A/S</strong>
+                <br><br>
+                Nyd friheden og eventyret med en Jeep gennem privatleasing hos Quickleasing A/S. Hos os kan du finde en bred vifte af modeller fra det ikoniske amerikanske bilmærke, der er kendt for deres robuste terrængående biler og unikke design. Vores Jeep-modeller til privatleasing er både topmoderne og velholdte, og du kan vælge mellem alt fra den klassiske Jeep Wrangler til den rummelige og elegante Grand Cherokee.
+                <br><br>
+                Med privatleasing af en Jeep hos Quickleasing A/S behøver du ikke at gå på kompromis med hverken kvalitet eller din økonomi. Vores brugte Jeep-modeller tilbyder dig en fordelagtig pris, og du kan være sikker på at få en pålidelig bil til en pris, der passer til dit budget. Uanset om du er på udkig efter en bil til bykørsel eller til off-road eventyr, kan vi tilbyde en privatleasingaftale, der passer til dine behov. Kontakt os i dag og lad os hjælpe dig med at finde din næste drømme-Jeep.
+              </p>
+              <p v-else-if="$route.params.brand === 'honda'">
+               <strong >Oplev Honda-kvalitet og komfort til en fordelagtig pris med privatleasing hos Quickleasing A/S
+               </strong>
+                <br><br>
+                Hos Quickleasing A/S tilbyder vi privatleasing af topmoderne Honda-biler, der giver en fantastisk køreoplevelse og høj køreglæde.
+                <br><br>
+                Honda er kendt for at fremstille pålidelige biler i høj kvalitet, og med privatleasing hos os kan du nyde godt af den japanske bilproducents innovative teknologi og avancerede sikkerhedsfunktioner til en overkommelig pris.
               </p>
             </div>
           </div>
@@ -299,8 +394,45 @@ onMounted(() => {
             <h2 v-if="$route.params.brand === 'bmw'" class="brands-header" style="text-transform: capitalize">
               Lease en brugt BMW og oplev luksus og køreglæde
             </h2>
+            <h2 v-else-if="$route.params.brand === 'audi'" class="brands-header" style="text-transform: capitalize">
+              Oplev luksus og køreglæde med brugt Audi leasing
+            </h2>
             <h2 v-else-if="$route.params.brand === 'citroen'" class="brands-header" style="text-transform: capitalize">
               Nem, billig og enkel privatleasing af Citroën
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'fiat'" class="brands-header" style="text-transform: capitalize">
+              Kvalitetssikret privatleasing af Fiat-modeller
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'ford'" class="brands-header" style="text-transform: capitalize">
+              Kvalitetssikret privatleasing af Ford-modeller
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'hyundai'" class="brands-header" style="text-transform: capitalize">
+              Billig og tryk privatleasing af Hyundai biler
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'opel'" class="brands-header" style="text-transform: capitalize">
+              Bliv klar til køreturen med en privatleaset Opel
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'peugeot'" class="brands-header" style="text-transform: capitalize"></h2>
+            <h2 v-else-if="$route.params.brand === 'skoda'" class="brands-header" style="text-transform: capitalize">
+              Kør godt og økonomisk med en brugt privatleasings Skoda
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'ds'" class="brands-header" style="text-transform: capitalize">
+              Kør godt og økonomisk med en brugt privatleasings DS
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'volvo'" class="brands-header" style="text-transform: capitalize">
+              Spar penge på privatleasing af topmoderne Volvo
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'renault'" class="brands-header" style="text-transform: capitalize">
+              Spar penge på privatleasing af en brugt Renault
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'mitsubishi'" class="brands-header" style="text-transform: capitalize">
+              Brugt privatleasing af Mitsubishi biler til en lav pris, der passer til dit budget
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'jeep'" class="brands-header" style="text-transform: capitalize">
+              Spar penge på privatleasing af Jeeps robuste og pålidelige biler
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'honda'" class="brands-header" style="text-transform: capitalize">
+              Spar hovedpinen med tryk privatleasing af en brugt Honda
             </h2>
           </div>
           <div class="brands__content-container">
@@ -310,10 +442,81 @@ onMounted(() => {
                 <br> <br>
                 Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris.
               </p>
+              <p v-else-if="$route.params.brand === 'audi'">
+                Med privatleasing af en brugt Audi kan du nyde godt af alle de fordele, der følger med at køre en Audi, uden at skulle investere en stor sum penge i køb af en ny bil. Vi tilbyder fleksible leasingaftaler og konkurrencedygtige priser, så du kan vælge den løsning, der passer bedst til dig og dine behov.
+                <br> <br>
+                Vores brugte Audi-biler stammer fra tidligere leasingaftaler, hvor bilerne har været passet og plejet af deres tidligere ejere. Vi sørger for at gennemgå alle bilerne grundigt og udbedre eventuelle fejl og mangler, inden de bliver sat til leasing.
+              </p>
               <p v-else-if="$route.params.brand === 'citroen'">
                 Mange tror fejlagtigt, at leasing er kompliceret og svært at forstå. Men i virkeligheden er privatleasing af en Citroën ganske enkelt og gennemskueligt. I bund og grund handler privatleasing om at leje en bil i en afgrænset periode. Ved leasingperiodens start betales en førstegangsydelse, og derefter betaler du en fast månedlig ydelse for din privatleasede Citroën i resten af leasingperioden. Den månedlige ydelse fremgår af din leasingaftale og afhænger af den specifikke Citroën-model, du vælger at lease.
                 <br> <br>
                 Udover førstegangsydelsen og den månedlige ydelse er der ingen andre udgifter forbundet med privatleasing (udover selvfølgelig forsikring, brændstof, afgifter osv.). Med en leasingaftale hos Quickleasing A/S er service og reparation inkluderet, så du ikke behøver bekymre dig om store, uventede regninger i løbet af leasingperioden.
+              </p>
+              <p v-else-if="$route.params.brand === 'fiat'">
+                Hos Quickleasing A/S går vi aldrig på kompromis med kvaliteten af vores biler. Det betyder, at alle vores leasede biler er enten fabriksnye eller netop hjemvendt efter endt leasingperiode.
+                <br> <br>
+                Når du privatleaser en Fiat 500 eller en af de mange andre populære modeller fra Fiat gennem os, er du sikret en bil af højeste kvalitet. Med andre ord vil køreglæden i en leaset Fiat fra Quickleasing A/S være mindst lige så stor som, hvis du havde købt en ny bil.
+              </p>
+              <p v-else-if="$route.params.brand === 'ford'">
+                Vi hos Quickleasing A/S tilbyder privatleasing af Ford-modeller med fokus på kvalitet og pålidelighed. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Ford-modeller er enten fabriksnye eller netop hjemvendt efter endt leasingperiode.
+                <br> <br>
+                Når du privatleaser en Ford gennem os, er du sikret en bil af højeste kvalitet. Med vores omfattende service og reparation i leasingaftalen behøver du ikke bekymre dig om store, uventede regninger i løbet af leasingperioden.
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Kontakt os i dag for at høre mere om vores kvalitetssikrede privatleasing af Ford-modeller.
+              </p>
+              <p v-else-if="$route.params.brand === 'hyundai'">
+                Hos Quickleasing A/S tilbyder vi privatleasing af Hyundai-biler til konkurrencedygtige priser. Vi er specialister inden for leasing og sikrer, at du kan lease din drømmebil fra Hyundai uden at gå på kompromis med kvaliteten.
+                Vores Hyundai-modeller er nøje udvalgt og tilbyder høj pålidelighed og kvalitet. Vi tilbyder også en omfattende service- og reparationsaftale, så du ikke behøver bekymre dig om uventede udgifter i løbet af leasingperioden.
+                <br> <br>
+                Vi tilbyder fleksible leasingaftaler, der kan tilpasses dine behov og ønsker. Med vores billig og tryg privatleasing af Hyundai-biler kan du køre i din drømmebil til en lavere pris end ved køb af en ny bil.
+                Kontakt os i dag og få mere information om vores leasingmuligheder på Hyundai-biler.
+              </p>
+              <p v-else-if="$route.params.brand === 'opel'">
+                Opel er et velrenommeret tysk bilmærke, som siden sin begyndelse har fokuseret på at fremstille biler i høj kvalitet og til priser, som de fleste kan være med på. Opels eget slogan lyder "Vi elsker biler", og dette kan man også tydeligt mærke, når man sidder bag rattet i en af deres biler.
+                <br> <br>
+                Quickleasing A/S udbyder flere forskellige brugte Opel-modeller til leasing, hvoraf nogle kommer med alt fra fartpilot og Bluetooth til Apple CarPlay og helårsdæk. På trods af at vores Opel-modeller er blandt vores billigste leasingbiler, har vi ikke gået på kompromis med hverken udstyr eller komfort, og vores udvalg af biler er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
+              </p>
+              <p v-else-if="$route.params.brand === 'peugeot'">
+                I 1889 præsenterede Peugeot deres første damptrehjuler og siden da har de været en førende bilproducent. Deres fokus på kvalitet er ubestridt og har været en integreret del af deres brand i mere end 100 år.
+                <br> <br>
+                Når du vælger at privatlease en Peugeot, kan du derfor stole på at du får en bil af høj kvalitet, der er bygget til at levere en fantastisk køreglæde.
+              </p>
+              <p v-else-if="$route.params.brand === 'skoda'">
+                I dag er Skoda kendt for at tilbyde velbyggede biler i høj kvalitet til en overkommelig pris. Skoda har således en stærk position på bilmarkedet og er særligt populær blandt forbrugere, der ønsker at få mest muligt for deres penge. Selvom Skoda ofte sammenlignes med Volkswagen, har mærket sin egen unikke stil og karakter.
+                <br> <br>
+                På brugtbilsmarkedet er Skoda også et populært valg, og ved at vælge at privatlease en brugt Skoda hos Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af brugte Skoda-modeller og kontakt os allerede i dag for at høre mere om dine leasingmuligheder.
+              </p>
+              <p v-else-if="$route.params.brand === 'ds'">
+                Hos os finder du et stort udvalg af brugte DS-modeller, der har masser af kilometer tilbage i sig. Vores brugte biler er nøje udvalgt, og der er tale om biler af høj kvalitet, der samtidig er til at betale.
+                <br> <br>
+                Med en privatleaset brugt DS kan du køre økonomisk og miljøvenligt samtidig med, at du nyder godt af masser af luksus og komfort.
+              </p>
+              <p v-else-if="$route.params.brand === 'volvo'">
+                Privatleasing af en topmoderne Volvo behøver ikke at være en dyr affære. Hos Quickleasing A/S tilbyder vi privatleasing af brugte Volvo-modeller til konkurrencedygtige priser. Vi har et begrænset udvalg af brugte Volvo-modeller, der er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
+                <br> <br>
+                Ved at lease en brugt Volvo hos os, kan du spare mange penge på både leasingafgift og månedlig ydelse, og samtidig slippe for bekymringer om værditab og driftsomkostninger. Vi sørger for, at alle vores biler er nøje udvalgt og gennemgået, så du er sikret en bil i topstand, der er klar til at køre ud på vejen med det samme. Så hvorfor ikke tage en tur i en af vores topmoderne Volvo'er og opleve den sublime kvalitet og køreoplevelse? Kontakt os i dag og lad os hjælpe dig med at finde din næste drømmebil.
+              </p>
+              <p v-else-if="$route.params.brand === 'renault'">
+                Renault er et af de mest populære bilmærker i Danmark, og det er ikke uden grund. Renault har nemlig siden 1899 været en førende bilproducent, der har fokuseret på at fremstille biler i høj kvalitet til en overkommelig pris. Renault har i dag en stærk position på bilmarkedet og er særligt populær blandt forbrugere, der ønsker at få mest muligt for deres penge.
+
+                <br> <br>
+                På brugtbilsmarkedet er Renault også et populært valg, og ved at vælge at privatlease en brugt Renault hos Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af brugte Renault-modeller og kontakt os allerede i dag for at høre mere om dine leasingmuligheder.
+              </p>
+              <p v-else-if="$route.params.brand === 'mitsubishi'">
+                Vælg en brugt privatleasing af en topkvalitets Mitsubishi bil, der ikke sprænger dit budget. Hos os finder du et bredt udvalg af pålidelige og velholdte Mitsubishi-modeller, der er tilgængelige til en fordelagtig pris.
+                <br> <br>
+                Ved at vælge at lease en brugt Mitsubishi hos os, kan du få adgang til en topmoderne bil, der er blevet grundigt tjekket og vedligeholdt for at sikre, at den er i god stand og klar til at køre. Vores brugte Mitsubishi-biler er også tilgængelige med en række forskellige funktioner og specifikationer, så du kan finde den perfekte bil, der passer til dine behov.
+
+                Så hvis du leder efter en pålidelig og prisvenlig løsning til din transport, skal du vælge at lease en brugt Mitsubishi. Kontakt os i dag for mere information om vores udvalg og vilkår.
+              </p>
+              <p v-else-if="$route.params.brand === 'jeep'">
+                Med privatleasing af en Jeep får du en robust og pålidelig bil til en overkommelig pris. Hos Quickleasing tilbyder vi et bredt udvalg af Jeeps modeller til leasing, og du kan derfor finde en bil, der passer til dine behov og dit budget.
+                <br> <br>
+                Ved at lease en brugt Jeep kan du spare endnu flere penge uden at gå på kompromis med kvaliteten. Vores brugte Jeep-modeller er omhyggeligt udvalgt og gennemgået af vores eksperter, så du kan være sikker på, at du får en bil, der er i god stand og klar til at køre mange kilometer. Kontakt os i dag og få mere information om vores privatleasing-tilbud på Jeeps biler.
+              </p>
+              <p v-else-if="$route.params.brand === 'honda'">
+                Med privatleasing af en brugt Honda fra Quickleasing A/S kan du spare både tid og hovedpine. Hos os tilbyder vi en bred vifte af forskellige Honda-modeller, der alle er nøje udvalgte, så vi kan sikre en høj kvalitet og pålidelighed.
+                <br> <br>
+                Vi står selv for service og vedligeholdelse af bilerne, så du som kunde kan slippe for bekymringerne ved at eje en bil. Vores brugte Honda-modeller er både økonomisk fornuftige og af høj kvalitet, så du kan køre afsted med ro i sindet. Kontakt os allerede i dag for at høre mere om vores tilbud på privatleasing af brugte Honda biler.
               </p>
             </div>
           </div>
