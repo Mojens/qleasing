@@ -877,8 +877,7 @@ const age_driver = [
                                 }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
                                 validation="required" :validation-messages="{
                                   required: 'Ombytning til Primium helårsdæk er påkrævet',
-                                }" validation-visibility="live" @input="premHelaarsDaek"
-                                v-if="!kompletSaetVinterhjul">
+                                }" validation-visibility="live" @input="premHelaarsDaek" v-if="!kompletSaetVinterhjul">
                                 <template #option="{ option }">
                                   <div class="formkit-option">
                                     <span>{{ option.label }}</span>
@@ -1090,8 +1089,8 @@ const age_driver = [
                                 :validation-messages="{
                                   length: 'Længden af byen skal være mellem 2 og 50 tegn',
                                   required: 'By er påkrævet',
-                                }" validation-visibility="dirty" input-class="custom__placeholder"
-                                placeholder="Valby" :floating-label="false" />
+                                }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Valby"
+                                :floating-label="false" />
 
                               <FormKit type="email" name="Email" id="email" label="Email*"
                                 input-class="custom__placeholder" placeholder="hannep@outlook.com"
@@ -1163,7 +1162,7 @@ const age_driver = [
                               <div style="margin-bottom: 9rem">
                                 <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
                                   help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                                                    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
+                                                                        behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
                                   :validation-messages="{
                                     accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
                                   }">
@@ -1378,7 +1377,7 @@ export default {
     createForm: async function (fields) {
       const READER_API = import.meta.env.VITE_APP_READER_API;
       const POST_URL = import.meta.env.VITE_APP_AFTALE_FORM_URL;
-      
+
       this.form_oensket_loebetid = `${this.chosenLeasePeriod} Måneder`;
       this.form_stelNummer = this.carData.stelnummer;
       this.form_alder = fields.alder;
@@ -1389,11 +1388,11 @@ export default {
         `Komplet Sæt Vinterhjul tilvalgt: ${this.kompletSaetVinterhjul ? 'ja' : 'nej'}`
       ];
       this.form_ekstra_kilometer = `Antal km tilvalgt: ${this.chosenExtraKm[0]}, pris: ${this.chosenExtraKm[1]} kr./md`;
-      if (this.chosenPremHelaarsDaek[0] === 'nej' || this.chosenPremHelaarsDaek[0] === undefined){
+      if (this.chosenPremHelaarsDaek[0] === 'nej' || this.chosenPremHelaarsDaek[0] === undefined) {
         this.form_premie_helaars_daek = `Ikke tilvalgt`;
-      }else if(this.chosenPremHelaarsDaek[0] === 'kontant'){
-        this.form_premie_helaars_daek = `Antal km tilvalgt: ${this.chosenPremHelaarsDaek[0]}, pris: ${this.chosenPremHelaarsDaek[1]} kr. i kontantbetaling`;  
-      }else if(this.chosenPremHelaarsDaek[0] === 'finansieret'){
+      } else if (this.chosenPremHelaarsDaek[0] === 'kontant') {
+        this.form_premie_helaars_daek = `Antal km tilvalgt: ${this.chosenPremHelaarsDaek[0]}, pris: ${this.chosenPremHelaarsDaek[1]} kr. i kontantbetaling`;
+      } else if (this.chosenPremHelaarsDaek[0] === 'finansieret') {
         this.form_premie_helaars_daek = `Antal km tilvalgt: ${this.chosenPremHelaarsDaek[0]}, pris: ${this.chosenPremHelaarsDaek[2]} kr./md og ${this.chosenPremHelaarsDaek[1]} kr. i kontantbetaling`;
       }
       this.form_forsikring_ansvar_og_kasko = `Månedlig pris: ${this.forsikringAnsvarOgKasko[0]} kr./md`;
