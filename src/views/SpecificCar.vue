@@ -318,16 +318,13 @@ const age_driver = [
                   }}</span>kr.
                 </div>
                 <div class="additional-price___2tuCL">
-                  Udbetaling kr. {{ displayCar.base_udbetaling }} - månedlig
-                  leasingydelse kr. {{ displayCar.base_maanedspris }} -
-                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
-                  {{ displayCar.base_maanedspris * 36 + 495 }}
+                  {{ textUnderPicture(displayCar) }}
                 </div>
               </div>
               <div class="disclaimers___2MvJV">
                 <p class="disclaimer___3U-mX">
                   Har du brug for hjælp – ring til kundeservice på
-                  tlf.:&nbsp;<span class="contact-data___2hfm3">89 88 50 80</span>
+                  tlf.:&nbsp;<span class="contact-data___2hfm3"><a href="tel:89885080">89 88 50 80</a></span>
                 </p>
               </div>
             </div>
@@ -1374,6 +1371,12 @@ export default {
     }, 20);
   },
   methods: {
+    textUnderPicture(car){
+      return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
+                  leasingydelse kr. ${car.base_maanedlige_ydelse} -
+                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
+                  ${car.base_maanedspris * 36 + 495 + car.base_udbetaling + (car.groen_ejer_afgift / 6)*36}{{ displayCar.base_maanedspris * 36 + 495 + displayCar.base_udbetaling + (displayCar.groen_ejer_afgift / 6)*36}} kr. `
+    },
     createForm: async function (fields) {
       const READER_API = import.meta.env.VITE_APP_READER_API;
       const POST_URL = import.meta.env.VITE_APP_AFTALE_FORM_URL;
