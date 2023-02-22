@@ -698,7 +698,7 @@ const age_driver = [
                       Se Fuld Udstyrsliste
                     </strong>
 
-                    <ul class="dropdown-content list--none" v-if="show" v-auto-animate>
+                    <ul class="dropdown-content list--none" v-if="show" >
                       <li class="list--none" v-for="udstyr in carData.Udstyr">
                         {{
                           allUdstyr.find(item => item.value === udstyr)
@@ -714,8 +714,8 @@ const age_driver = [
 
                   <!-- START MULTI FORM  -->
 
-                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false"
-                    @submit="createForm">
+                  <FormKit type="form" form-class="multiform" :actions="false"  :incomplete-message="false"
+                    @submit="createForm"  >
                     <FormKit type="multi-step" tab-style="progress" steps-class="multiform__steps"
                       tab-label-class="custom__tab-span" :wrapper-class="{
                         multiform__wrapper: true,
@@ -757,6 +757,7 @@ const age_driver = [
                           <div>
                             <h3 class="pad-header--xs">Tilvalg</h3>
                           </div>
+
                           <FormKit type="checkbox" label="Afleveringsforsikring" name="afleveringsforsikring"
                             label-class="add__price-forsikring add__price" wrapper-class="form__wrapper-input"
                             help="Afleveringsforsikring Du kan for 119 Kr. månedligt tilkøbe en afleveringsforsikring. Denne forsikring har en selvrisiko på 5.000 Kr. Forsikringen dækker op til 10.000 Kr. pr. skade, dog maximalt 30.000 Kr. i samlet erstatning. For at kunne tilkøbe afleveringsforsikring skal din aftale have en løbetid på minimum 12 måneder, og forsikringen skal tilkøbes inden udlevering. Bemærk at ekstraydelsen ”Lav Selvrisiko” IKKE vil nedsætte selvrisikoen på din afleveringsforsikring"
@@ -944,7 +945,7 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>{{ chosenExtraKm[1] }} kr./md.</div>
                                 </div>
-                                <div class="prices__info" v-if="afleveringsforsikring == true">
+                                <div class="prices__info" v-if="afleveringsforsikring === true">
                                   <div class="prices__title prices__title--tooltip">
                                     Afleveringsforsikring
                                     <div>
@@ -954,7 +955,7 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>119 kr./md.</div>
                                 </div>
-                                <div class="prices__info" v-if="lavSelvrisiko == true">
+                                <div class="prices__info" v-if="lavSelvrisiko === true">
                                   <div class="prices__title prices__title--tooltip">
                                     Lav selvrisiko
                                     <div>
@@ -964,7 +965,7 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>64 kr./md.</div>
                                 </div>
-                                <div class="prices__info" v-if="vikingVejhjaelp == true">
+                                <div class="prices__info" v-if="vikingVejhjaelp === true">
                                   <div class="prices__title prices__title--tooltip">
                                     Viking – Vejhjælp
                                     <div>
@@ -974,7 +975,7 @@ const age_driver = [
                                   <div class="prices__separator"></div>
                                   <div>49 kr./md.</div>
                                 </div>
-                                <div class="prices__info" v-if="kompletSaetVinterhjul == true">
+                                <div class="prices__info" v-if="kompletSaetVinterhjul === true">
                                   <div class="prices__title prices__title--tooltip">
                                     Komplet sæt vinterhjul
                                     <div>
@@ -1054,48 +1055,48 @@ const age_driver = [
                           </div>
                           <div class="prices_overview">
                             <div class="grid--auto-4 pad-header--s gap--xs">
-                              <FormKit type="text" name="Fornavn" id="first_name"
+                              <FormKit type="text" name="fornavn" id="fornavn" v-model="form_fornavn"
                                 validation="required|alpha_spaces|length:2,30" :validation-messages="{
                                   alpha_spaces: 'Venligst skriv et gyldigt navn',
                                   length: 'Længden af navnet skal være mellem 2 og 30 tegn',
                                   required: 'Navn er påkrævet',
                                 }" validation-visibility="dirty" label="Fornavn*" input-class="custom__placeholder"
                                 placeholder="Hanne" :floating-label="false" />
-                              <FormKit type="text" name="Efternavn" id="last_name" label="Efternavn*"
+                              <FormKit type="text" name="efternavn" id="last_name" label="Efternavn*" v-model="form_efternavn"
                                 validation="required|alpha_spaces|length:2,50" :validation-messages="{
                                   alpha_spaces: 'Venligst skriv et gyldigt navn',
                                   length: 'Længden af navnet skal være mellem 2 og 50 tegn',
                                   required: 'Navn er påkrævet',
                                 }" validation-visibility="dirty" input-class="custom__placeholder"
                                 placeholder="Holm Olsen" :floating-label="false" />
-                              <FormKit type="text" name="Adresse" id="address" label="Adresse*"
+                              <FormKit type="text" name="Adresse" id="address" label="Adresse*" v-model="form_adresse"
                                 validation="required|length:2,50" :validation-messages="{
                                   length: 'Længden af adressen skal være mellem 2 og 50 tegn',
                                   required: 'Adresse er påkrævet',
                                 }" validation-visibility="dirty" input-class="custom__placeholder"
                                 placeholder="Karl Th Torpvej 3, 3. tv" :floating-label="false" />
 
-                              <FormKit type="mask" label="Postnummer" name="postnummer" mask="####" unmask-value="true"
+                              <FormKit type="mask" label="postnummer" name="postnummer" mask="####" unmask-value="true" id="postnummer" v-model="form_postnummer"
                                 :floating-label="false" input-class="custom__placeholder"
                                 validation="required|number|length:4,4" :validation-messages="{
                                   alpha: 'Venligst skriv et gyldigt postnummer',
                                   length: 'Længden af postnummeret skal være 4 tal',
                                   required: 'Postnummer er påkrævet',
                                 }" validation-visibility="dirty" />
-                              <FormKit type="text" id="city" label="By*" name="By" validation="required|length:2,50"
+                              <FormKit type="text" id="city" label="By*" name="By" validation="required|length:2,50"  v-model="form_by"
                                 :validation-messages="{
                                   length: 'Længden af byen skal være mellem 2 og 50 tegn',
                                   required: 'By er påkrævet',
                                 }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Valby"
                                 :floating-label="false" />
 
-                              <FormKit type="email" name="Email" id="email" label="Email*"
+                              <FormKit type="email" name="email" id="email" label="Email*" v-model="form_email"
                                 input-class="custom__placeholder" placeholder="hannep@outlook.com"
                                 validation="required|email" :validation-messages="{
                                   required: 'Email er påkrævet',
                                   email: 'Venligst skriv en gyldig email',
                                 }" validation-visibility="dirty" :floating-label="false" />
-                              <FormKit type="mask" mask="## ## ## ##" name="phone" id="phone" mode="replace"
+                              <FormKit type="mask" mask="## ## ## ##" name="telefonnummer" id="telefonnummer" mode="replace" v-model="form_telefonnummer"
                                 validation="required|length:8,8" :validation-messages="{
                                   required: 'Telefon er påkrævet',
                                   length: 'Længden af telefonnummeret skal være 8 tal',
@@ -1103,7 +1104,7 @@ const age_driver = [
                                 unmask-value="true" label="Telefon*" input-class="custom__placeholder"
                                 :floating-label="false" />
 
-                              <FormKit type="mask" mask="######-####" name="CPR" id="cpr" mode="replace"
+                              <FormKit type="mask" mask="######-####" name="cpr" id="cpr" mode="replace" v-model="form_cpr"
                                 validation="required|length:10,10" :validation-messages="{
                                   required: 'CPR er påkrævet',
                                   length: 'Længden af CPR nummeret skal være 10 tal',
@@ -1143,14 +1144,14 @@ const age_driver = [
 
                               <div></div>
 
-                              <FormKit type="mask" mask="####" name="Registreringsnummer" id="registreringsnummer"
+                              <FormKit type="mask" mask="####" name="Registreringsnummer" id="registreringsnummer" v-model="form_registreringsnummer"
                                 mode="replace" validation="required" :validation-messages="{
                                   required: 'Registreringsnummer er påkrævet',
                                 }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
                                 unmask-value="true" label="Registreringsnummer*" input-class="custom__placeholder"
                                 :floating-label="false" />
 
-                              <FormKit type="mask" mask="(000)#######" name="Kontonummer" id="kontonummer" mode="replace"
+                              <FormKit type="mask" mask="(000)#######" name="Kontonummer" id="kontonummer" mode="replace" v-model="form_kontonummer"
                                 validation="required" :validation-messages="{
                                   required: 'Kontonummer er påkrævet',
                                 }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
@@ -1242,7 +1243,8 @@ export default {
       form_oensket_loebetid: '',
       form_stelNummer: '',
       form_alder: '',
-      form_tilvalg: [],
+      form_tilvalg: [
+      ],
       form_ekstra_kilometer: '',
       form_premie_helaars_daek: '',
       form_forsikring_ansvar_og_kasko: '',
@@ -1254,9 +1256,9 @@ export default {
       form_adresse: '',
       form_postnummer: '',
       form_by: '',
-      form_Email: '',
-      form_telefonnummer: '',
-      form_cpr_nummer: '',
+      form_email: '',
+      form_telefonnummer: "",
+      form_cpr: '',
       form_registreringsnummer: '',
       form_kontonummer: '',
       submitted: false,
@@ -1355,6 +1357,7 @@ export default {
       maanedligeYdelse: 0,
       udbetaling: 0,
       carId: this.$route.params.id,
+
     };
   },
   created() {
@@ -1377,13 +1380,17 @@ export default {
                   udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
                   ${car.base_maanedspris * 36 + 495 + car.base_udbetaling + (car.groen_ejer_afgift / 6)*36}{{ displayCar.base_maanedspris * 36 + 495 + displayCar.base_udbetaling + (displayCar.groen_ejer_afgift / 6)*36}} kr. `
     },
-    createForm: async function (fields) {
+    createForm: async function () {
       const READER_API = import.meta.env.VITE_APP_READER_API;
       const POST_URL = import.meta.env.VITE_APP_AFTALE_FORM_URL;
 
       this.form_oensket_loebetid = `${this.chosenLeasePeriod} Måneder`;
       this.form_stelNummer = this.carData.stelnummer;
-      this.form_alder = fields.alder;
+      this.form_alder = [
+        `${this.chosenAge[0]} - `,
+        `${this.chosenAge[1]}`,
+
+      ].join("").replace(/,/g, "");
       this.form_tilvalg = [
         `Lav selvrisiko tilvalgt: ${this.lavSelvrisiko ? 'ja' : 'nej'}`,
         `Afleveringsforsikring tilvalgt: ${this.afleveringsforsikring ? 'ja' : 'nej'}`,
@@ -1402,18 +1409,11 @@ export default {
       this.form_selvrisiko = `${this.forsikringAnsvarOgKasko[1]} kr. i kontantbetaling`;
       this.form_groen_afgift_6maaneder = `Månedlig pris: ${this.carData.groen_ejer_afgift / 2} kr./md, pris i alt hver 6 måned: ${this.carData.groen_ejer_afgift} kr.`;
       this.form_dok_gebyr_ved_oprettelse = `Kontantbetaling: ${this.carData.dokument_gebyr_ved_oprettelse} kr.`;
-      this.form_fornavn = fields.Fornavn;
-      this.form_efternavn = fields.Efternavn;
-      this.form_adresse = fields.Adresse;
-      this.form_postnummer = fields.postnummer;
-      this.form_by = fields.By;
-      this.form_Email = fields.Email;
-      this.form_telefonnummer = fields.phone;
-      this.form_cpr_nummer = fields.CPR;
-      this.form_registreringsnummer = fields.Registreringsnummer;
-      this.form_kontonummer = fields.Kontonummer;
-      this.form_udbetaling = this.carData.base_udbetaling
-      this.form_maanedeligeYdelse = this.carData.base_maanedlige_ydelse
+
+      this.form_udbetaling = this.carData.base_udbetaling;
+      this.form_maanedeligeYdelse = this.carData.base_maanedspris;
+
+
 
       const formData = {
         oensket_loebetid: this.form_oensket_loebetid,
@@ -1431,16 +1431,28 @@ export default {
         adresse: this.form_adresse,
         postnummer: this.form_postnummer,
         by: this.form_by,
-        Email: this.form_Email,
+        Email: this.form_email,
         telefon: this.form_telefonnummer,
-        cpr_nummer: this.form_cpr_nummer,
+        cpr_nummer: this.form_cpr,
         Registreringsnummer: this.form_registreringsnummer,
         Kontonummer: this.form_kontonummer,
         maanedeligeYdelse: this.form_maanedeligeYdelse,
         udbetaling: this.form_udbetaling
       }
       console.log(formData);
+      const response = await fetch(POST_URL, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${READER_API}`,
+        },
+        body: JSON.stringify(formData),
+      });
 
+      const data = await response.json();
+      this.submitted = true;
+      console.log(data);
 
 
     },
