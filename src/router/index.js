@@ -36,6 +36,8 @@ import indholdPaaSidenView from "@/views/vilkaarViews/indholdPaaSiden.vue";
 import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue";
 import kontaktosView from "@/views/kontaktos.vue";
 import SpecificCar from "@/views/SpecificCar.vue";
+import brandsView from "@/views/Brands.vue";
+
 
 
 
@@ -109,11 +111,7 @@ const router = createRouter({
       name: "/om-os",
       component: omos,
     },
-    {
-      path: "/quickleasing",
-      name: "/quickleasing",
-      component: quickleasingView,
-    },
+
     {
       path: "/opbevaring-af-dine-oplysninger",
       name: "/opbevaring-af-dine-oplysninger",
@@ -231,6 +229,20 @@ const router = createRouter({
       props: true,
 
     },
+    {
+      path: "/quickleasing/maerke/:brand",
+      name: "specificBrand",
+      component: brandsView,
+      props: true,
+    },
+    {
+      path: "/quickleasing",
+      name: "/quickleasing",
+      component: quickleasingView,
+      props: true,
+
+    },
+
 
   ],
 });

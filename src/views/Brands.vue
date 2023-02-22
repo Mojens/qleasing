@@ -17,13 +17,43 @@ onMounted(() => {
 
 <template>
   <NavigationBar />
+
   <div class="filtered__cars-container" ref="example">
+
+
     <div class="main-flow___Sjg41" data-qa="main-flow">
+
+
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
+        <div class="brands__container ">
+          <div class="brands__header-container">
+            <h1 class="brands-header" style="text-transform: capitalize">
+              Billigt udvalg af {{ $route.params.brand }} til privatleasing
+            </h1>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p v-if="$route.params.brand === 'bmw'">
+                Ønsker du også at opleve luksus i din hverdag? BMW er for mange forbundet med flot design, høj kvalitet og sporty køreegenskaber. Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris, når du privatleaser en BMW hos os.
+                <br> <br>
+                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis du er på udkig efter en brugt BMW. Privatleasing er nemlig slet ikke så kompliceret, som mange måske tror. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele leasing-processen. Du kan udforske vores forskellige BMW-modeller nedenfor.
+              </p>
+              <p v-else-if="$route.params.brand === 'citroen'">
+                Som en af de store og anerkendte spillere på det globale bilmarked har Citroën mere end 100 års erfaring bag sig, siden André Citroën grundlagde bilfabrikken i Frankrig tilbage i 1919. Hos QuickLeasing A/S kan vi tilbyde de bedste priser og vilkår for privatleasing af Citroën. Som eksperter i privatleasing af brugte biler har vi et omfattende udvalg af forskellige Citroën-modeller til attraktive priser.
+                <br> <br>
+                Vi går dog ikke på kompromis med kvaliteten af vores biler, da vi nøje udvælger hver enkelt leasingbil. Vores Citroën-modeller, ligesom vores øvrige udvalg af leasingbiler, er enten fabriksnye modeller, der netop er returneret efter endt leasing, eller indkøbt fra udenlandske leasingselskaber. Kort sagt, selvom du kan opnå store besparelser ved at privatlease en brugt Citroën, så går vi ikke på kompromis med kvaliteten eller køreglæden.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div class="list___1c2KX">
+
           <div class="product___3vmta" v-for="car in carData" :key="car.id">
             <RouterLink :to="`/quickleasing/${car.id}`" style="color: inherit">
+
               <div class="product-card___2naPO has-cta___1N-4L">
+
                 <div class="label-wrap___2_2TG">
                   <div class="label___xUzK4 label___IKlVk black___2xtI_">
                     fra {{ car.base_udbetaling }} kr i udbetaling
@@ -58,7 +88,7 @@ onMounted(() => {
                       Abonnement fra<span class="value___3qMAh">{{
                         car.base_maanedspris
                       }}</span
-                      >kr./md.
+                    >kr./md.
                     </div>
                   </div>
                   <div
@@ -127,11 +157,11 @@ onMounted(() => {
                               class="energy-class___BHiLA energy-class___3KEQh"
                             >
                               <span style="background-color: rgb(190, 214, 47)"
-                                >A<sup>+</sup></span
+                              >A<sup>+</sup></span
                               ><span
-                                class="arrow-right___1p9wE"
-                                style="border-left-color: rgb(190, 214, 47)"
-                              ></span>
+                              class="arrow-right___1p9wE"
+                              style="border-left-color: rgb(190, 214, 47)"
+                            ></span>
                               <div class="shadow___2ZdD4">
                                 <span></span
                                 ><span class="arrow-right___1p9wE"></span>
@@ -249,8 +279,8 @@ onMounted(() => {
                   </div>
                   <div class="highlighted-features___34JSO">
                     <span class="highlighted-feature___2Z8Zj">{{
-                      getFeatures(car)
-                    }}</span>
+                        getFeatures(car)
+                      }}</span>
                   </div>
                   <RouterLink :to="`/quickleasing/${car.id}`">
                     <button
@@ -262,6 +292,72 @@ onMounted(() => {
                 </div>
               </div>
             </RouterLink>
+          </div>
+        </div>
+        <div class="brands__container pad-header--l">
+          <div class="brands__header-container">
+            <h2 v-if="$route.params.brand === 'bmw'" class="brands-header" style="text-transform: capitalize">
+              Lease en brugt BMW og oplev luksus og køreglæde
+            </h2>
+            <h2 v-else-if="$route.params.brand === 'citroen'" class="brands-header" style="text-transform: capitalize">
+              Nem, billig og enkel privatleasing af Citroën
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p v-if="$route.params.brand === 'bmw'">
+                For mange bilentusiaster er BMW synonymt med luksus og kvalitet, men også et bilmærke, der ligger uden for de flestes bilbudget. Men ved at privatlease en brugt BMW kan du spare en betydelig mængde penge, da både førstegangsydelsen og den månedlige ydelse er væsentligt lavere end på nye biler.
+                <br> <br>
+                Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris.
+              </p>
+              <p v-else-if="$route.params.brand === 'citroen'">
+                Mange tror fejlagtigt, at leasing er kompliceret og svært at forstå. Men i virkeligheden er privatleasing af en Citroën ganske enkelt og gennemskueligt. I bund og grund handler privatleasing om at leje en bil i en afgrænset periode. Ved leasingperiodens start betales en førstegangsydelse, og derefter betaler du en fast månedlig ydelse for din privatleasede Citroën i resten af leasingperioden. Den månedlige ydelse fremgår af din leasingaftale og afhænger af den specifikke Citroën-model, du vælger at lease.
+                <br> <br>
+                Udover førstegangsydelsen og den månedlige ydelse er der ingen andre udgifter forbundet med privatleasing (udover selvfølgelig forsikring, brændstof, afgifter osv.). Med en leasingaftale hos Quickleasing A/S er service og reparation inkluderet, så du ikke behøver bekymre dig om store, uventede regninger i løbet af leasingperioden.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header" style="text-transform: capitalize">
+              Privatleasing af brugt {{ $route.params.brand }}
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p >
+                En af de store fordele ved at privatlease en BMW er det økonomiske overblik og tryghed, som du får med leasingaftalen. Alle omkostninger forbundet med leasingbilen er inkluderet i leasingaftalen, og derfor har du et fuldt overblik over alle udgifter fra starten.
+                <br> <br>
+                Service og reparation er også inkluderet i din leasingaftale hos Quickleasing A/S, så du undgår uforudsete regninger i løbet af din leasingperiode.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header" style="text-transform: capitalize">
+              Privatleasing af {{ $route.params.brand }} hos Quickleasing A/S
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p >
+                Hvis du allerede har fundet en {{$route.params.brand}} i vores sortiment, som du gerne vil privatlease, kan du blot klikke på en bestemt bil og derefter udfylde formularen for den bestemte {{$route.params.brand}}-model, og vi vil herefter kontakte dig.
+                <br><br>
+                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis du er på udkig efter en brugt {{$route.params.brand}}. Privatleasing er <router-link :to="{ path: '/nem-leasing' }">nemlig slet ikke så kompliceret, som mange måske tror</router-link>. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele leasing-processen.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header" style="text-transform: capitalize">
+              Vil du vide mere om privatleasing af en {{ $route.params.brand }} hos Quickleasing A/S?
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p >
+                Vi står altid klar til at give dig rådgivning om privatleasing. Hvis du har generelle spørgsmål om vores privatleasingprocedure, er du velkommen til at ringe til os på <a href="tlf:89885080">tlf. 89 88 50 80</a> i hverdage mellem kl. 9.00 og 16.00.
+                <br> <br>
+                Hvis du har spørgsmål om en bestemt {{ $route.params.brand }}-model i vores udvalg, eller bare generelt, kan du i stedet udfylde vores <RouterLink to="/kontakt">kontaktformular</RouterLink>, og vi vil kontakte dig hurtigst muligt.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -779,10 +875,13 @@ export default {
   async created() {
     await this.fetchData();
     await this.fetchData2();
+    const brand = this.$route.params.brand;
+    this.carData = this.originalData.filter(car => car.brand.toLowerCase() === brand.toLowerCase());
     (await this.updateTireTypeCounts()) == this.updateTireTypeCounts.bind(this);
     (await this.updateGearTypeCounts()) == this.updateGearTypeCounts.bind(this);
     (await this.updateFuelTypeCounts()) == this.updateFuelTypeCounts.bind(this);
     this.fetchModels();
+
   },
   methods: {
     async fetchData() {
@@ -900,7 +999,7 @@ export default {
       } else
         return (this.thumbnail[
           car.id
-        ] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`);
+          ] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`);
     },
     async imageURL(car) {
       let imageURLTOADD = `?filter[cars_id][_eq]=${car.id}`;
@@ -916,7 +1015,7 @@ export default {
         // Hvis der ikke er et billede, så sæt et placeholder billede
         return (this.carImages[
           car.id
-        ] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`);
+          ] = `${this.pictureURL}7bb1ea40-d2c8-45c9-ba61-ce460f2a0830?fit=cover&width=300&height=200&quality=80`);
       } else {
         this.carImages[car.id] =
           this.pictureURL +
@@ -1112,7 +1211,7 @@ export default {
 
       if (
         this.oneTimePriceRange.value[0] ===
-          this.oneTimePriceRange.savedValue[0] &&
+        this.oneTimePriceRange.savedValue[0] &&
         this.oneTimePriceRange.value[1] === this.oneTimePriceRange.savedValue[1]
       ) {
         this.carData = allData;
@@ -1372,6 +1471,28 @@ export default {
 
 <style src="@vueform/slider/themes/default.css"></style>
 <style scoped>
+.brands__container {
+
+}
+
+.brands__content {
+  width: 100%;
+}
+
+.brands__content__left {
+  text-align: left; /* align the left column to the left */
+}
+
+.brands__content__left__header__title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.brands__content__left__header__description {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
 .button-primary--filter {
   background-color: var(--secondary);
   border: none;

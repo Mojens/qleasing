@@ -17,9 +17,112 @@
             <a class="link___1tInP"
                target="_self" title="Quickleasing">Privatleasing</a>
           </RouterLink>
-          <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/maerker"><a class="link___1tInP"
-                                                                                         target="_self" title="mærker">Mærker</a>
-          </RouterLink>
+
+          <div class="navigation-item___21XPw menu-item___2UedM" >
+            <div class="multi-link-button___Av7sq">
+              <div class="Collapsible" ><span class="Collapsible__trigger" ><button
+                class="mobile-button___nwox_" @click="toggleCollapsible" >
+                    <div class="title___wAdVl" >Mærker</div>
+                  </button></span>
+                <div class="Collapsible__contentOuter"
+                     :class="{ 'is-opened___2MlFy': isCollapsibleOpen, 'is-closed': !isCollapsibleOpen }" >
+                  <div class="Collapsible__contentInner">
+                    <div class="sub-links___J39c2 sub-links___3E1Vu">
+                      <RouterLink to="/quickleasing" :to="{ name: 'quickleasing', query: { brand: 'audi' } }">Audi</RouterLink>
+
+                      <RouterLink to="/proevekoersel" class="sub-link___TQy79" target="_self"
+                                  title="Prøvekøersel" >Prøvekøersel
+                      </RouterLink>
+                      <RouterLink to="/traek"
+                                  class="sub-link___TQy79" target="_self" title="Træk">Træk
+                      </RouterLink>
+                      <RouterLink to="/nyttig-viden"
+                                  class="sub-link___TQy79" target="_self" title="Nyttig Viden">Nyttig Viden
+                      </RouterLink>
+                      <RouterLink to="/laanebil"
+                                  class="sub-link___TQy79" target="_self" title="Lånebil">Lånebil
+                      </RouterLink>
+                      <RouterLink to="/syn"
+                                  class="sub-link___TQy79" target="_self" title="Syn">Syn
+                      </RouterLink>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="desktop-button___GoCH5">
+                <div class="title___wAdVl">Mærker</div>
+                <div class="sub-links___J39c2 sub-links___3E1Vu">
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'opel' } }"
+                  >
+                    Opel
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'volvo' } }"
+                  >
+                    Volvo
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'audi' } }"
+                  >
+                    Audi
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'bmw' } }"
+                  >
+                    BMW
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'citroen' } }"
+                  >
+                    Citroen
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'fiat' } }"
+                  >
+                    Fiat
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'ford' } }"
+                  >
+                    Ford
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'hyundai' } }"
+                  >
+                    Hyundai
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'skoda' } }"
+                  >
+                    Skoda
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'ds' } }"
+                  >
+                    DS
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'peugeot' } }"
+                  >
+                    Peugeot
+                  </RouterLink>
+                  <RouterLink class="sub-link___TQy79"
+                              :to="{ name: 'specificBrand', params: { brand: 'honda' } }"
+                  >
+                    Honda
+                  </RouterLink>
+
+
+
+
+                </div>
+              </button>
+            </div>
+          </div>
+
+
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/faq"><a class="link___1tInP" target="_self"
                                                                                      title="FAQ">FAQ</a></RouterLink>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/forsikring-priser"><a class="link___1tInP"
@@ -106,6 +209,7 @@
 
 <script>
 import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 export default {
   name: "NavigationBar",
   data() {
@@ -125,7 +229,9 @@ export default {
         this.contentHeight = this.$refs.contentInner.offsetHeight;
       }
     },
+
   },
+
 };
 </script>
 
