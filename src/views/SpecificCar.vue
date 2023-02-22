@@ -717,7 +717,8 @@ const age_driver = [
 
                   <!-- START MULTI FORM  -->
 
-                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false" @submit="createForm">
+                  <FormKit type="form" :actions="false" form-class="multiform" :incomplete-message="false"
+                    @submit="createForm">
                     <FormKit type="multi-step" tab-style="progress" steps-class="multiform__steps"
                       tab-label-class="custom__tab-span" :wrapper-class="{
                         multiform__wrapper: true,
@@ -845,381 +846,365 @@ const age_driver = [
                       </FormKit>
                       <!-- END STEP 1 -->
                       <!-- START STEP 2 -->
-                        <FormKit type="step" name="step2" label="2. Valg af leasing">
-                          <div class="step__content">
-                            <div class="step__content-single_header">
-                              <h3 class=" ">Prisoverslag</h3>
+                      <FormKit type="step" name="step2" label="2. Valg af leasing">
+                        <div class="step__content">
+                          <div class="step__content-single_header">
+                            <h3 class=" ">Prisoverslag</h3>
+                          </div>
+                          <div class="prices_overview">
+                            <div class="grid--auto-4 pad-header--s gap--xs">
+
+
+
+                              <FormKit type="dropdown" label="Ekstra kilometer pr. år*" name="oensketKilometer"
+                                :options="extra_kilometer_aar" help="Ekstra km udover km 15.000 årligt - "
+                                placeholder="Ekstra kilometer pr. år" validation="required" :validation-messages="{
+                                  required: 'Ekstra kilometer er påkrævet',
+                                }" validation-visibility="live" value="0" @input="oensketKilometerChange">
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span>{{ option.label }}</span>
+                                  </div>
+                                </template>
+
+
+
+                              </FormKit>
+
+                              <FormKit type="dropdown" label="Premium helårsdæk*" name="ombytningTilPremiumHelårsdæk"
+                                :options="premiumDaek" :floating-label="false" :inner-class="{
+                                  searchFilter__select: true,
+                                }" placeholder="Primium helårsdæk" help="Ombytning til Primium helårsdæk"
+                                validation="required" :validation-messages="{
+                                  required: 'Ombytning til Primium helårsdæk er påkrævet',
+                                }" validation-visibility="live" @input="premHelaarsDaek"
+                                v-if="!kompletSaetVinterhjul">
+                                <template #option="{ option }">
+                                  <div class="formkit-option">
+                                    <span>{{ option.label }}</span>
+                                  </div>
+                                </template>
+                              </FormKit>
                             </div>
-                            <div class="prices_overview">
-                              <div class="grid--auto-4 pad-header--s gap--xs">
 
-
-
-                                <FormKit type="dropdown" 
-                                label="Ekstra kilometer pr. år*" 
-                                name="oensketKilometer"
-                                :options="extra_kilometer_aar" 
-                                help="Ekstra km udover km 15.000 årligt - "
-                                placeholder="Ekstra kilometer pr. år" 
-                                validation="required" 
-                                :validation-messages="{
-                                    required: 'Ekstra kilometer er påkrævet',
-                                  }" 
-                                  validation-visibility="live" 
-                                  value="0" 
-                                  @input="oensketKilometerChange">
-                                  <template #option="{ option }">
-                                    <div class="formkit-option">
-                                      <span>{{ option.label }}</span>
-                                    </div>
-                                  </template>
-
-
-
-                                </FormKit>
-
-                                <FormKit type="dropdown" 
-                                label="Premium helårsdæk*" 
-                                name="ombytningTilPremiumHelårsdæk"
-                                :options="premiumDaek" 
-                                :floating-label="false" 
-                                :inner-class="{
-                                    searchFilter__select: true,
-                                  }" 
-                                  placeholder="Primium helårsdæk" 
-                                  help="Ombytning til Primium helårsdæk"
-                                  validation="required" 
-                                  :validation-messages="{
-                                    required: 'Ombytning til Primium helårsdæk er påkrævet',
-                                  }" 
-                                  validation-visibility="live" 
-                                  @input="premHelaarsDaek" 
-                                  v-if="!kompletSaetVinterhjul">
-                                  <template #option="{ option }">
-                                    <div class="formkit-option">
-                                      <span>{{ option.label }}</span>
-                                    </div>
-                                  </template>
-                                </FormKit>
+                            <div class="prices--interactiveBlock">
+                              <div class="prices__info prices__info--primary bold">
+                                <div class="prices__title">{{ displayCar.brand }} {{ displayCar.model }} {{
+                                  displayCar.heste_kraefter }} HK {{ displayCar.braendstof }}&nbsp;&nbsp; <b>#{{
+    displayCar.bil_nr }}</b></div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.base_maanedspris }} kr./md.</div>
                               </div>
-
-                              <div class="prices--interactiveBlock">
-                                <div class="prices__info prices__info--primary bold">
-                                  <div class="prices__title">{{ displayCar.brand }} {{ displayCar.model }} {{
-                                    displayCar.heste_kraefter }} HK {{ displayCar.braendstof }}&nbsp;&nbsp; <b>#{{ displayCar.bil_nr }}</b></div>
-                                  <div class="prices__separator"></div>
-                                  <div>{{ displayCar.base_maanedspris }} kr./md.</div>
-                                </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
-                                  <div class="prices__separator"></div>
-                                  <div>{{ forsikringAnsvarOgKasko[0] }} kr./md</div>
-                                </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Selvrisiko</div>
-                                  <div class="prices__separator"></div>
-                                  <div>{{ forsikringAnsvarOgKasko[1] }} kr.</div>
-                                </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Grøn ejerafgift</div>
-                                  <div class="prices__separator"></div>
-                                  <div>{{ displayCar.groen_ejer_afgift / 6 }} kr./md</div>
-                                </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Service- og garantiaftale</div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Forsikring (Ansvar- og Kasko)</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ forsikringAnsvarOgKasko[0] }} kr./md</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Selvrisiko</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ forsikringAnsvarOgKasko[1] }} kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Grøn ejerafgift</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.groen_ejer_afgift / 6 }} kr./md</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Service- og garantiaftale</div>
+                                <div class="prices__separator"></div>
+                                <div>Inkluderet</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Depositum</div>
+                                <div class="prices__separator"></div>
+                                <div>0 kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Dok. gebyr ved oprettelse</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.dokument_gebyr_ved_oprettelse }} kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Udbetaling</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.base_udbetaling }} kr.</div>
+                              </div>
+                              <div class="prices__info prices__info--secondary">
+                                <div class="prices__title">Tilbageleveringsgebyr</div>
+                                <div class="prices__separator"></div>
+                                <div>0 kr.</div>
+                              </div>
+                              <div class="prices__extra">
+                                <div class="prices__info">
+                                  <div class="prices__title">2.000 km.</div>
                                   <div class="prices__separator"></div>
                                   <div>Inkluderet</div>
                                 </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Depositum</div>
+                                <div class="prices__info" v-if="chosenExtraKm[1] !== 0">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Extra&nbsp;<b>{{ chosenExtraKm[0] }}</b>&nbsp;kilometer
+                                  </div>
                                   <div class="prices__separator"></div>
-                                  <div>0 kr.</div>
+                                  <div>{{ chosenExtraKm[1] }} kr./md.</div>
                                 </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Dok. gebyr ved oprettelse</div>
+                                <div class="prices__info" v-if="afleveringsforsikring == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Afleveringsforsikring
+                                    <div>
+                                      <div class="prices__tooltip">?</div>
+                                    </div>
+                                  </div>
                                   <div class="prices__separator"></div>
-                                  <div>{{ displayCar.dokument_gebyr_ved_oprettelse }} kr.</div>
+                                  <div>119 kr./md.</div>
                                 </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Udbetaling</div>
+                                <div class="prices__info" v-if="lavSelvrisiko == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Lav selvrisiko
+                                    <div>
+                                      <div class="prices__tooltip">?</div>
+                                    </div>
+                                  </div>
                                   <div class="prices__separator"></div>
-                                  <div>{{ displayCar.base_udbetaling }} kr.</div>
+                                  <div>64 kr./md.</div>
                                 </div>
-                                <div class="prices__info prices__info--secondary">
-                                  <div class="prices__title">Tilbageleveringsgebyr</div>
+                                <div class="prices__info" v-if="vikingVejhjaelp == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Viking – Vejhjælp
+                                    <div>
+                                      <div class="prices__tooltip">?</div>
+                                    </div>
+                                  </div>
                                   <div class="prices__separator"></div>
-                                  <div>0 kr.</div>
+                                  <div>49 kr./md.</div>
                                 </div>
-                                <div class="prices__extra">
-                                  <div class="prices__info">
-                                    <div class="prices__title">2.000 km.</div>
-                                    <div class="prices__separator"></div>
-                                    <div>Inkluderet</div>
-                                  </div>
-                                  <div class="prices__info" v-if="chosenExtraKm[1] !== 0">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Extra&nbsp;<b>{{ chosenExtraKm[0] }}</b>&nbsp;kilometer
+                                <div class="prices__info" v-if="kompletSaetVinterhjul == true">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Komplet sæt vinterhjul
+                                    <div>
+                                      <div class="prices__tooltip">?</div>
                                     </div>
-                                    <div class="prices__separator"></div>
-                                    <div>{{ chosenExtraKm[1] }} kr./md.</div>
                                   </div>
-                                  <div class="prices__info" v-if="afleveringsforsikring == true">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Afleveringsforsikring
-                                      <div>
-                                        <div class="prices__tooltip">?</div>
-                                      </div>
-                                    </div>
-                                    <div class="prices__separator"></div>
-                                    <div>119 kr./md.</div>
-                                  </div>
-                                  <div class="prices__info" v-if="lavSelvrisiko == true">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Lav selvrisiko
-                                      <div>
-                                        <div class="prices__tooltip">?</div>
-                                      </div>
-                                    </div>
-                                    <div class="prices__separator"></div>
-                                    <div>64 kr./md.</div>
-                                  </div>
-                                  <div class="prices__info" v-if="vikingVejhjaelp == true">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Viking – Vejhjælp
-                                      <div>
-                                        <div class="prices__tooltip">?</div>
-                                      </div>
-                                    </div>
-                                    <div class="prices__separator"></div>
-                                    <div>49 kr./md.</div>
-                                  </div>
-                                  <div class="prices__info" v-if="kompletSaetVinterhjul == true">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Komplet sæt vinterhjul
-                                      <div>
-                                        <div class="prices__tooltip">?</div>
-                                      </div>
-                                    </div>
-                                    <div class="prices__separator"></div>
-                                    <div>119 kr./md.</div>
-                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>119 kr./md.</div>
+                                </div>
 
-                                  <!-- Valg af dæk -->
+                                <!-- Valg af dæk -->
 
-                                  <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'kontant'">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Premium Helårsdæk
-                                    </div>
-                                    <div class="prices__separator"></div>
+                                <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'kontant'">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Premium Helårsdæk
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div>{{ chosenPremHelaarsDaek[1] }} kr.</div>
+                                </div>
+
+                                <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'finansieret'">
+                                  <div class="prices__title prices__title--tooltip">
+                                    Premium Helårsdæk
+                                  </div>
+                                  <div class="prices__separator"></div>
+                                  <div style="display: flex; flex-direction: column;">
                                     <div>{{ chosenPremHelaarsDaek[1] }} kr.</div>
+                                    <div>{{ chosenPremHelaarsDaek[2] }} kr./md</div>
                                   </div>
-
-                                  <div class="prices__info" v-if="chosenPremHelaarsDaek[0] === 'finansieret'">
-                                    <div class="prices__title prices__title--tooltip">
-                                      Premium Helårsdæk
-                                    </div>
-                                    <div class="prices__separator"></div>
-                                    <div style="display: flex; flex-direction: column;">
-                                      <div>{{ chosenPremHelaarsDaek[1] }} kr.</div>
-                                      <div>{{ chosenPremHelaarsDaek[2] }} kr./md</div>
-                                    </div>
-                                  </div>
-
-                                  <!-- Valg af dæk -->
-
                                 </div>
-                                <div class="prices__info prices__info--highlighted bold">
-                                  <div class="prices__title">Totalpris</div>
-                                  <div class="prices__separator"></div>
-                                  <div>{{ displayCar.base_maanedspris }} kr./md.</div>
-                                </div>
-                                <p class="prices__text">
-                                  Første betaling betales 7 dage før bilen udleveres
-                                </p>
+
+                                <!-- Valg af dæk -->
+
                               </div>
+                              <div class="prices__info prices__info--highlighted bold">
+                                <div class="prices__title">Totalpris</div>
+                                <div class="prices__separator"></div>
+                                <div>{{ displayCar.base_maanedspris }} kr./md.</div>
+                              </div>
+                              <p class="prices__text">
+                                Første betaling betales 7 dage før bilen udleveres
+                              </p>
                             </div>
-
                           </div>
-                          <template #stepNext="{ handlers, node }">
-                            <div class="buttons-wrapper___3WoLU">
-                              <button id="proceed-button-two"
-                                class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
-                                @click="handlers.incrementStep(1, node.context)()" data-next="true" type="button">
-                                Fortsæt
-                              </button>
 
-                              <div class="back-link-wrapper___o4YqX">
-                                <a class="back-link___1LJpm" style="cursor: pointer"
-                                  @click="handlers.incrementStep(-1, node.context)()" data-next="true">Tilbage til
-                                  tilvalg</a>
+                        </div>
+                        <template #stepNext="{ handlers, node }">
+                          <div class="buttons-wrapper___3WoLU">
+                            <button id="proceed-button-two"
+                              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9"
+                              @click="handlers.incrementStep(1, node.context)()" data-next="true" type="button">
+                              Fortsæt
+                            </button>
+
+                            <div class="back-link-wrapper___o4YqX">
+                              <a class="back-link___1LJpm" style="cursor: pointer"
+                                @click="handlers.incrementStep(-1, node.context)()" data-next="true">Tilbage til
+                                tilvalg</a>
+                            </div>
+                          </div>
+
+                        </template>
+
+                        <template #stepPrevious="{ handlers, node }">
+                        </template>
+
+
+                      </FormKit>
+
+                      <!-- END STEP 2 -->
+                      <!-- START STEP 3 -->
+
+                      <FormKit type="step" name="step3" label="3. Kontaktinformation">
+                        <div class="step__content">
+                          <div class="step__content-single_header">
+                            <h3 class=" ">Kundeinformation</h3>
+                          </div>
+                          <div class="prices_overview">
+                            <div class="grid--auto-4 pad-header--s gap--xs">
+                              <FormKit type="text" name="Fornavn" id="first_name"
+                                validation="required|alpha_spaces|length:2,30" :validation-messages="{
+                                  alpha_spaces: 'Venligst skriv et gyldigt navn',
+                                  length: 'Længden af navnet skal være mellem 2 og 30 tegn',
+                                  required: 'Navn er påkrævet',
+                                }" validation-visibility="dirty" label="Fornavn*" input-class="custom__placeholder"
+                                placeholder="Hanne" :floating-label="false" />
+                              <FormKit type="text" name="Efternavn" id="last_name" label="Efternavn*"
+                                validation="required|alpha_spaces|length:2,50" :validation-messages="{
+                                  alpha_spaces: 'Venligst skriv et gyldigt navn',
+                                  length: 'Længden af navnet skal være mellem 2 og 50 tegn',
+                                  required: 'Navn er påkrævet',
+                                }" validation-visibility="dirty" input-class="custom__placeholder"
+                                placeholder="Holm Olsen" :floating-label="false" />
+                              <FormKit type="text" name="Adresse" id="address" label="Adresse*"
+                                validation="required|length:2,50" :validation-messages="{
+                                  length: 'Længden af adressen skal være mellem 2 og 50 tegn',
+                                  required: 'Adresse er påkrævet',
+                                }" validation-visibility="dirty" input-class="custom__placeholder"
+                                placeholder="Karl Th Torpvej 3, 3. tv" :floating-label="false" />
+
+                              <FormKit type="mask" label="Postnummer" name="postnummer" mask="####" unmask-value="true"
+                                :floating-label="false" input-class="custom__placeholder"
+                                validation="required|number|length:4,4" :validation-messages="{
+                                  alpha: 'Venligst skriv et gyldigt postnummer',
+                                  length: 'Længden af postnummeret skal være 4 tal',
+                                  required: 'Postnummer er påkrævet',
+                                }" validation-visibility="dirty" />
+                              <FormKit type="text" id="city" label="By*" name="By" validation="required|length:2,50"
+                                :validation-messages="{
+                                  length: 'Længden af byen skal være mellem 2 og 50 tegn',
+                                  required: 'By er påkrævet',
+                                }" validation-visibility="dirty" input-class="custom__placeholder"
+                                placeholder="Valby" :floating-label="false" />
+
+                              <FormKit type="email" name="Email" id="email" label="Email*"
+                                input-class="custom__placeholder" placeholder="hannep@outlook.com"
+                                validation="required|email" :validation-messages="{
+                                  required: 'Email er påkrævet',
+                                  email: 'Venligst skriv en gyldig email',
+                                }" validation-visibility="dirty" :floating-label="false" />
+                              <FormKit type="mask" mask="## ## ## ##" name="phone" id="phone" mode="replace"
+                                validation="required|length:8,8" :validation-messages="{
+                                  required: 'Telefon er påkrævet',
+                                  length: 'Længden af telefonnummeret skal være 8 tal',
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="Telefon*" input-class="custom__placeholder"
+                                :floating-label="false" />
+
+                              <FormKit type="mask" mask="######-####" name="CPR" id="cpr" mode="replace"
+                                validation="required|length:10,10" :validation-messages="{
+                                  required: 'CPR er påkrævet',
+                                  length: 'Længden af CPR nummeret skal være 10 tal',
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="CPR nummer*" label-class="label-for-cpr"
+                                :floating-label="false"
+                                help="Vi skal bruge dit CPR-nummer for at identificere dig som indehaveren af den konto, som pengene skal trækkes fra. Vi passer godt på din data og overholder selvfølgelig persondataloven">
+                                <template #label="{ id, label, help, classes }">
+                                  <label :class="classes.label" :for="id">
+                                    {{ label }}
+                                    <span v-if="help" :class="classes.tooltip">
+                                      ?
+                                      <span :class="classes.tooltipInner">{{ help }}</span>
+                                    </span>
+                                  </label>
+                                </template>
+
+                                <template #help>
+                                  <p class="form__extra-help"></p>
+                                </template>
+                              </FormKit>
+
+                              <div class="label-for-cpr">
+                                <h4>Betalingsoplysninger</h4>
+                                <label class="label-for-cpr">
+                                  <span class="formkit-tooltip">
+                                    ?
+                                    <span class="formkit-tooltip-inner">For at vi kan oprette aftalen med dig, skal vi
+                                      bruge dit konto- og
+                                      registreringsnummer, som løbende bliver faktureret for din
+                                      leasingaftale hos Quickleasing. Vi opbevarer naturligvis dine data
+                                      sikkert og i overensstemmelse med persondataloven. Vi trækker
+                                      selvfølgelig ikke penge fra din konto, før du har underskrevet den
+                                      endelige kontrakt.
+                                    </span></span></label>
                               </div>
-                            </div>
 
-                          </template>
+                              <div></div>
 
-                          <template #stepPrevious="{ handlers, node }">
-                          </template>
+                              <FormKit type="mask" mask="####" name="Registreringsnummer" id="registreringsnummer"
+                                mode="replace" validation="required" :validation-messages="{
+                                  required: 'Registreringsnummer er påkrævet',
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                unmask-value="true" label="Registreringsnummer*" input-class="custom__placeholder"
+                                :floating-label="false" />
 
-
-                        </FormKit>
-                 
-                        <!-- END STEP 2 -->
-                        <!-- START STEP 3 -->
-
-                        <FormKit type="step" name="step3" label="3. Kontaktinformation">
-                          <div class="step__content">
-                            <div class="step__content-single_header">
-                              <h3 class=" ">Kundeinformation</h3>
-                            </div>
-                            <div class="prices_overview">
-                              <div class="grid--auto-4 pad-header--s gap--xs">
-                                <FormKit type="text" name="Fornavn" id="first_name"
-                                  validation="required|alpha_spaces|length:2,30" :validation-messages="{
-                                    alpha_spaces: 'Venligst skriv et gyldigt navn',
-                                    length: 'Længden af navnet skal være mellem 2 og 30 tegn',
-                                    required: 'Navn er påkrævet',
-                                  }" validation-visibility="dirty" label="Fornavn*" input-class="custom__placeholder"
-                                  placeholder="Hanne" :floating-label="false" />
-                                <FormKit type="text" name="Efternavn" id="last_name" label="Efternavn*"
-                                  validation="required|alpha_spaces|length:2,50" :validation-messages="{
-                                    alpha_spaces: 'Venligst skriv et gyldigt navn',
-                                    length: 'Længden af navnet skal være mellem 2 og 50 tegn',
-                                    required: 'Navn er påkrævet',
-                                  }" validation-visibility="dirty" input-class="custom__placeholder"
-                                  placeholder="Holm Olsen" :floating-label="false" />
-                                <FormKit type="text" name="Adresse" id="address" label="Adresse*"
-                                  validation="required|length:2,50" :validation-messages="{
-                                    length: 'Længden af adressen skal være mellem 2 og 50 tegn',
-                                    required: 'Adresse er påkrævet',
-                                  }" validation-visibility="dirty" input-class="custom__placeholder"
-                                  placeholder="Karl Th Torpvej 3, 3. tv" :floating-label="false" />
-
-                                <FormKit type="mask" label="Postnummer" name="postnummer" mask="####" unmask-value="true"
-                                  :floating-label="false" input-class="custom__placeholder"
-                                  validation="required|number|length:4,4" :validation-messages="{
-                                    alpha: 'Venligst skriv et gyldigt postnummer',
-                                    length: 'Længden af postnummeret skal være 4 tal',
-                                    required: 'Postnummer er påkrævet',
-                                  }" validation-visibility="dirty" />
-                                <FormKit type="text" id="city" label="By*" name="By" validation="required|length:2,50"
+                              <FormKit type="mask" mask="(000)#######" name="Kontonummer" id="kontonummer" mode="replace"
+                                validation="required" :validation-messages="{
+                                  required: 'Kontonummer er påkrævet',
+                                }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
+                                help="De første 3 nuller er medtaget automatisk" unmask-value="true" label="Kontonummer*"
+                                input-class="custom__placeholder" :floating-label="false" />
+                              <div style="margin-bottom: 9rem">
+                                <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
+                                  help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
+                                                                    behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
                                   :validation-messages="{
-                                    length: 'Længden af byen skal være mellem 2 og 50 tegn',
-                                    required: 'By er påkrævet',
-                                  }" validation-visibility="dirty" input-class="custom__placeholder" placeholder="Valby"
-                                  :floating-label="false" />
-
-                                <FormKit type="email" name="Email" id="email" label="Email*"
-                                  input-class="custom__placeholder" placeholder="hannep@outlook.com"
-                                  validation="required|email" :validation-messages="{
-                                    required: 'Email er påkrævet',
-                                    email: 'Venligst skriv en gyldig email',
-                                  }" validation-visibility="dirty" :floating-label="false" />
-                                <FormKit type="mask" mask="## ## ## ##" name="phone" id="phone" mode="replace"
-                                  validation="required|length:8,8" :validation-messages="{
-                                    required: 'Telefon er påkrævet',
-                                    length: 'Længden af telefonnummeret skal være 8 tal',
-                                  }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
-                                  unmask-value="true" label="Telefon*" input-class="custom__placeholder"
-                                  :floating-label="false" />
-
-                                <FormKit type="mask" mask="######-####" name="CPR" id="cpr" mode="replace"
-                                  validation="required|length:10,10" :validation-messages="{
-                                    required: 'CPR er påkrævet',
-                                    length: 'Længden af CPR nummeret skal være 10 tal',
-                                  }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
-                                  unmask-value="true" label="CPR nummer*" label-class="label-for-cpr"
-                                  :floating-label="false"
-                                  help="Vi skal bruge dit CPR-nummer for at identificere dig som indehaveren af den konto, som pengene skal trækkes fra. Vi passer godt på din data og overholder selvfølgelig persondataloven">
-                                  <template #label="{ id, label, help, classes }">
-                                    <label :class="classes.label" :for="id">
-                                      {{ label }}
-                                      <span v-if="help" :class="classes.tooltip">
-                                        ?
-                                        <span :class="classes.tooltipInner">{{ help }}</span>
-                                      </span>
-                                    </label>
-                                  </template>
-
-                                  <template #help>
-                                    <p class="form__extra-help"></p>
+                                    accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
+                                  }">
+                                  <template #help="{ help }">
+                                    <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
                                   </template>
                                 </FormKit>
 
-                                <div class="label-for-cpr">
-                                  <h4>Betalingsoplysninger</h4>
-                                  <label class="label-for-cpr">
-                                    <span class="formkit-tooltip">
-                                      ?
-                                      <span class="formkit-tooltip-inner">For at vi kan oprette aftalen med dig, skal vi
-                                        bruge dit konto- og
-                                        registreringsnummer, som løbende bliver faktureret for din
-                                        leasingaftale hos Quickleasing. Vi opbevarer naturligvis dine data
-                                        sikkert og i overensstemmelse med persondataloven. Vi trækker
-                                        selvfølgelig ikke penge fra din konto, før du har underskrevet den
-                                        endelige kontrakt.
-                                      </span></span></label>
-                                </div>
-
-                                <div></div>
-
-                                <FormKit type="mask" mask="####" name="Registreringsnummer" id="registreringsnummer"
-                                  mode="replace" validation="required" :validation-messages="{
-                                    required: 'Registreringsnummer er påkrævet',
-                                  }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
-                                  unmask-value="true" label="Registreringsnummer*" input-class="custom__placeholder"
-                                  :floating-label="false" />
-
-                                <FormKit type="mask" mask="(000)#######" name="Kontonummer" id="kontonummer"
-                                  mode="replace" validation="required" :validation-messages="{
-                                    required: 'Kontonummer er påkrævet',
-                                  }" validation-visibility="dirty" allow-incomplete="false" show-mask="true"
-                                  help="De første 3 nuller er medtaget automatisk" unmask-value="true"
-                                  label="Kontonummer*" input-class="custom__placeholder" :floating-label="false" />
-                                <div style="margin-bottom: 9rem">
-                                  <FormKit type="checkbox" label="Persondatapolitik" validation="accepted"
-                                    help="Ved at hakke ovenstående Persondatapolitik boksen af, bekræfter jeg, at jeg er indforstået med
-                                                                  behandlingen af mine persondata i henhold til følgende <a href='/persondatapolitik'>persondatapolitikken</a>."
-                                    :validation-messages="{
-                                      accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
-                                    }">
-                                    <template #help="{ help }">
-                                      <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
-                                    </template>
-                                  </FormKit>
 
 
-
-                                </div>
-                                <p style="font-size: 12px">Ved at klikke "forsæt", vil du herefter blive kontaktet
-                                  hurtigst
-                                  mulig med henblik på leasingaftale med Quickleasing A/S</p>
                               </div>
-
+                              <p style="font-size: 12px">Ved at klikke "forsæt", vil du herefter blive kontaktet
+                                hurtigst
+                                mulig med henblik på leasingaftale med Quickleasing A/S</p>
                             </div>
 
                           </div>
-                          <template #stepNext="{ handlers, node }">
-                            <div class="buttons-wrapper___3WoLU">
-                              <button id="proceed-button-two"
-                                class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9">
-                                Bestil nu
-                              </button>
 
-                              <div class="back-link-wrapper___o4YqX">
-                                <a class="back-link___1LJpm" style="cursor: pointer"
-                                  @click="handlers.incrementStep(-1, node.context)()" data-next="true">Tilbage til valg af
-                                  leasing</a>
-                              </div>
+                        </div>
+                        <template #stepNext="{ handlers, node }">
+                          <div class="buttons-wrapper___3WoLU">
+                            <button id="proceed-button-two"
+                              class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9">
+                              Bestil nu
+                            </button>
+
+                            <div class="back-link-wrapper___o4YqX">
+                              <a class="back-link___1LJpm" style="cursor: pointer"
+                                @click="handlers.incrementStep(-1, node.context)()" data-next="true">Tilbage til valg af
+                                leasing</a>
                             </div>
+                          </div>
 
-                          </template>
-                          <template #stepPrevious="{ handlers, node }">
+                        </template>
+                        <template #stepPrevious="{ handlers, node }">
 
 
-                          </template>
-                        </FormKit>
+                        </template>
+                      </FormKit>
 
-                        <!-- END STEP 2  -->
+                      <!-- END STEP 2  -->
                     </FormKit>
                     <template #stepNext>
                       <FormKit type="submit" />
@@ -1256,6 +1241,30 @@ export default {
   name: "SpecificCar",
   data() {
     return {
+      form_maanedeligeYdelse: '',
+      form_udbetaling: '',
+      form_oensket_loebetid: '',
+      form_stelNummer: '',
+      form_alder: '',
+      form_tilvalg: [],
+      form_ekstra_kilometer: '',
+      form_premie_helaars_daek: '',
+      form_forsikring_ansvar_og_kasko: '',
+      form_selvrisiko: '',
+      form_groen_afgift_6maaneder: '',
+      form_dok_gebyr_ved_oprettelse: '',
+      form_fornavn: '',
+      form_efternavn: '',
+      form_adresse: '',
+      form_postnummer: '',
+      form_by: '',
+      form_Email: '',
+      form_telefonnummer: '',
+      form_cpr_nummer: '',
+      form_registreringsnummer: '',
+      form_kontonummer: '',
+      submitted: false,
+
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       kompletSaetVinterhjulPris: 0,
       forsikringAnsvarOgKasko: [],
@@ -1366,9 +1375,69 @@ export default {
     }, 20);
   },
   methods: {
-    createForm: async function (fields){
+    createForm: async function (fields) {
       const READER_API = import.meta.env.VITE_APP_READER_API;
       const POST_URL = import.meta.env.VITE_APP_AFTALE_FORM_URL;
+      
+      this.form_oensket_loebetid = `${this.chosenLeasePeriod} Måneder`;
+      this.form_stelNummer = this.carData.stelnummer;
+      this.form_alder = fields.alder;
+      this.form_tilvalg = [
+        `Lav selvrisiko tilvalgt: ${this.lavSelvrisiko ? 'ja' : 'nej'}`,
+        `Afleveringsforsikring tilvalgt: ${this.afleveringsforsikring ? 'ja' : 'nej'}`,
+        `Viking Vejhjælp tilvalgt: ${this.vikingVejhjaelp ? 'ja' : 'nej'}`,
+        `Komplet Sæt Vinterhjul tilvalgt: ${this.kompletSaetVinterhjul ? 'ja' : 'nej'}`
+      ];
+      this.form_ekstra_kilometer = `Antal km tilvalgt: ${this.chosenExtraKm[0]}, pris: ${this.chosenExtraKm[1]} kr./md`;
+      if (this.chosenPremHelaarsDaek[0] === 'nej' || this.chosenPremHelaarsDaek[0] === undefined){
+        this.form_premie_helaars_daek = `Ikke tilvalgt`;
+      }else if(this.chosenPremHelaarsDaek[0] === 'kontant'){
+        this.form_premie_helaars_daek = `Antal km tilvalgt: ${this.chosenPremHelaarsDaek[0]}, pris: ${this.chosenPremHelaarsDaek[1]} kr. i kontantbetaling`;  
+      }else if(this.chosenPremHelaarsDaek[0] === 'finansieret'){
+        this.form_premie_helaars_daek = `Antal km tilvalgt: ${this.chosenPremHelaarsDaek[0]}, pris: ${this.chosenPremHelaarsDaek[2]} kr./md og ${this.chosenPremHelaarsDaek[1]} kr. i kontantbetaling`;
+      }
+      this.form_forsikring_ansvar_og_kasko = `Månedlig pris: ${this.forsikringAnsvarOgKasko[0]} kr./md`;
+      this.form_selvrisiko = `${this.forsikringAnsvarOgKasko[1]} kr. i kontantbetaling`;
+      this.form_groen_afgift_6maaneder = `Månedlig pris: ${this.carData.groen_ejer_afgift / 2} kr./md, pris i alt hver 6 måned: ${this.carData.groen_ejer_afgift} kr.`;
+      this.form_dok_gebyr_ved_oprettelse = `Kontantbetaling: ${this.carData.dokument_gebyr_ved_oprettelse} kr.`;
+      this.form_fornavn = fields.Fornavn;
+      this.form_efternavn = fields.Efternavn;
+      this.form_adresse = fields.Adresse;
+      this.form_postnummer = fields.postnummer;
+      this.form_by = fields.By;
+      this.form_Email = fields.Email;
+      this.form_telefonnummer = fields.phone;
+      this.form_cpr_nummer = fields.CPR;
+      this.form_registreringsnummer = fields.Registreringsnummer;
+      this.form_kontonummer = fields.Kontonummer;
+      this.form_udbetaling = this.carData.base_udbetaling
+      this.form_maanedeligeYdelse = this.carData.base_maanedlige_ydelse
+
+      const formData = {
+        oensket_loebetid: this.form_oensket_loebetid,
+        stelnummer: this.form_stelNummer,
+        alder: this.form_alder,
+        tilvalg: this.form_tilvalg,
+        ekstra_kilometer: this.form_ekstra_kilometer,
+        Premium_Helaarsdaek: this.form_premie_helaars_daek,
+        Forsikring_Ansvar_og_Kasko: this.form_forsikring_ansvar_og_kasko,
+        Selvrisiko: this.form_selvrisiko,
+        Grn_ejerafgift_pr_6maaned: this.form_groen_afgift_6maaneder,
+        Dok_gebyr_ved_oprettelse: this.form_dok_gebyr_ved_oprettelse,
+        fornavn: this.form_fornavn,
+        efternavn: this.form_efternavn,
+        adresse: this.form_adresse,
+        postnummer: this.form_postnummer,
+        by: this.form_by,
+        Email: this.form_Email,
+        telefon: this.form_telefonnummer,
+        cpr_nummer: this.form_cpr_nummer,
+        Registreringsnummer: this.form_registreringsnummer,
+        Kontonummer: this.form_kontonummer
+      }
+      console.log(formData);
+
+
 
     },
     async fetchCarData() {
@@ -1858,7 +1927,7 @@ export default {
         this.carData.base_maanedspris = this.original_base_maanedspris;
       }
       else if (chosenValue === 'nej') {
-        this.carData.base_udbetaling =  this.original_base_udbetaling;
+        this.carData.base_udbetaling = this.original_base_udbetaling;
         this.carData.base_maanedspris = this.original_base_maanedspris;
       } else if (chosenValue === 'kontant') {
         this.carData.base_udbetaling = this.original_base_udbetaling;

@@ -773,7 +773,6 @@ export default {
     };
   },
   mounted() {
-
     this.fetchModels();
   },
   async created() {
