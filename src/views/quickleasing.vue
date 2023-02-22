@@ -1569,7 +1569,7 @@ export default {
   .filter__toggle-button {
     position: fixed;
     right: 0;
-    top: 94vh;
+    bottom: 0;
     width: 100vw;
     height: 50px;
     border-radius: 50%;
