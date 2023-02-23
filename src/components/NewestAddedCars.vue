@@ -123,7 +123,7 @@
                     Vælg bil
                   </button>
                 </RouterLink>
-                <div class="additional-price___2tuCL" style="font-size: x-small;margin-top: 5px;">
+                <div class="additional-price___2tuCL" style="font-size: 9px;margin-top: 5px;">
                   {{ textUnderPicture(car) }}
                 </div>
               </div>
@@ -259,7 +259,7 @@
                     Vælg bil
                   </button>
                 </RouterLink>
-                <div class="additional-price___2tuCL" style="font-size: x-small;margin-top: 5px;">
+                <div class="additional-price___2tuCL" style="font-size: 9px;margin-top: 5px;">
                   {{ textUnderPicture(car) }}
                 </div>
               </div>
@@ -842,7 +842,7 @@ export default {
 
 @media screen and (min-width: 25rem) {
   .product-card___2naPO {
-    height: 26.4rem;
+
   }
 }
 
@@ -853,12 +853,12 @@ export default {
 }
 
 .product-card___2naPO.has-cta___1N-4L {
-  height: 34rem;
+
 }
 
 @media screen and (min-width: 25rem) {
   .product-card___2naPO.has-cta___1N-4L {
-    height: 29rem;
+
   }
 }
 
