@@ -1096,7 +1096,7 @@ const age_driver = [
                                   required: 'Email er påkrævet',
                                   email: 'Venligst skriv en gyldig email',
                                 }" validation-visibility="dirty" :floating-label="false" />
-                              <FormKit type="mask" mask="## ## ## ##" name="telefonnummer" id="telefonnummer" mode="replace" v-model="form_telefonnummer"
+                              <FormKit type="mask" mask="########" name="telefonnummer" id="telefonnummer" mode="replace" v-model="form_telefonnummer"
                                 validation="required|length:8,8" :validation-messages="{
                                   required: 'Telefon er påkrævet',
                                   length: 'Længden af telefonnummeret skal være 8 tal',

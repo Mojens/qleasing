@@ -41,6 +41,13 @@
             title="Kontakt os"
             >Kontakt os</RouterLink
           >
+          <RouterLink
+            class="link___Zah3i link___394Eg"
+            to="/bil-foresporgsel"
+            target="_self"
+            title="Mangler du et bestemt bilmærke?"
+          >Efterlys bil</RouterLink
+          >
         </div>
         <div class="links___1GmQz">
           <RouterLink

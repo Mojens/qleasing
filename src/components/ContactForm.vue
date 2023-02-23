@@ -99,8 +99,8 @@ onMounted(() => {
           </p>
         </div>
       </FormKit>
-      <span class="center--right counter">{{ note.text.length }} / {{ note.maxlength }}</span>
-      <FormKit type="textarea" label="Bemærkning" name="note" id="note" :maxlength="note.maxlength"
+
+      <FormKit type="textarea" label="Bemærkning" name="note" id="note"
         placeholder="Hej, jeg har et spørgsmål angående..." input-class="custom__placeholder" :floating-label="false"
         wrapper-class="width--full" />
     </FormKit>
@@ -134,7 +134,7 @@ export default {
       phone: "",
       note: {
         text: "",
-        maxlength: 255,
+
       },
       submitted: false,
     };

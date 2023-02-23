@@ -37,6 +37,7 @@ import samarbejdspartnereView from "@/views/vilkaarViews/samarbejdspartnere.vue"
 import kontaktosView from "@/views/kontaktos.vue";
 import SpecificCar from "@/views/SpecificCar.vue";
 import brandsView from "@/views/Brands.vue";
+import BrandRequestView from "@/views/BrandRequestView.vue";
 
 
 
@@ -242,6 +243,12 @@ const router = createRouter({
       props: true,
 
     },
+    {
+      path: "/bil-foresporgsel",
+      name: "bilForesporgsel",
+      component: BrandRequestView,
+      props: true,
+    }
 
 
   ],
