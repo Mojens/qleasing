@@ -4,9 +4,10 @@
     <div class="main-flow___Sjg41" data-qa="main-flow" >
 
       <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
-        <img src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
+        <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
       </button>
-      <div class="products___1WcE3" >
+      <div class="products___1WcE3" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
+           @mouseup="onMouseUp" ref="products">
         <div class="list___1c2KX">
 
           <div id="product__card" class="product___3vmta " v-for="car in displayedCars" :key="car.id"
@@ -122,6 +123,9 @@
                     Vælg bil
                   </button>
                 </RouterLink>
+                <div class="additional-price___2tuCL" style="font-size: x-small;margin-top: 5px;">
+                  {{ textUnderPicture(car) }}
+                </div>
               </div>
             </div>
           </div>
@@ -129,7 +133,7 @@
       </div>
 
         <button class="control-btn next-btn" @click="nextCar" :disabled="currentIndex >= carData.length - 3">
-          <img src='https://img.icons8.com/ios/50/000000/chevron-right.png'  alt="Pil til højre, for at se flere biler"/>
+          <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-right.png'  alt="Pil til højre, for at se flere biler"/>
         </button>
 
     </div>
@@ -142,6 +146,7 @@
 export default {
   data() {
     return {
+      touchStartX: null,
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
@@ -202,6 +207,40 @@ export default {
 
 
   methods: {
+    onTouchStart(event) {
+      this.touchStartX = event.changedTouches[0].clientX;
+    },
+
+    onTouchEnd(event) {
+      const touchEndX = event.changedTouches[0].clientX;
+      const deltaX = touchEndX - this.touchStartX;
+
+      if (deltaX > 0) {
+        // swipe right, go to previous car
+        this.previousCar();
+      } else if (deltaX < 0) {
+        // swipe left, go to next car
+        this.nextCar();
+      }
+    },
+    onMouseDown(event) {
+      this.startX = event.clientX;
+    },
+    onMouseUp(event) {
+      this.endX = event.clientX;
+      const diff = this.startX - this.endX;
+      if (diff > 0 && Math.abs(diff) > 50) {
+        this.nextCar();
+      } else if (diff < 0 && Math.abs(diff) > 50) {
+        this.previousCar();
+      }
+    },
+    textUnderPicture(car){
+      return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
+                  leasingydelse kr. ${car.base_maanedspris} \n-
+                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6)*36)+ 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse)??0)} kr. `
+    },
     async thumbNailURL(car) {
       const response = await fetch(this.currentURL + car.id, {
         headers: {
@@ -254,20 +293,6 @@ export default {
         return "Ingen udstyr";
       }
     },
-    nextCar() {
-      if (this.currentIndex < this.carData.length - 3) {
-        this.currentIndex++;
-        this.displayedCars = this.carData.slice(
-          this.currentIndex,
-          this.currentIndex + 3
-        );
-        const newCarIndex = this.currentIndex + 2; // the index of the new car/card
-        const newCarCards = document.querySelectorAll('.product___3vmta'); // get all the car/card elements
-        for (let i = newCarIndex; i < newCarIndex + 3; i++) {
-          newCarCards[i].classList.add('animate-slide'); // add the animate-slide class to each card
-        }
-      }
-    },
     previousCar() {
       if (this.currentIndex > 0) {
         this.currentIndex--;
@@ -275,6 +300,24 @@ export default {
           this.currentIndex,
           this.currentIndex + 3
         );
+        // add the animate-slide class to each card
+        const newCarCards = document.querySelectorAll('.product___3vmta');
+        newCarCards[this.currentIndex].classList.add('animate-slide');
+        newCarCards[this.currentIndex + 2].classList.remove('animate-slide');
+      }
+    },
+
+    nextCar() {
+      if (this.currentIndex < this.carData.length - 3) {
+        this.currentIndex++;
+        this.displayedCars = this.carData.slice(
+          this.currentIndex,
+          this.currentIndex + 3
+        );
+        // add the animate-slide class to each card
+        const newCarCards = document.querySelectorAll('.product___3vmta');
+        newCarCards[this.currentIndex + 2].classList.add('animate-slide');
+        newCarCards[this.currentIndex - 1].classList.remove('animate-slide');
       }
     },
 
@@ -291,7 +334,7 @@ export default {
 <style >
 #product__card.product___3vmta {
   animation: scale 0.5s ease-in-out;
-
+  user-select: none;
 }
 
 @keyframes fadein {
@@ -357,7 +400,7 @@ export default {
 
 .next-btn {
 
-  width: 100px;
+  width: 7vw;
   background-color: white;
   color: black;
 
@@ -365,10 +408,30 @@ export default {
 }
 .pre-btn{
 
-  width: 100px;
+  width: 7vw;
   background-color: white;
   color: black;
   margin-left: auto;
+}
+
+/* Make pre-btn and next-btn mobile responsive */
+@media screen and (max-width: 600px) {
+  .pre-btn, .next-btn {
+    width: 6vw;
+
+  }
+  .next-btn{
+    margin-right: 1vw;
+  }
+  .pre-btn{
+    margin-left: 1vw;
+  }
+  .arrow__btn{
+    width: 100%;
+  }
+  .control-btn{
+    padding: 0;
+  }
 }
 
 .control-btn:hover {

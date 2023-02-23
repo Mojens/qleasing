@@ -3,6 +3,7 @@ import FooterItem from "@/components/FooterItem.vue";
 import autoAnimate from "@formkit/auto-animate";
 import { ref, onMounted } from "vue";
 import NavigationBar from "@/components/NavigationBar.vue";
+import BrandRequestForm from "@/components/BrandRequestForm.vue";
 
 // function to use autoAnimate the library, when submit(function already exists called createForm) is clicked if there are errors
 const example = ref();
@@ -139,6 +140,12 @@ onMounted(() => {
                 Honda er kendt for at fremstille pålidelige biler i høj kvalitet, og med privatleasing hos os kan du nyde godt af den japanske bilproducents innovative teknologi og avancerede sikkerhedsfunktioner til en overkommelig pris.
               </p>
             </div>
+          </div>
+        </div>
+        <div class="brands__request__form-container" v-if="carData.length === 0" style="margin-bottom: 2em">
+          <div class="brands__request__form-inner-wrap" >
+
+            <BrandRequestForm  />
           </div>
         </div>
 
@@ -993,13 +1000,14 @@ onMounted(() => {
 import Slider from "@vueform/slider";
 
 export default {
+  name: "QuickLeasing",
   components: {
     Slider,
   },
   data() {
     return {
 
-      name: "QuickLeasing",
+
       priceRange: {
         value: [],
         savedValue: [],
@@ -1674,6 +1682,23 @@ export default {
 
 <style src="@vueform/slider/themes/default.css"></style>
 <style scoped>
+.brands__request__form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: var(--action);
+
+}
+.brands__request__form-inner-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: var(--space-xl) 0;
+}
 .brands__container {
 
 }
@@ -1751,7 +1776,7 @@ export default {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url('https://cdn.icon-icons.com/icons2/2108/PNG/512/menu_icon_130901.png');
+
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1769,6 +1794,23 @@ export default {
 
 /* show the toggle button on smaller screens */
 @media only screen and (max-width: 768px) {
+  .brands__request__form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: var(--action);
+
+  }
+  .brands__request__form-inner-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding: var(--space-xl) 0;
+  }
   .product-card___2naPO{
     width: 100%!important;
     max-width: 100%!important;
@@ -1893,7 +1935,7 @@ export default {
   .filter__toggle-button {
     position: fixed;
     right: 0;
-    top: 94vh;
+    bottom: 0;
     width: 100vw;
     height: 50px;
     border-radius: 50%;
