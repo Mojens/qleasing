@@ -829,7 +829,6 @@ export default {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 25rem;
   height: 30.4rem;
   background-color: #f2f2f2;
   cursor: pointer;

@@ -1655,7 +1655,7 @@ export default {
 
 
     isMobile() {
-      return window.innerWidth <= 1400; // adjust this value to fit your design needs
+      return window.innerWidth <= 1365; // adjust this value to fit your design needs
     },
     uniqueBrands() {
       const brandCount = {};

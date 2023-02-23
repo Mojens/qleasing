@@ -1224,7 +1224,7 @@ export default {
 
 
     isMobile() {
-      return window.innerWidth <= 1400; // adjust this value to fit your design needs
+      return window.innerWidth <= 1365; // adjust this value to fit your design needs
     },
     uniqueBrands() {
       const brandCount = {};
@@ -1344,7 +1344,7 @@ export default {
 }
 
 /* show the toggle button on smaller screens */
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1365px) {
   .product-card___2naPO {
     width: 100% !important;
     max-width: 100% !important;
@@ -1471,12 +1471,37 @@ export default {
     margin-bottom: 4px;
   }
 }
-@media screen and (min-width: 46.75rem) {
+
+@media screen and (min-width: 42.75rem) {
  #filter_container.products___1WcE3 .list___1c2KX {
     --products-per-row: 2;
   }
 }
-@media  (max-width: 1400px) {
+@media screen and (min-width: 64rem) {
+  #filter_container.products___1WcE3 .list___1c2KX {
+    --products-per-row: 3;
+  }
+}
+@media screen and (min-width: 85.375rem) {
+  #filter_container.products___1WcE3 .list___1c2KX {
+    --products-per-row: 2;
+  }
+
+}
+
+@media screen and (min-width: 93rem) {
+  #filter_container.products___1WcE3 .list___1c2KX {
+    --products-per-row: 3;
+  }
+}
+@media screen and (min-width: 125rem) {
+  #filter_container.products___1WcE3 .list___1c2KX {
+    --products-per-row: 4;
+  }
+}
+
+
+@media  (max-width: 1365px) {
   .filter__container::-webkit-scrollbar {
     width: 1px;
   }
@@ -1560,7 +1585,7 @@ export default {
   left: 0;
   height: 100vh;
   overflow: auto;
-  width: 540px;
+  width: calc(35vw - 2 * var(--section-space-xs));
   margin-left: var(--section-space-xs);
   background-color: #f1f1f1;
 
