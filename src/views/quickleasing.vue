@@ -1224,7 +1224,7 @@ export default {
 
 
     isMobile() {
-      return window.innerWidth <= 768; // adjust this value to fit your design needs
+      return window.innerWidth <= 1400; // adjust this value to fit your design needs
     },
     uniqueBrands() {
       const brandCount = {};
@@ -1267,7 +1267,7 @@ export default {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  margin: var(--space-m) 0;
+
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
@@ -1287,7 +1287,7 @@ export default {
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  margin: var(--space-m) 0;
+
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
@@ -1301,8 +1301,13 @@ export default {
 }
 
 
-@media only screen and (max-width: 600px) {
-  .button-primary--filter {}
+@media only screen and (max-width: 880px) {
+  .button-primary--filter {
+    height: 9vh;
+  }
+  .filter__inner-wrapper{
+    height: 91vh;
+  }
 }
 
 
@@ -1315,7 +1320,7 @@ export default {
   display: inline-block;
   width: 30px;
   height: 30px;
-  background-image: url('https://cdn.icon-icons.com/icons2/2108/PNG/512/menu_icon_130901.png');
+
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1331,9 +1336,15 @@ export default {
   border: none;
   cursor: pointer;
 }
+.filtered__cars-container {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: var(--section-space-s);
+  padding: var(--section-space-m) var(--space-xs);
+}
 
 /* show the toggle button on smaller screens */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
   .product-card___2naPO {
     width: 100% !important;
     max-width: 100% !important;
@@ -1461,14 +1472,16 @@ export default {
   }
 }
 
-@media (max-width: 1024px) {
+@media  (max-width: 1400px) {
+  .filtered__cars-container{
+    flex-direction: row;
+  }
   .filter__toggle-button {
     position: fixed;
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 50px;
-    border-radius: 50%;
+
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -1493,7 +1506,7 @@ export default {
 
   .filter__ul-horizontal {
     flex-wrap: nowrap;
-    overflow-x: scroll;
+
   }
 
   .filter__checkbox {
@@ -1513,12 +1526,7 @@ export default {
   padding: 2rem var(--side-padding);
 }
 
-.filtered__cars-container {
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: var(--section-space-s);
-  padding: var(--section-space-m) var(--space-xs);
-}
+
 
 .filter__container {
   position: sticky;
@@ -1550,7 +1558,7 @@ export default {
   flex-direction: column;
   margin-top: 2px;
   padding: var(--space-s) var(--space-l);
-  overflow: hidden;
+  overflow: auto;
 
 }
 
