@@ -25,7 +25,7 @@ onMounted(() => {
     <div class="main-flow___Sjg41" data-qa="main-flow">
 
 
-      <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
+      <div id="filter_container" class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
         <div class="brands__container ">
           <div class="brands__header-container">
             <h1 class="brands-header" style="text-transform: capitalize">
@@ -391,6 +391,9 @@ onMounted(() => {
                       Vælg bil
                     </button>
                   </RouterLink>
+                  <div class="additional-price___2tuCL" style="font-size: x-small; margin-top:5px;">
+                    {{ textUnderPicture(car) }}
+                  </div>
                 </div>
               </div>
             </RouterLink>
@@ -1095,6 +1098,12 @@ export default {
 
   },
   methods: {
+    textUnderPicture(car) {
+      return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
+                  leasingydelse kr. ${car.base_maanedspris} \n-
+                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6) * 36) + 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse) ?? 0)} kr. `
+    },
     async fetchData() {
       const response = await fetch(this.currentURL, {
         headers: {
@@ -1646,7 +1655,7 @@ export default {
 
 
     isMobile() {
-      return window.innerWidth <= 768; // adjust this value to fit your design needs
+      return window.innerWidth <= 1400; // adjust this value to fit your design needs
     },
     uniqueBrands() {
       const brandCount = {};
@@ -1681,7 +1690,7 @@ export default {
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
-<style scoped>
+<style >
 .brands__request__form-container{
   display: flex;
   flex-direction: column;
@@ -1721,76 +1730,7 @@ export default {
   font-size: 16px;
   line-height: 1.5;
 }
-.button-primary--filter {
-  background-color: var(--secondary);
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  margin: var(--space-m) 0;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-.button-primary--filter:hover {
-  background-color: var(--action);
-  color: white;
-  transform: scale(1.02);
-}
 
-.button-primary--filter-apply {
-  background-color: var(--action)!important;
-  border: none;
-  color: white!important;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  margin: var(--space-m) 0;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-}
-.button-primary--filter-apply:hover {
-  background-color: var(--secondary)!important;
-  color: black!important;
-  transform: scale(1.02);
-}
-
-
-@media only screen and (max-width: 600px) {
-  .button-primary--filter {
-
-
-  }
-}
-
-
-.filter__toggle-button {
-  display: none; /* hide by default */
-}
-
-.filter__toggle-button-label {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.filter__close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  font-size: 20px;
-  line-height: 1;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
 
 /* show the toggle button on smaller screens */
 @media only screen and (max-width: 768px) {
@@ -1811,357 +1751,7 @@ export default {
     width: 90%;
     padding: var(--space-xl) 0;
   }
-  .product-card___2naPO{
-    width: 100%!important;
-    max-width: 100%!important;
-  }
-  .filter__container-mobile {
-    position: sticky;
-    z-index: 10;
-    height: 100vh;
-    width: 100vw
-  }
-
-  .filter__toggle-button {
-    display: block;
-    z-index: 11;
-  }
-  .filter__inner-wrapper {
-    display: none;
-    flex-direction: column;
-    margin-top: 0!important;
-    padding: var(--space-s) var(--space-m);
-  }
-
-  .filter__inner-wrapper.show {
-    display: block;
-  }
-
-  .filter__header {
-    font-size: calc(var(--text-s))!important;
-    font-weight: bold;
-    padding-top: 1rem!important;
-    padding-bottom: 3rem!important;
-  }
-
-  .filter__header.pad-header--xs {
-    padding-top: 7px!important;
-    padding-bottom: 7px!important;
-  }
-  .container {
-    display: flex;
-    position: relative;
-    padding-left: 20px!important;
-
-    font-size: calc(var(--text-s) - 1px)!important;
-
-  }
-  .checkmark{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 15px!important;
-    width: 15px!important;
-    background-color: #eee;
-  }
-  .container .checkmark:after {
-    left: 4px!important;
-    top: 1px!important;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-
-  .filter__brand,
-  .filter__model,
-  .filter__features,
-  .filter__tire {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .filter__ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .filter__ul-horizontal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 7px!important;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .filter__li {
-    margin-top: 2px!important;
-    margin-bottom: 4px;
-  }
-
-  .filter__checkbox {
-    margin-right: 5px;
-  }
-
-  .filter__select {
-    width: 100%;
-    height: 40px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-
-  .filter__option-all {
-    font-weight: bold;
-  }
-
-  .filter__option {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .filter__tire {
-    margin-bottom: 4px;
-  }
-}
-@media (max-width: 1024px) {
-  .filter__toggle-button {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 50px;
-    border-radius: 50%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .filter__inner-wrapper {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    background-color: #f1f1f1;
-    padding: var(--section-space-m);
-  }
-
-  .filter__header {
-    font-size: calc(var(--text-m) + 3px);
-  }
-
-  .filter__ul-horizontal {
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-  }
-
-  .filter__checkbox {
-    margin-right: 10px;
-  }
-}
-
-.products___1WcE3 {
-  display: -webkit-box;
-  --side-padding: 1rem;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 2rem var(--side-padding);
-}
-
-.filtered__cars-container {
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: var(--section-space-s);
-  padding: var(--section-space-m) var(--space-xs);
-}
-
-.filter__container {
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  overflow: auto;
-  width: 540px;
-  margin-left: var(--section-space-xs);
-  background-color: #f1f1f1;
-
-}
-.filter__container::-webkit-scrollbar {
-  width: 1px;
-}
-
-.filter__container::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-.filter__container::-webkit-scrollbar-thumb {
-  background-color: #f1f1f1;
-}
-
-
-.filter__inner-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2px;
-  padding: var(--space-s) var(--space-l);
-  overflow: hidden;
 
 }
 
-.filter__header {
-  font-size: calc(var(--text-s) + 3px);
-  font-weight: bold;
-}
-
-.filter__header.pad-header--xs {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.filter__header.pad-header--m {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-/*.filter__price {}*/
-
-.filter__brand,
-.filter__model,
-.filter__features,
-.filter__tire {
-  display: flex;
-  flex-direction: column;
-}
-
-.filter__ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.filter__ul-horizontal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.filter__li {
-  margin-top: 5px;
-}
-
-.filter__checkbox {
-  margin-right: 5px;
-}
-
-.filter__select {
-  width: 100%;
-  height: 40px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-}
-
-.filter__option-all {
-  font-weight: bold;
-}
-
-.filter__option {
-  padding: 10px;
-  font-size: 14px;
-}
-
-.filter__tire {
-  margin-bottom: 4px;
-}
-.main-flow___Sjg41 {
-  flex: 1;
-}
-.container {
-  display: flex;
-  position: relative;
-  padding-left: 26px;
-  margin-bottom: 1px;
-  cursor: pointer;
-  font-size: calc(var(--text-m) - 2.2px);
-  font-weight: 400;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-
-  background-color: var(--white);
-  border: 1.5px solid var(--action);
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: var(--action);
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 7px;
-  top: 3px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 </style>

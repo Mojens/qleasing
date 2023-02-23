@@ -20,7 +20,7 @@ onMounted(() => {
   <NavigationBar />
   <div class="filtered__cars-container" ref="example">
     <div class="main-flow___Sjg41" data-qa="main-flow">
-      <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
+      <div id="filter_container" class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
         <div class="brands__container ">
           <div class="brands__header-container">
             <h1 class="brands-header" style="text-transform: capitalize">
@@ -1259,7 +1259,7 @@ export default {
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
-<style scoped>
+<style >
 .button-primary--filter {
   background-color: var(--secondary);
   border: none;
@@ -1471,8 +1471,34 @@ export default {
     margin-bottom: 4px;
   }
 }
-
+@media screen and (min-width: 46.75rem) {
+ #filter_container.products___1WcE3 .list___1c2KX {
+    --products-per-row: 2;
+  }
+}
 @media  (max-width: 1400px) {
+  .filter__container::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .filter__container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  .filter__inner-wrapper::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1;
+  }
+  .filter__inner-wrapper::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  .filter__inner-wrapper::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  .filter__container::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1;
+  }
   .filtered__cars-container{
     flex-direction: row;
   }

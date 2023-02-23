@@ -6,7 +6,7 @@
       <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
         <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
       </button>
-      <div class="products___1WcE3" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
+      <div class="products___1WcE3 center--all" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
            @mouseup="onMouseUp" ref="products">
         <div class="list___1c2KX">
 
@@ -142,7 +142,7 @@
       <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
         <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
       </button>
-      <div class="products___1WcE3" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
+      <div class="products___1WcE3 center--all" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
            @mouseup="onMouseUp" ref="products">
         <div class="list___1c2KX">
 
@@ -1031,7 +1031,7 @@ export default {
 
 @media screen and (min-width: 46.75rem) {
   .products___1WcE3 .list___1c2KX {
-    --products-per-row: 2;
+    --products-per-row: 1;
   }
 }
 
