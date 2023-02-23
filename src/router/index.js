@@ -44,7 +44,7 @@ import BrandRequestView from "@/views/BrandRequestView.vue";
 
 
 const router = createRouter({
-  mode: "hash",
+  mode: "history",
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
