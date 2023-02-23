@@ -3,6 +3,7 @@ import FooterItem from "@/components/FooterItem.vue";
 import autoAnimate from "@formkit/auto-animate";
 import { ref, onMounted } from "vue";
 import NavigationBar from "@/components/NavigationBar.vue";
+import BrandRequestForm from "@/components/BrandRequestForm.vue";
 
 // function to use autoAnimate the library, when submit(function already exists called createForm) is clicked if there are errors
 const example = ref();
@@ -20,6 +21,34 @@ onMounted(() => {
   <div class="filtered__cars-container" ref="example">
     <div class="main-flow___Sjg41" data-qa="main-flow">
       <div class="products___1WcE3" style="padding-top: 0; padding-left: 1rem">
+        <div class="brands__container ">
+          <div class="brands__header-container">
+            <h1 class="brands-header" style="text-transform: capitalize">
+              PRIVATLeasing af bil hos QUICKLEASING
+            </h1>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--l">
+              <p >
+                Flere og flere vælger at lease privat og udover at være en populær leasing form er det også på mange måder en fordelagtig løsning, hvis du ønsker sikkerhed i dit budget.
+                <br> <br>
+                Vælger du at lease gennem QUICKLEASING er alle service og vedligeholdelsesomkostninger nemlig indeholdt i din månedlige leasingydelse og dermed er du sikret mod uforudsete omkostninger.
+                <br> <br>
+                Med en leasingaftale gennem QUICKLEASING dukker der ikke uventede regninger op i den tid du leaser din bil, uanset hvor, eller hvornår, din bil har behov for service, så står vores serviceværksted QUICK POINT nemlig klar til at hjælpe dig, så du ikke skal bruge unødig tid og hurtigt er kørende igen. Det bedste er, at det ikke koster dig noget, det er nemlig indeholdt i din månedlige leasingydelse.
+              </p>
+              <p v-if="carData.length > 1"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DISSE {{ carData.length }} BILER:</strong></p>
+              <p v-if="carData.length === 1"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI {{ carData.length }} BIL:</strong></p>
+              <p v-if="carData.length === 0"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DESVÆRRE INGEN BILER:</strong></p>
+              <div class="brands__request__form-container" v-if="carData.length === 0" style="margin-bottom: 2em">
+                <div class="brands__request__form-inner-wrap" >
+
+                  <BrandRequestForm  />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
         <div class="list___1c2KX">
           <div class="product___3vmta" v-for="car in carData" :key="car.id">
             <RouterLink :to="`/quickleasing/${car.id}`" style="color: inherit">
@@ -147,6 +176,124 @@ onMounted(() => {
                 </div>
               </div>
             </RouterLink>
+          </div>
+        </div>
+        <div class="brands__container ">
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              PRIVATLeasing – hvad er det?
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Hvis du ikke kender noget til PRIVATLeasing, kan det godt virke lidt uoverskueligt hvad det egentlig indebærer. Men rent faktisk er det meget enkelt – Ved PRIVATLeasing lejer du blot en bil i en i forvejen aftalt periode
+                <br> <br>
+                Det betyder, at du har retten til at bruge bilen i en aftalt periode når du har betalt en førstegangsydelse og efterfølgende betaler de månedlige leasingydelser inklusiv forsikring.
+                <br> <br>
+                Din månedlige leasingydelse afhænger af værdien af bilen og de forventede omkostninger til service og vedligeholdelse i leasingperioden samt hvor mange kilometer du forventer at køre i bilen
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              Stort udvalg af leasingbiler
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Hos QUICKLEASING kan du vælge mellem flere forskellige biler i forskellige prisklasser og typisk kan du vælge mellem et bredt udvalg af bilmærker, såsom Peugeot, Opel, Citroën, Toyota, VW, BMW, Audi og Mercedes.
+                <br> <br>
+                Når du kigger på vores biler, kan du også vælge efter udstyr som det er vigtigt for dig at have med, det kan være anhængertræk, bakkamera eller Apple CarPlay, du kan endvidere vælge om bilen skal have manuelt gear eller automatgear.
+                <br> <br>
+                Vores udvalg af biler i forskellige prisklasser gør, at du typisk kan finde alt fra biler med en månedlige ydelse på mellem kr. 1.000 og kr. 2.000 til op til over kr. 4.000.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              Dine fordele ved PRIVATLeasing
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Du opnår mange fordele ved at privat lease, de fleste er dog økonomiske og det er ikke uvæsentligt. Faktisk kan man sige, at forskellen mellem at eje og privat lease kan skæres ned til, at du kun betaler for de kilometer du har brug for at køre – uden at skulle bekymre sig over, om bilen er faldet i værdi eller trænger til at komme til service.
+                <br> <br>
+                Ved PRIVATLeasIng gennem QUICKLEASING undgår du økonomiske bekymringer, da pludselige og uforudsete udgifter er noget vi tager os af – alle service og reparationer er nemlig indeholdt i din leasingydelse – det giver dig økonomisk tryghed og dermed noget du kan budgettere efter.
+                <br> <br>
+                En ikke uvæsentlig fordel var PRIVATLeasing gennem QUICKLEASING er, at ønsker du at skifte bil ofte, så skal du ikke bekymre dig om værdien af bilen når du ønsker at skifte, da det er helt uden omkostninger efter leasingperiodens udløb, som typisk er 3 år – men du kan vælge at lease i kortere perioder.
+                <br> <br>
+                Skulle du alligevel ønske at skifte bil inden leasingperiodens udløb, har vi ved QUICKLEASING en opsigelsesperiode på kun 3 måneder, hvor du mod betaling af én måneds leasingydelse kan stille bilen. Ønsker du at lease en anden bil hos QUICKLEASING samtidig, slipper du dog for dette gebyr – så kan det ikke være mere enkelt og billigt!
+              </p>
+
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              Hvad skal du være opmærksom på, når du leaser din bil hos QUICKLEASING?
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Som beskrevet ovenfor, er stort set alle omkostninger indeholdt i din leasingydelse, såsom service og reparationer, men der dog lidt omkostninger forbundet med at have bil, som ikke er inkluderet. Vægtafgift, eller grøn ejerafgift, forsikring, vejhjælp og brændstof eller el, er omkostninger du selv skal afholde.
+                <br> <br>
+                Forsikring tegnes gennem QUICKLEASING og du har også mulighed for at tilkøbe vejhjælp.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              PRIVATLeasing gennem QUICKLEASING
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                QUICKLEASING opererer som et digitalt leasingselskab, det betyder, at alle processer omkring valg af bil og kreditgodkendelse foregår via vores hjemmeside. Du har mulighed for fysisk at se og prøve vores biler efter aftale. Har du ikke mulighed for selv at afhente fin leasingbil, kan vi mod betaling, levere din bil i hele landet.
+                <br> <br>
+                For at kunne lease en bil ved AUICK LEASING, er det en forudsætning at du kan blive kreditgodkendt. Dette foregår ved at du giver os adgang til din skattemappe og fremsender dine seneste 3 lønsedler, årsopgørelse samt kopi af sygesikringsbevis og kørekort.
+                <br> <br>
+                Når din aftale om PRIVATLeasing udløber, skal bilen returneres til QUICK LEASING, på vores fysiske adresse, i en stand der svarer til bilens alder og det antal kilometer du har kørt i leasingperioden. Tidligst to uger før du skal aflevere bilen, skal du bestille en gennemgang af bilen ved enten A-Plus eller ved os og få gennemgået bilen.
+                <br> <br>
+                Bilen gennemgås sammen med dig på den aftalte tid og efterfølgende udfærdiges der en rapport på bilen. Afleveringsrapporten koster kr. 495,- som betales ved gennemgang af bilen.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              Prøvekørsel efter aftale
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Da QUICK LEASING driver sin forretning digitalt, for at holde omkostningerne så lave som muligt, kan man kun mod forudgående aftale prøvekøre en af vores biler. Det er en forudsætning for prøvekørsel, at det foreligger en positiv kreditgodkendelse på den kategori af bil, som der ønskes en prøvekørsel af.
+                <br> <br>
+                <RouterLink to="/proevekoersel" alt="Prøvekørsel" title="Prøvekørsel">Prøvekørsel</RouterLink>  forudsætter at der er truffet aftale om dette senest 24 timer før bilen skal prøvekøres.
+                <br> <br>
+                En aftale om prøvekørsel er ikke automatisk en reservation af bilen – biler kan alene reserveres ved at indgå en aftale om bilen og dette sker ved at udfylde vores bestillingsformular på hjemmesiden under den enkelte bil.
+              </p>
+            </div>
+          </div>
+          <div class="brands__header-container">
+            <h2 class="brands-header pad-header--s" style="text-transform: capitalize; margin-top: 2rem">
+              Spørgsmål til QUICK LEASING
+            </h2>
+          </div>
+          <div class="brands__content-container">
+            <div class="brands__content pad-header--s">
+              <p >
+                Hvis du ikke har fået svar på alle dine spørgsmål her på siden, er du velkommen til at udfylde vores <RouterLink to="/kontakt" title="Kontakt Os">kontaktformular</RouterLink>, så kommer vi hurtigst muligt retur til dig med svar på dine spørgsmål.
+                <br> <br>
+                Hvis du efterlyser en bil, som ikke er på hjemmesiden, er du også velkommen til at udfylde nedenstående formular <br> <RouterLink to="/bil-foresporgsel"><button class="button-primary">Bil Efterlysnings Formular</button> </RouterLink>
+                <br> så vil vi gøre vores bedste for at finde en bil, der matcher dine ønsker.
+                <br> <br>
+                Vi kan også træffes på telefon på <a href="tel:89885080" title="Telefon">89 88 50 80</a> hvis du har brug for råd eller vejledning, inden du træffer din endelige afgørelse om PRIVATLeasing. Vi har kontortid mellem klokken 08:30 og 16:00.
+              </p>
+            </div>
           </div>
         </div>
       </div>
