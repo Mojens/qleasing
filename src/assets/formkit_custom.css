@@ -32,7 +32,7 @@
 .vue-form {
   padding: var(--space-s) var(--space-l);
 
-  background-color: #fff;
+  background-color: hsl(0, 0%, 100%);
 }
 .custom__placeholder::-webkit-input-placeholder {
   font-size: var(--text-m);

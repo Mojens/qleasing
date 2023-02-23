@@ -328,7 +328,6 @@ const carBrands = [
         type="textarea"
         wrapper-class="width--full"
       />
-
     </FormKit>
 
   </div>
