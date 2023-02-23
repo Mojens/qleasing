@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="pad-header--m center--all" style="padding-left: 0.7rem; padding-right: 0.7rem">Se de biler, der lige er ankommet til Quickleasing</h1>
-    <div class="main-flow___Sjg41" data-qa="main-flow" >
+    <div id="isDesktop" class="main-flow___Sjg41" data-qa="main-flow" >
 
       <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
         <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
@@ -123,7 +123,143 @@
                     Vælg bil
                   </button>
                 </RouterLink>
-                <div class="additional-price___2tuCL" style="font-size: x-small;margin-top: 5px;">
+                <div class="additional-price___2tuCL" style="font-size: 9px;margin-top: 5px;">
+                  {{ textUnderPicture(car) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <button class="control-btn next-btn" @click="nextCar" :disabled="currentIndex >= carData.length - 3">
+          <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-right.png'  alt="Pil til højre, for at se flere biler"/>
+        </button>
+
+    </div>
+    <div id="isMobile" class="main-flow___Sjg41" data-qa="main-flow" >
+
+      <button class="control-btn pre-btn" @click="previousCar" :disabled="currentIndex <= 2">
+        <img class="arrow__btn" src='https://img.icons8.com/ios/50/000000/chevron-left.png'  alt="Pil til venstre, for at se flere biler"/>
+      </button>
+      <div class="products___1WcE3" @touchstart="onTouchStart" @touchend="onTouchEnd"  @mousedown="onMouseDown"
+           @mouseup="onMouseUp" ref="products">
+        <div class="list___1c2KX">
+
+          <div id="product__card" class="product___3vmta " v-for="car in displayedCarsMobile" :key="car.id"
+               >
+            <div class="product-card___2naPO has-cta___1N-4L">
+              <div class="label-wrap___2_2TG">
+
+                <div class="label___xUzK4 label___IKlVk black___2xtI_">
+                  fra {{ car.base_udbetaling }} kr i udbetaling
+                </div>
+
+                 <!-- Label som kommer fra bil, hvis der er nogle -->
+                 <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk black___2xtI_">
+                  {{ car.billedeLabel }}
+                </div>
+
+              </div>
+              <div class="image-wrapper___2BJkg main-image___2PNg2">
+                <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
+                  :title="`${car.brand} - ${car.model}`" />
+              </div>
+
+              <div class="content___2i8ss">
+                <div class="title___3jeSd">
+                  <div class="name___3OMhd">{{ car.brand }} - {{ car.model }}</div>
+                  <div class="price___1hgWK">
+                    Abonnement fra<span class="value___3qMAh">{{ car.base_maanedspris }}</span>kr./md.
+                  </div>
+
+                </div>
+                <div class="technical-details___2buqo technical-details___2vodE">
+                  <div class="details-group___19Kyu">
+                    <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(4.000000, 4.000000)" stroke="#444444" stroke-width="2" fill="none">
+                          <circle id="Oval" cx="16.5" cy="16.5" r="16.5"></circle>
+                          <line x1="10" y1="8.5" x2="10" y2="24.5"></line>
+                          <line x1="17" y1="8.5" x2="17" y2="24.5"></line>
+                          <line x1="24" y1="8.5" x2="24" y2="16.5"></line>
+                          <line x1="10.5" y1="17" x2="23.5" y2="17"></line>
+                        </g>
+                      </svg>
+                      <div class="title___3rl0o">{{ car.gear_type }}</div>
+                    </div>
+                    <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(6.000000, 6.000000)" stroke="#444444" stroke-width="2" fill="none">
+                          <path
+                            d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z">
+                          </path>
+                          <line x1="15" y1="13" x2="0" y2="28"></line>
+                        </g>
+                      </svg>
+                      <div class="title___3rl0o">
+                        <div class="emissions___3B8H6">
+                          <span>CO<sub>2</sub></span>&nbsp;{{ car.co2 }} g/km
+                          <div class="energy-class___BHiLA energy-class___3KEQh">
+                            <span style="background-color: rgb(190, 214, 47)">A<sup>+</sup></span><span
+                              class="arrow-right___1p9wE" style="border-left-color: rgb(190, 214, 47)"></span>
+                            <div class="shadow___2ZdD4">
+                              <span></span><span class="arrow-right___1p9wE"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="details-group___19Kyu">
+                    <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g fill="none" transform="translate(6.000000, 3.000000)">
+                          <path
+                            d="M22,34 L0,34 L0,3.43077895 C0,1.53841053 1.53894737,0.000357894737 3.43042105,0.000357894737 L18.5686842,0.0695789474 C20.4601579,0.0695789474 22,1.60763158 22,3.5 L22,34 Z"
+                            stroke="#444444" stroke-width="2"></path>
+                          <polygon stroke="#444444" stroke-width="2" points="4 18 18 18 18 5 4 5"></polygon>
+                          <path
+                            d="M25,3 L29,9 L29,29 C29,30.1045695 28.1045695,31 27,31 C25.8954305,31 25,30.1045695 25,29 L25,22 C25,20.8954305 24.1045695,20 23,20 L22,20 L22,20"
+                            stroke="#444444" stroke-width="2"></path>
+                          <path
+                            d="M29.5,11 L25.5938579,3.62583158 L25.7211053,8.722 C25.7211053,9.98 26.742,11 28,11 L29.5,11 Z"
+                            fill="#444444"></path>
+                        </g>
+                      </svg>
+                      <div class="title___3rl0o">{{ car.braendstof }}</div>
+                    </div>
+                    <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                      <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g transform="translate(1.000000, 6.000000)" fill="none">
+                          <line x1="6" y1="28" x2="15" y2="0" stroke="#444444" stroke-width="2"></line>
+                          <line x1="27" y1="0" x2="36" y2="28" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="3" x2="21" y2="6" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="11" x2="21" y2="15" stroke="#444444" stroke-width="2"></line>
+                          <line x1="21" y1="20" x2="21" y2="25" stroke="#444444" stroke-width="2"></line>
+                          <path
+                            d="M4,10.1992 C5.8125,10.1992 7.75,8.9169 7.75,6.70209 C7.75,4.66209 4,0.87354 4,0.87354 C4,0.87354 0.25,4.66209 0.25,6.70209 C0.25,8.9169 2.1875,10.1992 4,10.1992 Z"
+                            fill="#444444"></path>
+                        </g>
+                      </svg>
+                      <div class="title___3rl0o">{{ car.kilometerprliter }} km/l</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="highlighted-features___34JSO">
+                  <span class="highlighted-feature___2Z8Zj">{{ getFeatures(car) }}</span>
+                </div>
+                <RouterLink :to="`/quickleasing/${car.id}`">
+                  <button
+                    class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
+                    Vælg bil
+                  </button>
+                </RouterLink>
+                <div class="additional-price___2tuCL" style="font-size: 9px;margin-top: 5px;">
                   {{ textUnderPicture(car) }}
                 </div>
               </div>
@@ -327,11 +463,40 @@ export default {
       // Kun for at vise 8 biler
       return this.carData.slice(this.currentIndex, this.currentIndex + 3);
     },
+    displayedCarsMobile() {
+      // Kun for at vise 8 biler
+
+      return this.carData.slice(this.currentIndex, this.currentIndex + 1);
+    },
   },
 };
 </script>
 
 <style >
+/* Media query for desktop to display id isDesktop*/
+@media only screen and (min-width: 1028px){
+  #isDesktop{
+    display: flex;
+  }
+  #isMobile{
+    display: none;
+  }
+}
+/* Media query for mobile to display id isMobile*/
+@media only screen and (max-width: 1028px){
+  #isDesktop{
+    display: none;
+  }
+  .products___1WcE3 .list___1c2KX {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #isMobile{
+    display: flex;
+  }
+}
+
 #product__card.product___3vmta {
   animation: scale 0.5s ease-in-out;
   user-select: none;
@@ -677,7 +842,7 @@ export default {
 
 @media screen and (min-width: 25rem) {
   .product-card___2naPO {
-    height: 26.4rem;
+
   }
 }
 
@@ -688,12 +853,12 @@ export default {
 }
 
 .product-card___2naPO.has-cta___1N-4L {
-  height: 34rem;
+
 }
 
 @media screen and (min-width: 25rem) {
   .product-card___2naPO.has-cta___1N-4L {
-    height: 29rem;
+
   }
 }
 
@@ -858,7 +1023,7 @@ export default {
   --product-margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: calc(var(--product-margin) * -1);
