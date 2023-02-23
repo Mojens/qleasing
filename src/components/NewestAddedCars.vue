@@ -122,6 +122,9 @@
                     Vælg bil
                   </button>
                 </RouterLink>
+                <div class="additional-price___2tuCL" style="font-size: x-small;margin-top: 5px;">
+                  {{ textUnderPicture(car) }}
+                </div>
               </div>
             </div>
           </div>
@@ -202,6 +205,12 @@ export default {
 
 
   methods: {
+    textUnderPicture(car){
+      return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
+                  leasingydelse kr. ${car.base_maanedspris} \n-
+                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6)*36)+ 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse)??0)} kr. `
+    },
     async thumbNailURL(car) {
       const response = await fetch(this.currentURL + car.id, {
         headers: {

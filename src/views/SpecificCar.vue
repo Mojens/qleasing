@@ -317,9 +317,9 @@ const age_driver = [
                     displayCar.base_udbetaling
                   }}</span>kr.
                 </div>
-                <div class="additional-price___2tuCL">
+             <div class="additional-price___2tuCL">
                   {{ textUnderPicture(displayCar) }}
-                </div>
+             </div>
               </div>
               <div class="disclaimers___2MvJV">
                 <p class="disclaimer___3U-mX">
@@ -524,11 +524,7 @@ const age_driver = [
                     inkl. forsikring og grøn ejerafgift
                   </div>
                   <div class="additional-price___2tuCL">
-                    Udbetaling kr. {{ displayCar.base_udbetaling }} - månedlig
-                    leasingydelse kr. {{ displayCar.base_maanedspris }} -
-                    udleveringsrapport kr. 495, total omkostning i 36 mdr.
-                    Total:
-                    {{ displayCar.base_maanedspris * 36 + 495 }}
+                    {{ textUnderPicture(displayCar) }}
                   </div>
                 </div>
               </div>
@@ -550,12 +546,8 @@ const age_driver = [
                     inkl. forsikring og grøn ejerafgift
                   </div>
                   <div class="additional-price___2tuCL">
-                    Udbetaling kr. {{ displayCar.base_udbetaling }} - månedlig
-                    leasingydelse kr. {{ displayCar.base_maanedspris }} -
-                    udleveringsrapport kr. 495, total omkostning i 36 mdr.
-                    Total:
-                    {{ displayCar.base_maanedspris * 36 + 495 }}
-                  </div>
+                  {{ textUnderPicture(displayCar) }}
+                </div>
                 </div>
                 <div class="info-group___1QcKa">
                   <div class="info-block___IMqr3 small___1ryj1 item___m6Uhu">
@@ -1376,9 +1368,9 @@ export default {
   methods: {
     textUnderPicture(car){
       return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
-                  leasingydelse kr. ${car.base_maanedlige_ydelse} -
+                  leasingydelse kr. ${car.base_maanedspris} \n-
                   udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
-                  ${car.base_maanedspris * 36 + 495 + car.base_udbetaling + (car.groen_ejer_afgift / 6)*36}{{ displayCar.base_maanedspris * 36 + 495 + displayCar.base_udbetaling + (displayCar.groen_ejer_afgift / 6)*36}} kr. `
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6)*36)+ 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse)??0)} kr.`
     },
     createForm: async function () {
       const READER_API = import.meta.env.VITE_APP_READER_API;

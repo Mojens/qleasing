@@ -30,24 +30,16 @@ onMounted(() => {
                   </div>
 
                   <!-- Label som kommer fra bil, hvis der er nogle -->
-                  <div
-                    v-if="car.billedeLabel !== null"
-                    class="label___xUzK4 label___IKlVk"
-                    :style="{
-                      backgroundColor: car.label_farve,
-                      color: car.label_text_farve,
-                    }"
-                  >
+                  <div v-if="car.billedeLabel !== null" class="label___xUzK4 label___IKlVk" :style="{
+                    backgroundColor: car.label_farve,
+                    color: car.label_text_farve,
+                  }">
                     {{ car.billedeLabel }}
                   </div>
                 </div>
                 <div class="image-wrapper___2BJkg main-image___2PNg2">
-                  <img
-                    class="image___3UcXF"
-                    :src="thumbnail[car.id]"
-                    :alt="`${car.brand} - ${car.model}`"
-                    :title="`${car.brand} - ${car.model}`"
-                  />
+                  <img class="image___3UcXF" :src="thumbnail[car.id]" :alt="`${car.brand} - ${car.model}`"
+                    :title="`${car.brand} - ${car.model}`" />
                 </div>
                 <div class="content___2i8ss">
                   <div class="title___3jeSd">
@@ -57,37 +49,16 @@ onMounted(() => {
                     <div class="price___1hgWK">
                       Abonnement fra<span class="value___3qMAh">{{
                         car.base_maanedspris
-                      }}</span
-                      >kr./md.
+                      }}</span>kr./md.
                     </div>
                   </div>
-                  <div
-                    class="technical-details___2buqo technical-details___2vodE"
-                  >
+                  <div class="technical-details___2buqo technical-details___2vodE">
                     <div class="details-group___19Kyu">
-                      <div
-                        class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0"
-                      >
-                        <svg
-                          class="icon___2OPTw"
-                          width="40px"
-                          height="40px"
-                          viewBox="0 0 40 40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                          <g
-                            transform="translate(4.000000, 4.000000)"
-                            stroke="#444444"
-                            stroke-width="2"
-                            fill="none"
-                          >
-                            <circle
-                              id="Oval"
-                              cx="16.5"
-                              cy="16.5"
-                              r="16.5"
-                            ></circle>
+                      <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                        <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <g transform="translate(4.000000, 4.000000)" stroke="#444444" stroke-width="2" fill="none">
+                            <circle id="Oval" cx="16.5" cy="16.5" r="16.5"></circle>
                             <line x1="10" y1="8.5" x2="10" y2="24.5"></line>
                             <line x1="17" y1="8.5" x2="17" y2="24.5"></line>
                             <line x1="24" y1="8.5" x2="24" y2="16.5"></line>
@@ -96,45 +67,24 @@ onMounted(() => {
                         </svg>
                         <div class="title___3rl0o">{{ car.gear_type }}</div>
                       </div>
-                      <div
-                        class="detail___22pEp detail___3AT8g small-size___1i0G0"
-                      >
-                        <svg
-                          class="icon___2OPTw"
-                          width="40px"
-                          height="40px"
-                          viewBox="0 0 40 40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                          <g
-                            transform="translate(6.000000, 6.000000)"
-                            stroke="#444444"
-                            stroke-width="2"
-                            fill="none"
-                          >
+                      <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                        <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <g transform="translate(6.000000, 6.000000)" stroke="#444444" stroke-width="2" fill="none">
                             <path
-                              d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z"
-                            ></path>
+                              d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z">
+                            </path>
                             <line x1="15" y1="13" x2="0" y2="28"></line>
                           </g>
                         </svg>
                         <div class="title___3rl0o">
                           <div class="emissions___3B8H6">
-                            <span>CO<sub>2</sub></span
-                            >&nbsp;{{ car.co2 }} g/km
-                            <div
-                              class="energy-class___BHiLA energy-class___3KEQh"
-                            >
-                              <span style="background-color: rgb(190, 214, 47)"
-                                >A<sup>+</sup></span
-                              ><span
-                                class="arrow-right___1p9wE"
-                                style="border-left-color: rgb(190, 214, 47)"
-                              ></span>
+                            <span>CO<sub>2</sub></span>&nbsp;{{ car.co2 }} g/km
+                            <div class="energy-class___BHiLA energy-class___3KEQh">
+                              <span style="background-color: rgb(190, 214, 47)">A<sup>+</sup></span><span
+                                class="arrow-right___1p9wE" style="border-left-color: rgb(190, 214, 47)"></span>
                               <div class="shadow___2ZdD4">
-                                <span></span
-                                ><span class="arrow-right___1p9wE"></span>
+                                <span></span><span class="arrow-right___1p9wE"></span>
                               </div>
                             </div>
                           </div>
@@ -142,103 +92,36 @@ onMounted(() => {
                       </div>
                     </div>
                     <div class="details-group___19Kyu">
-                      <div
-                        class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0"
-                      >
-                        <svg
-                          class="icon___2OPTw"
-                          width="40px"
-                          height="40px"
-                          viewBox="0 0 40 40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                          <g
-                            fill="none"
-                            transform="translate(6.000000, 3.000000)"
-                          >
+                      <div class="detail___22pEp detail___3AT8g capitalize___o-pqq small-size___1i0G0">
+                        <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <g fill="none" transform="translate(6.000000, 3.000000)">
                             <path
                               d="M22,34 L0,34 L0,3.43077895 C0,1.53841053 1.53894737,0.000357894737 3.43042105,0.000357894737 L18.5686842,0.0695789474 C20.4601579,0.0695789474 22,1.60763158 22,3.5 L22,34 Z"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></path>
-                            <polygon
-                              stroke="#444444"
-                              stroke-width="2"
-                              points="4 18 18 18 18 5 4 5"
-                            ></polygon>
+                              stroke="#444444" stroke-width="2"></path>
+                            <polygon stroke="#444444" stroke-width="2" points="4 18 18 18 18 5 4 5"></polygon>
                             <path
                               d="M25,3 L29,9 L29,29 C29,30.1045695 28.1045695,31 27,31 C25.8954305,31 25,30.1045695 25,29 L25,22 C25,20.8954305 24.1045695,20 23,20 L22,20 L22,20"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></path>
+                              stroke="#444444" stroke-width="2"></path>
                             <path
                               d="M29.5,11 L25.5938579,3.62583158 L25.7211053,8.722 C25.7211053,9.98 26.742,11 28,11 L29.5,11 Z"
-                              fill="#444444"
-                            ></path>
+                              fill="#444444"></path>
                           </g>
                         </svg>
                         <div class="title___3rl0o">{{ car.braendstof }}</div>
                       </div>
-                      <div
-                        class="detail___22pEp detail___3AT8g small-size___1i0G0"
-                      >
-                        <svg
-                          class="icon___2OPTw"
-                          width="40px"
-                          height="40px"
-                          viewBox="0 0 40 40"
-                          xmlns="http://www.w3.org/2000/svg"
-                          xmlns:xlink="http://www.w3.org/1999/xlink"
-                        >
-                          <g
-                            transform="translate(1.000000, 6.000000)"
-                            fill="none"
-                          >
-                            <line
-                              x1="6"
-                              y1="28"
-                              x2="15"
-                              y2="0"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></line>
-                            <line
-                              x1="27"
-                              y1="0"
-                              x2="36"
-                              y2="28"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></line>
-                            <line
-                              x1="21"
-                              y1="3"
-                              x2="21"
-                              y2="6"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></line>
-                            <line
-                              x1="21"
-                              y1="11"
-                              x2="21"
-                              y2="15"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></line>
-                            <line
-                              x1="21"
-                              y1="20"
-                              x2="21"
-                              y2="25"
-                              stroke="#444444"
-                              stroke-width="2"
-                            ></line>
+                      <div class="detail___22pEp detail___3AT8g small-size___1i0G0">
+                        <svg class="icon___2OPTw" width="40px" height="40px" viewBox="0 0 40 40"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <g transform="translate(1.000000, 6.000000)" fill="none">
+                            <line x1="6" y1="28" x2="15" y2="0" stroke="#444444" stroke-width="2"></line>
+                            <line x1="27" y1="0" x2="36" y2="28" stroke="#444444" stroke-width="2"></line>
+                            <line x1="21" y1="3" x2="21" y2="6" stroke="#444444" stroke-width="2"></line>
+                            <line x1="21" y1="11" x2="21" y2="15" stroke="#444444" stroke-width="2"></line>
+                            <line x1="21" y1="20" x2="21" y2="25" stroke="#444444" stroke-width="2"></line>
                             <path
                               d="M4,10.1992 C5.8125,10.1992 7.75,8.9169 7.75,6.70209 C7.75,4.66209 4,0.87354 4,0.87354 C4,0.87354 0.25,4.66209 0.25,6.70209 C0.25,8.9169 2.1875,10.1992 4,10.1992 Z"
-                              fill="#444444"
-                            ></path>
+                              fill="#444444"></path>
                           </g>
                         </svg>
                         <div class="title___3rl0o">
@@ -254,11 +137,13 @@ onMounted(() => {
                   </div>
                   <RouterLink :to="`/quickleasing/${car.id}`">
                     <button
-                      class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q"
-                    >
+                      class="button___2oWcS default___31nVJ cta-button___2wq8T outlined___F3j36 rounded-corners___2DuU9 small___3BQ-q">
                       Vælg bil
                     </button>
                   </RouterLink>
+                  <div class="additional-price___2tuCL" style="font-size: x-small; margin-top:5px;">
+                    {{ textUnderPicture(car) }}
+                  </div>
                 </div>
               </div>
             </RouterLink>
@@ -269,30 +154,21 @@ onMounted(() => {
 
     <!-- START NEW FILTER -->
     <div class="filter__toggle-button" v-if="isMobile" @click="toggleFilter()">
-      <button  class="button-primary--filter" :class="{'button-primary--filter-apply': showFilter}" style="display: flex; align-items: center;width: 100vw;justify-content: center">
-        <img src="../assets/images/filter_filters_funnel_list_navigation_sort_sorting_icon_123212.svg"  style="width: 30px; margin-right: 10px;" alt="">
-        <span v-if="showFilter" >Færdig</span>
+      <button class="button-primary--filter" :class="{ 'button-primary--filter-apply': showFilter }"
+        style="display: flex; align-items: center;width: 100vw;justify-content: center">
+        <img src="../assets/images/filter_filters_funnel_list_navigation_sort_sorting_icon_123212.svg"
+          style="width: 30px; margin-right: 10px;" alt="">
+        <span v-if="showFilter">Færdig</span>
         <span v-else>Filter</span>
       </button>
     </div>
-    <div v-if="showFilter" class="filter__container-mobile"  :class="{show: isMobile && showFilter}" >
-      <div class="filter__inner-wrapper" >
+    <div v-if="showFilter" class="filter__container-mobile" :class="{ show: isMobile && showFilter }">
+      <div class="filter__inner-wrapper">
         <button class="filter__close-button" @click="toggleFilter()">
-          <svg
-            class="filter__close-icon"
-            width="24px"
-            height="24px"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-          >
-            <g
-              transform="translate(1.000000, 1.000000)"
-              stroke="#444444"
-              stroke-width="2"
-              fill="none"
-              fill-rule="evenodd"
-            >
+          <svg class="filter__close-icon" width="24px" height="24px" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g transform="translate(1.000000, 1.000000)" stroke="#444444" stroke-width="2" fill="none"
+              fill-rule="evenodd">
               <line x1="22" y1="22" x2="0" y2="0"></line>
               <line x1="22" y1="0" x2="0" y2="22"></line>
             </g>
@@ -304,14 +180,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
               <label class="container">
-                <input
-                  class="filter__checkbox checkbox"
-                  type="checkbox"
-                  :id="brand.name"
-                  :value="brand.name"
-                  :checked="selectedBrands.includes(brand.name)"
-                  @click="handleCheckboxClick(brand.name)"
-                />
+                <input class="filter__checkbox checkbox" type="checkbox" :id="brand.name" :value="brand.name"
+                  :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
                 {{ brand.name }} ({{ brand.count }})
                 <span class="checkmark"></span>
               </label>
@@ -323,60 +193,30 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs" style="padding-top: 1rem">
             Model
           </h3>
-          <select
-            class="filter__select"
-            v-model="selectedModel"
-            @change="modelChange()"
-          >
+          <select class="filter__select" v-model="selectedModel" @change="modelChange()">
             <option class="filter__option-all" value="*">Alle modeller</option>
-            <option
-              class="filter__option"
-              v-for="option in modelOptions"
-              :value="option"
-            >
+            <option class="filter__option" v-for="option in modelOptions" :value="option">
               {{ option.label }}
             </option>
           </select>
         </div>
 
-        <div class="filter__price" id="filterPrice" >
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
+        <div class="filter__price" id="filterPrice">
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">
             Pris pr.md.
           </h3>
-          <Slider
-            v-model="priceRange.value"
-            :min="priceRange.savedValue[0]"
-            :max="priceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="priceChange"
-            style="padding: 0 1rem"
-          ></Slider>
+          <Slider v-model="priceRange.value" :min="priceRange.savedValue[0]" :max="priceRange.savedValue[1]" :step="500"
+            :tooltips="true" :range="true" :format="(value) => `${value} kr.`" @change="priceChange"
+            style="padding: 0 1rem"></Slider>
         </div>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">
             Førstegangsydelse
           </h3>
-          <Slider
-            v-model="oneTimePriceRange.value"
-            :min="oneTimePriceRange.savedValue[0]"
-            :max="oneTimePriceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="oneTimePriceChange"
-            style="padding: 0 1rem"
-          ></Slider>
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]"
+            :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
+            :format="(value) => `${value} kr.`" @change="oneTimePriceChange" style="padding: 0 1rem"></Slider>
         </div>
 
         <div class="filter__tire">
@@ -386,13 +226,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="gear.value"
-                  :checked="selectedGearTypes.includes(gear.value)"
-                  @click="handleCheckboxClickGearType(gear.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="gear.value"
+                  :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
                 {{ gear.name }} ({{ gear.count }})
                 <span class="checkmark"></span>
               </label>
@@ -404,13 +239,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="fuel.value"
-                  :checked="selectedFuelTypes.includes(fuel.value)"
-                  @click="handleCheckboxClickFuelType(fuel.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="fuel.value"
+                  :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
                 {{ fuel.name }} ({{ fuel.count }})
                 <span class="checkmark"></span>
               </label>
@@ -421,25 +251,13 @@ onMounted(() => {
         <div class="filter__features">
           <h3 class="filter__header pad-header--xs">Udstyr</h3>
           <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="item in featureItems"
-              :key="item.value"
-              :data-value="item.value"
-            >
-              <label
-                class="container"
-                v-if="
-                  carData.filter(
-                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
-                  ).length > 0
-                "
-              >
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  @click="handleCheckboxClickFeatures(item.value)"
-                />
+            <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
+              <label class="container" v-if="
+                carData.filter(
+                  (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                ).length > 0
+              ">
+                <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
                 {{ item.name }} ({{
                   carData.filter(
                     (car) => car.Udstyr && car.Udstyr.includes(item.value)
@@ -456,13 +274,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)"
-                  @click="handleCheckboxClickTireType(tire.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
                 {{ tire.name }} ({{ tire.count }})
                 <span class="checkmark"></span>
               </label>
@@ -472,41 +285,28 @@ onMounted(() => {
         <div class="filter__tire">
           <h3 class="filter__header pad-header--xs">Bil type</h3>
           <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="carType in carTypes"
-              :key="carType.value"
-            >
+            <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedCarTypes.includes(carType.value)"
-                  @click="handleCheckboxClickCarType(carType.value)"
-                />
+                  @click="handleCheckboxClickCarType(carType.value)" />
                 {{ carType.name }} ({{ carType.count }})
                 <span class="checkmark"></span>
               </label>
             </li>
           </ul>
         </div>
-      </div >
+      </div>
     </div>
-    <div v-else-if="!isMobile" class="filter__container" ref="example2"  >
-      <div class="filter__inner-wrapper" >
+    <div v-else-if="!isMobile" class="filter__container" ref="example2">
+      <div class="filter__inner-wrapper">
         <div class="filter__brand" id="brandCheckbox">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
               <label class="container">
-                <input
-                  class="filter__checkbox checkbox"
-                  type="checkbox"
-                  :value="brand.name"
-                  :checked="selectedBrands.includes(brand.name)"
-                  @click="handleCheckboxClick(brand.name)"
-                />
+                <input class="filter__checkbox checkbox" type="checkbox" :value="brand.name"
+                  :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
                 {{ brand.name }} ({{ brand.count }})
                 <span class="checkmark"></span>
               </label>
@@ -518,58 +318,29 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs" style="padding-top: 1rem">
             Model
           </h3>
-          <select
-            class="filter__select"
-            v-model="selectedModel"
-            @change="modelChange()"
-          >
+          <select class="filter__select" v-model="selectedModel" @change="modelChange()">
             <option class="filter__option-all" value="*">Alle modeller</option>
-            <option
-              class="filter__option"
-              v-for="option in modelOptions"
-              :value="option"
-            >
+            <option class="filter__option" v-for="option in modelOptions" :value="option">
               {{ option.label }}
             </option>
           </select>
         </div>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">
             Pris pr.md.
           </h3>
-          <Slider
-            v-model="priceRange.value"
-            :min="priceRange.savedValue[0]"
-            :max="priceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="priceChange"
-          ></Slider>
+          <Slider v-model="priceRange.value" :min="priceRange.savedValue[0]" :max="priceRange.savedValue[1]" :step="500"
+            :tooltips="true" :range="true" :format="(value) => `${value} kr.`" @change="priceChange"></Slider>
         </div>
 
         <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
+          <h3 class="filter__header" style="padding-bottom: 3.5rem; padding-top: 1.5rem">
             Førstegangsydelse
           </h3>
-          <Slider
-            v-model="oneTimePriceRange.value"
-            :min="oneTimePriceRange.savedValue[0]"
-            :max="oneTimePriceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="oneTimePriceChange"
-          ></Slider>
+          <Slider v-model="oneTimePriceRange.value" :min="oneTimePriceRange.savedValue[0]"
+            :max="oneTimePriceRange.savedValue[1]" :step="500" :tooltips="true" :range="true"
+            :format="(value) => `${value} kr.`" @change="oneTimePriceChange"></Slider>
         </div>
 
         <div class="filter__tire">
@@ -579,13 +350,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="gear.value"
-                  :checked="selectedGearTypes.includes(gear.value)"
-                  @click="handleCheckboxClickGearType(gear.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="gear.value"
+                  :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
                 {{ gear.name }} ({{ gear.count }})
                 <span class="checkmark"></span>
               </label>
@@ -597,13 +363,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="fuel.value"
-                  :checked="selectedFuelTypes.includes(fuel.value)"
-                  @click="handleCheckboxClickFuelType(fuel.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="fuel.value"
+                  :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
                 {{ fuel.name }} ({{ fuel.count }})
                 <span class="checkmark"></span>
               </label>
@@ -614,25 +375,13 @@ onMounted(() => {
         <div class="filter__features">
           <h3 class="filter__header pad-header--xs">Udstyr</h3>
           <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="item in featureItems"
-              :key="item.value"
-              :data-value="item.value"
-            >
-              <label
-                class="container"
-                v-if="
-                  carData.filter(
-                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
-                  ).length > 0
-                "
-              >
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  @click="handleCheckboxClickFeatures(item.value)"
-                />
+            <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
+              <label class="container" v-if="
+                carData.filter(
+                  (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                ).length > 0
+              ">
+                <input class="filter__checkbox" type="checkbox" @click="handleCheckboxClickFeatures(item.value)" />
                 {{ item.name }} ({{
                   carData.filter(
                     (car) => car.Udstyr && car.Udstyr.includes(item.value)
@@ -649,13 +398,8 @@ onMounted(() => {
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)"
-                  @click="handleCheckboxClickTireType(tire.value)"
-                />
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
+                  :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
                 {{ tire.name }} ({{ tire.count }})
                 <span class="checkmark"></span>
               </label>
@@ -665,26 +409,18 @@ onMounted(() => {
         <div class="filter__tire">
           <h3 class="filter__header pad-header--xs">Bil type</h3>
           <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="carType in carTypes"
-              :key="carType.value"
-            >
+            <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
               <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
+                <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedCarTypes.includes(carType.value)"
-                  @click="handleCheckboxClickCarType(carType.value)"
-                />
+                  @click="handleCheckboxClickCarType(carType.value)" />
                 {{ carType.name }} ({{ carType.count }})
                 <span class="checkmark"></span>
               </label>
             </li>
           </ul>
         </div>
-      </div >
+      </div>
     </div>
   </div>
   <FooterItem />
@@ -784,6 +520,12 @@ export default {
     this.fetchModels();
   },
   methods: {
+    textUnderPicture(car) {
+      return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
+                  leasingydelse kr. ${car.base_maanedspris} \n-
+                  udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6) * 36) + 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse) ?? 0)} kr. `
+    },
     async fetchData() {
       const response = await fetch(this.currentURL, {
         headers: {
@@ -1111,7 +853,7 @@ export default {
 
       if (
         this.oneTimePriceRange.value[0] ===
-          this.oneTimePriceRange.savedValue[0] &&
+        this.oneTimePriceRange.savedValue[0] &&
         this.oneTimePriceRange.value[1] === this.oneTimePriceRange.savedValue[1]
       ) {
         this.carData = allData;
@@ -1384,6 +1126,7 @@ export default {
   font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
+
 .button-primary--filter:hover {
   background-color: var(--action);
   color: white;
@@ -1391,9 +1134,9 @@ export default {
 }
 
 .button-primary--filter-apply {
-  background-color: var(--action)!important;
+  background-color: var(--action) !important;
   border: none;
-  color: white!important;
+  color: white !important;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -1403,23 +1146,22 @@ export default {
   font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
+
 .button-primary--filter-apply:hover {
-  background-color: var(--secondary)!important;
-  color: black!important;
+  background-color: var(--secondary) !important;
+  color: black !important;
   transform: scale(1.02);
 }
 
 
 @media only screen and (max-width: 600px) {
-  .button-primary--filter {
-
-
-  }
+  .button-primary--filter {}
 }
 
 
 .filter__toggle-button {
-  display: none; /* hide by default */
+  display: none;
+  /* hide by default */
 }
 
 .filter__toggle-button-label {
@@ -1430,6 +1172,7 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .filter__close-button {
   position: absolute;
   top: 0;
@@ -1444,10 +1187,11 @@ export default {
 
 /* show the toggle button on smaller screens */
 @media only screen and (max-width: 768px) {
-  .product-card___2naPO{
-    width: 100%!important;
-    max-width: 100%!important;
+  .product-card___2naPO {
+    width: 100% !important;
+    max-width: 100% !important;
   }
+
   .filter__container-mobile {
     position: sticky;
     z-index: 10;
@@ -1459,10 +1203,11 @@ export default {
     display: block;
     z-index: 11;
   }
+
   .filter__inner-wrapper {
     display: none;
     flex-direction: column;
-    margin-top: 0!important;
+    margin-top: 0 !important;
     padding: var(--space-s) var(--space-m);
   }
 
@@ -1471,35 +1216,38 @@ export default {
   }
 
   .filter__header {
-    font-size: calc(var(--text-s))!important;
+    font-size: calc(var(--text-s)) !important;
     font-weight: bold;
-    padding-top: 1rem!important;
-    padding-bottom: 3rem!important;
+    padding-top: 1rem !important;
+    padding-bottom: 3rem !important;
   }
 
   .filter__header.pad-header--xs {
-    padding-top: 7px!important;
-    padding-bottom: 7px!important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
   }
+
   .container {
     display: flex;
     position: relative;
-    padding-left: 20px!important;
+    padding-left: 20px !important;
 
-    font-size: calc(var(--text-s) - 1px)!important;
+    font-size: calc(var(--text-s) - 1px) !important;
 
   }
-  .checkmark{
+
+  .checkmark {
     position: absolute;
     top: 0;
     left: 0;
-    height: 15px!important;
-    width: 15px!important;
+    height: 15px !important;
+    width: 15px !important;
     background-color: #eee;
   }
+
   .container .checkmark:after {
-    left: 4px!important;
-    top: 1px!important;
+    left: 4px !important;
+    top: 1px !important;
     width: 5px;
     height: 10px;
     border: solid white;
@@ -1523,18 +1271,19 @@ export default {
     margin: 0;
     padding: 0;
   }
+
   .filter__ul-horizontal {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 7px!important;
+    gap: 7px !important;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .filter__li {
-    margin-top: 2px!important;
+    margin-top: 2px !important;
     margin-bottom: 4px;
   }
 
@@ -1564,6 +1313,7 @@ export default {
     margin-bottom: 4px;
   }
 }
+
 @media (max-width: 1024px) {
   .filter__toggle-button {
     position: fixed;
@@ -1634,6 +1384,7 @@ export default {
   background-color: #f1f1f1;
 
 }
+
 .filter__container::-webkit-scrollbar {
   width: 1px;
 }
@@ -1686,6 +1437,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 .filter__ul-horizontal {
   display: flex;
   flex-direction: row;
@@ -1725,9 +1477,11 @@ export default {
 .filter__tire {
   margin-bottom: 4px;
 }
+
 .main-flow___Sjg41 {
   flex: 1;
 }
+
 .container {
   display: flex;
   position: relative;
@@ -1764,12 +1518,12 @@ export default {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.container:hover input~.checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.container input:checked~.checkmark {
   background-color: var(--action);
 }
 
@@ -1781,7 +1535,7 @@ export default {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.container input:checked~.checkmark:after {
   display: block;
 }
 
