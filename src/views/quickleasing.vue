@@ -748,6 +748,13 @@ export default {
     this.fetchModels();
   },
   async created() {
+    // Set initial value for isMobile
+    this.isMobile = this.checkMobile();
+
+    // Listen for changes in screen size and update isMobile accordingly
+    window.matchMedia("(max-width: 1365px)").addListener((e) => {
+      this.isMobile = e.matches;
+    });
     await this.fetchData();
     await this.fetchData2();
     (await this.updateTireTypeCounts()) == this.updateTireTypeCounts.bind(this);
@@ -756,7 +763,10 @@ export default {
     this.fetchModels();
   },
   methods: {
-
+    checkMobile() {
+      // Check if screen size is less than or equal to 1365px
+      return window.matchMedia("(max-width: 1365px)").matches;
+    },
     clearFilters() {
       this.selectedBrands = [];
       this.selectedFeatures = [];
@@ -1475,9 +1485,7 @@ export default {
       return filters;
     },
 
-    isMobile() {
-      return window.innerWidth <= 1365; // adjust this value to fit your design needs
-    },
+
     uniqueBrands() {
       const brandCount = {};
       this.originalData.forEach((car) => {
