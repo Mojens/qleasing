@@ -874,7 +874,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li v-for="brand in uniqueBrands" :key="brand" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :id="brand.name"
                   :checked="selectedBrands.includes(brand.name)"
@@ -956,7 +956,7 @@ onMounted(() => {
           </h3>
           <ul class="filter__ul-horizontal">
             <li v-for="gear in gearTypes" :key="gear.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedGearTypes.includes(gear.value)"
                   :value="gear.value"
@@ -974,7 +974,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Brændstof</h3>
           <ul class="filter__ul-horizontal">
             <li v-for="fuel in fuelTypes" :key="fuel.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedFuelTypes.includes(fuel.value)"
                   :value="fuel.value"
@@ -1004,7 +1004,7 @@ onMounted(() => {
                     (car) => car.Udstyr && car.Udstyr.includes(item.value)
                   ).length > 0
                 "
-                class="container"
+                class="container__label"
               >
                 <input
                   class="filter__checkbox"
@@ -1026,7 +1026,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Dæktype</h3>
           <ul class="filter__ul-horizontal">
             <li v-for="tire in tireTypes" :key="tire.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedTireTypes.includes(tire.value)"
                   :value="tire.value"
@@ -1048,7 +1048,7 @@ onMounted(() => {
               :key="carType.value"
               class="filter__li"
             >
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedCarTypes.includes(carType.value)"
                   :value="tire.value"
@@ -1070,7 +1070,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li v-for="brand in uniqueBrands" :key="brand" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedBrands.includes(brand.name)"
                   :value="brand.name"
@@ -1149,7 +1149,7 @@ onMounted(() => {
           </h3>
           <ul class="filter__ul-horizontal">
             <li v-for="gear in gearTypes" :key="gear.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedGearTypes.includes(gear.value)"
                   :value="gear.value"
@@ -1167,7 +1167,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Brændstof</h3>
           <ul class="filter__ul-horizontal">
             <li v-for="fuel in fuelTypes" :key="fuel.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedFuelTypes.includes(fuel.value)"
                   :value="fuel.value"
@@ -1197,7 +1197,7 @@ onMounted(() => {
                     (car) => car.Udstyr && car.Udstyr.includes(item.value)
                   ).length > 0
                 "
-                class="container"
+                class="container__label"
               >
                 <input
                   class="filter__checkbox"
@@ -1219,7 +1219,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Dæktype</h3>
           <ul class="filter__ul-horizontal">
             <li v-for="tire in tireTypes" :key="tire.value" class="filter__li">
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedTireTypes.includes(tire.value)"
                   :value="tire.value"
@@ -1241,7 +1241,7 @@ onMounted(() => {
               :key="carType.value"
               class="filter__li"
             >
-              <label class="container">
+              <label class="container__label">
                 <input
                   :checked="selectedCarTypes.includes(carType.value)"
                   :value="tire.value"

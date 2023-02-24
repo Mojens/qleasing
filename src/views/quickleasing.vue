@@ -72,7 +72,7 @@ onMounted(() => {
                 </div>
 
               </div>
-              <div class="filter__horizontal-item center--left">
+              <div class="filter__horizontal-item center--left" v-if="!isMobile">
                 <div class="filter__horizontal-item-inner">
 
                   <div class="filter__horizontal-item-select">
@@ -415,7 +415,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox checkbox" type="checkbox" :id="brand.name" :value="brand.name"
                   :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
                 {{ brand.name }} ({{ brand.count }})
@@ -461,7 +461,7 @@ onMounted(() => {
           </h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="gear.value"
                   :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
                 {{ gear.name }} ({{ gear.count }})
@@ -474,7 +474,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Brændstof</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="fuel.value"
                   :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
                 {{ fuel.name }} ({{ fuel.count }})
@@ -488,7 +488,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Udstyr</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
-              <label class="container" v-if="
+              <label class="container__label" v-if="
                 carData.filter(
                   (car) => car.Udstyr && car.Udstyr.includes(item.value)
                 ).length > 0
@@ -509,7 +509,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Dæktype</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
                 {{ tire.name }} ({{ tire.count }})
@@ -522,7 +522,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Bil type</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedCarTypes.includes(carType.value)"
                   @click="handleCheckboxClickCarType(carType.value)" />
@@ -540,7 +540,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
             <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox checkbox" type="checkbox" :value="brand.name"
                   :checked="selectedBrands.includes(brand.name)" @click="handleCheckboxClick(brand.name)" />
                 {{ brand.name }} ({{ brand.count }})
@@ -585,7 +585,7 @@ onMounted(() => {
           </h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="gear.value"
                   :checked="selectedGearTypes.includes(gear.value)" @click="handleCheckboxClickGearType(gear.value)" />
                 {{ gear.name }} ({{ gear.count }})
@@ -598,7 +598,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Brændstof</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="fuel.value"
                   :checked="selectedFuelTypes.includes(fuel.value)" @click="handleCheckboxClickFuelType(fuel.value)" />
                 {{ fuel.name }} ({{ fuel.count }})
@@ -612,7 +612,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Udstyr</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="item in featureItems" :key="item.value" :data-value="item.value">
-              <label class="container" v-if="
+              <label class="container__label" v-if="
                 carData.filter(
                   (car) => car.Udstyr && car.Udstyr.includes(item.value)
                 ).length > 0
@@ -633,7 +633,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Dæktype</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedTireTypes.includes(tire.value)" @click="handleCheckboxClickTireType(tire.value)" />
                 {{ tire.name }} ({{ tire.count }})
@@ -646,7 +646,7 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Bil type</h3>
           <ul class="filter__ul-horizontal">
             <li class="filter__li" v-for="carType in carTypes" :key="carType.value">
-              <label class="container">
+              <label class="container__label">
                 <input class="filter__checkbox" type="checkbox" :value="tire.value"
                   :checked="selectedCarTypes.includes(carType.value)"
                   @click="handleCheckboxClickCarType(carType.value)" />
@@ -1637,7 +1637,7 @@ export default {
     padding-bottom: 7px !important;
   }
 
-  .container {
+  .container__label {
     display: flex;
     position: relative;
     padding-left: 20px !important;
@@ -1655,7 +1655,7 @@ export default {
     background-color: #eee;
   }
 
-  .container .checkmark:after {
+  .container__label .checkmark:after {
     left: 4px !important;
     top: 1px !important;
     width: 5px;
@@ -1940,7 +1940,7 @@ export default {
   flex: 1;
 }
 
-.container {
+.container__label {
   display: flex;
   position: relative;
   padding-left: 26px;
@@ -1955,7 +1955,7 @@ export default {
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.container__label input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -1976,12 +1976,12 @@ export default {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
+.container__label:hover input~.checkmark {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked~.checkmark {
+.container__label input:checked~.checkmark {
   background-color: var(--action);
 }
 
@@ -1993,12 +1993,12 @@ export default {
 }
 
 /* Show the checkmark when checked */
-.container input:checked~.checkmark:after {
+.container__label input:checked~.checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.container__label .checkmark:after {
   left: 7px;
   top: 3px;
   width: 5px;
