@@ -21,11 +21,11 @@
           <div class="navigation-item___21XPw menu-item___2UedM" >
             <div class="multi-link-button___Av7sq">
               <div class="Collapsible" ><span class="Collapsible__trigger" ><button
-                class="mobile-button___nwox_" @click="toggleCollapsible" >
+                class="mobile-button___nwox_" @click="toggleBrandsCollapsible" >
                     <div class="title___wAdVl" >Mærker</div>
                   </button></span>
                 <div class="Collapsible__contentOuter"
-                     :class="{ 'is-opened___2MlFy': isCollapsibleOpen, 'is-closed': !isCollapsibleOpen }" >
+                     :class="{ 'is-opened___2MlFy': isBrandsCollapsibleOpen, 'is-closed': !isBrandsCollapsibleOpen }" >
                   <div class="Collapsible__contentInner">
                     <div class="sub-links___J39c2 sub-links___3E1Vu">
                       <RouterLink class="sub-link___TQy79"
@@ -289,6 +289,7 @@ export default {
       contentHeight: 0,
       isMenuOpen: false,
       isCollapsibleOpen: false,
+      isBrandsCollapsibleOpen: false,
     };
   },
   methods: {
@@ -298,6 +299,12 @@ export default {
     toggleCollapsible() {
       this.isCollapsibleOpen = !this.isCollapsibleOpen;
       if (this.isCollapsibleOpen) {
+        this.contentHeight = this.$refs.contentInner.offsetHeight;
+      }
+    },
+    toggleBrandsCollapsible() {
+      this.isBrandsCollapsibleOpen = !this.isBrandsCollapsibleOpen;
+      if (this.isBrandsCollapsibleOpen) {
         this.contentHeight = this.$refs.contentInner.offsetHeight;
       }
     },
