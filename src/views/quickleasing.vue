@@ -764,8 +764,11 @@ export default {
   },
   methods: {
     checkMobile() {
-      // Check if screen size is less than or equal to 1365px
-      return window.matchMedia("(max-width: 1365px)").matches;
+      // Get the viewport width using window.visualViewport
+      const viewportWidth = window.visualViewport.width;
+
+      // Check if viewport width is less than or equal to 1365px
+      return viewportWidth <= 1365;
     },
     clearFilters() {
       this.selectedBrands = [];

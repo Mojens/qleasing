@@ -1050,7 +1050,9 @@ export default {
 .main-flow___Sjg41 {
   display: -webkit-box;
   display: -ms-flexbox;
+
   display: flex;
+  display: contents;
   min-height: 34rem;
 }
 
