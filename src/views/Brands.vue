@@ -1355,6 +1355,10 @@ export default {
   }
 },
   async created() {
+    this.isMobile = this.checkMobile();
+    window.matchMedia("(max-width: 1365px)").addListener((e) => {
+      this.isMobile = e.matches;
+    });
     await this.fetchData();
     await this.fetchData2();
     const brand = this.$route.params.brand;
@@ -1366,7 +1370,10 @@ export default {
 
   },
   methods: {
-
+    checkMobile() {
+      // Check if screen size is less than or equal to 1365px
+      return window.matchMedia("(max-width: 1365px)").matches;
+    },
 
     clearFilters() {
       this.selectedBrands = [];
@@ -2086,9 +2093,7 @@ export default {
       return filters;
     },
 
-    isMobile() {
-      return window.innerWidth <= 1365; // adjust this value to fit your design needs
-    },
+
     uniqueBrands() {
       const brandCount = {};
       this.originalData.forEach((car) => {
