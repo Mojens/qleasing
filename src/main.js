@@ -17,7 +17,6 @@ import "./assets/main.css";
 import "./assets/formkit_custom.css";
 
 import { telephone,email,avatarMan,arrowDown,open } from "@formkit/icons";
-
 const app = createApp(App);
 const pro = createProPlugin('fk-548a6cb3d', inputs)
 app.use(createPinia());

@@ -278,12 +278,11 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       touchStartX: null,
-      testURL: import.meta.env.VUE_APP_TEST_URL,
+      testURL: process.env.VUE_APP_TEST_URL,
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
@@ -315,6 +314,9 @@ export default {
   },
 
   async mounted() {
+    console.log(import.meta.env)
+    console.log(process.env)
+    console.log(this.testURL)
     const carCards = document.querySelectorAll('.product___3vmta');
     carCards.forEach((carCard) => {
       carCard.addEventListener('transitionend', () => {
