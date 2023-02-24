@@ -282,7 +282,6 @@ export default {
   data() {
     return {
       touchStartX: null,
-      testURL: process.env.VUE_APP_TEST_URL,
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
@@ -314,8 +313,8 @@ export default {
   },
 
   async mounted() {
-    console.log(import.meta.env)
-    console.log(process.env)
+    const testURL = process.env.VUE_APP_TEST_URL
+    console.log(testURL)
     console.log(this.testURL)
     const carCards = document.querySelectorAll('.product___3vmta');
     carCards.forEach((carCard) => {
