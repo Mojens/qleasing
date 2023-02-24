@@ -804,9 +804,10 @@ export default {
 
 .label___xUzK4 {
   display: inline-block;
-  height: 1.125rem;
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  height: 1.205rem;
   padding: 0.125rem 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.70rem;
   border-radius: 0 0 0.5rem 0;
   color: #fff;
   text-transform: uppercase;

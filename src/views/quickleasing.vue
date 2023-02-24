@@ -49,6 +49,93 @@ onMounted(() => {
             </div>
           </div>
         </div>
+        <div class="filter__horizontal-container">
+          <div class="filter__horizontal-inner-wrapper">
+            <div class="grid--auto-3">
+
+              <div class="filter__horizontal-item">
+
+                <div class="select">
+                  <select id="standard-select" v-model="selectedPrice" class="filter__dropdown" @change="sortCars">
+                    <option selected style="display: none;" value="*">Sorter Efter</option>
+
+                    <option value="asc" @change="sortPriceDesc">Laveste Pris pr.md</option>
+
+
+                    <option value="desc" @change="sortPriceAsc">Højeste Pris pr.md</option>
+
+                    <option value="asc_ud" @change="sortUdbetalingDesc">Laveste Udbetaling</option>
+                    <option value="desc_ud" @change="sortUdbetalingAsc">Højeste Udbetaling</option>
+
+                    <option value="new" @change="sortNewestCarAdded">Nyeste</option>
+
+
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="filter__horizontal-item">
+                <div class="filter__horizontal-item-inner">
+
+                  <div class="filter__horizontal-item-select">
+                    <ul class="list">
+                      <li class="list-item">
+                        <input id="image-size-large" class="input" data-name="image-size" name="image-size" type="radio"
+                               value="large" @click="changeCardsPerRowToTwo">
+                        <label class="large-images" for="image-size-large">Skift billedstørrelse stor</label>
+                      </li>
+                      <li class="list-item">
+                        <input id="image-size-small" checked="" class="input" data-name="image-size" name="image-size"
+                               type="radio" value="small" @click="changeCardsPerRowToThree">
+                        <label class="small-images" for="image-size-small">Skift billedstørrelse lille</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+              <div class="filter__horizontal-item">
+                <div class="filter__horizontal-item-inner">
+                  <p v-if="carData.length > 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DISSE {{ carData.length
+                    }}
+                    BILER:</strong></p>
+                  <p v-if="carData.length === 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI {{ carData.length }}
+                    BIL:</strong></p>
+                  <p v-if="carData.length === 0"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DESVÆRRE INGEN
+                    BILER:</strong></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="filter__horizontal-container">
+          <div class="grid--auto-3">
+            <div aria-relevant="removals" class="filter__horizontal-picked-filters">
+              <!-- Chosen filters  -->
+              <div class="filter__horizontal-item" v-if="selectedFilters.length > 0">
+                <div aria-live="assertive" aria-relevant="removals" class="filter-tags" style="display: table;">
+                  <h2 class="filter-tags-heading">Valgte filtre:</h2>
+                  <ul class="filter-tags-list">
+                    <li v-for="(filter, index) in selectedFilters" :key="index" class="filter-tags-item">
+                      <span class="text">{{ filter.name }}</span>
+
+
+                      <button class="filter-tags-remove" style="background: #ffffff">Remove</button>
+                    </li>
+                  </ul>
+                  <div class="filter-tags-actions" >
+                    <button aria-label="Clear all selected filter terms" class="filter-clear-btn js-filter-clear" @click="clearFilters">
+                      Fjern filtre
+                    </button>
+                    <button aria-hidden="true" class="expand-more-tags js-expand-more-tags" style="display: none;"><span class="hidden-tags">+0</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="list___1c2KX">
           <div class="product___3vmta" v-for="car in carData" :key="car.id">
             <RouterLink :to="`/quickleasing/${car.id}`" style="color: inherit">
@@ -667,6 +754,90 @@ export default {
     this.fetchModels();
   },
   methods: {
+
+    clearFilters() {
+      this.selectedBrands = [];
+      this.selectedFeatures = [];
+      this.selectedGearTypes = [];
+      this.selectedFuelTypes = [];
+      this.selectedTireTypes = [];
+      this.selectedCarTypes = [];
+      this.selectedModel = '';
+      this.selectedPrice = '*';
+      this.fetchData2();
+    },
+    changeCardsPerRowToThree() {
+      /* Target this: #filter_container.products___1WcE3 .list___1c2KX  And Set property --products-per-row to 3*/
+      document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "3");
+
+    },
+    changeCardsPerRowToTwo() {
+      document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "2");
+      /* Target all classes with .product-card___2naPO and set the height property to 100% */
+      document.querySelectorAll(".product-card___2naPO").forEach((element) => {
+        element.style.setProperty("height", "100%");
+      });
+      /* Target all classes with .image-wrapper___2BJkg  and set height to 100%*/
+      document.querySelectorAll(".image-wrapper___2BJkg").forEach((element) => {
+        element.style.setProperty("height", "100%");
+      });
+      document.querySelectorAll(".content___2i8ss").forEach((element) => {
+        element.style.setProperty("padding", "var(--space-m) var(--space-xl)");
+      });
+      /* .button___2oWcS.rounded-corners___2DuU9 */
+      document.querySelectorAll(".button___2oWcS.rounded-corners___2DuU9").forEach((element) => {
+        element.style.setProperty("margin-top", "var(--space-xs)");
+        element.style.setProperty("margin-bottom", "var(--space-xs)");
+
+      });
+      /* label___xUzK4 */
+      document.querySelectorAll(".label___xUzK4").forEach((element) => {
+        element.style.setProperty("font-size", "0.95rem");
+        element.style.setProperty("height", "1.705rem");
+
+      });
+
+      /* name___3OMhd */
+      document.querySelectorAll(".name___3OMhd").forEach((element) => {
+        element.style.setProperty("font-size", "1.4rem");
+      });
+
+
+    },
+
+
+    sortPriceDesc() {
+      this.carData.sort((a, b) => b.base_maanedspris - a.base_maanedspris);
+
+    },
+    sortPriceAsc() {
+      this.carData.sort((a, b) => a.base_maanedspris - b.base_maanedspris);
+    },
+    sortUdbetalingDesc() {
+      this.carData.sort((a, b) => b.base_udbetaling - a.base_udbetaling);
+    },
+    sortUdbetalingAsc() {
+      this.carData.sort((a, b) => a.base_udbetaling - b.base_udbetaling);
+    },
+    sortNewestCarAdded() {
+      this.carData.sort((a, b) => b.id - a.id);
+    },
+    sortCars() {
+      if (this.selectedPrice === "desc") {
+        this.sortPriceDesc();
+      } else if (this.selectedPrice === "asc") {
+        this.sortPriceAsc();
+      }
+      if (this.selectedPrice === "desc_ud") {
+        this.sortUdbetalingDesc();
+      } else if (this.selectedPrice === "asc_ud") {
+        this.sortUdbetalingAsc();
+      }
+      if (this.selectedPrice === "new") {
+        this.sortNewestCarAdded();
+      }
+    },
+
     textUnderPicture(car) {
       return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
                   leasingydelse kr. ${car.base_maanedspris} \n-
@@ -1221,7 +1392,65 @@ export default {
   },
 
   computed: {
+    selectedFilters() {
+      const filters = [];
 
+      // Add selected brand filters
+      if (this.selectedBrands.length > 0) {
+        const selectedBrandFilters = this.selectedBrands.map((brand) => {
+          return { name: brand, type: 'brand' };
+        });
+        filters.push(...selectedBrandFilters);
+      }
+
+      // Add selected feature filters
+      if (this.selectedFeatures.length > 0) {
+        const selectedFeatureFilters = this.selectedFeatures.map((feature) => {
+          return { name: feature, type: 'feature' };
+        });
+        filters.push(...selectedFeatureFilters);
+      }
+
+      // Add selected price filter
+      if (this.selectedPrice !== '*') {
+        filters.push({ name: `Price: ${this.selectedPrice}`, type: 'price' });
+      }
+
+      // Add selected gear type filters
+      const selectedGearTypeFilters = this.gearTypes
+        .filter((gearType) => this.selectedGearTypes.includes(gearType.value))
+        .map((gearType) => {
+          return { name: gearType.name, type: 'gearType' };
+        });
+      if (selectedGearTypeFilters.length > 0) {
+        filters.push(...selectedGearTypeFilters);
+      }
+
+      // Add selected fuel type filters
+      const selectedFuelTypeFilters = this.fuelTypes
+        .filter((fuelType) => this.selectedFuelTypes.includes(fuelType.value))
+        .map((fuelType) => {
+          return { name: fuelType.name, type: 'fuelType' };
+        });
+      if (selectedFuelTypeFilters.length > 0) {
+        filters.push(...selectedFuelTypeFilters);
+      }
+
+      // Add selected tire type filters
+      const selectedTireTypeFilters = this.tireTypes
+        .filter((tireType) => this.selectedTireTypes.includes(tireType.value))
+        .map((tireType) => {
+          return { name: tireType.name, type: 'tireType' };
+        });
+      if (selectedTireTypeFilters.length > 0) {
+        filters.push(...selectedTireTypeFilters);
+      }
+      /* Return pretty string  */
+
+
+
+      return filters;
+    },
 
     isMobile() {
       return window.innerWidth <= 1365; // adjust this value to fit your design needs
@@ -1507,22 +1736,22 @@ export default {
   }
 
   .filter__container::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
   }
 
   .filter__inner-wrapper::-webkit-scrollbar-thumb {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
   }
   .filter__inner-wrapper::-webkit-scrollbar {
     width: 1px;
   }
 
   .filter__inner-wrapper::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
   }
 
   .filter__container::-webkit-scrollbar-thumb {
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
   }
   .filtered__cars-container{
     flex-direction: row;
@@ -1547,7 +1776,7 @@ export default {
     right: 0;
     bottom: 0;
     overflow: auto;
-    background-color: #f1f1f1;
+    background-color: #f2f2f2;
     padding: var(--section-space-m);
   }
 
@@ -1587,7 +1816,7 @@ export default {
   overflow: auto;
   width: calc(35vw - 2 * var(--section-space-xs));
   margin-left: var(--section-space-xs);
-  background-color: #f1f1f1;
+  background-color: #f2f2f2;
 
 }
 
@@ -1596,11 +1825,11 @@ export default {
 }
 
 .filter__container::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: #f2f2f2;
 }
 
 .filter__container::-webkit-scrollbar-thumb {
-  background-color: #f1f1f1;
+  background-color: #f2f2f2;
 }
 
 

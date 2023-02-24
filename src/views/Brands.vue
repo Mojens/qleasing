@@ -5,6 +5,7 @@ import { ref, onMounted } from "vue";
 import NavigationBar from "@/components/NavigationBar.vue";
 import BrandRequestForm from "@/components/BrandRequestForm.vue";
 
+
 // function to use autoAnimate the library, when submit(function already exists called createForm) is clicked if there are errors
 const example = ref();
 const example2 = ref();
@@ -19,7 +20,7 @@ onMounted(() => {
 <template>
   <NavigationBar />
 
-  <div class="filtered__cars-container" ref="example">
+  <div ref="example" class="filtered__cars-container">
 
 
     <div class="main-flow___Sjg41" data-qa="main-flow">
@@ -35,67 +36,123 @@ onMounted(() => {
           <div class="brands__content-container">
             <div class="brands__content pad-header--l">
               <p v-if="$route.params.brand === 'bmw'">
-                Ønsker du også at opleve luksus i din hverdag? BMW er for mange forbundet med flot design, høj kvalitet og sporty køreegenskaber. Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris, når du privatleaser en BMW hos os.
+                Ønsker du også at opleve luksus i din hverdag? BMW er for mange forbundet med flot design, høj kvalitet
+                og sporty køreegenskaber. Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en
+                attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte.
+                Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en
+                fornuftig pris, når du privatleaser en BMW hos os.
                 <br> <br>
-                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis du er på udkig efter en brugt BMW. Privatleasing er nemlig slet ikke så kompliceret, som mange måske tror. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele leasing-processen. Du kan udforske vores forskellige BMW-modeller nedenfor.
+                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis
+                du er på udkig efter en brugt BMW. Privatleasing er nemlig slet ikke så kompliceret, som mange måske
+                tror. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem
+                hele leasing-processen. Du kan udforske vores forskellige BMW-modeller nedenfor.
               </p>
               <p v-else-if="$route.params.brand === 'audi'">
-                Hos Quickleasing A/S tilbyder vi et stort udvalg af Audi-modeller til yderst konkurrencedygtige priser. Audi er kendt for sin høje kvalitet og gode køreegenskaber, og med privatleasing af en Audi kan du få glæde af disse egenskaber uden at skulle investere en stor sum penge i køb af en ny bil.
+                Hos Quickleasing A/S tilbyder vi et stort udvalg af Audi-modeller til yderst konkurrencedygtige priser.
+                Audi er kendt for sin høje kvalitet og gode køreegenskaber, og med privatleasing af en Audi kan du få
+                glæde af disse egenskaber uden at skulle investere en stor sum penge i køb af en ny bil.
                 <br> <br>
-                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Audi-biler er kvalitetssikret.
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der
+                passer bedst til dig og dine behov. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle
+                vores leasede Audi-biler er kvalitetssikret.
               </p>
               <p v-else-if="$route.params.brand === 'citroen'">
-                Som en af de store og anerkendte spillere på det globale bilmarked har Citroën mere end 100 års erfaring bag sig, siden André Citroën grundlagde bilfabrikken i Frankrig tilbage i 1919. Hos QuickLeasing A/S kan vi tilbyde de bedste priser og vilkår for privatleasing af Citroën. Som eksperter i privatleasing af brugte biler har vi et omfattende udvalg af forskellige Citroën-modeller til attraktive priser.
+                Som en af de store og anerkendte spillere på det globale bilmarked har Citroën mere end 100 års erfaring
+                bag sig, siden André Citroën grundlagde bilfabrikken i Frankrig tilbage i 1919. Hos QuickLeasing A/S kan
+                vi tilbyde de bedste priser og vilkår for privatleasing af Citroën. Som eksperter i privatleasing af
+                brugte biler har vi et omfattende udvalg af forskellige Citroën-modeller til attraktive priser.
                 <br> <br>
-                Vi går dog ikke på kompromis med kvaliteten af vores biler, da vi nøje udvælger hver enkelt leasingbil. Vores Citroën-modeller, ligesom vores øvrige udvalg af leasingbiler, er enten fabriksnye modeller, der netop er returneret efter endt leasing, eller indkøbt fra udenlandske leasingselskaber. Kort sagt, selvom du kan opnå store besparelser ved at privatlease en brugt Citroën, så går vi ikke på kompromis med kvaliteten eller køreglæden.
+                Vi går dog ikke på kompromis med kvaliteten af vores biler, da vi nøje udvælger hver enkelt leasingbil.
+                Vores Citroën-modeller, ligesom vores øvrige udvalg af leasingbiler, er enten fabriksnye modeller, der
+                netop er returneret efter endt leasing, eller indkøbt fra udenlandske leasingselskaber. Kort sagt,
+                selvom du kan opnå store besparelser ved at privatlease en brugt Citroën, så går vi ikke på kompromis
+                med kvaliteten eller køreglæden.
               </p>
               <p v-else-if="$route.params.brand === 'fiat'">
                 Fiat privatleasing i Danmark - Få den populære Fiat 500 og andre smarte modeller hos Quickleasing A/S
-                Fiat er en af de førende producenter af flotte og praktiske bybiler, selvom det italienske bilmærke har mere end 110 år på bagen. Især den populære Fiat 500 har gjort sig bemærket i Danmark og ses i dag overalt på vejene
+                Fiat er en af de førende producenter af flotte og praktiske bybiler, selvom det italienske bilmærke har
+                mere end 110 år på bagen. Især den populære Fiat 500 har gjort sig bemærket i Danmark og ses i dag
+                overalt på vejene
                 <br> <br>
-                Hos Quickleasing A/S kan du opfylde din drøm om at lease en Fiat 500 eller en af de andre smarte modeller fra Fiat. Vi er førende i Danmark, når det kommer til priser på privatleasing af Fiat, og vores fordelagtige leasingaftale gør det nemt og overskueligt for dig at komme i gang med at lease din næste bil.
+                Hos Quickleasing A/S kan du opfylde din drøm om at lease en Fiat 500 eller en af de andre smarte
+                modeller fra Fiat. Vi er førende i Danmark, når det kommer til priser på privatleasing af Fiat, og vores
+                fordelagtige leasingaftale gør det nemt og overskueligt for dig at komme i gang med at lease din næste
+                bil.
               </p>
               <p v-else-if="$route.params.brand === 'ford'">
                 Få mere værdi for pengene med privatleasing af Ford
-                Vi er de førende i Danmark med priser på privatleasing af Ford, og vi tilbyder de absolut bedste priser og vilkår på Ford-leasing. Tag et kig på vores attraktive priser og vilkår, så er du ikke i tvivl om, hvor du skal privatlease din Ford! Vælg den ønskede model og kontakt os allerede i dag angående Ford-leasing, og vi svarer samme dag.
+                Vi er de førende i Danmark med priser på privatleasing af Ford, og vi tilbyder de absolut bedste priser
+                og vilkår på Ford-leasing. Tag et kig på vores attraktive priser og vilkår, så er du ikke i tvivl om,
+                hvor du skal privatlease din Ford! Vælg den ønskede model og kontakt os allerede i dag angående
+                Ford-leasing, og vi svarer samme dag.
                 <br> <br>
-                Med en leased Ford får du mere "value for money", da du ofte vil få en bil, der er markant billigere pr. måned end en tilsvarende ny bil. Vores biler stammer enten fra fabriksnye modeller, der går retur til os efter endt leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget nøje udvælger de allerbedste biler.
+                Med en leased Ford får du mere "value for money", da du ofte vil få en bil, der er markant billigere pr.
+                måned end en tilsvarende ny bil. Vores biler stammer enten fra fabriksnye modeller, der går retur til os
+                efter endt leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget
+                nøje udvælger de allerbedste biler.
               </p>
               <p v-else-if="$route.params.brand === 'hyundai'">
                 Få mere værdi for pengene med privatleasing af en Hyundai
-                Hos Quickleasing A/S er vi specialiserede i privatleasing af biler, herunder Hyundai-biler. Ved at vælge privatleasing af en Hyundai opnår du flere fordele. Du vil typisk opleve at få mere "value for money", da din månedlige leasingydelse vil være markant lavere end den månedlige udgift ved køb af en tilsvarende bil.
+                Hos Quickleasing A/S er vi specialiserede i privatleasing af biler, herunder Hyundai-biler. Ved at vælge
+                privatleasing af en Hyundai opnår du flere fordele. Du vil typisk opleve at få mere "value for money",
+                da din månedlige leasingydelse vil være markant lavere end den månedlige udgift ved køb af en
+                tilsvarende bil.
                 <br> <br>
-                Vores Hyundai-biler stammer enten fra fabriksnye modeller, der går retur til os efter endt leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget nøje udvælger de bedste modeller. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Hyundai-biler er kvalitetssikret.
+                Vores Hyundai-biler stammer enten fra fabriksnye modeller, der går retur til os efter endt
+                leasingperiode, eller vi indkøber fine biler fra udenlandske leasingselskaber, hvor vi meget nøje
+                udvælger de bedste modeller. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores
+                leasede Hyundai-biler er kvalitetssikret.
                 <br><br>
-                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Med vores omfattende service og reparation i leasingaftalen behøver du ikke bekymre dig om store, uventede regninger i løbet af leasingperioden. Kontakt os i dag for at høre mere om vores tilbud på privatleasing af Hyundai-biler.
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der
+                passer bedst til dig og dine behov. Med vores omfattende service og reparation i leasingaftalen behøver
+                du ikke bekymre dig om store, uventede regninger i løbet af leasingperioden. Kontakt os i dag for at
+                høre mere om vores tilbud på privatleasing af Hyundai-biler.
               </p>
               <p v-else-if="$route.params.brand === 'opel'">
-                Drømmer du om at køre i en pålidelig bil uden at tømme pengepungen? Tag et kig på vores store udvalg af Opel-modeller til leasing hos Quickleasing A/S. Vi er stolte af at kunne tilbyde nogle af de mest attraktive priser og vilkår på markedet for Opel leasing i Danmark.
+                Drømmer du om at køre i en pålidelig bil uden at tømme pengepungen? Tag et kig på vores store udvalg af
+                Opel-modeller til leasing hos Quickleasing A/S. Vi er stolte af at kunne tilbyde nogle af de mest
+                attraktive priser og vilkår på markedet for Opel leasing i Danmark.
                 <br> <br>
-                Ved Quickleasing A/S har vi specialiseret os i ReLeasing, hvilket betyder, at alle de Opel-modeller, du finder hos os, er brugte biler, der tidligere har været leaset ud.
+                Ved Quickleasing A/S har vi specialiseret os i ReLeasing, hvilket betyder, at alle de Opel-modeller, du
+                finder hos os, er brugte biler, der tidligere har været leaset ud.
                 <br><br>
-                Dette giver dig mulighed for at køre i en pålidelig Opel til en brøkdel af prisen på en helt ny bil. Og bare rolig, selvom bilerne er brugte, går vi aldrig på kompromis med sikkerheden eller kvaliteten af vores biler.
+                Dette giver dig mulighed for at køre i en pålidelig Opel til en brøkdel af prisen på en helt ny bil. Og
+                bare rolig, selvom bilerne er brugte, går vi aldrig på kompromis med sikkerheden eller kvaliteten af
+                vores biler.
               </p>
               <p v-else-if="$route.params.brand === 'peugeot'">
                 Et bredt udvalg af Peugeot-modeller til privatleasing
-                Peugeot har længe været et af de mest foretrukne bilmærker i Danmark, og har også modtaget mange priser og anerkendelser i resten af Europa. Den høje kvalitet og standard er noget, man kan forvente af Peugeot, uanset hvilken model man vælger.
+                Peugeot har længe været et af de mest foretrukne bilmærker i Danmark, og har også modtaget mange priser
+                og anerkendelser i resten af Europa. Den høje kvalitet og standard er noget, man kan forvente af
+                Peugeot, uanset hvilken model man vælger.
                 <br> <br>
-                Hos Quickleasing A/S finder du nøje udvalgte brugte Peugeot-modeller af høj kvalitet, og mange af disse er faktisk fabriksnye modeller, der er blevet returneret efter endt leasingperiode.
+                Hos Quickleasing A/S finder du nøje udvalgte brugte Peugeot-modeller af høj kvalitet, og mange af disse
+                er faktisk fabriksnye modeller, der er blevet returneret efter endt leasingperiode.
                 <br><br>
-                Vores brugte Peugeot-modeller tilbydes til en yderst fordelagtig pris, da vi hos Quickleasing A/S specialiserer os i privatleasing af brugte biler. Derfor kan du privatlease en Peugeot uden at skulle gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af Peugeot-modeller nedenfor, og lær mere om de fordelagtige vilkår og fordele ved privatleasing.
+                Vores brugte Peugeot-modeller tilbydes til en yderst fordelagtig pris, da vi hos Quickleasing A/S
+                specialiserer os i privatleasing af brugte biler. Derfor kan du privatlease en Peugeot uden at skulle gå
+                på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af Peugeot-modeller nedenfor, og lær mere
+                om de fordelagtige vilkår og fordele ved privatleasing.
               </p>
               <p v-else-if="$route.params.brand === 'skoda'">
                 Find din næste Skoda gennem privatleasing hos Quickleasing A/S
-                Hvis du overvejer at skifte til en Skoda, kan det være en fordel at overveje privatleasing frem for køb. Det kan nemlig resultere i besparelser, specielt hvis du vælger at privatlease en brugt Skoda. Hos Quickleasing A/S er vi eksperter i privatleasing af brugte biler, og vi kan præsentere et stort udvalg af Skoda-modeller til attraktive priser.
+                Hvis du overvejer at skifte til en Skoda, kan det være en fordel at overveje privatleasing frem for køb.
+                Det kan nemlig resultere i besparelser, specielt hvis du vælger at privatlease en brugt Skoda. Hos
+                Quickleasing A/S er vi eksperter i privatleasing af brugte biler, og vi kan præsentere et stort udvalg
+                af Skoda-modeller til attraktive priser.
                 <br> <br>
-                Selvom det ikke er en spritny bil, kan du være sikker på, at mange af modellerne i vores sortiment stadig er i en super god stand, da vi nøje udvælger alle biler.
+                Selvom det ikke er en spritny bil, kan du være sikker på, at mange af modellerne i vores sortiment
+                stadig er i en super god stand, da vi nøje udvælger alle biler.
                 <br><br>
-                Vores Skoda-modeller har alle de gode egenskaber, som Skoda traditionelt byder på, og du kan opleve en høj kvalitet og køreglæde, selvom du sparer penge. Gennemse vores udvalg af Skoda-modeller nedenfor og se, om der er en bil, der passer til dig.
+                Vores Skoda-modeller har alle de gode egenskaber, som Skoda traditionelt byder på, og du kan opleve en
+                høj kvalitet og køreglæde, selvom du sparer penge. Gennemse vores udvalg af Skoda-modeller nedenfor og
+                se, om der er en bil, der passer til dig.
 
               </p>
               <p v-else-if="$route.params.brand === 'ds'">
                 Find din næste DS gennem privatleasing hos Quickleasing A/S
-                Hos os finder du et bredt udvalg af DS-modeller til privatleasing til en attraktiv pris. DS er kendt for deres luksuriøse biler med flot design, høj komfort og avanceret teknologi
+                Hos os finder du et bredt udvalg af DS-modeller til privatleasing til en attraktiv pris. DS er kendt for
+                deres luksuriøse biler med flot design, høj komfort og avanceret teknologi
                 <br><br>
                 Ved at vælge en DS til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
 
@@ -104,54 +161,162 @@ onMounted(() => {
                 Find din næste Volvo gennem privatleasing hos Quickleasing A/S
                 Med en Volvo er du sikret en bil i topkvalitet, der er både sikker, rummelig og komfortabel.
                 <br><br>
-                Hos os finder du et udvalg af Volvo-modeller til privatleasing til fordelagtige priser, så du kan komme godt ud at køre i en af de mest populære bilmærker i Danmark.
+                Hos os finder du et udvalg af Volvo-modeller til privatleasing til fordelagtige priser, så du kan komme
+                godt ud at køre i en af de mest populære bilmærker i Danmark.
 
               </p>
               <p v-else-if="$route.params.brand === 'renault'">
                 Find din næste Renault gennem privatleasing hos Quickleasing A/S
                 <br><br>
-                Hos os finder du et bredt udvalg af Renault-modeller til privatleasing til en attraktiv pris. Renault er kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
+                Hos os finder du et bredt udvalg af Renault-modeller til privatleasing til en attraktiv pris. Renault er
+                kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
                 <br><br>
-                Ved at vælge en Renault til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
+                Ved at vælge en Renault til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig
+                pris.
 
 
               </p>
               <p v-else-if="$route.params.brand === 'mitsubishi'">
                 Find din næste Mitsubishi gennem privatleasing hos Quickleasing A/S
                 <br><br>
-                Hos os finder du et bredt udvalg af Mitsubishi-modeller til privatleasing til en attraktiv pris. Mitsubishi er kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
+                Hos os finder du et bredt udvalg af Mitsubishi-modeller til privatleasing til en attraktiv pris.
+                Mitsubishi er kendt for deres biler med høj kvalitet, høj komfort og avanceret teknologi.
                 <br><br>
-                Ved at vælge en Mitsubishi til privatleasing hos os får du både køreglæde og høj kvalitet til en fornuftig pris.
+                Ved at vælge en Mitsubishi til privatleasing hos os får du både køreglæde og høj kvalitet til en
+                fornuftig pris.
 
               </p>
               <p v-else-if="$route.params.brand === 'jeep'">
-               <strong >Find din næste Jeep gennem privatleasing hos Quickleasing A/S</strong>
+                <strong>Find din næste Jeep gennem privatleasing hos Quickleasing A/S</strong>
                 <br><br>
-                Nyd friheden og eventyret med en Jeep gennem privatleasing hos Quickleasing A/S. Hos os kan du finde en bred vifte af modeller fra det ikoniske amerikanske bilmærke, der er kendt for deres robuste terrængående biler og unikke design. Vores Jeep-modeller til privatleasing er både topmoderne og velholdte, og du kan vælge mellem alt fra den klassiske Jeep Wrangler til den rummelige og elegante Grand Cherokee.
+                Nyd friheden og eventyret med en Jeep gennem privatleasing hos Quickleasing A/S. Hos os kan du finde en
+                bred vifte af modeller fra det ikoniske amerikanske bilmærke, der er kendt for deres robuste
+                terrængående biler og unikke design. Vores Jeep-modeller til privatleasing er både topmoderne og
+                velholdte, og du kan vælge mellem alt fra den klassiske Jeep Wrangler til den rummelige og elegante
+                Grand Cherokee.
                 <br><br>
-                Med privatleasing af en Jeep hos Quickleasing A/S behøver du ikke at gå på kompromis med hverken kvalitet eller din økonomi. Vores brugte Jeep-modeller tilbyder dig en fordelagtig pris, og du kan være sikker på at få en pålidelig bil til en pris, der passer til dit budget. Uanset om du er på udkig efter en bil til bykørsel eller til off-road eventyr, kan vi tilbyde en privatleasingaftale, der passer til dine behov. Kontakt os i dag og lad os hjælpe dig med at finde din næste drømme-Jeep.
+                Med privatleasing af en Jeep hos Quickleasing A/S behøver du ikke at gå på kompromis med hverken
+                kvalitet eller din økonomi. Vores brugte Jeep-modeller tilbyder dig en fordelagtig pris, og du kan være
+                sikker på at få en pålidelig bil til en pris, der passer til dit budget. Uanset om du er på udkig efter
+                en bil til bykørsel eller til off-road eventyr, kan vi tilbyde en privatleasingaftale, der passer til
+                dine behov. Kontakt os i dag og lad os hjælpe dig med at finde din næste drømme-Jeep.
               </p>
               <p v-else-if="$route.params.brand === 'honda'">
-               <strong >Oplev Honda-kvalitet og komfort til en fordelagtig pris med privatleasing hos Quickleasing A/S
-               </strong>
+                <strong>Oplev Honda-kvalitet og komfort til en fordelagtig pris med privatleasing hos Quickleasing A/S
+                </strong>
                 <br><br>
-                Hos Quickleasing A/S tilbyder vi privatleasing af topmoderne Honda-biler, der giver en fantastisk køreoplevelse og høj køreglæde.
+                Hos Quickleasing A/S tilbyder vi privatleasing af topmoderne Honda-biler, der giver en fantastisk
+                køreoplevelse og høj køreglæde.
                 <br><br>
-                Honda er kendt for at fremstille pålidelige biler i høj kvalitet, og med privatleasing hos os kan du nyde godt af den japanske bilproducents innovative teknologi og avancerede sikkerhedsfunktioner til en overkommelig pris.
+                Honda er kendt for at fremstille pålidelige biler i høj kvalitet, og med privatleasing hos os kan du
+                nyde godt af den japanske bilproducents innovative teknologi og avancerede sikkerhedsfunktioner til en
+                overkommelig pris.
               </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="filter__horizontal-container">
+          <div class="filter__horizontal-inner-wrapper">
+            <div class="grid--auto-3">
+
+              <div class="filter__horizontal-item">
+
+                <div class="select">
+                  <select id="standard-select" v-model="selectedPrice" class="filter__dropdown" @change="sortCars">
+                    <option selected style="display: none;" value="*">Sorter Efter</option>
+
+                    <option value="asc" @change="sortPriceDesc">Laveste Pris pr.md</option>
+
+
+                    <option value="desc" @change="sortPriceAsc">Højeste Pris pr.md</option>
+
+                    <option value="asc_ud" @change="sortUdbetalingDesc">Laveste Udbetaling</option>
+                    <option value="desc_ud" @change="sortUdbetalingAsc">Højeste Udbetaling</option>
+
+                    <option value="new" @change="sortNewestCarAdded">Nyeste</option>
+
+
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="filter__horizontal-item">
+                <div class="filter__horizontal-item-inner">
+
+                  <div class="filter__horizontal-item-select">
+                    <ul class="list">
+                      <li class="list-item">
+                        <input id="image-size-large" class="input" data-name="image-size" name="image-size" type="radio"
+                               value="large" @click="changeCardsPerRowToTwo">
+                        <label class="large-images" for="image-size-large">Skift billedstørrelse stor</label>
+                      </li>
+                      <li class="list-item">
+                        <input id="image-size-small" checked="" class="input" data-name="image-size" name="image-size"
+                               type="radio" value="small" @click="changeCardsPerRowToThree">
+                        <label class="small-images" for="image-size-small">Skift billedstørrelse lille</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+              <div class="filter__horizontal-item">
+                <div class="filter__horizontal-item-inner">
+                  <p v-if="carData.length > 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DISSE {{ carData.length
+                    }}
+                    BILER:</strong></p>
+                  <p v-if="carData.length === 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI {{ carData.length }}
+                    BIL:</strong></p>
+                  <p v-if="carData.length === 0"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DESVÆRRE INGEN
+                    BILER:</strong></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="filter__horizontal-container">
+          <div class="grid--auto-3">
+            <div aria-relevant="removals" class="filter__horizontal-picked-filters">
+              <!-- Chosen filters  -->
+              <div class="filter__horizontal-item">
+                <div aria-live="assertive" aria-relevant="removals" class="filter-tags" style="display: table;" v-if="selectedFilters.length > 0">
+                  <h2 class="filter-tags-heading">Valgte filtre:</h2>
+                  <ul class="filter-tags-list">
+                    <li v-for="(filter, index) in selectedFilters" :key="index" class="filter-tags-item">
+                      <span class="text">{{ filter.name }}</span>
+
+
+                      <button class="filter-tags-remove " style="background: #ffffff">Remove</button>
+                    </li>
+                  </ul>
+                  <div class="filter-tags-actions">
+                    <button aria-label="Clear all selected filter terms" class="filter-clear-btn js-filter-clear" @click="clearFilters">
+                      Fjern filtre
+                    </button>
+                    <button aria-hidden="true" class="expand-more-tags js-expand-more-tags" style="display: none;"><span class="hidden-tags">+0</span></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="brands__request__form-container" v-if="carData.length === 0" style="margin-bottom: 2em">
-          <div class="brands__request__form-inner-wrap" >
 
-            <BrandRequestForm  />
+        <div v-if="carData.length === 0" class="brands__request__form-container" style="margin-bottom: 2em">
+          <div class="brands__request__form-inner-wrap">
+
+            <BrandRequestForm />
           </div>
         </div>
 
         <div class="list___1c2KX">
 
-          <div class="product___3vmta" v-for="car in carData" :key="car.id">
+          <div v-for="car in carData" :key="car.id" class="product___3vmta">
             <RouterLink :to="`/quickleasing/${car.id}`" style="color: inherit">
 
               <div class="product-card___2naPO has-cta___1N-4L">
@@ -164,21 +329,21 @@ onMounted(() => {
                   <!-- Label som kommer fra bil, hvis der er nogle -->
                   <div
                     v-if="car.billedeLabel !== null"
-                    class="label___xUzK4 label___IKlVk"
                     :style="{
                       backgroundColor: car.label_farve,
                       color: car.label_text_farve,
                     }"
+                    class="label___xUzK4 label___IKlVk"
                   >
                     {{ car.billedeLabel }}
                   </div>
                 </div>
                 <div class="image-wrapper___2BJkg main-image___2PNg2">
                   <img
-                    class="image___3UcXF"
-                    :src="thumbnail[car.id]"
                     :alt="`${car.brand} - ${car.model}`"
+                    :src="thumbnail[car.id]"
                     :title="`${car.brand} - ${car.model}`"
+                    class="image___3UcXF"
                   />
                 </div>
                 <div class="content___2i8ss">
@@ -202,17 +367,17 @@ onMounted(() => {
                       >
                         <svg
                           class="icon___2OPTw"
-                          width="40px"
                           height="40px"
                           viewBox="0 0 40 40"
+                          width="40px"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                         >
                           <g
-                            transform="translate(4.000000, 4.000000)"
+                            fill="none"
                             stroke="#444444"
                             stroke-width="2"
-                            fill="none"
+                            transform="translate(4.000000, 4.000000)"
                           >
                             <circle
                               id="Oval"
@@ -220,10 +385,10 @@ onMounted(() => {
                               cy="16.5"
                               r="16.5"
                             ></circle>
-                            <line x1="10" y1="8.5" x2="10" y2="24.5"></line>
-                            <line x1="17" y1="8.5" x2="17" y2="24.5"></line>
-                            <line x1="24" y1="8.5" x2="24" y2="16.5"></line>
-                            <line x1="10.5" y1="17" x2="23.5" y2="17"></line>
+                            <line x1="10" x2="10" y1="8.5" y2="24.5"></line>
+                            <line x1="17" x2="17" y1="8.5" y2="24.5"></line>
+                            <line x1="24" x2="24" y1="8.5" y2="16.5"></line>
+                            <line x1="10.5" x2="23.5" y1="17" y2="17"></line>
                           </g>
                         </svg>
                         <div class="title___3rl0o">{{ car.gear_type }}</div>
@@ -233,22 +398,22 @@ onMounted(() => {
                       >
                         <svg
                           class="icon___2OPTw"
-                          width="40px"
                           height="40px"
                           viewBox="0 0 40 40"
+                          width="40px"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                         >
                           <g
-                            transform="translate(6.000000, 6.000000)"
+                            fill="none"
                             stroke="#444444"
                             stroke-width="2"
-                            fill="none"
+                            transform="translate(6.000000, 6.000000)"
                           >
                             <path
                               d="M7.00032,8.4 C12.9003,2.5 28.0003,0 28.0003,0 C28.0003,0 26.0003,14.6 19.6003,21 C12.7003,27.9 4.70032,23.3 4.70032,23.3 C4.70032,23.3 0.00032,15.4 7.00032,8.4 Z"
                             ></path>
-                            <line x1="15" y1="13" x2="0" y2="28"></line>
+                            <line x1="15" x2="0" y1="13" y2="28"></line>
                           </g>
                         </svg>
                         <div class="title___3rl0o">
@@ -279,9 +444,9 @@ onMounted(() => {
                       >
                         <svg
                           class="icon___2OPTw"
-                          width="40px"
                           height="40px"
                           viewBox="0 0 40 40"
+                          width="40px"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                         >
@@ -295,9 +460,9 @@ onMounted(() => {
                               stroke-width="2"
                             ></path>
                             <polygon
+                              points="4 18 18 18 18 5 4 5"
                               stroke="#444444"
                               stroke-width="2"
-                              points="4 18 18 18 18 5 4 5"
                             ></polygon>
                             <path
                               d="M25,3 L29,9 L29,29 C29,30.1045695 28.1045695,31 27,31 C25.8954305,31 25,30.1045695 25,29 L25,22 C25,20.8954305 24.1045695,20 23,20 L22,20 L22,20"
@@ -317,55 +482,55 @@ onMounted(() => {
                       >
                         <svg
                           class="icon___2OPTw"
-                          width="40px"
                           height="40px"
                           viewBox="0 0 40 40"
+                          width="40px"
                           xmlns="http://www.w3.org/2000/svg"
                           xmlns:xlink="http://www.w3.org/1999/xlink"
                         >
                           <g
-                            transform="translate(1.000000, 6.000000)"
                             fill="none"
+                            transform="translate(1.000000, 6.000000)"
                           >
                             <line
+                              stroke="#444444"
+                              stroke-width="2"
                               x1="6"
-                              y1="28"
                               x2="15"
+                              y1="28"
                               y2="0"
-                              stroke="#444444"
-                              stroke-width="2"
                             ></line>
                             <line
+                              stroke="#444444"
+                              stroke-width="2"
                               x1="27"
-                              y1="0"
                               x2="36"
+                              y1="0"
                               y2="28"
-                              stroke="#444444"
-                              stroke-width="2"
                             ></line>
                             <line
+                              stroke="#444444"
+                              stroke-width="2"
                               x1="21"
+                              x2="21"
                               y1="3"
-                              x2="21"
                               y2="6"
-                              stroke="#444444"
-                              stroke-width="2"
                             ></line>
                             <line
+                              stroke="#444444"
+                              stroke-width="2"
                               x1="21"
+                              x2="21"
                               y1="11"
-                              x2="21"
                               y2="15"
-                              stroke="#444444"
-                              stroke-width="2"
                             ></line>
                             <line
-                              x1="21"
-                              y1="20"
-                              x2="21"
-                              y2="25"
                               stroke="#444444"
                               stroke-width="2"
+                              x1="21"
+                              x2="21"
+                              y1="20"
+                              y2="25"
                             ></line>
                             <path
                               d="M4,10.1992 C5.8125,10.1992 7.75,8.9169 7.75,6.70209 C7.75,4.66209 4,0.87354 4,0.87354 C4,0.87354 0.25,4.66209 0.25,6.70209 C0.25,8.9169 2.1875,10.1992 4,10.1992 Z"
@@ -422,7 +587,8 @@ onMounted(() => {
             <h2 v-else-if="$route.params.brand === 'opel'" class="brands-header" style="text-transform: capitalize">
               Bliv klar til køreturen med en privatleaset Opel
             </h2>
-            <h2 v-else-if="$route.params.brand === 'peugeot'" class="brands-header" style="text-transform: capitalize"></h2>
+            <h2 v-else-if="$route.params.brand === 'peugeot'" class="brands-header"
+                style="text-transform: capitalize"></h2>
             <h2 v-else-if="$route.params.brand === 'skoda'" class="brands-header" style="text-transform: capitalize">
               Kør godt og økonomisk med en brugt privatleasings Skoda
             </h2>
@@ -435,7 +601,8 @@ onMounted(() => {
             <h2 v-else-if="$route.params.brand === 'renault'" class="brands-header" style="text-transform: capitalize">
               Spar penge på privatleasing af en brugt Renault
             </h2>
-            <h2 v-else-if="$route.params.brand === 'mitsubishi'" class="brands-header" style="text-transform: capitalize">
+            <h2 v-else-if="$route.params.brand === 'mitsubishi'" class="brands-header"
+                style="text-transform: capitalize">
               Brugt privatleasing af Mitsubishi biler til en lav pris, der passer til dit budget
             </h2>
             <h2 v-else-if="$route.params.brand === 'jeep'" class="brands-header" style="text-transform: capitalize">
@@ -448,85 +615,158 @@ onMounted(() => {
           <div class="brands__content-container">
             <div class="brands__content pad-header--l">
               <p v-if="$route.params.brand === 'bmw'">
-                For mange bilentusiaster er BMW synonymt med luksus og kvalitet, men også et bilmærke, der ligger uden for de flestes bilbudget. Men ved at privatlease en brugt BMW kan du spare en betydelig mængde penge, da både førstegangsydelsen og den månedlige ydelse er væsentligt lavere end på nye biler.
+                For mange bilentusiaster er BMW synonymt med luksus og kvalitet, men også et bilmærke, der ligger uden
+                for de flestes bilbudget. Men ved at privatlease en brugt BMW kan du spare en betydelig mængde penge, da
+                både førstegangsydelsen og den månedlige ydelse er væsentligt lavere end på nye biler.
                 <br> <br>
-                Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris.
+                Hos Quickleasing A/S kan du privatlease en brugt BMW og få det hele til en attraktiv pris. Vi kan
+                tilbyde fordelagtige priser på alle vores BMW-modeller, fordi de alle er brugte. Samtidig går vi ikke på
+                kompromis med kvaliteten på vores biler, så du kan få god kvalitet til en fornuftig pris.
               </p>
               <p v-else-if="$route.params.brand === 'audi'">
-                Med privatleasing af en brugt Audi kan du nyde godt af alle de fordele, der følger med at køre en Audi, uden at skulle investere en stor sum penge i køb af en ny bil. Vi tilbyder fleksible leasingaftaler og konkurrencedygtige priser, så du kan vælge den løsning, der passer bedst til dig og dine behov.
+                Med privatleasing af en brugt Audi kan du nyde godt af alle de fordele, der følger med at køre en Audi,
+                uden at skulle investere en stor sum penge i køb af en ny bil. Vi tilbyder fleksible leasingaftaler og
+                konkurrencedygtige priser, så du kan vælge den løsning, der passer bedst til dig og dine behov.
                 <br> <br>
-                Vores brugte Audi-biler stammer fra tidligere leasingaftaler, hvor bilerne har været passet og plejet af deres tidligere ejere. Vi sørger for at gennemgå alle bilerne grundigt og udbedre eventuelle fejl og mangler, inden de bliver sat til leasing.
+                Vores brugte Audi-biler stammer fra tidligere leasingaftaler, hvor bilerne har været passet og plejet af
+                deres tidligere ejere. Vi sørger for at gennemgå alle bilerne grundigt og udbedre eventuelle fejl og
+                mangler, inden de bliver sat til leasing.
               </p>
               <p v-else-if="$route.params.brand === 'citroen'">
-                Mange tror fejlagtigt, at leasing er kompliceret og svært at forstå. Men i virkeligheden er privatleasing af en Citroën ganske enkelt og gennemskueligt. I bund og grund handler privatleasing om at leje en bil i en afgrænset periode. Ved leasingperiodens start betales en førstegangsydelse, og derefter betaler du en fast månedlig ydelse for din privatleasede Citroën i resten af leasingperioden. Den månedlige ydelse fremgår af din leasingaftale og afhænger af den specifikke Citroën-model, du vælger at lease.
+                Mange tror fejlagtigt, at leasing er kompliceret og svært at forstå. Men i virkeligheden er
+                privatleasing af en Citroën ganske enkelt og gennemskueligt. I bund og grund handler privatleasing om at
+                leje en bil i en afgrænset periode. Ved leasingperiodens start betales en førstegangsydelse, og derefter
+                betaler du en fast månedlig ydelse for din privatleasede Citroën i resten af leasingperioden. Den
+                månedlige ydelse fremgår af din leasingaftale og afhænger af den specifikke Citroën-model, du vælger at
+                lease.
                 <br> <br>
-                Udover førstegangsydelsen og den månedlige ydelse er der ingen andre udgifter forbundet med privatleasing (udover selvfølgelig forsikring, brændstof, afgifter osv.). Med en leasingaftale hos Quickleasing A/S er service og reparation inkluderet, så du ikke behøver bekymre dig om store, uventede regninger i løbet af leasingperioden.
+                Udover førstegangsydelsen og den månedlige ydelse er der ingen andre udgifter forbundet med
+                privatleasing (udover selvfølgelig forsikring, brændstof, afgifter osv.). Med en leasingaftale hos
+                Quickleasing A/S er service og reparation inkluderet, så du ikke behøver bekymre dig om store, uventede
+                regninger i løbet af leasingperioden.
               </p>
               <p v-else-if="$route.params.brand === 'fiat'">
-                Hos Quickleasing A/S går vi aldrig på kompromis med kvaliteten af vores biler. Det betyder, at alle vores leasede biler er enten fabriksnye eller netop hjemvendt efter endt leasingperiode.
+                Hos Quickleasing A/S går vi aldrig på kompromis med kvaliteten af vores biler. Det betyder, at alle
+                vores leasede biler er enten fabriksnye eller netop hjemvendt efter endt leasingperiode.
                 <br> <br>
-                Når du privatleaser en Fiat 500 eller en af de mange andre populære modeller fra Fiat gennem os, er du sikret en bil af højeste kvalitet. Med andre ord vil køreglæden i en leaset Fiat fra Quickleasing A/S være mindst lige så stor som, hvis du havde købt en ny bil.
+                Når du privatleaser en Fiat 500 eller en af de mange andre populære modeller fra Fiat gennem os, er du
+                sikret en bil af højeste kvalitet. Med andre ord vil køreglæden i en leaset Fiat fra Quickleasing A/S
+                være mindst lige så stor som, hvis du havde købt en ny bil.
               </p>
               <p v-else-if="$route.params.brand === 'ford'">
-                Vi hos Quickleasing A/S tilbyder privatleasing af Ford-modeller med fokus på kvalitet og pålidelighed. Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Ford-modeller er enten fabriksnye eller netop hjemvendt efter endt leasingperiode.
+                Vi hos Quickleasing A/S tilbyder privatleasing af Ford-modeller med fokus på kvalitet og pålidelighed.
+                Vi går aldrig på kompromis med kvaliteten af vores biler, og alle vores leasede Ford-modeller er enten
+                fabriksnye eller netop hjemvendt efter endt leasingperiode.
                 <br> <br>
-                Når du privatleaser en Ford gennem os, er du sikret en bil af højeste kvalitet. Med vores omfattende service og reparation i leasingaftalen behøver du ikke bekymre dig om store, uventede regninger i løbet af leasingperioden.
-                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der passer bedst til dig og dine behov. Kontakt os i dag for at høre mere om vores kvalitetssikrede privatleasing af Ford-modeller.
+                Når du privatleaser en Ford gennem os, er du sikret en bil af højeste kvalitet. Med vores omfattende
+                service og reparation i leasingaftalen behøver du ikke bekymre dig om store, uventede regninger i løbet
+                af leasingperioden.
+                Vi tilbyder konkurrencedygtige priser og fleksible leasingaftaler, så du kan vælge den løsning, der
+                passer bedst til dig og dine behov. Kontakt os i dag for at høre mere om vores kvalitetssikrede
+                privatleasing af Ford-modeller.
               </p>
               <p v-else-if="$route.params.brand === 'hyundai'">
-                Hos Quickleasing A/S tilbyder vi privatleasing af Hyundai-biler til konkurrencedygtige priser. Vi er specialister inden for leasing og sikrer, at du kan lease din drømmebil fra Hyundai uden at gå på kompromis med kvaliteten.
-                Vores Hyundai-modeller er nøje udvalgt og tilbyder høj pålidelighed og kvalitet. Vi tilbyder også en omfattende service- og reparationsaftale, så du ikke behøver bekymre dig om uventede udgifter i løbet af leasingperioden.
+                Hos Quickleasing A/S tilbyder vi privatleasing af Hyundai-biler til konkurrencedygtige priser. Vi er
+                specialister inden for leasing og sikrer, at du kan lease din drømmebil fra Hyundai uden at gå på
+                kompromis med kvaliteten.
+                Vores Hyundai-modeller er nøje udvalgt og tilbyder høj pålidelighed og kvalitet. Vi tilbyder også en
+                omfattende service- og reparationsaftale, så du ikke behøver bekymre dig om uventede udgifter i løbet af
+                leasingperioden.
                 <br> <br>
-                Vi tilbyder fleksible leasingaftaler, der kan tilpasses dine behov og ønsker. Med vores billig og tryg privatleasing af Hyundai-biler kan du køre i din drømmebil til en lavere pris end ved køb af en ny bil.
+                Vi tilbyder fleksible leasingaftaler, der kan tilpasses dine behov og ønsker. Med vores billig og tryg
+                privatleasing af Hyundai-biler kan du køre i din drømmebil til en lavere pris end ved køb af en ny bil.
                 Kontakt os i dag og få mere information om vores leasingmuligheder på Hyundai-biler.
               </p>
               <p v-else-if="$route.params.brand === 'opel'">
-                Opel er et velrenommeret tysk bilmærke, som siden sin begyndelse har fokuseret på at fremstille biler i høj kvalitet og til priser, som de fleste kan være med på. Opels eget slogan lyder "Vi elsker biler", og dette kan man også tydeligt mærke, når man sidder bag rattet i en af deres biler.
+                Opel er et velrenommeret tysk bilmærke, som siden sin begyndelse har fokuseret på at fremstille biler i
+                høj kvalitet og til priser, som de fleste kan være med på. Opels eget slogan lyder "Vi elsker biler", og
+                dette kan man også tydeligt mærke, når man sidder bag rattet i en af deres biler.
                 <br> <br>
-                Quickleasing A/S udbyder flere forskellige brugte Opel-modeller til leasing, hvoraf nogle kommer med alt fra fartpilot og Bluetooth til Apple CarPlay og helårsdæk. På trods af at vores Opel-modeller er blandt vores billigste leasingbiler, har vi ikke gået på kompromis med hverken udstyr eller komfort, og vores udvalg af biler er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
+                Quickleasing A/S udbyder flere forskellige brugte Opel-modeller til leasing, hvoraf nogle kommer med alt
+                fra fartpilot og Bluetooth til Apple CarPlay og helårsdæk. På trods af at vores Opel-modeller er blandt
+                vores billigste leasingbiler, har vi ikke gået på kompromis med hverken udstyr eller komfort, og vores
+                udvalg af biler er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
               </p>
               <p v-else-if="$route.params.brand === 'peugeot'">
-                I 1889 præsenterede Peugeot deres første damptrehjuler og siden da har de været en førende bilproducent. Deres fokus på kvalitet er ubestridt og har været en integreret del af deres brand i mere end 100 år.
+                I 1889 præsenterede Peugeot deres første damptrehjuler og siden da har de været en førende bilproducent.
+                Deres fokus på kvalitet er ubestridt og har været en integreret del af deres brand i mere end 100 år.
                 <br> <br>
-                Når du vælger at privatlease en Peugeot, kan du derfor stole på at du får en bil af høj kvalitet, der er bygget til at levere en fantastisk køreglæde.
+                Når du vælger at privatlease en Peugeot, kan du derfor stole på at du får en bil af høj kvalitet, der er
+                bygget til at levere en fantastisk køreglæde.
               </p>
               <p v-else-if="$route.params.brand === 'skoda'">
-                I dag er Skoda kendt for at tilbyde velbyggede biler i høj kvalitet til en overkommelig pris. Skoda har således en stærk position på bilmarkedet og er særligt populær blandt forbrugere, der ønsker at få mest muligt for deres penge. Selvom Skoda ofte sammenlignes med Volkswagen, har mærket sin egen unikke stil og karakter.
+                I dag er Skoda kendt for at tilbyde velbyggede biler i høj kvalitet til en overkommelig pris. Skoda har
+                således en stærk position på bilmarkedet og er særligt populær blandt forbrugere, der ønsker at få mest
+                muligt for deres penge. Selvom Skoda ofte sammenlignes med Volkswagen, har mærket sin egen unikke stil
+                og karakter.
                 <br> <br>
-                På brugtbilsmarkedet er Skoda også et populært valg, og ved at vælge at privatlease en brugt Skoda hos Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af brugte Skoda-modeller og kontakt os allerede i dag for at høre mere om dine leasingmuligheder.
+                På brugtbilsmarkedet er Skoda også et populært valg, og ved at vælge at privatlease en brugt Skoda hos
+                Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk
+                vores udvalg af brugte Skoda-modeller og kontakt os allerede i dag for at høre mere om dine
+                leasingmuligheder.
               </p>
               <p v-else-if="$route.params.brand === 'ds'">
-                Hos os finder du et stort udvalg af brugte DS-modeller, der har masser af kilometer tilbage i sig. Vores brugte biler er nøje udvalgt, og der er tale om biler af høj kvalitet, der samtidig er til at betale.
+                Hos os finder du et stort udvalg af brugte DS-modeller, der har masser af kilometer tilbage i sig. Vores
+                brugte biler er nøje udvalgt, og der er tale om biler af høj kvalitet, der samtidig er til at betale.
                 <br> <br>
-                Med en privatleaset brugt DS kan du køre økonomisk og miljøvenligt samtidig med, at du nyder godt af masser af luksus og komfort.
+                Med en privatleaset brugt DS kan du køre økonomisk og miljøvenligt samtidig med, at du nyder godt af
+                masser af luksus og komfort.
               </p>
               <p v-else-if="$route.params.brand === 'volvo'">
-                Privatleasing af en topmoderne Volvo behøver ikke at være en dyr affære. Hos Quickleasing A/S tilbyder vi privatleasing af brugte Volvo-modeller til konkurrencedygtige priser. Vi har et begrænset udvalg af brugte Volvo-modeller, der er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
+                Privatleasing af en topmoderne Volvo behøver ikke at være en dyr affære. Hos Quickleasing A/S tilbyder
+                vi privatleasing af brugte Volvo-modeller til konkurrencedygtige priser. Vi har et begrænset udvalg af
+                brugte Volvo-modeller, der er nøje udvalgt for at sikre, at du får mest muligt værdi for pengene.
                 <br> <br>
-                Ved at lease en brugt Volvo hos os, kan du spare mange penge på både leasingafgift og månedlig ydelse, og samtidig slippe for bekymringer om værditab og driftsomkostninger. Vi sørger for, at alle vores biler er nøje udvalgt og gennemgået, så du er sikret en bil i topstand, der er klar til at køre ud på vejen med det samme. Så hvorfor ikke tage en tur i en af vores topmoderne Volvo'er og opleve den sublime kvalitet og køreoplevelse? Kontakt os i dag og lad os hjælpe dig med at finde din næste drømmebil.
+                Ved at lease en brugt Volvo hos os, kan du spare mange penge på både leasingafgift og månedlig ydelse,
+                og samtidig slippe for bekymringer om værditab og driftsomkostninger. Vi sørger for, at alle vores biler
+                er nøje udvalgt og gennemgået, så du er sikret en bil i topstand, der er klar til at køre ud på vejen
+                med det samme. Så hvorfor ikke tage en tur i en af vores topmoderne Volvo'er og opleve den sublime
+                kvalitet og køreoplevelse? Kontakt os i dag og lad os hjælpe dig med at finde din næste drømmebil.
               </p>
               <p v-else-if="$route.params.brand === 'renault'">
-                Renault er et af de mest populære bilmærker i Danmark, og det er ikke uden grund. Renault har nemlig siden 1899 været en førende bilproducent, der har fokuseret på at fremstille biler i høj kvalitet til en overkommelig pris. Renault har i dag en stærk position på bilmarkedet og er særligt populær blandt forbrugere, der ønsker at få mest muligt for deres penge.
+                Renault er et af de mest populære bilmærker i Danmark, og det er ikke uden grund. Renault har nemlig
+                siden 1899 været en førende bilproducent, der har fokuseret på at fremstille biler i høj kvalitet til en
+                overkommelig pris. Renault har i dag en stærk position på bilmarkedet og er særligt populær blandt
+                forbrugere, der ønsker at få mest muligt for deres penge.
 
                 <br> <br>
-                På brugtbilsmarkedet er Renault også et populært valg, og ved at vælge at privatlease en brugt Renault hos Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk vores udvalg af brugte Renault-modeller og kontakt os allerede i dag for at høre mere om dine leasingmuligheder.
+                På brugtbilsmarkedet er Renault også et populært valg, og ved at vælge at privatlease en brugt Renault
+                hos Quickleasing A/S kan du spare yderligere uden at gå på kompromis med kvalitet og køreglæde. Udforsk
+                vores udvalg af brugte Renault-modeller og kontakt os allerede i dag for at høre mere om dine
+                leasingmuligheder.
               </p>
               <p v-else-if="$route.params.brand === 'mitsubishi'">
-                Vælg en brugt privatleasing af en topkvalitets Mitsubishi bil, der ikke sprænger dit budget. Hos os finder du et bredt udvalg af pålidelige og velholdte Mitsubishi-modeller, der er tilgængelige til en fordelagtig pris.
+                Vælg en brugt privatleasing af en topkvalitets Mitsubishi bil, der ikke sprænger dit budget. Hos os
+                finder du et bredt udvalg af pålidelige og velholdte Mitsubishi-modeller, der er tilgængelige til en
+                fordelagtig pris.
                 <br> <br>
-                Ved at vælge at lease en brugt Mitsubishi hos os, kan du få adgang til en topmoderne bil, der er blevet grundigt tjekket og vedligeholdt for at sikre, at den er i god stand og klar til at køre. Vores brugte Mitsubishi-biler er også tilgængelige med en række forskellige funktioner og specifikationer, så du kan finde den perfekte bil, der passer til dine behov.
+                Ved at vælge at lease en brugt Mitsubishi hos os, kan du få adgang til en topmoderne bil, der er blevet
+                grundigt tjekket og vedligeholdt for at sikre, at den er i god stand og klar til at køre. Vores brugte
+                Mitsubishi-biler er også tilgængelige med en række forskellige funktioner og specifikationer, så du kan
+                finde den perfekte bil, der passer til dine behov.
 
-                Så hvis du leder efter en pålidelig og prisvenlig løsning til din transport, skal du vælge at lease en brugt Mitsubishi. Kontakt os i dag for mere information om vores udvalg og vilkår.
+                Så hvis du leder efter en pålidelig og prisvenlig løsning til din transport, skal du vælge at lease en
+                brugt Mitsubishi. Kontakt os i dag for mere information om vores udvalg og vilkår.
               </p>
               <p v-else-if="$route.params.brand === 'jeep'">
-                Med privatleasing af en Jeep får du en robust og pålidelig bil til en overkommelig pris. Hos Quickleasing tilbyder vi et bredt udvalg af Jeeps modeller til leasing, og du kan derfor finde en bil, der passer til dine behov og dit budget.
+                Med privatleasing af en Jeep får du en robust og pålidelig bil til en overkommelig pris. Hos
+                Quickleasing tilbyder vi et bredt udvalg af Jeeps modeller til leasing, og du kan derfor finde en bil,
+                der passer til dine behov og dit budget.
                 <br> <br>
-                Ved at lease en brugt Jeep kan du spare endnu flere penge uden at gå på kompromis med kvaliteten. Vores brugte Jeep-modeller er omhyggeligt udvalgt og gennemgået af vores eksperter, så du kan være sikker på, at du får en bil, der er i god stand og klar til at køre mange kilometer. Kontakt os i dag og få mere information om vores privatleasing-tilbud på Jeeps biler.
+                Ved at lease en brugt Jeep kan du spare endnu flere penge uden at gå på kompromis med kvaliteten. Vores
+                brugte Jeep-modeller er omhyggeligt udvalgt og gennemgået af vores eksperter, så du kan være sikker på,
+                at du får en bil, der er i god stand og klar til at køre mange kilometer. Kontakt os i dag og få mere
+                information om vores privatleasing-tilbud på Jeeps biler.
               </p>
               <p v-else-if="$route.params.brand === 'honda'">
-                Med privatleasing af en brugt Honda fra Quickleasing A/S kan du spare både tid og hovedpine. Hos os tilbyder vi en bred vifte af forskellige Honda-modeller, der alle er nøje udvalgte, så vi kan sikre en høj kvalitet og pålidelighed.
+                Med privatleasing af en brugt Honda fra Quickleasing A/S kan du spare både tid og hovedpine. Hos os
+                tilbyder vi en bred vifte af forskellige Honda-modeller, der alle er nøje udvalgte, så vi kan sikre en
+                høj kvalitet og pålidelighed.
                 <br> <br>
-                Vi står selv for service og vedligeholdelse af bilerne, så du som kunde kan slippe for bekymringerne ved at eje en bil. Vores brugte Honda-modeller er både økonomisk fornuftige og af høj kvalitet, så du kan køre afsted med ro i sindet. Kontakt os allerede i dag for at høre mere om vores tilbud på privatleasing af brugte Honda biler.
+                Vi står selv for service og vedligeholdelse af bilerne, så du som kunde kan slippe for bekymringerne ved
+                at eje en bil. Vores brugte Honda-modeller er både økonomisk fornuftige og af høj kvalitet, så du kan
+                køre afsted med ro i sindet. Kontakt os allerede i dag for at høre mere om vores tilbud på privatleasing
+                af brugte Honda biler.
               </p>
             </div>
           </div>
@@ -537,10 +777,13 @@ onMounted(() => {
           </div>
           <div class="brands__content-container">
             <div class="brands__content pad-header--l">
-              <p >
-                En af de store fordele ved at privatlease en BMW er det økonomiske overblik og tryghed, som du får med leasingaftalen. Alle omkostninger forbundet med leasingbilen er inkluderet i leasingaftalen, og derfor har du et fuldt overblik over alle udgifter fra starten.
+              <p>
+                En af de store fordele ved at privatlease en BMW er det økonomiske overblik og tryghed, som du får med
+                leasingaftalen. Alle omkostninger forbundet med leasingbilen er inkluderet i leasingaftalen, og derfor
+                har du et fuldt overblik over alle udgifter fra starten.
                 <br> <br>
-                Service og reparation er også inkluderet i din leasingaftale hos Quickleasing A/S, så du undgår uforudsete regninger i løbet af din leasingperiode.
+                Service og reparation er også inkluderet i din leasingaftale hos Quickleasing A/S, så du undgår
+                uforudsete regninger i løbet af din leasingperiode.
               </p>
             </div>
           </div>
@@ -551,10 +794,17 @@ onMounted(() => {
           </div>
           <div class="brands__content-container">
             <div class="brands__content pad-header--l">
-              <p >
-                Hvis du allerede har fundet en {{$route.params.brand}} i vores sortiment, som du gerne vil privatlease, kan du blot klikke på en bestemt bil og derefter udfylde formularen for den bestemte {{$route.params.brand}}-model, og vi vil herefter kontakte dig.
+              <p>
+                Hvis du allerede har fundet en {{ $route.params.brand }} i vores sortiment, som du gerne vil
+                privatlease, kan du blot klikke på en bestemt bil og derefter udfylde formularen for den bestemte
+                {{ $route.params.brand }}-model, og vi vil herefter kontakte dig.
                 <br><br>
-                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis du er på udkig efter en brugt {{$route.params.brand}}. Privatleasing er <router-link :to="{ path: '/nem-leasing' }">nemlig slet ikke så kompliceret, som mange måske tror</router-link>. En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele leasing-processen.
+                Uanset om du har erfaring med privatleasing eller ej, bør du helt sikkert overveje privatleasing, hvis
+                du er på udkig efter en brugt {{ $route.params.brand }}. Privatleasing er
+                <router-link :to="{ path: '/nem-leasing' }">nemlig slet ikke så kompliceret, som mange måske tror
+                </router-link>
+                . En leasingaftale er faktisk ganske simpel at forstå, og vi er altid klar til at guide dig gennem hele
+                leasing-processen.
               </p>
             </div>
           </div>
@@ -565,10 +815,15 @@ onMounted(() => {
           </div>
           <div class="brands__content-container">
             <div class="brands__content pad-header--l">
-              <p >
-                Vi står altid klar til at give dig rådgivning om privatleasing. Hvis du har generelle spørgsmål om vores privatleasingprocedure, er du velkommen til at ringe til os på <a href="tlf:89885080">tlf. 89 88 50 80</a> i hverdage mellem kl. 9.00 og 16.00.
+              <p>
+                Vi står altid klar til at give dig rådgivning om privatleasing. Hvis du har generelle spørgsmål om vores
+                privatleasingprocedure, er du velkommen til at ringe til os på <a href="tlf:89885080">tlf. 89 88 50
+                80</a> i hverdage mellem kl. 9.00 og 16.00.
                 <br> <br>
-                Hvis du har spørgsmål om en bestemt {{ $route.params.brand }}-model i vores udvalg, eller bare generelt, kan du i stedet udfylde vores <RouterLink to="/kontakt">kontaktformular</RouterLink>, og vi vil kontakte dig hurtigst muligt.
+                Hvis du har spørgsmål om en bestemt {{ $route.params.brand }}-model i vores udvalg, eller bare generelt,
+                kan du i stedet udfylde vores
+                <RouterLink to="/kontakt">kontaktformular</RouterLink>
+                , og vi vil kontakte dig hurtigst muligt.
               </p>
             </div>
           </div>
@@ -577,243 +832,51 @@ onMounted(() => {
     </div>
 
     <!-- START NEW FILTER -->
-    <div class="filter__toggle-button" v-if="isMobile" @click="toggleFilter()">
-      <button  class="button-primary--filter" :class="{'button-primary--filter-apply': showFilter}" style="display: flex; align-items: center;width: 100vw;justify-content: center">
-        <img src="../assets/images/filter_filters_funnel_list_navigation_sort_sorting_icon_123212.svg"  style="width: 30px; margin-right: 10px;" alt="">
-        <span v-if="showFilter" >Færdig</span>
+    <div v-if="isMobile" class="filter__toggle-button" @click="toggleFilter()">
+      <button :class="{'button-primary--filter-apply': showFilter}" class="button-primary--filter"
+              style="display: flex; align-items: center;width: 100vw;justify-content: center">
+        <img alt=""
+             src="../assets/images/filter_filters_funnel_list_navigation_sort_sorting_icon_123212.svg"
+             style="width: 30px; margin-right: 10px;">
+        <span v-if="showFilter">Færdig</span>
         <span v-else>Filter</span>
       </button>
     </div>
-    <div v-if="showFilter" class="filter__container-mobile"  :class="{show: isMobile && showFilter}" >
-      <div class="filter__inner-wrapper" >
+    <div v-if="showFilter" :class="{show: isMobile && showFilter}" class="filter__container-mobile">
+      <div class="filter__inner-wrapper">
         <button class="filter__close-button" @click="toggleFilter()">
           <svg
             class="filter__close-icon"
-            width="24px"
             height="24px"
             viewBox="0 0 24 24"
+            width="24px"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
             <g
-              transform="translate(1.000000, 1.000000)"
-              stroke="#444444"
-              stroke-width="2"
               fill="none"
               fill-rule="evenodd"
+              stroke="#444444"
+              stroke-width="2"
+              transform="translate(1.000000, 1.000000)"
             >
-              <line x1="22" y1="22" x2="0" y2="0"></line>
-              <line x1="22" y1="0" x2="0" y2="22"></line>
+              <line x1="22" x2="0" y1="22" y2="0"></line>
+              <line x1="22" x2="0" y1="0" y2="22"></line>
             </g>
           </svg>
         </button>
 
-        <div class="filter__brand" id="brandCheckbox" style="padding-top: 1rem">
+        <div id="brandCheckbox" class="filter__brand" style="padding-top: 1rem">
           <h3 class="filter__header pad-header--xs">Mærke</h3>
           <ul class="filter__ul-horizontal list--none" style="list-style: none">
-            <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
+            <li v-for="brand in uniqueBrands" :key="brand" class="filter__li">
               <label class="container">
                 <input
-                  class="filter__checkbox checkbox"
-                  type="checkbox"
                   :id="brand.name"
-                  :value="brand.name"
                   :checked="selectedBrands.includes(brand.name)"
-                  @click="handleCheckboxClick(brand.name)"
-                />
-                {{ brand.name }} ({{ brand.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-
-        <div class="filter__model">
-          <h3 class="filter__header pad-header--xs" style="padding-top: 1rem">
-            Model
-          </h3>
-          <select
-            class="filter__select"
-            v-model="selectedModel"
-            @change="modelChange()"
-          >
-            <option class="filter__option-all" value="*">Alle modeller</option>
-            <option
-              class="filter__option"
-              v-for="option in modelOptions"
-              :value="option"
-            >
-              {{ option.label }}
-            </option>
-          </select>
-        </div>
-
-        <div class="filter__price" id="filterPrice" >
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
-            Pris pr.md.
-          </h3>
-          <Slider
-            v-model="priceRange.value"
-            :min="priceRange.savedValue[0]"
-            :max="priceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="priceChange"
-            style="padding: 0 1rem"
-          ></Slider>
-        </div>
-
-        <div class="filter__price" id="filterPrice" style="width: 100%">
-          <h3
-            class="filter__header"
-            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
-          >
-            Førstegangsydelse
-          </h3>
-          <Slider
-            v-model="oneTimePriceRange.value"
-            :min="oneTimePriceRange.savedValue[0]"
-            :max="oneTimePriceRange.savedValue[1]"
-            :step="500"
-            :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
-            @change="oneTimePriceChange"
-            style="padding: 0 1rem"
-          ></Slider>
-        </div>
-
-        <div class="filter__tire">
-          <h3 class="filter__header pad-header--xs" style="padding-top: 2rem">
-            Gear Type
-          </h3>
-          <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
-              <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="gear.value"
-                  :checked="selectedGearTypes.includes(gear.value)"
-                  @click="handleCheckboxClickGearType(gear.value)"
-                />
-                {{ gear.name }} ({{ gear.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div class="filter__tire">
-          <h3 class="filter__header pad-header--xs">Brændstof</h3>
-          <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
-              <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="fuel.value"
-                  :checked="selectedFuelTypes.includes(fuel.value)"
-                  @click="handleCheckboxClickFuelType(fuel.value)"
-                />
-                {{ fuel.name }} ({{ fuel.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-
-        <div class="filter__features">
-          <h3 class="filter__header pad-header--xs">Udstyr</h3>
-          <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="item in featureItems"
-              :key="item.value"
-              :data-value="item.value"
-            >
-              <label
-                class="container"
-                v-if="
-                  carData.filter(
-                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
-                  ).length > 0
-                "
-              >
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  @click="handleCheckboxClickFeatures(item.value)"
-                />
-                {{ item.name }} ({{
-                  carData.filter(
-                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
-                  ).length
-                }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-
-        <div class="filter__tire">
-          <h3 class="filter__header pad-header--xs">Dæktype</h3>
-          <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
-              <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)"
-                  @click="handleCheckboxClickTireType(tire.value)"
-                />
-                {{ tire.name }} ({{ tire.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-        <div class="filter__tire">
-          <h3 class="filter__header pad-header--xs">Bil type</h3>
-          <ul class="filter__ul-horizontal">
-            <li
-              class="filter__li"
-              v-for="carType in carTypes"
-              :key="carType.value"
-            >
-              <label class="container">
-                <input
-                  class="filter__checkbox"
-                  type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedCarTypes.includes(carType.value)"
-                  @click="handleCheckboxClickCarType(carType.value)"
-                />
-                {{ carType.name }} ({{ carType.count }})
-                <span class="checkmark"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div >
-    </div>
-    <div v-else-if="!isMobile" class="filter__container" ref="example2"  >
-      <div class="filter__inner-wrapper" >
-        <div class="filter__brand" id="brandCheckbox">
-          <h3 class="filter__header pad-header--xs">Mærke</h3>
-          <ul class="filter__ul-horizontal list--none" style="list-style: none">
-            <li class="filter__li" v-for="brand in uniqueBrands" :key="brand">
-              <label class="container">
-                <input
+                  :value="brand.name"
                   class="filter__checkbox checkbox"
                   type="checkbox"
-                  :value="brand.name"
-                  :checked="selectedBrands.includes(brand.name)"
                   @click="handleCheckboxClick(brand.name)"
                 />
                 {{ brand.name }} ({{ brand.count }})
@@ -828,22 +891,22 @@ onMounted(() => {
             Model
           </h3>
           <select
-            class="filter__select"
             v-model="selectedModel"
+            class="filter__select"
             @change="modelChange()"
           >
             <option class="filter__option-all" value="*">Alle modeller</option>
             <option
-              class="filter__option"
               v-for="option in modelOptions"
               :value="option"
+              class="filter__option"
             >
               {{ option.label }}
             </option>
           </select>
         </div>
 
-        <div class="filter__price" id="filterPrice" style="width: 100%">
+        <div id="filterPrice" class="filter__price">
           <h3
             class="filter__header"
             style="padding-bottom: 3.5rem; padding-top: 1.5rem"
@@ -852,17 +915,18 @@ onMounted(() => {
           </h3>
           <Slider
             v-model="priceRange.value"
-            :min="priceRange.savedValue[0]"
+            :format="(value) => `${value} kr.`"
             :max="priceRange.savedValue[1]"
+            :min="priceRange.savedValue[0]"
+            :range="true"
             :step="500"
             :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
+            style="padding: 0 1rem"
             @change="priceChange"
           ></Slider>
         </div>
 
-        <div class="filter__price" id="filterPrice" style="width: 100%">
+        <div id="filterPrice" class="filter__price" style="width: 100%">
           <h3
             class="filter__header"
             style="padding-bottom: 3.5rem; padding-top: 1.5rem"
@@ -871,12 +935,13 @@ onMounted(() => {
           </h3>
           <Slider
             v-model="oneTimePriceRange.value"
-            :min="oneTimePriceRange.savedValue[0]"
+            :format="(value) => `${value} kr.`"
             :max="oneTimePriceRange.savedValue[1]"
+            :min="oneTimePriceRange.savedValue[0]"
+            :range="true"
             :step="500"
             :tooltips="true"
-            :range="true"
-            :format="(value) => `${value} kr.`"
+            style="padding: 0 1rem"
             @change="oneTimePriceChange"
           ></Slider>
         </div>
@@ -886,13 +951,13 @@ onMounted(() => {
             Gear Type
           </h3>
           <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="gear in gearTypes" :key="gear.value">
+            <li v-for="gear in gearTypes" :key="gear.value" class="filter__li">
               <label class="container">
                 <input
+                  :checked="selectedGearTypes.includes(gear.value)"
+                  :value="gear.value"
                   class="filter__checkbox"
                   type="checkbox"
-                  :value="gear.value"
-                  :checked="selectedGearTypes.includes(gear.value)"
                   @click="handleCheckboxClickGearType(gear.value)"
                 />
                 {{ gear.name }} ({{ gear.count }})
@@ -904,13 +969,13 @@ onMounted(() => {
         <div class="filter__tire">
           <h3 class="filter__header pad-header--xs">Brændstof</h3>
           <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="fuel in fuelTypes" :key="fuel.value">
+            <li v-for="fuel in fuelTypes" :key="fuel.value" class="filter__li">
               <label class="container">
                 <input
+                  :checked="selectedFuelTypes.includes(fuel.value)"
+                  :value="fuel.value"
                   class="filter__checkbox"
                   type="checkbox"
-                  :value="fuel.value"
-                  :checked="selectedFuelTypes.includes(fuel.value)"
                   @click="handleCheckboxClickFuelType(fuel.value)"
                 />
                 {{ fuel.name }} ({{ fuel.count }})
@@ -924,18 +989,18 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Udstyr</h3>
           <ul class="filter__ul-horizontal">
             <li
-              class="filter__li"
               v-for="item in featureItems"
               :key="item.value"
               :data-value="item.value"
+              class="filter__li"
             >
               <label
-                class="container"
                 v-if="
                   carData.filter(
                     (car) => car.Udstyr && car.Udstyr.includes(item.value)
                   ).length > 0
                 "
+                class="container"
               >
                 <input
                   class="filter__checkbox"
@@ -956,13 +1021,13 @@ onMounted(() => {
         <div class="filter__tire">
           <h3 class="filter__header pad-header--xs">Dæktype</h3>
           <ul class="filter__ul-horizontal">
-            <li class="filter__li" v-for="tire in tireTypes" :key="tire.value">
+            <li v-for="tire in tireTypes" :key="tire.value" class="filter__li">
               <label class="container">
                 <input
+                  :checked="selectedTireTypes.includes(tire.value)"
+                  :value="tire.value"
                   class="filter__checkbox"
                   type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedTireTypes.includes(tire.value)"
                   @click="handleCheckboxClickTireType(tire.value)"
                 />
                 {{ tire.name }} ({{ tire.count }})
@@ -975,16 +1040,16 @@ onMounted(() => {
           <h3 class="filter__header pad-header--xs">Bil type</h3>
           <ul class="filter__ul-horizontal">
             <li
-              class="filter__li"
               v-for="carType in carTypes"
               :key="carType.value"
+              class="filter__li"
             >
               <label class="container">
                 <input
+                  :checked="selectedCarTypes.includes(carType.value)"
+                  :value="tire.value"
                   class="filter__checkbox"
                   type="checkbox"
-                  :value="tire.value"
-                  :checked="selectedCarTypes.includes(carType.value)"
                   @click="handleCheckboxClickCarType(carType.value)"
                 />
                 {{ carType.name }} ({{ carType.count }})
@@ -993,7 +1058,200 @@ onMounted(() => {
             </li>
           </ul>
         </div>
-      </div >
+      </div>
+    </div>
+    <div v-else-if="!isMobile" ref="example2" class="filter__container">
+      <div class="filter__inner-wrapper">
+        <div id="brandCheckbox" class="filter__brand">
+          <h3 class="filter__header pad-header--xs">Mærke</h3>
+          <ul class="filter__ul-horizontal list--none" style="list-style: none">
+            <li v-for="brand in uniqueBrands" :key="brand" class="filter__li">
+              <label class="container">
+                <input
+                  :checked="selectedBrands.includes(brand.name)"
+                  :value="brand.name"
+                  class="filter__checkbox checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClick(brand.name)"
+                />
+                {{ brand.name }} ({{ brand.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter__model">
+          <h3 class="filter__header pad-header--xs" style="padding-top: 1rem">
+            Model
+          </h3>
+          <select
+            v-model="selectedModel"
+            class="filter__select"
+            @change="modelChange()"
+          >
+            <option class="filter__option-all" value="*">Alle modeller</option>
+            <option
+              v-for="option in modelOptions"
+              :value="option"
+              class="filter__option"
+            >
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+
+        <div id="filterPrice" class="filter__price" style="width: 100%">
+          <h3
+            class="filter__header"
+            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
+          >
+            Pris pr.md.
+          </h3>
+          <Slider
+            v-model="priceRange.value"
+            :format="(value) => `${value} kr.`"
+            :max="priceRange.savedValue[1]"
+            :min="priceRange.savedValue[0]"
+            :range="true"
+            :step="500"
+            :tooltips="true"
+            @change="priceChange"
+          ></Slider>
+        </div>
+
+        <div id="filterPrice" class="filter__price" style="width: 100%">
+          <h3
+            class="filter__header"
+            style="padding-bottom: 3.5rem; padding-top: 1.5rem"
+          >
+            Førstegangsydelse
+          </h3>
+          <Slider
+            v-model="oneTimePriceRange.value"
+            :format="(value) => `${value} kr.`"
+            :max="oneTimePriceRange.savedValue[1]"
+            :min="oneTimePriceRange.savedValue[0]"
+            :range="true"
+            :step="500"
+            :tooltips="true"
+            @change="oneTimePriceChange"
+          ></Slider>
+        </div>
+
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs" style="padding-top: 2rem">
+            Gear Type
+          </h3>
+          <ul class="filter__ul-horizontal">
+            <li v-for="gear in gearTypes" :key="gear.value" class="filter__li">
+              <label class="container">
+                <input
+                  :checked="selectedGearTypes.includes(gear.value)"
+                  :value="gear.value"
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickGearType(gear.value)"
+                />
+                {{ gear.name }} ({{ gear.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs">Brændstof</h3>
+          <ul class="filter__ul-horizontal">
+            <li v-for="fuel in fuelTypes" :key="fuel.value" class="filter__li">
+              <label class="container">
+                <input
+                  :checked="selectedFuelTypes.includes(fuel.value)"
+                  :value="fuel.value"
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickFuelType(fuel.value)"
+                />
+                {{ fuel.name }} ({{ fuel.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter__features">
+          <h3 class="filter__header pad-header--xs">Udstyr</h3>
+          <ul class="filter__ul-horizontal">
+            <li
+              v-for="item in featureItems"
+              :key="item.value"
+              :data-value="item.value"
+              class="filter__li"
+            >
+              <label
+                v-if="
+                  carData.filter(
+                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                  ).length > 0
+                "
+                class="container"
+              >
+                <input
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickFeatures(item.value)"
+                />
+                {{ item.name }} ({{
+                  carData.filter(
+                    (car) => car.Udstyr && car.Udstyr.includes(item.value)
+                  ).length
+                }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs">Dæktype</h3>
+          <ul class="filter__ul-horizontal">
+            <li v-for="tire in tireTypes" :key="tire.value" class="filter__li">
+              <label class="container">
+                <input
+                  :checked="selectedTireTypes.includes(tire.value)"
+                  :value="tire.value"
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickTireType(tire.value)"
+                />
+                {{ tire.name }} ({{ tire.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__tire">
+          <h3 class="filter__header pad-header--xs">Bil type</h3>
+          <ul class="filter__ul-horizontal">
+            <li
+              v-for="carType in carTypes"
+              :key="carType.value"
+              class="filter__li"
+            >
+              <label class="container">
+                <input
+                  :checked="selectedCarTypes.includes(carType.value)"
+                  :value="tire.value"
+                  class="filter__checkbox"
+                  type="checkbox"
+                  @click="handleCheckboxClickCarType(carType.value)"
+                />
+                {{ carType.name }} ({{ carType.count }})
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <FooterItem />
@@ -1005,19 +1263,20 @@ import Slider from "@vueform/slider";
 export default {
   name: "QuickLeasing",
   components: {
-    Slider,
+    Slider
   },
+
   data() {
     return {
 
 
       priceRange: {
         value: [],
-        savedValue: [],
+        savedValue: []
       },
       oneTimePriceRange: {
         value: [],
-        savedValue: [],
+        savedValue: []
       },
       queryBrand: this.$route.query.brand,
       queryModel: this.$route.query.model,
@@ -1041,12 +1300,12 @@ export default {
       carTypes: [],
       gearTypes: [
         { value: "automatgear", name: "Automatgear", count: 0 },
-        { value: "manuelgear", name: "Manuelgear", count: 0 },
+        { value: "manuelgear", name: "Manuelgear", count: 0 }
       ],
       fuelTypes: [
         { value: "benzin", name: "Benzin", count: 0 },
         { value: "diesel", name: "Diesel", count: 0 },
-        { value: "pluginhybrid", name: "Plug-in Hybrid", count: 0 },
+        { value: "pluginhybrid", name: "Plug-in Hybrid", count: 0 }
       ],
       selectedModel: "",
       selectedTireTypes: [],
@@ -1061,24 +1320,25 @@ export default {
         {
           value: "parkeringssensorfor",
           name: "P-sensor(for)",
-          count: 0,
+          count: 0
         },
         {
           value: "parkeringssensorbag",
           name: "P-sensor(bag)",
-          count: 0,
+          count: 0
         },
         { value: "Anhaengertraek", name: "Anhængertræk", count: 0 },
         { value: "bakkamera", name: "Bakkamera", count: 0 },
-        { value: "applecarplay", name: "Apple CarPlay", count: 0 },
+        { value: "applecarplay", name: "Apple CarPlay", count: 0 }
       ],
       tireTypes: [
         { value: "sommerdaek", name: "Sommerdæk", count: 0 },
         { value: "vinterdaek", name: "Vinterdæk", count: 0 },
-        { value: "helaarsdaek", name: "Helårsdæk", count: 0 },
+        { value: "helaarsdaek", name: "Helårsdæk", count: 0 }
       ],
       showFilter: false,
-      isMobile: false,
+      isMobile: false
+
 
     };
   },
@@ -1098,19 +1358,104 @@ export default {
 
   },
   methods: {
+
+
+    clearFilters() {
+      this.selectedBrands = [];
+      this.selectedFeatures = [];
+      this.selectedGearTypes = [];
+      this.selectedFuelTypes = [];
+      this.selectedTireTypes = [];
+      this.selectedCarTypes = [];
+      this.selectedModel = '';
+      this.selectedPrice = '*';
+      this.fetchData2();
+    },
+    changeCardsPerRowToThree() {
+      /* Target this: #filter_container.products___1WcE3 .list___1c2KX  And Set property --products-per-row to 3*/
+      document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "3");
+
+    },
+    changeCardsPerRowToTwo() {
+      document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "2");
+      /* Target all classes with .product-card___2naPO and set the height property to 100% */
+      document.querySelectorAll(".product-card___2naPO").forEach((element) => {
+        element.style.setProperty("height", "100%");
+      });
+      /* Target all classes with .image-wrapper___2BJkg  and set height to 100%*/
+      document.querySelectorAll(".image-wrapper___2BJkg").forEach((element) => {
+        element.style.setProperty("height", "100%");
+      });
+      document.querySelectorAll(".content___2i8ss").forEach((element) => {
+        element.style.setProperty("padding", "var(--space-m) var(--space-xl)");
+      });
+      /* .button___2oWcS.rounded-corners___2DuU9 */
+      document.querySelectorAll(".button___2oWcS.rounded-corners___2DuU9").forEach((element) => {
+        element.style.setProperty("margin-top", "var(--space-xs)");
+        element.style.setProperty("margin-bottom", "var(--space-xs)");
+
+      });
+      /* label___xUzK4 */
+      document.querySelectorAll(".label___xUzK4").forEach((element) => {
+        element.style.setProperty("font-size", "0.95rem");
+        element.style.setProperty("height", "1.705rem");
+
+      });
+
+      /* name___3OMhd */
+      document.querySelectorAll(".name___3OMhd").forEach((element) => {
+        element.style.setProperty("font-size", "1.4rem");
+      });
+
+
+    },
+
+
+    sortPriceDesc() {
+      this.carData.sort((a, b) => b.base_maanedspris - a.base_maanedspris);
+
+    },
+    sortPriceAsc() {
+      this.carData.sort((a, b) => a.base_maanedspris - b.base_maanedspris);
+    },
+    sortUdbetalingDesc() {
+      this.carData.sort((a, b) => b.base_udbetaling - a.base_udbetaling);
+    },
+    sortUdbetalingAsc() {
+      this.carData.sort((a, b) => a.base_udbetaling - b.base_udbetaling);
+    },
+    sortNewestCarAdded() {
+      this.carData.sort((a, b) => b.id - a.id);
+    },
+    sortCars() {
+      if (this.selectedPrice === "desc") {
+        this.sortPriceDesc();
+      } else if (this.selectedPrice === "asc") {
+        this.sortPriceAsc();
+      }
+      if (this.selectedPrice === "desc_ud") {
+        this.sortUdbetalingDesc();
+      } else if (this.selectedPrice === "asc_ud") {
+        this.sortUdbetalingAsc();
+      }
+      if (this.selectedPrice === "new") {
+        this.sortNewestCarAdded();
+      }
+    },
+
     textUnderPicture(car) {
       return `  Udbetaling kr. ${car.base_udbetaling} - månedlig
                   leasingydelse kr. ${car.base_maanedspris} \n-
                   udleveringsrapport kr. 495, total omkostning i 36 mdr. Total:
-                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6) * 36) + 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse) ?? 0)} kr. `
+                  ${((car.base_maanedspris * 36) + (car.groen_ejer_afgift / 6) * 36) + 495 + car.base_udbetaling + (parseInt(car.dokument_gebyr_ved_oprettelse) ?? 0)} kr. `;
     },
     async fetchData() {
       const response = await fetch(this.currentURL, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       this.carData = data.data;
@@ -1169,11 +1514,11 @@ export default {
 
       this.oneTimePriceRange.value = [
         lowestOneTimePriceRange,
-        highestOneTimePriceRange,
+        highestOneTimePriceRange
       ];
       this.oneTimePriceRange.savedValue = [
         lowestOneTimePriceRange,
-        highestOneTimePriceRange,
+        highestOneTimePriceRange
       ];
       console.log("called 2");
     },
@@ -1202,8 +1547,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
 
@@ -1227,8 +1572,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       if (data.data.length === 0) {
@@ -1262,7 +1607,7 @@ export default {
           max:
             this.queryPrice2 !== "*"
               ? Number(this.queryPrice2)
-              : Number.POSITIVE_INFINITY,
+              : Number.POSITIVE_INFINITY
         };
         if (this.queryBrand === "*" && this.queryModel === "*") {
           // filter by price range only
@@ -1327,8 +1672,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await checkboxResponse.json();
       this.carData = data.data;
@@ -1339,8 +1684,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1396,8 +1741,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1423,8 +1768,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1456,8 +1801,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1486,8 +1831,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1516,8 +1861,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1546,8 +1891,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const cars = data.data;
@@ -1567,8 +1912,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const cars = data.data;
@@ -1588,8 +1933,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const cars = data.data;
@@ -1610,14 +1955,14 @@ export default {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer ${this.readerAPI}`,
-          },
+            Authorization: `Bearer ${this.readerAPI}`
+          }
         });
         const data = await response.json();
         const cars = data.data;
 
         this.models = cars.map((car) => ({
-          label: car.model,
+          label: car.model
         }));
       } catch (error) {
         console.error(error);
@@ -1628,8 +1973,8 @@ export default {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.readerAPI}`,
-        },
+          Authorization: `Bearer ${this.readerAPI}`
+        }
       });
       const data = await response.json();
       const allData = data.data;
@@ -1648,11 +1993,69 @@ export default {
     toggleFilter() {
       this.showFilter = !this.showFilter;
       console.log(this.showFilter);
-    },
+    }
   },
 
   computed: {
+    selectedFilters() {
+      const filters = [];
 
+      // Add selected brand filters
+      if (this.selectedBrands.length > 0) {
+        const selectedBrandFilters = this.selectedBrands.map((brand) => {
+          return { name: brand, type: 'brand' };
+        });
+        filters.push(...selectedBrandFilters);
+      }
+
+      // Add selected feature filters
+      if (this.selectedFeatures.length > 0) {
+        const selectedFeatureFilters = this.selectedFeatures.map((feature) => {
+          return { name: feature, type: 'feature' };
+        });
+        filters.push(...selectedFeatureFilters);
+      }
+
+      // Add selected price filter
+      if (this.selectedPrice !== '*') {
+        filters.push({ name: `Price: ${this.selectedPrice}`, type: 'price' });
+      }
+
+      // Add selected gear type filters
+      const selectedGearTypeFilters = this.gearTypes
+        .filter((gearType) => this.selectedGearTypes.includes(gearType.value))
+        .map((gearType) => {
+          return { name: gearType.name, type: 'gearType' };
+        });
+      if (selectedGearTypeFilters.length > 0) {
+        filters.push(...selectedGearTypeFilters);
+      }
+
+      // Add selected fuel type filters
+      const selectedFuelTypeFilters = this.fuelTypes
+        .filter((fuelType) => this.selectedFuelTypes.includes(fuelType.value))
+        .map((fuelType) => {
+          return { name: fuelType.name, type: 'fuelType' };
+        });
+      if (selectedFuelTypeFilters.length > 0) {
+        filters.push(...selectedFuelTypeFilters);
+      }
+
+      // Add selected tire type filters
+      const selectedTireTypeFilters = this.tireTypes
+        .filter((tireType) => this.selectedTireTypes.includes(tireType.value))
+        .map((tireType) => {
+          return { name: tireType.name, type: 'tireType' };
+        });
+      if (selectedTireTypeFilters.length > 0) {
+        filters.push(...selectedTireTypeFilters);
+      }
+      /* Return pretty string  */
+
+
+
+      return filters;
+    },
 
     isMobile() {
       return window.innerWidth <= 1365; // adjust this value to fit your design needs
@@ -1669,7 +2072,7 @@ export default {
 
       return Object.entries(brandCount).map(([name, count]) => ({
         name,
-        count,
+        count
       }));
     },
     modelOptions() {
@@ -1680,18 +2083,18 @@ export default {
       });
       return Object.keys(modelCounts).map((model) => ({
         value: model,
-        label: `${model} (${modelCounts[model]})`,
+        label: `${model} (${modelCounts[model]})`
       }));
-    },
+    }
 
-  },
+  }
 
 };
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
-<style >
-.brands__request__form-container{
+<style>
+.brands__request__form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1700,7 +2103,8 @@ export default {
   background: var(--action);
 
 }
-.brands__request__form-inner-wrap{
+
+.brands__request__form-inner-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1708,6 +2112,7 @@ export default {
   width: 50%;
   padding: var(--space-xl) 0;
 }
+
 .brands__container {
 
 }
@@ -1734,7 +2139,7 @@ export default {
 
 /* show the toggle button on smaller screens */
 @media only screen and (max-width: 768px) {
-  .brands__request__form-container{
+  .brands__request__form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1743,7 +2148,8 @@ export default {
     background: var(--action);
 
   }
-  .brands__request__form-inner-wrap{
+
+  .brands__request__form-inner-wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1752,6 +2158,339 @@ export default {
     padding: var(--space-xl) 0;
   }
 
+}
+
+
+/* CUSTOM DROPDOWN FOR NON-FORM */
+.filter__dropdown {
+  font-family: "HM Sans Semi Bold", HMSansHebrew-SemiBold, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #222;
+  text-transform: uppercase;
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+
+  background-color: #fff;
+  border: none;
+}
+
+.filter__dropdown option {
+  font-size: 12px;
+  font-family: "HM Sans Semi Bold", HMSansHebrew-SemiBold, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-weight: 200;
+  color: #3f3d3d;
+
+
+}
+
+.filter__dropdown option:hover,
+.filter__dropdown option:focus,
+.filter__dropdown option:active,
+.filter__dropdown option:checked {
+  background: var(--action);
+  color: white;
+  font-family: "HM Sans Semi Bold", HMSansHebrew-SemiBold, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  width: 100%;
+  border: none;
+
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+select {
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+.select {
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid #777;
+  border-radius: 0.25em;
+  padding: 0.25em 0.2em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+
+}
+
+@font-face {
+  font-family: 'HM Sans Semi Bold';
+  src: url("https://s1-cdn.hm.com/global/fonts/4.0.15/hm/font/HMSansLatin-SemiBold.eot");
+  src: url("https://s1-cdn.hm.com/global/fonts/4.0.15/hm/font/HMSansLatin-SemiBold.eot?#iefix") format('eot'), url("https://s1-cdn.hm.com/global/fonts/4.0.15/hm/font/HMSansLatin-SemiBold.woff2") format('woff2'), url("https://s1-cdn.hm.com/global/fonts/4.0.15/hm/font/HMSansLatin-SemiBold.woff") format('woff');
+  font-display: swap;
+}
+
+/* Cards toggle large and small */
+@media (min-width: 1025px) {
+  input {
+    font-size: 100%;
+  }
+}
+
+/*! CSS Used from: https://s1-cdn.hm.com/global/frontend/vanilla/css/icons-1.299.15-hotfix.3.css */
+[type=radio]:checked + .large-images {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3E529E5C00-A013-4B81-BA29-97AEE3014437%401.00x%3C%2Ftitle%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M-4-4h24v24H-4z%22%2F%3E%3Cpath%20d%3D%22M1%201.994v12.012c0%20.548.446.994.994.994h12.012a.995.995%200%200%200%20.994-.994V1.994A.995.995%200%200%200%2014.006%201H1.994A.995.995%200%200%200%201%201.994zm-1%200C0%20.893.895%200%201.994%200h12.012C15.107%200%2016%20.895%2016%201.994v12.012A1.995%201.995%200%200%201%2014.006%2016H1.994A1.995%201.995%200%200%201%200%2014.006V1.994z%22%20fill%3D%22%23E50010%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+}
+
+[type=radio]:checked + .small-images {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Ctitle%3E79A5E2DA-060F-4468-8208-07DBB03E8570%401.00x%3C%2Ftitle%3E%3Cdefs%3E%3Cpath%20d%3D%22M5%209.997L9.997%2010%2010%205.003%205.003%205%205%209.997zM4%205.003A.996.996%200%200%201%205.003%204h4.994A.996.996%200%200%201%2011%205.003v4.994A.996.996%200%200%201%209.997%2011H5.003A.996.996%200%200%201%204%209.997V5.003zm1%2013.994L9.997%2019%2010%2014.003%205.003%2014%205%2018.997zm-1-4.994A.996.996%200%200%201%205.003%2013h4.994A.996.996%200%200%201%2011%2014.003v4.994A.996.996%200%200%201%209.997%2020H5.003A.996.996%200%200%201%204%2018.997v-4.994zm10-4.006l4.997.003L19%205.003%2014.003%205%2014%209.997zm-1-4.994A.996.996%200%200%201%2014.003%204h4.994A.996.996%200%200%201%2020%205.003v4.994A.996.996%200%200%201%2018.997%2011h-4.994A.996.996%200%200%201%2013%209.997V5.003zm1%2013.994l4.997.003.003-4.997L14.003%2014%2014%2018.997zm-1-4.994A.996.996%200%200%201%2014.003%2013h4.994A.996.996%200%200%201%2020%2014.003v4.994A.996.996%200%200%201%2018.997%2020h-4.994A.996.996%200%200%201%2013%2018.997v-4.994z%22%20id%3D%22prefix__a%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate%28-4%20-4%29%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%2F%3E%3Cuse%20fill%3D%22%23E50010%22%20xlink%3Ahref%3D%22%23prefix__a%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+}
+
+.large-images {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ctitle%3E529E5C00-A013-4B81-BA29-97AEE3014437%401.00x%3C%2Ftitle%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M-4-4h24v24H-4z%22%2F%3E%3Cpath%20d%3D%22M1%201.994v12.012c0%20.548.446.994.994.994h12.012a.995.995%200%200%200%20.994-.994V1.994A.995.995%200%200%200%2014.006%201H1.994A.995.995%200%200%200%201%201.994zm-1%200C0%20.893.895%200%201.994%200h12.012C15.107%200%2016%20.895%2016%201.994v12.012A1.995%201.995%200%200%201%2014.006%2016H1.994A1.995%201.995%200%200%201%200%2014.006V1.994z%22%20fill%3D%22%23222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+}
+
+.small-images {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Ctitle%3E79A5E2DA-060F-4468-8208-07DBB03E8570%401.00x%3C%2Ftitle%3E%3Cdefs%3E%3Cpath%20d%3D%22M5%209.997L9.997%2010%2010%205.003%205.003%205%205%209.997zM4%205.003A.996.996%200%200%201%205.003%204h4.994A.996.996%200%200%201%2011%205.003v4.994A.996.996%200%200%201%209.997%2011H5.003A.996.996%200%200%201%204%209.997V5.003zm1%2013.994L9.997%2019%2010%2014.003%205.003%2014%205%2018.997zm-1-4.994A.996.996%200%200%201%205.003%2013h4.994A.996.996%200%200%201%2011%2014.003v4.994A.996.996%200%200%201%209.997%2020H5.003A.996.996%200%200%201%204%2018.997v-4.994zm10-4.006l4.997.003L19%205.003%2014.003%205%2014%209.997zm-1-4.994A.996.996%200%200%201%2014.003%204h4.994A.996.996%200%200%201%2020%205.003v4.994A.996.996%200%200%201%2018.997%2011h-4.994A.996.996%200%200%201%2013%209.997V5.003zm1%2013.994l4.997.003.003-4.997L14.003%2014%2014%2018.997zm-1-4.994A.996.996%200%200%201%2014.003%2013h4.994A.996.996%200%200%201%2020%2014.003v4.994A.996.996%200%200%201%2018.997%2020h-4.994A.996.996%200%200%201%2013%2018.997v-4.994z%22%20id%3D%22prefix__a%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate%28-4%20-4%29%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M0%200h24v24H0z%22%2F%3E%3Cuse%20fill%3D%22%23222%22%20xlink%3Ahref%3D%22%23prefix__a%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+}
+
+/*! CSS Used from: https://s1-cdn.hm.com/global/frontend/vanilla/css/plp-1.299.15-hotfix.3.css */
+
+
+ul {
+  list-style-type: none;
+}
+
+
+label {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: top;
+}
+
+
+li::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+li:first-child {
+  margin-left: 0;
+}
+
+[type=radio] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+[type=radio]:focus + label {
+  outline: 1px auto var(--action);
+
+}
+
+.large-images, .small-images {
+  background-position: center;
+  background-repeat: no-repeat;
+  content: "";
+  cursor: pointer;
+  display: block;
+  height: 24px;
+  margin: 0;
+  text-indent: -9999px;
+  width: 24px;
+}
+
+.filter__horizontal-container {
+  padding: 0 0 var(--space-m) 0;
+}
+
+.filter__horizontal-styled {
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+}
+
+
+.filter-tags {
+  display: table;
+  width: auto;
+}
+
+.filter-tags::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.filter-tags-heading {
+  display: none;
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0;
+  padding: 10.5px 0;
+  text-transform: capitalize;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.filter-tags-list {
+  display: table-cell;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.filter-tags-list::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-tags-list {
+    padding-left: 24px;
+  }
+}
+
+.filter-tags-item {
+  font-size: 13px;
+  line-height: 20px;
+  background-color: #fff;
+  float: left;
+  margin: 0 8px 8px 0;
+  padding: 0 0 0 15px;
+  position: relative;
+}
+
+.filter-tags-remove {
+  background-color: #fff;
+  height: 40px;
+  margin-left: 15px;
+  position: relative;
+  text-indent: -9999px;
+  width: 40px;
+}
+
+.filter-tags-remove::before {
+  background-position: center;
+  background-size: 12px;
+  content: "";
+  display: block;
+  height: 24px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 24px;
+}
+
+.filter-tags-remove:hover {
+  background-color: #e6e6e6;
+}
+
+.filter-tags-actions {
+  display: table-cell;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.filter-tags-actions .filter-clear-btn {
+  font-size: 13px;
+  line-height: 20px;
+  color: #222;
+  display: block;
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  letter-spacing: 1px;
+  padding: 11px 0 16px 15px;
+  text-align: right;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-tags-actions .filter-clear-btn {
+    padding-right: 24px;
+  }
+}
+
+.filter-tags-actions .expand-more-tags {
+  color: #707070;
+  display: block;
+  display: none;
+  margin-bottom: 8px;
+  padding: 8px 12px 8px 15px;
+  position: relative;
+  text-align: right;
+  width: 100%;
+}
+
+.filter-tags-actions .expand-more-tags::after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #222;
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  right: 0;
+  top: 45%;
+  width: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .filter-tags-actions .expand-more-tags::after {
+    right: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .filter-tags-actions .expand-more-tags {
+    padding-right: 35px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filter-tags {
+    margin: 0 0 25px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .filter-tags-heading {
+    display: table-cell;
+  }
+
+  .filter-tags-item {
+    margin: 0 0 10px 20px;
+  }
 }
 
 </style>
