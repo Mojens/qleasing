@@ -55,6 +55,7 @@
     color: #101011;
     text-decoration: none;
     text-align: left;
+    font-size: clamp(0.625rem, 0.5313rem + 0.375vw, 1rem);
 }
 
 .multi-link-button___Av7sq {
@@ -111,7 +112,15 @@
     -ms-flex-align: center;
     align-items: center;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: clamp(0.71875rem, 0.6641rem + 0.2188vw, 0.9375rem);
+}
+.navigation-item___21XPw .link___1tInP {
+    padding: 0.5rem;
+    color: #101011;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: clamp(0.71875rem, 0.6641rem + 0.2188vw, 0.9375rem);
 }
 
 .multi-link-button___Av7sq .title___wAdVl::after {
@@ -134,14 +143,7 @@
     align-items: center;
 }
 
-.navigation-item___21XPw .link___1tInP {
-    padding: 0.5rem;
-    color: #101011;
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
+
 
 .burger-button___y0r_B {
     position: relative;
@@ -230,7 +232,7 @@
     }
 
     .navigation___2n5eH .menu-items___1o-34 .menu-item___2UedM:not(:first-child) {
-        margin-left: 1rem;
+        margin-left: clamp(0.01rem, -1.18rem + 1.904vw, 1.2rem);
     }
 }
 

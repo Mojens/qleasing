@@ -4,7 +4,7 @@
       <div class="image____uKec">
         <img
           alt="footer-logo"
-          src="../assets/images/Quickleasing-logo.png"
+          src="../assets/images/quickleasing__logo-small.png"
         />
       </div>
       <div class="links-wrapper___z_X-m">
