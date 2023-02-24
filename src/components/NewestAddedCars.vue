@@ -283,6 +283,7 @@ export default {
   data() {
     return {
       touchStartX: null,
+      testURL: import.meta.env.VUE_APP_TEST_URL,
       currentURL: import.meta.env.VITE_APP_CARS_URL,
       pictureURL: import.meta.env.VITE_APP_PICTURE_URL,
       fileURL: import.meta.env.VITE_APP_FILE_ID_URL,
