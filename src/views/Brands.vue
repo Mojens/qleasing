@@ -1349,7 +1349,11 @@ export default {
   mounted() {
 
     this.fetchModels();
-  },
+  },watch: {
+  '$route.params.brand': function(newBrand) {
+    this.carData = this.originalData.filter(car => car.brand.toLowerCase() === newBrand.toLowerCase());
+  }
+},
   async created() {
     await this.fetchData();
     await this.fetchData2();
