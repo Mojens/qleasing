@@ -92,7 +92,7 @@ onMounted(() => {
                 </div>
 
               </div>
-              <div></div>
+              <div v-if="isMobile"></div>
 
 
 
