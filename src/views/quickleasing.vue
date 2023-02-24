@@ -259,7 +259,7 @@ onMounted(() => {
                       Vælg bil
                     </button>
                   </RouterLink>
-                  <div class="additional-price___2tuCL" style="font-size: x-small; margin-top:5px;">
+                  <div class="additional-price___2tuCL" style="margin-top:5px;">
                     {{ textUnderPicture(car) }}
                   </div>
                 </div>
@@ -791,8 +791,8 @@ export default {
         element.style.setProperty("padding", "1.2rem");
       });
       document.querySelectorAll(".button___2oWcS.rounded-corners___2DuU9").forEach((element) => {
-        element.style.setProperty("margin-top", "0");
-        element.style.setProperty("margin-bottom", "0");
+        element.style.setProperty("margin-top", "var(--space-xs)");
+        element.style.setProperty("margin-bottom", "var(--space-xs)");
 
       });
       document.querySelectorAll(".label___xUzK4").forEach((element) => {
@@ -1732,10 +1732,13 @@ export default {
   }
 }
 
+
+
 @media screen and (min-width: 42.75rem) {
  #filter_container.products___1WcE3 .list___1c2KX {
     --products-per-row: 2;
   }
+
 }
 @media screen and (min-width: 64rem) {
   #filter_container.products___1WcE3 .list___1c2KX {
@@ -1862,7 +1865,12 @@ export default {
 .filter__container::-webkit-scrollbar-thumb {
   background-color: #f2f2f2;
 }
-
+.content___2i8ss .additional-price___2tuCL{
+  font-size: clamp(0.46875rem, 0.4141rem + 0.2188vw, 0.6875rem);
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  font-weight: 400;
+  color: #222;
+}
 
 .filter__inner-wrapper {
   display: flex;

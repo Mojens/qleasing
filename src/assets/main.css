@@ -802,6 +802,7 @@
     -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
     outline: none;
+
 }
 
 .button___2oWcS:disabled {

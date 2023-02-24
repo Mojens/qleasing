@@ -560,7 +560,7 @@ onMounted(() => {
                       Vælg bil
                     </button>
                   </RouterLink>
-                  <div class="additional-price___2tuCL" style="font-size: x-small; margin-top:5px;">
+                  <div class="additional-price___2tuCL" style="margin-top:5px;">
                     {{ textUnderPicture(car) }}
                   </div>
                 </div>
@@ -1390,7 +1390,7 @@ export default {
       /* Target this: #filter_container.products___1WcE3 .list___1c2KX  And Set property --products-per-row to 3*/
       document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "3");
       document.querySelectorAll(".product-card___2naPO").forEach((element) => {
-        element.style.setProperty("height", "30.4rem");
+        element.style.setProperty("height", "100%");
       });
       document.querySelectorAll(".image-wrapper___2BJkg").forEach((element) => {
         element.style.setProperty("height", "11.5rem");

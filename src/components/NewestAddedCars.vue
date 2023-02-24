@@ -259,7 +259,7 @@
                     Vælg bil
                   </button>
                 </RouterLink>
-                <div class="additional-price___2tuCL" style="font-size: 9px;margin-top: 5px;">
+                <div class="additional-price___2tuCL" style="font-size: 7.5px;margin-top: 5px;">
                   {{ textUnderPicture(car) }}
                 </div>
               </div>
@@ -830,7 +830,7 @@ export default {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 30.4rem;
+  height: 100%;
   background-color: #f2f2f2;
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
@@ -994,7 +994,7 @@ export default {
 .product-card___2naPO .cta-button___2wq8T {
   width: auto;
   height: auto;
-  margin: auto auto 0;
+  margin: var(--space-xs) auto;
 }
 
 .products___1WcE3 {
