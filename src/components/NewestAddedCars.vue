@@ -1022,7 +1022,7 @@ export default {
   --product-margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
-
+  display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: calc(var(--product-margin) * -1);
