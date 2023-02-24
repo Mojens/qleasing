@@ -47,7 +47,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="filter__horizontal-container">
+        <div class="filter__horizontal-container" :style="{'padding': isMobile ? '0' : ''}">
           <div class="filter__horizontal-inner-wrapper">
             <div class="grid--auto-4">
 
