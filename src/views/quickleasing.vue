@@ -36,9 +36,7 @@ onMounted(() => {
                 <br> <br>
                 Med en leasingaftale gennem QUICKLEASING dukker der ikke uventede regninger op i den tid du leaser din bil, uanset hvor, eller hvornår, din bil har behov for service, så står vores serviceværksted QUICK POINT nemlig klar til at hjælpe dig, så du ikke skal bruge unødig tid og hurtigt er kørende igen. Det bedste er, at det ikke koster dig noget, det er nemlig indeholdt i din månedlige leasingydelse.
               </p>
-              <p v-if="carData.length > 1"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DISSE {{ carData.length }} BILER:</strong></p>
-              <p v-if="carData.length === 1"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI {{ carData.length }} BIL:</strong></p>
-              <p v-if="carData.length === 0"> <strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DESVÆRRE INGEN BILER:</strong></p>
+
               <div class="brands__request__form-container" v-if="carData.length === 0" style="margin-bottom: 2em">
                 <div class="brands__request__form-inner-wrap" >
 
@@ -51,7 +49,7 @@ onMounted(() => {
         </div>
         <div class="filter__horizontal-container">
           <div class="filter__horizontal-inner-wrapper">
-            <div class="grid--auto-3">
+            <div class="grid--auto-4">
 
               <div class="filter__horizontal-item">
 
@@ -74,12 +72,11 @@ onMounted(() => {
                 </div>
 
               </div>
-
-              <div class="filter__horizontal-item">
+              <div class="filter__horizontal-item center--left">
                 <div class="filter__horizontal-item-inner">
 
                   <div class="filter__horizontal-item-select">
-                    <ul class="list">
+                    <ul class="list" style="display: inline-flex">
                       <li class="list-item">
                         <input id="image-size-large" class="input" data-name="image-size" name="image-size" type="radio"
                                value="large" @click="changeCardsPerRowToTwo">
@@ -95,15 +92,20 @@ onMounted(() => {
                 </div>
 
               </div>
-              <div class="filter__horizontal-item">
+              <div></div>
+
+
+
+
+              <div class="filter__horizontal-item center--right" >
                 <div class="filter__horizontal-item-inner">
-                  <p v-if="carData.length > 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DISSE {{ carData.length
+                  <p v-if="carData.length > 1"><strong>{{ carData.length
                     }}
-                    BILER:</strong></p>
-                  <p v-if="carData.length === 1"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI {{ carData.length }}
-                    BIL:</strong></p>
+                    BILER</strong></p>
+                  <p v-if="carData.length === 1"><strong>{{ carData.length }}
+                    BIL</strong></p>
                   <p v-if="carData.length === 0"><strong>UD FRA DIN SØGNING EFTER EN BIL, FANDT VI DESVÆRRE INGEN
-                    BILER:</strong></p>
+                    BILER</strong></p>
                 </div>
               </div>
             </div>
@@ -769,7 +771,28 @@ export default {
     changeCardsPerRowToThree() {
       /* Target this: #filter_container.products___1WcE3 .list___1c2KX  And Set property --products-per-row to 3*/
       document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "3");
+      document.querySelectorAll(".product-card___2naPO").forEach((element) => {
+        element.style.setProperty("height", "30.4rem");
+      });
+      document.querySelectorAll(".image-wrapper___2BJkg").forEach((element) => {
+        element.style.setProperty("height", "11.5rem");
+      });
+      document.querySelectorAll(".content___2i8ss").forEach((element) => {
+        element.style.setProperty("padding", "1.2rem");
+      });
+      document.querySelectorAll(".button___2oWcS.rounded-corners___2DuU9").forEach((element) => {
+        element.style.setProperty("margin-top", "0");
+        element.style.setProperty("margin-bottom", "0");
 
+      });
+      document.querySelectorAll(".label___xUzK4").forEach((element) => {
+        element.style.setProperty("font-size", "0.70rem");
+        element.style.setProperty("height", "1.205rem ");
+
+      });
+      document.querySelectorAll(".name___3OMhd").forEach((element) => {
+        element.style.setProperty("font-size", "1rem");
+      });
     },
     changeCardsPerRowToTwo() {
       document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "2");
