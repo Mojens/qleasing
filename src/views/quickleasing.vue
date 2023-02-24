@@ -785,7 +785,7 @@ export default {
       /* Target this: #filter_container.products___1WcE3 .list___1c2KX  And Set property --products-per-row to 3*/
       document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "3");
       document.querySelectorAll(".product-card___2naPO").forEach((element) => {
-        element.style.setProperty("height", "30.4rem");
+        element.style.setProperty("height", "100%");
       });
       document.querySelectorAll(".image-wrapper___2BJkg").forEach((element) => {
         element.style.setProperty("height", "11.5rem");
@@ -805,6 +805,9 @@ export default {
       });
       document.querySelectorAll(".name___3OMhd").forEach((element) => {
         element.style.setProperty("font-size", "1rem");
+      });
+      document.querySelectorAll("#filter_container.products___1WcE3 .list___1c2KX .product___3vmta").forEach((element) => {
+        element.style.setProperty("padding", "0");
       });
     },
     changeCardsPerRowToTwo() {
@@ -836,6 +839,9 @@ export default {
       /* name___3OMhd */
       document.querySelectorAll(".name___3OMhd").forEach((element) => {
         element.style.setProperty("font-size", "1.4rem");
+      });
+      document.querySelectorAll("#filter_container.products___1WcE3 .list___1c2KX .product___3vmta").forEach((element) => {
+        element.style.setProperty("padding", "var(--space-xs)");
       });
 
 

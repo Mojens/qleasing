@@ -488,7 +488,6 @@ export default {
   }
   .products___1WcE3 .list___1c2KX {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
   #isMobile{
