@@ -244,7 +244,7 @@ onMounted(() => {
                 </div>
 
               </div>
-              <div class="filter__horizontal-item center--left">
+              <div class="filter__horizontal-item center--left" v-if="!isMobile">
                 <div class="filter__horizontal-item-inner">
 
                   <div class="filter__horizontal-item-select">
@@ -269,7 +269,7 @@ onMounted(() => {
 
 
 
-              <div class="filter__horizontal-item center--right" >
+              <div class="filter__horizontal-item " :class="{'center--left pad-header--s': isMobile, 'center--right': !isMobile }">
                 <div class="filter__horizontal-item-inner">
                   <p v-if="carData.length > 1"><strong>{{ carData.length
                     }}
