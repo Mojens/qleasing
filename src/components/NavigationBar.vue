@@ -18,8 +18,8 @@
                target="_self" title="Quickleasing">Privatleasing</a>
           </RouterLink>
 
-          <div class="navigation-item___21XPw menu-item___2UedM" >
-            <div class="multi-link-button___Av7sq">
+          <div class="navigation-item___21XPw menu-item___2UedM" style="width: 100%">
+            <div class="multi-link-button___Av7sq" style="width: 100%">
               <div class="Collapsible" ><span class="Collapsible__trigger" ><button
                 class="mobile-button___nwox_" @click="toggleBrandsCollapsible" >
                     <div class="title___wAdVl" >Mærker</div>
@@ -27,7 +27,7 @@
                 <div class="Collapsible__contentOuter"
                      :class="{ 'is-opened___2MlFy': isBrandsCollapsibleOpen, 'is-closed': !isBrandsCollapsibleOpen }" >
                   <div class="Collapsible__contentInner">
-                    <div class="sub-links___J39c2 sub-links___3E1Vu">
+                    <div class="sub-links___J39c2 sub-links___3E1Vu grid--2 center--all">
                       <RouterLink class="sub-link___TQy79"
                                   :to="{ name: 'specificBrand', params: { brand: 'opel' } }"
                       >
