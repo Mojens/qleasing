@@ -1411,6 +1411,9 @@ export default {
       document.querySelectorAll(".name___3OMhd").forEach((element) => {
         element.style.setProperty("font-size", "1rem");
       });
+      document.querySelectorAll("#filter_container.products___1WcE3 .list___1c2KX .product___3vmta").forEach((element) => {
+        element.style.setProperty("padding", "0");
+      });
     },
     changeCardsPerRowToTwo() {
       document.querySelector("#filter_container.products___1WcE3 .list___1c2KX").style.setProperty("--products-per-row", "2");
@@ -1441,6 +1444,10 @@ export default {
       /* name___3OMhd */
       document.querySelectorAll(".name___3OMhd").forEach((element) => {
         element.style.setProperty("font-size", "1.4rem");
+      });
+
+      document.querySelectorAll("#filter_container.products___1WcE3 .list___1c2KX .product___3vmta").forEach((element) => {
+        element.style.setProperty("padding", "var(--space-xs)");
       });
 
 

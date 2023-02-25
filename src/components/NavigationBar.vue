@@ -1,15 +1,20 @@
 <template >
   <div class="main-menu___2JQzT" >
-    <div class="content___1_CIc"><RouterLink class="main-menu-logo___1PC85" to="/" title="Quickleasing"><img
-      alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
-      src="../assets/images/Quickleasing-logo.png"></RouterLink>
+    <div class="content___1_CIc">  <RouterLink class="main-menu-logo___1PC85" to="/" title="Quickleasing">
+      <!-- show small logo for mobile -->
+      <img v-if="isMobile" alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
+           src="../assets/images/quickleasing__logo-small.png" style="object-fit: scale-down; width: clamp(12.5rem, 9.375rem + 12.5vw, 25rem);">
+      <!-- show large logo for desktop -->
+      <img v-else alt="Quickleasing" class="main-menu-logo-image___1Ov1X"
+           src="../assets/images/quickleasing__logo-big.png" style="object-fit: scale-down; width: clamp(12.5rem, 9.375rem + 12.5vw, 25rem);">
+    </RouterLink>
       <div class="navigation___2n5eH">
       <button class="burger-button___y0r_B burger-button___1pNrj is-closed___Nbjfz" @click="toggleMenu" ><span class="line___q3Uf4"></span><span
           class="line___q3Uf4"></span><span class="line___q3Uf4"></span></button>
         <div class="menu-items___1o-34 " :class="{ 'is-open___2f-lN': isMenuOpen, 'is-closed___Nbjfz is-closed': !isMenuOpen }">
           <div class="navigation-item___21XPw menu-item___2UedM">
             <a class="main-menu-logo___1PC85" href="https://bilabonnement.dk" title="Bilabonnement"><img
-              alt="Quickleasing" class="main-menu-logo-image___1Ov1X" style="object-fit: scale-down; width: 30%; align-content: end; display: flex; justify-content: end; margin-left: auto"
+              alt="Quickleasing" class="main-menu-logo-image___1Ov1X" style="object-fit: scale-down; width: clamp(6.25rem, 5.4688rem + 3.125vw, 9.375rem);; align-content: end; display: flex; justify-content: end; margin-left: auto"
               src="https://res.cloudinary.com/digital-interdan-bilabonnement/image/upload/c_fit,q_80,w_448/v1/Logos/BILABONNEMENT_rgb_mmahqw.png"></a>
           </div>
           <RouterLink class="navigation-item___21XPw menu-item___2UedM" to="/quickleasing"
@@ -18,8 +23,8 @@
                target="_self" title="Quickleasing">Privatleasing</a>
           </RouterLink>
 
-          <div class="navigation-item___21XPw menu-item___2UedM" style="width: 100%">
-            <div class="multi-link-button___Av7sq" style="width: 100%">
+          <div class="navigation-item___21XPw menu-item___2UedM">
+            <div class="multi-link-button___Av7sq" >
               <div class="Collapsible" ><span class="Collapsible__trigger" ><button
                 class="mobile-button___nwox_" @click="toggleBrandsCollapsible" >
                     <div class="title___wAdVl" >Mærker</div>
@@ -27,7 +32,7 @@
                 <div class="Collapsible__contentOuter"
                      :class="{ 'is-opened___2MlFy': isBrandsCollapsibleOpen, 'is-closed': !isBrandsCollapsibleOpen }" >
                   <div class="Collapsible__contentInner">
-                    <div class="sub-links___J39c2 sub-links___3E1Vu grid--2 center--all">
+                    <div class="sub-links___J39c2 sub-links___3E1Vu">
                       <RouterLink class="sub-link___TQy79"
                                   :to="{ name: 'specificBrand', params: { brand: 'opel' } }"
                       >
@@ -245,7 +250,7 @@
                 </div>
               </div>
               <button class="desktop-button___GoCH5">
-                <div class="title___wAdVl">Øvrig Info</div>
+                <div class="title___wAdVl">Øvrigt</div>
                 <div class="sub-links___J39c2 sub-links___3E1Vu">
                   <RouterLink to="/om-os"
                               class="sub-link___TQy79" target="_self" title="Om os">Om os
@@ -290,9 +295,20 @@ export default {
       isMenuOpen: false,
       isCollapsibleOpen: false,
       isBrandsCollapsibleOpen: false,
+      isMobile: false,
     };
   },
+  created() {
+    this.isMobile = this.checkMobile();
+    window.matchMedia("(max-width: 1365px)").addListener((e) => {
+      this.isMobile = e.matches;
+    });
+  },
   methods: {
+    checkMobile() {
+      // Check if screen size is less than or equal to 1365px
+      return window.matchMedia("(max-width: 1365px)").matches;
+    },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
