@@ -560,7 +560,7 @@ const age_driver = [
               </div>
             </div>
             <div class="steps___2tBXW steps___paC4-">
-              <div class="prices_overview info___JN_si">
+              <div class="prices_overview info___JN_si" :style="{'overflow' : show ? 'auto' : 'hidden'}">
                 <div class="content___2Jovb" v-if="showContent1">
                   <h3 class="title___O42Tx">
                     {{ displayCar.brand }} {{ displayCar.model }}
@@ -669,6 +669,7 @@ const age_driver = [
                       </div>
                     </div>
                   </div>
+
                   <div class="section___2oSoR highlighted-features___29Aku">
                     <div class="title___3xuUr">Fremhævede funktioner</div>
                     <div class="value___xZmjI">
@@ -679,7 +680,7 @@ const age_driver = [
                   </div>
                   <div class="description___O0o47"></div>
 
-                  <div ref="dropdown" class="dropdown">
+                  <div ref="dropdown" class="dropdown" >
                     <strong class="dropdown-label" @click="show = !show">
                       Se Fuld Udstyrsliste
                     </strong>
@@ -846,7 +847,7 @@ const age_driver = [
                             <h3 class=" ">Prisoverslag</h3>
                           </div>
                           <div class="prices_overview" style="padding: var(--space-m) var(--space-xl)">
-                            <div class="grid--auto-4 pad-header--s gap--xs">
+                            <div class="grid--auto-3 pad-header--s gap--xs">
                               <FormKit type="dropdown" label="Ekstra kilometer pr. år*" name="oensketKilometer"
                                 :options="extra_kilometer_aar" help="Ekstra km udover km 15.000 årligt - "
                                 placeholder="Ekstra kilometer pr. år" validation="required" :validation-messages="{
@@ -1060,7 +1061,7 @@ const age_driver = [
                             <h3 class=" ">Kundeinformation</h3>
                           </div>
                           <div class="prices_overview" style="padding: var(--space-m) var(--space-xl)">
-                            <div class="grid--auto-4 pad-header--s gap--xs">
+                            <div class="grid--auto-3 pad-header--s gap--xs">
                               <FormKit type="text" name="fornavn" id="fornavn" v-model="form_fornavn"
                                 validation="required|alpha_spaces|length:2,30" :validation-messages="{
                                   alpha_spaces: 'Venligst skriv et gyldigt navn',
@@ -1171,17 +1172,17 @@ const age_driver = [
                                     accepted: 'Du skal acceptere persondatapolitikken for at fortsætte',
                                   }" >
                                   <template #help="{ help }">
-                                    <p style="font-size: 12px" class="form__extra-help" v-html="help"></p>
+                                    <p style="margin-top:var(--space-xs) " class="form__extra-help" v-html="help"></p>
                                   </template>
                                 </FormKit>
 
 
 
                               </div>
-                              <p v-if="isBigTablet" style="font-size: 12px; margin-bottom: 9rem">Ved at klikke "Bestil nu", vil du herefter blive kontaktet
+                              <p class="bestilnu__helper-text" v-if="isBigTablet" style="margin-bottom: calc(12.1rem + 139px);">Ved at klikke "Bestil nu", vil du herefter blive kontaktet
                                 hurtigst
                                 mulig med henblik på leasingaftale med Quickleasing A/S</p>
-                              <p v-else-if="!isBigTablet" style="font-size: 10px">Ved at klikke "Bestil nu", vil du herefter blive kontaktet
+                              <p class="bestilnu__helper-text" v-else-if="!isBigTablet" >Ved at klikke "Bestil nu", vil du herefter blive kontaktet
                                 hurtigst
                                 mulig med henblik på leasingaftale med Quickleasing A/S</p>
                             </div>
@@ -1231,8 +1232,8 @@ const age_driver = [
 
                   <!-- END MULTI FORM  -->
                 </div>
-                <div class="buttons-wrapper___3WoLU" v-if="showContent1 && isBigTablet" style="padding: 0.75rem 0 1rem 0" >
-                  <button id="proceed-button" @click="showContent1 = false"
+                <div class="buttons-wrapper___3WoLU" v-if="showContent1 && isBigTablet" style="padding: 0.75rem 0 1rem 0; position: sticky" >
+                  <button id="proceed-button" @click="showContent1 = false; show = false"
                     class="button___2oWcS default___31nVJ proceed-button___2ZgPy rounded-corners___2DuU9" >
                     Fortsæt
                   </button>
@@ -2495,6 +2496,10 @@ export default {
   }
 }
 
+.prices_overview.info___JN_si{
+  overflow: hidden;
+}
+
 .prices_overview {
   height: 70dvh;
   overflow-y: auto;
@@ -2661,10 +2666,115 @@ export default {
   border-color: #1892c3;
   cursor: pointer;
 }
+.form__extra-help, .bestilnu__helper-text {
+  color: var(--black-trans-60);
+  font-weight: 100;
+  font-family: "HM Sans Semi Bold", "HMSansHebrew-SemiBold", "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", "MS PGothic", sans-serif;
+  margin: var(--space-xs) 0;
+  font-size: clamp(0.8125rem, 0.7722rem + 0.1899vw, 1rem);
+}
+[data-checked] {
+  background-color: #f8f6f6;
+  color: black;
+}
+@media screen and (min-width: 46.75rem) {
+  .product___MbOUd {
+    overflow: hidden;
+  }
+}
+.product___MbOUd {
+  position: relative;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
+@media screen and (min-width: 64rem) {
+  .product___MbOUd {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .product___MbOUd .overview___1ZyZV {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .product___MbOUd .steps___paC4- {
+    width: 50%;
+    max-width: 52rem;
+  }
+}
+
+@media screen and (min-width: 46.75rem) {
+  .prices_overview {
+    overflow-y: hidden;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .prices_overview {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 64rem) {
+  .prices_overview .buttons-wrapper___3WoLU {
+    padding: 0.75rem 0 1.4rem;
+  }
+}
+.buttons-wrapper___3WoLU {
+  width: 98.2%;
+  position: absolute;
+  margin-top: auto;
+  padding: 2.1rem 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+@media screen and (min-width: 46.75rem) {
+  .prices_overview .buttons-wrapper___3WoLU {
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+}
+@media screen and (min-width: 64rem) {
+  .prices_overview .content___2Jovb {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 1rem 1rem 3rem;
+  }
+}
+
 /* Mobile screens */
 
 @media only screen and (max-width: 380px) {
-
+  [data-checked] {
+    background-color: white;
+    color: black;
+  }
+  .form__extra-help{
+    margin: 0;
+  }
   .prices_overview .buttons-wrapper___3WoLU,
   .buttons-wrapper___3WoLU {
     padding: 0 1rem;
@@ -2685,8 +2795,8 @@ export default {
     padding: 0;
   }
   .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
-    font-size: 8px;
-    font-size: clamp(0.5125rem, 0.4489rem + 0.2752vw, 0.625rem);
+    font-size: 9px;
+    font-size: clamp(0.5625rem, 0.1227rem + 2.3457vw, 0.68125rem);
 
   }
   .step__content-single{
@@ -2700,11 +2810,7 @@ export default {
     font-size: 14px;
     font-size: clamp(0.75rem, 0.6086rem + 0.6116vw, 1rem)!important;
   }
-  .form__extra-help{
-    font-size: 12px;
-    font-size: clamp(0.625rem, 0.4836rem + 0.6116vw, 0.875rem);
-    margin: 0;
-  }
+
    .add__price-hjul:after,
    .add__price-selv:after,
    .add__price-vej:after,
@@ -2730,6 +2836,10 @@ export default {
   }
 }
 @media only screen and (min-width: 381px) and (max-width: 767px) {
+  [data-checked] {
+    background-color: white;
+    color: black;
+  }
   .prices_overview .buttons-wrapper___3WoLU,
   .buttons-wrapper___3WoLU {
     padding: 0 1rem;
@@ -2751,7 +2861,7 @@ export default {
   }
   .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
     font-size: 8px;
-    font-size: clamp(0.5125rem, 0.4489rem + 0.2752vw, 0.625rem);
+    font-size: clamp(0.625rem, 0.5327rem + 0.3876vw, 0.71875rem);
 
   }
   .step__content-single{
@@ -2765,11 +2875,7 @@ export default {
     font-size: 14px;
     font-size: clamp(0.75rem, 0.6086rem + 0.6116vw, 1rem)!important;
   }
-  .form__extra-help{
-    font-size: 12px;
-    font-size: clamp(0.625rem, 0.4836rem + 0.6116vw, 0.875rem);
-    margin: 0;
-  }
+
   .add__price-hjul:after,
   .add__price-selv:after,
   .add__price-vej:after,
@@ -2796,65 +2902,193 @@ export default {
 }
 
 /* Small tablets */
+@media only screen and (min-width: 768px) and (max-width: 768px){
+  .product-overview___h1U1n{
+   height: 50vh;
+  }
+}
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .prices_overview,
+  .product-overview___h1U1n{
+    height: 60vh;
+  }
+  [data-checked] {
+    background-color: white;
+    color: black;
+  }
+  .product___MbOUd{
+
+    overflow: visible;
+  }
   .prices_overview .buttons-wrapper___3WoLU,
   .buttons-wrapper___3WoLU {
-    padding: 0 2rem;
-    width: 98.2%;
+    padding: 0 1rem;
+    width: 100%;
+  }
+  .prices_overview{
+    height: 100%;
+
+  }
+  .prices_overview .content___2Jovb {
+    width: 100%;
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: var(--space-s) var(--space-s) 0 var(--space-s);
+  }
+  .technical-details___2buqo .details-group___19Kyu .detail___3AT8g {
+    margin: calc(var(--space-xs) - 3px) 0;
+    padding: 0;
+  }
+  .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
+    font-size: 12px;
+    font-size: clamp(0.75rem, 0.375rem + 0.7813vw, 0.875rem);
+
+  }
+  .step__content-single{
+
+    height: 100%;
+  }
+  .form__wrapper{
+    padding: 0;
+  }
+  .add__price{
+    font-size: 14px;
+    font-size: clamp(0.75rem, 0.6086rem + 0.6116vw, 1rem)!important;
+  }
+  .form__extra-help{
+    font-size: 12px;
+    font-size: clamp(0.625rem, 0.4836rem + 0.6116vw, 0.875rem);
+    margin: 0 0 0 0;
+  }
+  .add__price-hjul:after,
+  .add__price-selv:after,
+  .add__price-vej:after,
+  .add__price-forsikring:after{
+    font-size: 13px;
+    font-size: clamp(0.75rem, 0.6439rem + 0.4587vw, 0.9375rem);
+  }
+  .multiform__steps{
+    padding: 0 0 var(--space-s) 0!important;
+  }
+  .prices--interactiveBlock{
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+  .step__content-single_header{
+    padding: var(--space-s) var(--space-xl) 0 var(--space-xl);
+  }
+  .prices__info.prices__info--secondary{
+    font-size: 15px;
+    font-size: clamp(0.875rem, 0.7336rem + 0.6116vw, 1.125rem);
+    font-weight: 200;
+  }
+  .prices_overview.info___JN_si{
+    overflow-y: auto;
+
+  }
+  .button__action--rounded{
+    width: 50%;
+  }
+  .prefix___8I2P1{
+    font-size: 18px;
+    font-size: clamp(1.0625rem, 0.4978rem + 1.1765vw, 1.25rem);
   }
 }
 
 /* Big tablets and small laptops */
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
-  .prices_overview,
-  .prices_overview .buttons-wrapper___3WoLU,
-  .buttons-wrapper___3WoLU {
-    padding: 0 3rem;
-    width: 98.2%;
+
+  .prices_overview{
+    height: 70vh;
+    overflow-y: auto;
   }
+  .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
+    font-size: 12px;
+    font-size: clamp(0.625rem, -0.0025rem + 0.9804vw, 0.78125rem);
+    padding: 0 var(--space-s);
+
+  }
+  .add__price{
+    font-size: 14px;
+    font-size: clamp(0.75rem, -0.0029rem + 1.1765vw, 0.9375rem)!important;
+
+  }
+
+  .add__price-hjul:after,
+  .add__price-selv:after,
+  .add__price-vej:after,
+  .add__price-forsikring:after{
+    font-size: 13px;
+    font-size: clamp(0.625rem, -0.1279rem + 1.1765vw, 0.8125rem);
+  }
+  .prices_overview .buttons-wrapper___3WoLU{
+    padding: var(--space-m) 0 1.4rem;
+    width: calc(100% - 13px);
+  }
+
 }
 
 /* Desktop screens and above */
 @media only screen and (min-width: 1280px) {
-  .prices_overview,
-  .prices_overview .buttons-wrapper___3WoLU,
-  .buttons-wrapper___3WoLU {
-    padding: 0 4rem;
-    width: 98.2%;
+  .prices_overview{
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding-top: 0!important;
   }
+  .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
+    font-size: 12px;
+    font-size: clamp(0.71875rem, 0.433rem + 0.3571vw, 0.875rem);
+    padding: 0 var(--space-s);
+
+  }
+  .add__price{
+    font-size: 14px;
+    font-size: clamp(0.75rem, -0.0029rem + 1.1765vw, 0.9375rem)!important;
+
+  }
+
+  .add__price-hjul:after,
+  .add__price-selv:after,
+  .add__price-vej:after,
+  .add__price-forsikring:after{
+    font-size: 13px;
+    font-size: clamp(0.625rem, -0.1279rem + 1.1765vw, 0.8125rem);
+  }
+  .prices_overview .buttons-wrapper___3WoLU{
+    padding: var(--space-m) 0 1.4rem;
+    width: calc(100% - 13px);
+  }
+  .form__extra-help{
+    margin: 0;
+  }
+  .prices--interactiveBlock {
+    margin-top: 0;
+    margin-bottom: calc(10.1rem + 90px);
+  }
+  .step__content-single{
+     height: 80vh;
+    overflow-y: auto;
+    margin-top: 0;
+    padding-bottom: 140px!important;
+    padding-top:0!important;
+
+  }
+
+  .form__wrapper{
+    padding-bottom: 0;
+  }
+  .prices_overview .content___2Jovb{
+
+    padding-top: var(--space-xl);
+
+  }
+
+
 }
 
 
 
 
-
-
-
-
-
-@media screen and (min-width: 46.75rem) {
-  .prices_overview {
-    overflow-y: hidden;
-  }
-}
-
-@media screen and (min-width: 64rem) {
-  .prices_overview {
-    height: 100%;
-  }
-}
-
-
-
-@media screen and (min-width: 64rem) {
-  .prices_overview .content___2Jovb {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    padding: 1rem 1rem 3rem;
-  }
-}
 
 .prices_overview .content___2Jovb .title___O42Tx {
   margin: 0;
@@ -2863,19 +3097,9 @@ export default {
 
 
 
-@media screen and (min-width: 46.75rem) {
-  .prices_overview .buttons-wrapper___3WoLU {
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-  }
-}
 
-@media screen and (min-width: 64rem) {
-  .prices_overview .buttons-wrapper___3WoLU {
-    padding: 0.75rem 0 1.4rem;
-  }
-}
+
+
 
 .prices_overview .buttons-wrapper___3WoLU .proceed-button___2ZgPy {
   max-width: 20rem;
@@ -3072,51 +3296,7 @@ export default {
   }
 }
 
-.product___MbOUd {
-  position: relative;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
-}
 
-@media screen and (min-width: 46.75rem) {
-  .product___MbOUd {
-    overflow: hidden;
-  }
-}
-
-@media screen and (min-width: 64rem) {
-  .product___MbOUd {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-}
-
-@media screen and (min-width: 64rem) {
-  .product___MbOUd .overview___1ZyZV {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-}
-
-@media screen and (min-width: 64rem) {
-  .product___MbOUd .steps___paC4- {
-    width: 50%;
-    max-width: 52rem;
-  }
-}
 
 /*! CSS Used from: Embedded */
 @media all and (min-width: 320px) and (max-width: 667px) {
@@ -3227,25 +3407,9 @@ export default {
   }
 }
 
-@media screen and (min-width: 46.75rem) {
-  .buttons-wrapper___3WoLU {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-  }
-}
 
-.buttons-wrapper___3WoLU {
-  width: 98.2%;
-  position: absolute;
-  margin-top: auto;
-  padding: 2.1rem 0;
-  background-color: rgba(255, 255, 255, 0.5);
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-}
+
+
 
 .button___2oWcS {
   position: relative;
@@ -3285,9 +3449,7 @@ export default {
 
 /* Step 2 list of prisoverslag about the choosen carr */
 
-.prices_overview.info___JN_si{
-  overflow: hidden;
-}
+
 
 
 .step__content-single::-webkit-scrollbar {
@@ -3523,10 +3685,7 @@ export default {
   }
 }
 
-[data-checked] {
-  background-color: #f8f6f6;
-  color: black;
-}
+
 
 .form__wrapper-input {
   padding: 0 10px;
