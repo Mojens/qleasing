@@ -2729,6 +2729,71 @@ export default {
     font-weight: 200;
   }
 }
+@media only screen and (min-width: 381px) and (max-width: 767px) {
+  .prices_overview .buttons-wrapper___3WoLU,
+  .buttons-wrapper___3WoLU {
+    padding: 0 1rem;
+    width: 100%;
+  }
+  .prices_overview{
+    height: 100%;
+    padding: var(--space-s) var(--space-xs) var(--space-xs) var(--space-xs)!important;
+  }
+  .prices_overview .content___2Jovb {
+    width: 100%;
+    max-width: 34rem;
+    margin: 0 auto;
+    padding: var(--space-s) var(--space-s) 0 var(--space-s);
+  }
+  .technical-details___2buqo .details-group___19Kyu .detail___3AT8g {
+    margin: calc(var(--space-xs) - 3px) 0;
+    padding: 0;
+  }
+  .product-overview___h1U1n .info___-uU-L .additional-price___2tuCL{
+    font-size: 8px;
+    font-size: clamp(0.5125rem, 0.4489rem + 0.2752vw, 0.625rem);
+
+  }
+  .step__content-single{
+    padding: var(--space-s) var(--space-xs) var(--space-xs) var(--space-xs)!important;
+    height: 100%;
+  }
+  .form__wrapper{
+    padding: 0;
+  }
+  .add__price{
+    font-size: 14px;
+    font-size: clamp(0.75rem, 0.6086rem + 0.6116vw, 1rem)!important;
+  }
+  .form__extra-help{
+    font-size: 12px;
+    font-size: clamp(0.625rem, 0.4836rem + 0.6116vw, 0.875rem);
+    margin: 0;
+  }
+  .add__price-hjul:after,
+  .add__price-selv:after,
+  .add__price-vej:after,
+  .add__price-forsikring:after{
+    font-size: 13px;
+    font-size: clamp(0.75rem, 0.6439rem + 0.4587vw, 0.9375rem);
+  }
+  .multiform__steps{
+    padding: 0 0 var(--space-s) 0!important;
+  }
+  .prices--interactiveBlock{
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }
+  .step__content-single_header{
+    padding: var(--space-m) var(--space-s) 0 var(--space-s);
+  }
+  .prices__info.prices__info--secondary{
+    font-size: 15px;
+    font-size: clamp(0.875rem, 0.7336rem + 0.6116vw, 1.125rem);
+    font-weight: 200;
+  }
+}
 
 /* Small tablets */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
